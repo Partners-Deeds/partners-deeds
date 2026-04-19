@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Partners Deeds — Strategic Ecosystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root{
+  --gold:#D4A847;--gold-light:#EFC96A;--gold-dim:#7A6030;--gold-bg:rgba(212,168,71,.08);
+  --ink:#0A090C;--ink2:#14131C;--ink3:#1E1D28;
+  --paper:#F5F0E4;--paper2:#C8C2AD;--paper3:#9E9888;--muted:#6A6458;
+  --blue:#5B9AB5;--green:#5B9E6A;--purple:#8B6CC4;--red:#B55B5B;--orange:#C47A3A;
+  --border:rgba(212,168,71,.16);--border-h:rgba(212,168,71,.45);
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 55% at 10% 0%,rgba(212,168,71,.08) 0%,transparent 55%),
+             radial-gradient(ellipse 60% 70% at 92% 95%,rgba(91,154,181,.07) 0%,transparent 55%);}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:60px 20px 120px;}
+@media(min-width:600px){.wrap{padding:72px 36px 140px;}}
+strong{color:var(--paper);font-weight:600;}
+a{-webkit-touch-callout:none;}
+
+/* ─── TYPE ─── */
+.label{font-size:12px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+.section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--paper);margin-bottom:18px;line-height:1.15;}
+@media(min-width:600px){.section-title{font-size:36px;margin-bottom:20px;}}
+.section-intro{font-size:15px;color:var(--paper2);line-height:1.8;max-width:860px;margin-bottom:36px;}
+
+/* ─── HEADER ─── */
+header{text-align:center;margin-bottom:64px;animation:fadeDown .9s ease both;}
+@media(min-width:600px){header{margin-bottom:88px;}}
+.eyebrow{font-size:17px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:600;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(48px,11vw,110px);font-weight:900;line-height:.9;letter-spacing:-2px;color:var(--paper);}
+@media(min-width:600px){h1{letter-spacing:-3px;}}
+h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.3);}
+.holding-sub{font-size:17px;letter-spacing:.4em;text-transform:uppercase;color:rgba(212,168,71,.88);margin-top:10px;font-weight:500;}
+.subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--paper2);margin-top:18px;}
+@media(min-width:600px){.subtitle{font-size:22px;}}
+.rule{display:flex;align-items:center;gap:14px;margin:28px auto;max-width:300px;}
+.rule::before{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim));}
+.rule::after{content:'';flex:1;height:1px;background:linear-gradient(270deg,transparent,var(--gold-dim));}
+.rule-diamond{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
+
+/* ─── STATS BAR ─── */
+.stats-bar{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--border);margin-bottom:64px;animation:fadeUp .9s .15s ease both;}
+@media(min-width:700px){.stats-bar{grid-template-columns:repeat(4,1fr);margin-bottom:88px;}}
+.stat{padding:24px 16px;text-align:center;border-right:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--gold-bg);transition:background .3s;}
+@media(min-width:700px){.stat{padding:36px 20px;border-bottom:none;}}
+.stat:nth-child(2n){border-right:none;}
+@media(min-width:700px){.stat:nth-child(2n){border-right:1px solid var(--border);}.stat:last-child{border-right:none;}}
+.stat:active{background:rgba(212,168,71,.13);}
+.stat-n{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold);display:block;line-height:1;}
+@media(min-width:600px){.stat-n{font-size:44px;}}
+.stat-l{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--paper2);margin-top:8px;display:block;}
+
+/* ─── TOOLTIP — tap-friendly on iOS ─── */
+.tip{position:relative;display:inline;border-bottom:1px dashed var(--gold-dim);color:var(--gold-light);cursor:pointer;}
+.tip-box{position:fixed;z-index:9999;max-width:min(300px,85vw);min-width:160px;background:var(--ink3);border:1px solid var(--border-h);color:var(--paper);font-family:'Inter',sans-serif;font-size:14px;font-weight:400;font-style:normal;line-height:1.55;padding:10px 14px;box-shadow:0 12px 36px rgba(0,0,0,.65);pointer-events:none;opacity:0;transition:opacity .15s;white-space:normal;border-radius:2px;}
+.tip-box.visible{opacity:1;}
+
+/* ─── PROC BTN ─── */
+.proc-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(212,168,71,.15);border:1px solid rgba(212,168,71,.4);color:var(--gold);font-size:11px;font-weight:700;cursor:pointer;margin-left:7px;flex-shrink:0;vertical-align:middle;transition:background .2s;line-height:1;font-family:'Inter',sans-serif;-webkit-appearance:none;touch-action:manipulation;}
+.proc-btn:active{background:rgba(212,168,71,.35);}
+
+/* ─── MODAL ─── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:9000;align-items:flex-end;justify-content:center;padding:0;cursor:pointer;}
+@media(min-width:600px){.modal-overlay{align-items:center;padding:24px;}}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--ink2);border:1px solid var(--border-h);width:100%;max-height:90vh;overflow-y:auto;-webkit-overflow-scrolling:touch;animation:modalIn .25s ease both;box-shadow:0 -8px 40px rgba(0,0,0,.6);border-radius:16px 16px 0 0;}
+@media(min-width:600px){.modal{max-width:700px;max-height:88vh;border-radius:0;box-shadow:0 32px 80px rgba(0,0,0,.7);}}
+@keyframes modalIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:20px 22px;border-bottom:1px solid var(--border);position:-webkit-sticky;position:sticky;top:0;background:var(--ink2);z-index:1;}
+@media(min-width:600px){.modal-header{padding:28px 32px;}}
+.modal-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--paper);line-height:1.2;}
+@media(min-width:600px){.modal-title{font-size:22px;}}
+.modal-close{min-width:36px;min-height:36px;background:transparent;border:1px solid var(--border);color:var(--paper2);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;touch-action:manipulation;border-radius:2px;}
+.modal-close:active{background:rgba(212,168,71,.15);color:var(--gold);}
+.modal-body{padding:20px 22px 32px;}
+@media(min-width:600px){.modal-body{padding:28px 32px 36px;}}
+.modal-step{display:flex;gap:14px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(212,168,71,.08);}
+@media(min-width:500px){.modal-step{gap:18px;}}
+.modal-step:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.modal-step-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:rgba(212,168,71,.2);line-height:1;flex-shrink:0;width:30px;text-align:right;}
+.modal-step-title{font-size:14px;font-weight:700;color:var(--paper);margin-bottom:6px;}
+.modal-step-desc{font-size:13px;color:var(--paper2);line-height:1.75;}
+.modal-step-desc ul{margin-top:8px;padding-left:16px;display:flex;flex-direction:column;gap:5px;}
+.modal-step-desc li{font-size:12px;color:var(--paper3);line-height:1.6;}
+.tool-tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;background:rgba(212,168,71,.1);border:1px solid rgba(212,168,71,.25);color:var(--gold-light);margin:2px 2px 0 0;}
+.modal-note{margin-top:20px;padding:14px 16px;background:rgba(91,154,181,.08);border:1px solid rgba(91,154,181,.25);font-size:13px;color:var(--paper2);line-height:1.7;}
+.modal-note strong{color:var(--blue);}
+/* iOS swipe-down handle */
+.modal-handle{width:36px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin:10px auto 0;display:block;}
+@media(min-width:600px){.modal-handle{display:none;}}
+
+/* ─── PILLARS ─── */
+.pillars{display:grid;grid-template-columns:1fr;gap:3px;margin-bottom:80px;}
+@media(min-width:640px){.pillars{grid-template-columns:repeat(2,1fr);margin-bottom:96px;}}
+.pillar{background:var(--ink2);border:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .3s;touch-action:manipulation;}
+@media(min-width:600px){.pillar{padding:44px 40px;}}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pillar-color,var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.pillar:active::before,.pillar.open::before{transform:scaleX(1);}
+.pillar.open{border-color:var(--border-h);}
+@media(min-width:600px){.pillar:hover{border-color:var(--border-h);transform:translateY(-3px);}.pillar.open{transform:none;}.pillar:hover::before{transform:scaleX(1);}}
+.pillar-bg-num{position:absolute;right:-6px;bottom:-20px;font-family:'Playfair Display',serif;font-size:110px;font-weight:900;color:rgba(212,168,71,.04);line-height:1;pointer-events:none;user-select:none;}
+.pillar-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;gap:12px;}
+.pillar-icon{width:50px;height:50px;background:var(--gold-bg);border:1px solid rgba(212,168,71,.25);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+@media(min-width:600px){.pillar-icon{width:58px;height:58px;font-size:26px;}}
+.pillar-badge{font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border:1px solid;font-weight:600;white-space:nowrap;}
+@media(min-width:500px){.pillar-badge{font-size:11px;padding:6px 14px;}}
+.pillar-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--paper);line-height:1.2;margin-bottom:12px;}
+@media(min-width:600px){.pillar-name{font-size:26px;}}
+.pillar-desc{font-size:14px;color:var(--paper2);line-height:1.8;margin-bottom:18px;}
+.pillar-kpis{display:flex;gap:18px;padding-top:18px;border-top:1px solid var(--border);flex-wrap:wrap;}
+@media(min-width:600px){.pillar-kpis{gap:28px;padding-top:22px;}}
+.kpi{display:flex;flex-direction:column;gap:4px;}
+.kpi-val{font-size:15px;color:var(--gold-light);font-weight:700;}
+.kpi-key{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--paper3);font-weight:500;}
+.pillar-detail{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
+.pillar.open .pillar-detail{max-height:700px;padding-top:22px;border-top:1px solid var(--border);margin-top:18px;}
+.detail-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+@media(min-width:500px){.detail-grid{grid-template-columns:1fr 1fr;}}
+.detail-block-title{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600;}
+.detail-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.detail-list li{font-size:13px;color:var(--paper2);padding-left:18px;position:relative;line-height:1.65;}
+.detail-list li::before{content:'→';position:absolute;left:0;color:var(--gold-dim);font-size:12px;top:2px;}
+.toggle-hint{margin-top:18px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);display:flex;align-items:center;gap:10px;font-weight:600;}
+.toggle-hint::after{content:'';flex:1;height:1px;background:var(--border);}
+.toggle-arrow{transition:transform .3s;display:inline-block;}
+.pillar.open .toggle-arrow{transform:rotate(180deg);}
+
+/* ─── PRIVATE SECTION ─── */
+.private-section{margin-bottom:80px;}
+@media(min-width:600px){.private-section{margin-bottom:96px;}}
+.private-card{background:var(--ink2);border:1px solid var(--border-h);overflow:hidden;}
+.private-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 20px;background:rgba(212,168,71,.04);border-bottom:1px solid var(--border);}
+@media(min-width:600px){.private-header{padding:32px 40px;}}
+.private-header-left{display:flex;align-items:center;gap:14px;}
+.private-lock-icon{font-size:24px;}
+.private-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--paper);}
+@media(min-width:600px){.private-title{font-size:26px;}}
+.private-subtitle{font-size:15px;color:var(--paper2);margin-top:4px;font-weight:500;}
+.private-badge{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:6px 12px;border:1px solid rgba(181,91,91,.5);color:#E07070;background:rgba(181,91,91,.1);white-space:nowrap;flex-shrink:0;}
+.private-teaser{padding:24px 20px;display:flex;flex-direction:column;gap:24px;}
+@media(min-width:700px){.private-teaser{flex-direction:row;gap:40px;padding:36px 40px;}}
+.private-desc{font-size:14px;color:var(--paper2);line-height:1.8;margin-bottom:14px;}
+.private-topics{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.private-topics li{font-size:13px;color:var(--paper2);padding-left:18px;position:relative;line-height:1.6;}
+.private-topics li::before{content:'—';position:absolute;left:0;color:var(--gold-dim);}
+.private-access-box{background:var(--ink3);border:1px solid var(--border);padding:22px 20px;display:flex;flex-direction:column;gap:12px;}
+@media(min-width:700px){.private-access-box{flex-shrink:0;width:280px;padding:28px 24px;}}
+.access-title{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);}
+.access-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(212,168,71,.25);color:var(--paper);font-family:'Inter',sans-serif;font-size:16px;padding:12px 14px;outline:none;-webkit-appearance:none;border-radius:0;transition:border-color .2s;}
+.access-input:focus{border-color:var(--gold);}
+.access-input::placeholder{color:var(--muted);}
+.access-btn{width:100%;padding:13px;background:rgba(212,168,71,.15);border:1px solid var(--border-h);color:var(--gold);font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;-webkit-appearance:none;border-radius:0;touch-action:manipulation;}
+.access-btn:active{background:rgba(212,168,71,.3);}
+.access-error{font-size:12px;color:#E07070;display:none;}
+.access-error.show{display:block;}
+.private-content{display:none;}
+.private-content.unlocked{display:block;}
+.lock-wall.hidden{display:none;}
+.unlocked-bar{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+@media(min-width:600px){.unlocked-bar{padding:18px 40px;}}
+.unlocked-status{font-size:12px;color:var(--green);font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.lock-again{font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:6px;touch-action:manipulation;}
+
+/* ─── TABS ─── */
+.op-tabs{display:flex;gap:2px;padding:16px 20px 0;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.op-tabs::-webkit-scrollbar{display:none;}
+@media(min-width:600px){.op-tabs{padding:20px 40px 0;gap:3px;overflow-x:visible;}}
+.op-tab{padding:10px 14px;background:transparent;border:1px solid var(--border);border-bottom:none;color:var(--paper3);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;touch-action:manipulation;-webkit-appearance:none;border-radius:0;}
+@media(min-width:600px){.op-tab{padding:12px 18px;font-size:13px;}}
+.op-tab:active{color:var(--paper2);}
+.op-tab.active{background:var(--ink3);color:var(--gold);border-color:var(--gold);}
+.op-panel{padding:20px;}
+@media(min-width:600px){.op-panel{padding:28px 40px;}}
+
+/* ─── SCRAPER ─── */
+.scraper-intro{background:rgba(212,168,71,.04);border:1px solid var(--border);padding:14px 16px;margin-bottom:18px;font-size:13px;color:var(--paper2);line-height:1.75;}
+.scraper-controls{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+@media(min-width:600px){.scraper-controls{flex-direction:row;flex-wrap:wrap;align-items:flex-end;}}
+.scraper-filters{display:flex;flex-direction:column;gap:8px;flex:1;}
+@media(min-width:500px){.scraper-filters{flex-direction:row;flex-wrap:wrap;}}
+.scraper-select,.scraper-input{background:rgba(255,255,255,.04);border:1px solid rgba(212,168,71,.22);color:var(--paper);font-family:'Inter',sans-serif;font-size:16px;padding:12px 12px;outline:none;-webkit-appearance:none;border-radius:0;width:100%;transition:border-color .2s;}
+@media(min-width:500px){.scraper-select,.scraper-input{width:auto;min-width:150px;flex:1;}}
+.scraper-select:focus,.scraper-input:focus{border-color:var(--gold);}
+.scraper-select option{background:#1E1D28;}
+.scraper-input::placeholder{color:var(--muted);}
+.scraper-btn{padding:13px 20px;background:rgba(212,168,71,.12);border:1px solid var(--border-h);color:var(--gold);font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;-webkit-appearance:none;border-radius:0;white-space:nowrap;touch-action:manipulation;width:100%;}
+@media(min-width:600px){.scraper-btn{width:auto;}}
+.scraper-btn:active:not(:disabled){background:rgba(212,168,71,.28);}
+.scraper-btn:disabled{opacity:.4;cursor:not-allowed;}
+.progress-wrap{margin-bottom:16px;}
+.progress-bar-bg{height:4px;background:rgba(212,168,71,.1);margin-bottom:10px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:var(--gold);width:0%;transition:width .3s ease;}
+.progress-log{display:flex;flex-direction:column;gap:4px;max-height:100px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.log-line{font-size:12px;font-family:'Inter',monospace;padding:2px 0;color:var(--paper3);}
+.log-ok{color:var(--green);}.log-warn{color:var(--gold);}.log-err{color:#E07070;}
+.captcha-box{display:flex;gap:14px;padding:18px;background:rgba(212,168,71,.07);border:1px solid rgba(212,168,71,.35);margin-bottom:16px;flex-wrap:wrap;}
+.captcha-icon{font-size:28px;flex-shrink:0;}
+.captcha-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--paper);margin-bottom:7px;}
+.captcha-desc{font-size:13px;color:var(--paper2);line-height:1.7;margin-bottom:10px;}
+.captcha-url-box{font-size:11px;color:var(--gold-dim);font-family:'Inter',monospace;word-break:break-all;padding:5px 10px;background:rgba(0,0,0,.3);border:1px solid rgba(212,168,71,.15);margin-bottom:10px;}
+.captcha-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.btn-bypass{padding:10px 16px;background:rgba(212,168,71,.12);border:1px solid var(--border-h);color:var(--gold);font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;border-radius:0;touch-action:manipulation;}
+.btn-continue{padding:10px 16px;background:rgba(91,158,106,.12);border:1px solid rgba(91,158,106,.45);color:var(--green);font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;border-radius:0;touch-action:manipulation;}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.results-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--paper);}
+.results-actions{display:flex;gap:6px;}
+.results-btn{padding:7px 12px;background:transparent;border:1px solid var(--border);color:var(--paper3);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.06em;text-transform:uppercase;touch-action:manipulation;-webkit-appearance:none;border-radius:0;}
+.results-btn:active{border-color:var(--gold);color:var(--gold);}
+.results-footer{font-size:11px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.contacts-tbl{width:100%;border-collapse:collapse;font-size:12px;}
+@media(min-width:600px){.contacts-tbl{font-size:13px;}}
+.contacts-tbl th{background:rgba(212,168,71,.08);color:var(--gold);font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:10px 11px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border);}
+.contacts-tbl td{padding:9px 11px;border-bottom:1px solid rgba(212,168,71,.07);color:var(--paper2);vertical-align:top;line-height:1.5;}
+.contacts-tbl tr:active td{background:rgba(212,168,71,.04);}
+.tbl-link{color:var(--blue);text-decoration:none;}
+.tbl-link:active{color:var(--gold-light);}
+.sp{font-size:10px;font-weight:700;padding:2px 6px;letter-spacing:.06em;}
+.sp-fl{background:rgba(91,158,106,.15);color:#5B9E6A;border:1px solid rgba(91,158,106,.3);}
+.sp-tx{background:rgba(181,91,91,.15);color:#C47070;border:1px solid rgba(181,91,91,.3);}
+.sp-il{background:rgba(91,154,181,.15);color:#5B9AB5;border:1px solid rgba(91,154,181,.3);}
+.sp-wi{background:rgba(139,108,196,.15);color:#8B6CC4;border:1px solid rgba(139,108,196,.3);}
+.sp-mi{background:rgba(212,168,71,.15);color:var(--gold);border:1px solid rgba(212,168,71,.3);}
+.scraper-empty{text-align:center;padding:48px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.empty-icon{font-size:36px;opacity:.3;}
+.empty-text{font-size:14px;color:var(--muted);max-width:380px;line-height:1.7;}
+
+/* ─── PORTFOLIO TAB ─── */
+.portfolio-intro{background:rgba(212,168,71,.04);border:1px solid var(--border);padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--paper2);line-height:1.75;}
+.portfolio-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-bottom:20px;}
+@media(min-width:600px){.portfolio-stats{grid-template-columns:repeat(4,1fr);}}
+.pstat{background:var(--ink3);border:1px solid var(--border);padding:16px 14px;text-align:center;}
+.pstat-n{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold);display:block;line-height:1;}
+.pstat-l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--paper3);margin-top:5px;display:block;}
+.import-zone{border:2px dashed rgba(212,168,71,.25);padding:28px 20px;text-align:center;margin-bottom:20px;transition:border-color .2s;cursor:pointer;touch-action:manipulation;}
+.import-zone:active,.import-zone.drag-over{border-color:var(--gold);background:rgba(212,168,71,.05);}
+.import-icon{font-size:28px;margin-bottom:10px;}
+.import-text{font-size:14px;color:var(--paper2);line-height:1.7;}
+.import-text strong{color:var(--gold);}
+.import-hint{font-size:11px;color:var(--muted);margin-top:6px;}
+.import-file-input{display:none;}
+.portfolio-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.port-btn{padding:9px 16px;background:transparent;border:1px solid var(--border);color:var(--paper3);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;-webkit-appearance:none;border-radius:0;touch-action:manipulation;}
+.port-btn.active-filter{border-color:var(--gold);color:var(--gold);}
+.port-btn:active{border-color:var(--border-h);color:var(--paper2);}
+/* ── PROPERTY CARDS — horizontal scroll layout ── */
+.prop-scroll-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;}
+.prop-track{display:flex;gap:3px;min-width:min-content;}
+.prop-card{
+  background:var(--ink3);border:1px solid var(--border);
+  display:flex;flex-direction:row;
+  width:92vw;max-width:820px;min-width:320px;
+  flex-shrink:0;position:relative;overflow:hidden;
+  transition:border-color .2s;
+}
+@media(min-width:700px){.prop-card{width:680px;}}
+@media(min-width:1000px){.prop-card{width:760px;}}
+.prop-card:active{border-color:var(--border-h);}
+.prop-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--prop-color,var(--gold));z-index:1;}
+
+/* Photo panel */
+.prop-photo{
+  width:160px;min-width:160px;
+  background:var(--ink2);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  position:relative;overflow:hidden;flex-shrink:0;
+  border-right:1px solid var(--border);
+}
+@media(min-width:700px){.prop-photo{width:210px;min-width:210px;}}
+.prop-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.prop-photo-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;width:100%;height:100%;min-height:160px;
+  color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;transition:background .2s;padding:12px;text-align:center;
+}
+.prop-photo-placeholder:active{background:rgba(212,168,71,.06);}
+.prop-photo-placeholder svg{opacity:.3;}
+.prop-photo-add-btn{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(4px);
+  color:var(--gold-light);font-size:10px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;text-align:center;padding:6px;
+  cursor:pointer;border:none;font-family:'Inter',sans-serif;
+  transition:background .2s;
+}
+.prop-photo-add-btn:active{background:rgba(212,168,71,.25);}
+.photo-count-badge{
+  position:absolute;top:6px;right:6px;
+  background:rgba(0,0,0,.65);color:var(--gold-light);
+  font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;
+}
+/* Photo carousel nav */
+.photo-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;background:rgba(0,0,0,.6);
+  color:var(--paper);border:none;border-radius:50%;
+  font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;z-index:2;
+}
+.photo-nav:active{background:rgba(212,168,71,.4);}
+.photo-nav.prev{left:4px;}
+.photo-nav.next{right:4px;}
+
+/* Info panel */
+.prop-info{flex:1;padding:16px 18px;display:flex;flex-direction:column;gap:0;overflow:hidden;min-width:0;}
+@media(min-width:600px){.prop-info{padding:20px 22px;}}
+
+.prop-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.prop-status{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border:1px solid;display:inline-block;flex-shrink:0;}
+.status-active{color:var(--green);border-color:rgba(91,158,106,.4);}
+.status-sold{color:var(--blue);border-color:rgba(91,154,181,.4);}
+.status-rehab{color:var(--orange);border-color:rgba(196,122,58,.4);}
+.status-pending{color:var(--purple);border-color:rgba(139,108,196,.4);}
+
+.prop-address{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--paper);line-height:1.25;margin-bottom:3px;}
+@media(min-width:600px){.prop-address{font-size:17px;}}
+.prop-location{font-size:11px;color:var(--paper3);margin-bottom:10px;display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.prop-type-chip{font-size:10px;font-weight:600;padding:2px 7px;background:rgba(212,168,71,.1);border:1px solid rgba(212,168,71,.22);color:var(--gold-light);}
+
+/* Metrics grid — all fields */
+.prop-metrics{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:5px 10px;
+  padding:10px 0;border-top:1px solid rgba(212,168,71,.08);
+  border-bottom:1px solid rgba(212,168,71,.08);margin-bottom:8px;
+}
+@media(min-width:700px){.prop-metrics{grid-template-columns:repeat(3,1fr);}}
+.pm{display:flex;flex-direction:column;gap:2px;padding:4px 6px;background:rgba(255,255,255,.02);}
+.pm-val{font-size:12px;color:var(--gold-light);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+@media(min-width:600px){.pm-val{font-size:13px;}}
+.pm-key{font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:500;}
+.pm.highlight .pm-val{color:var(--green);}
+.pm.highlight-blue .pm-val{color:var(--blue);}
+
+.prop-notes-row{font-size:11px;color:var(--muted);line-height:1.6;font-style:italic;}
+
+/* Photo input hidden */
+.photo-file-input{display:none;}
+
+/* Portfolio empty / template */
+.portfolio-empty{text-align:center;padding:48px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.csv-template-box{background:var(--ink3);border:1px solid var(--border);padding:16px;margin-top:16px;}
+.csv-template-title{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.csv-cols{display:flex;flex-wrap:wrap;gap:6px;}
+.csv-col{font-size:11px;padding:3px 8px;background:rgba(212,168,71,.08);border:1px solid rgba(212,168,71,.2);color:var(--paper2);font-family:'Inter',monospace;}
+
+/* ─── STATE CARDS ─── */
+.states-2col{display:grid;grid-template-columns:1fr;gap:3px;}
+@media(min-width:700px){.states-2col{grid-template-columns:repeat(2,1fr);}}
+.sc{background:var(--ink3);border:1px solid var(--border);overflow:hidden;transition:border-color .2s;}
+.sc:active{border-color:var(--border-h);}
+.sc-head{display:flex;align-items:center;gap:14px;padding:18px 22px;background:rgba(212,168,71,.04);border-bottom:1px solid var(--border);}
+.sc-flag{font-size:28px;}
+.sc-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--paper);}
+.sc-meta{font-size:11px;color:var(--paper3);margin-top:3px;}
+.sc-body{padding:20px 22px;display:flex;flex-direction:column;gap:16px;}
+.mtag{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:10px;padding:5px 10px;border:1px solid;}
+.mtag.dig{color:var(--blue);border-color:rgba(91,154,181,.4);background:rgba(91,154,181,.08);}
+.mtag.inp{color:var(--green);border-color:rgba(91,158,106,.4);background:rgba(91,158,106,.08);}
+.mlist{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.mlist li{font-size:12px;color:var(--paper2);padding-left:16px;position:relative;line-height:1.7;}
+.mlist li::before{content:'◆';position:absolute;left:0;font-size:7px;top:4px;}
+.mlist li.d::before{color:var(--blue);}
+.mlist li.p::before{color:var(--green);}
+.sdiv{height:1px;background:var(--border);}
+
+/* ─── LIEN SECTION ─── */
+.lien-section{margin-bottom:80px;}
+@media(min-width:600px){.lien-section{margin-bottom:96px;}}
+.lien-grid{display:grid;grid-template-columns:1fr;gap:3px;margin-bottom:24px;}
+@media(min-width:600px){.lien-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:900px){.lien-grid{grid-template-columns:repeat(3,1fr);}}
+.lc{background:var(--ink2);border:1px solid var(--border);padding:22px 20px;position:relative;overflow:hidden;}
+.lc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--lc,var(--gold));}
+.lc-icon{font-size:24px;margin-bottom:12px;}
+.lc-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--paper);margin-bottom:8px;line-height:1.2;}
+.lc-desc{font-size:13px;color:var(--paper2);line-height:1.75;margin-bottom:12px;}
+.lc-tools{display:flex;flex-direction:column;gap:6px;}
+.lc-tool{font-size:12px;color:var(--paper3);padding:6px 10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);line-height:1.5;}
+.lc-tool strong{color:var(--paper2);font-weight:600;}
+.lien-warn{background:rgba(181,91,91,.08);border:1px solid rgba(181,91,91,.28);padding:18px 20px;display:flex;gap:14px;align-items:flex-start;}
+@media(min-width:600px){.lien-warn{padding:22px 26px;}}
+.lw-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.lw-text{font-size:13px;color:var(--paper2);line-height:1.8;}
+.lw-text strong{color:#E07070;}
+
+/* ─── SURPLUS FLOW ─── */
+.surplus-section{margin-bottom:80px;}
+@media(min-width:600px){.surplus-section{margin-bottom:96px;}}
+.surplus-flow{display:flex;flex-direction:column;gap:3px;}
+@media(min-width:700px){.surplus-flow{flex-direction:row;}}
+.ss{background:var(--ink2);border:1px solid var(--border);padding:24px 20px;transition:border-color .2s;}
+@media(min-width:700px){.ss{flex:1;}}
+.ss-n{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;color:rgba(212,168,71,.13);line-height:1;margin-bottom:12px;}
+.ss-title{font-size:14px;font-weight:700;color:var(--paper);margin-bottom:8px;line-height:1.4;}
+.ss-desc{font-size:13px;color:var(--paper2);line-height:1.75;}
+.surplus-arrow{display:none;}
+@media(min-width:700px){.surplus-arrow{display:flex;align-items:center;justify-content:center;color:var(--gold-dim);font-size:20px;align-self:center;}}
+
+/* ─── FLYWHEEL ─── */
+.flywheel-wrap{margin-bottom:80px;}
+@media(min-width:600px){.flywheel-wrap{margin-bottom:96px;}}
+.fw-canvas{width:100%;max-width:480px;margin:0 auto;}
+.fw-canvas svg{width:100%;height:auto;display:block;}
+.fwl{font-family:'Inter',sans-serif;font-size:15px;fill:var(--paper);text-anchor:middle;dominant-baseline:middle;pointer-events:none;font-weight:600;}
+.fws{font-family:'Inter',sans-serif;font-size:14px;fill:rgba(200,194,173,.75);text-anchor:middle;dominant-baseline:middle;pointer-events:none;}
+.fwc{font-family:'Playfair Display',serif;font-size:16px;fill:var(--gold);text-anchor:middle;dominant-baseline:middle;font-weight:700;}
+
+/* ─── ROADMAP ─── */
+.roadmap{margin-bottom:80px;}
+@media(min-width:600px){.roadmap{margin-bottom:96px;}}
+.road-phases{display:flex;flex-direction:column;gap:3px;}
+.phase{display:grid;grid-template-columns:80px 1fr;border:1px solid var(--border);background:var(--ink2);overflow:hidden;}
+@media(min-width:500px){.phase{grid-template-columns:110px 1fr;}}
+.phase-time{padding:20px 12px;background:var(--gold-bg);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;}
+.phase-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--gold);line-height:1;}
+.phase-period{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper3);font-weight:500;}
+.phase-body{padding:20px;}
+@media(min-width:500px){.phase-body{padding:26px 28px;}}
+.phase-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--paper);margin-bottom:12px;}
+.phase-items{display:flex;flex-wrap:wrap;gap:6px;}
+.phase-tag{font-size:12px;font-weight:500;padding:4px 10px;border:1px solid rgba(212,168,71,.2);color:var(--paper3);}
+.phase-tag.now{border-color:var(--gold);color:var(--gold);font-weight:600;}
+
+/* ─── TECH ─── */
+.tech-section{margin-bottom:80px;}
+@media(min-width:600px){.tech-section{margin-bottom:96px;}}
+.tech-grid{display:grid;grid-template-columns:1fr;gap:3px;}
+@media(min-width:600px){.tech-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:900px){.tech-grid{grid-template-columns:repeat(3,1fr);}}
+.tc{background:var(--ink2);border:1px solid var(--border);padding:22px 20px;}
+.tc-icon{font-size:24px;margin-bottom:12px;}
+.tc-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--paper);margin-bottom:8px;}
+.tc-desc{font-size:13px;color:var(--paper2);line-height:1.75;}
+.tc-tag{margin-top:12px;display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);border:1px solid rgba(91,154,181,.35);padding:4px 10px;font-weight:600;}
+
+/* ─── FOOTER ─── */
+footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
+.footer-title{font-family:'Playfair Display',serif;font-size:24px;font-style:italic;color:var(--gold);margin-bottom:12px;}
+@media(min-width:600px){.footer-title{font-size:28px;}}
+.footer-sub{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper2);}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+@keyframes fadeUp  {from{opacity:0;transform:translateY(20px) }to{opacity:1;transform:none}}
+/* .aos: elements always visible — animation is progressive enhancement only */
+.aos{opacity:1;transform:none;}
+.aos.animated{opacity:1;transform:none;}
+
+/* ═══════════════════════════════════════
+   PUBLIC PORTFOLIO SECTION
+═══════════════════════════════════════ */
+.pub-portfolio{margin-bottom:88px;}
+.pub-track{display:none;flex-direction:column;gap:12px;}
+.pub-track.open{display:flex;}
+
+.pub-card{
+  background:var(--ink2);border:1px solid var(--border);
+  display:flex;flex-direction:row;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,box-shadow .3s;
+  min-height:180px;
+}
+@media(min-width:700px){.pub-card:hover{border-color:var(--border-h);box-shadow:0 8px 32px rgba(0,0,0,.4);}}
+.pub-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--prop-color,var(--gold));z-index:1;}
+
+.pub-photo{width:140px;min-width:140px;flex-shrink:0;background:var(--ink3);border-right:1px solid var(--border);position:relative;overflow:hidden;}
+@media(min-width:500px){.pub-photo{width:180px;min-width:180px;}}
+@media(min-width:800px){.pub-photo{width:220px;min-width:220px;}}
+.pub-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.pub-photo-placeholder{width:100%;min-height:180px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(212,168,71,.28);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.pub-photo-placeholder svg{width:34px;height:34px;}
+.pub-photo-placeholder span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.pub-photo-nav{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;background:rgba(0,0,0,.65);border:none;border-radius:50%;color:var(--paper);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;touch-action:manipulation;}
+.pub-photo-nav.pn{left:4px;}.pub-photo-nav.nn{right:4px;}
+.pub-photo-badge{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.65);color:var(--gold-light);font-size:9px;font-weight:700;padding:2px 6px;border-radius:8px;z-index:2;}
+.pub-status-bar{position:absolute;bottom:0;left:0;right:0;padding:5px 8px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:center;}
+.psb-active{background:rgba(91,158,106,.88);color:#fff;}
+.psb-sold{background:rgba(91,154,181,.88);color:#fff;}
+.psb-rehab{background:rgba(196,122,58,.88);color:#fff;}
+.psb-pending{background:rgba(139,108,196,.88);color:#fff;}
+
+.pub-info{flex:1;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0;}
+@media(min-width:600px){.pub-info{padding:20px 24px;}}
+.pub-address{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--paper);line-height:1.2;}
+@media(min-width:600px){.pub-address{font-size:22px;}}
+.pub-location{font-size:14px;color:var(--paper2);line-height:1.6;}
+.pub-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px;}
+.pub-chip{font-size:13px;font-weight:600;padding:4px 11px;}
+.chip-type{background:rgba(212,168,71,.1);border:1px solid rgba(212,168,71,.25);color:var(--gold-light);}
+.chip-area{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--paper2);}
+.pub-arv{margin-top:4px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+.pub-arv-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold);line-height:1;}
+@media(min-width:600px){.pub-arv-val{font-size:26px;}}
+.pub-arv-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--paper2);}
+.pub-arv-sub{font-size:12px;color:var(--paper3);font-style:italic;}
+.pub-sold-tag{margin-top:auto;font-size:12px;color:var(--blue);font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 0;}
+
+.pub-offer-btn{
+  margin-top:auto;padding:11px 20px;
+  background:linear-gradient(135deg,rgba(212,168,71,.22),rgba(212,168,71,.12));
+  border:1px solid var(--gold);color:var(--gold-light);
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;transition:all .2s;
+  -webkit-appearance:none;border-radius:0;touch-action:manipulation;width:100%;
+}
+@media(min-width:600px){.pub-offer-btn{width:auto;}}
+.pub-offer-btn:active{background:rgba(212,168,71,.38);}
+@media(min-width:700px){.pub-offer-btn:hover{background:rgba(212,168,71,.35);box-shadow:0 4px 20px rgba(212,168,71,.2);}}
+
+.pub-filter-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
+.pub-filter-btn{padding:7px 16px;background:transparent;border:1px solid var(--border);color:var(--paper3);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;-webkit-appearance:none;border-radius:0;touch-action:manipulation;}
+.pub-filter-btn.active{border-color:var(--gold);color:var(--gold);}
+.pub-filter-btn:active{border-color:var(--border-h);}
+
+/* OFFER MODAL */
+.offer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:9100;align-items:flex-end;justify-content:center;padding:0;cursor:pointer;}
+@media(min-width:600px){.offer-overlay{align-items:center;padding:24px;}}
+.offer-overlay.open{display:flex;}
+.offer-modal{background:var(--ink2);border:1px solid var(--border-h);width:100%;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;border-radius:16px 16px 0 0;animation:modalIn .25s ease both;box-shadow:0 -8px 40px rgba(0,0,0,.5);}
+@media(min-width:600px){.offer-modal{max-width:520px;border-radius:0;box-shadow:0 32px 80px rgba(0,0,0,.7);}}
+.offer-handle{width:36px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin:10px auto;display:block;}
+@media(min-width:600px){.offer-handle{display:none;}}
+.offer-header{padding:18px 24px 14px;border-bottom:1px solid var(--border);}
+.offer-prop-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--paper);line-height:1.25;margin-bottom:4px;}
+.offer-prop-sub{font-size:12px;color:var(--paper3);}
+.offer-body{padding:20px 24px 28px;display:flex;flex-direction:column;gap:14px;}
+.offer-field{display:flex;flex-direction:column;gap:5px;}
+.offer-label{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);}
+.offer-input{background:rgba(255,255,255,.04);border:1px solid rgba(212,168,71,.22);color:var(--paper);font-family:'Inter',sans-serif;font-size:16px;padding:11px 13px;outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0;width:100%;}
+.offer-input:focus{border-color:var(--gold);}
+.offer-input::placeholder{color:var(--muted);}
+.offer-submit{padding:14px;background:linear-gradient(135deg,rgba(212,168,71,.28),rgba(212,168,71,.15));border:1px solid var(--gold);color:var(--gold-light);font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;-webkit-appearance:none;border-radius:0;touch-action:manipulation;width:100%;}
+.offer-submit:active,.offer-submit:hover{background:rgba(212,168,71,.42);}
+.offer-submit:disabled{opacity:.5;cursor:not-allowed;}
+.offer-cancel{padding:10px;background:transparent;border:1px solid var(--border);color:var(--paper3);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;-webkit-appearance:none;border-radius:0;touch-action:manipulation;width:100%;transition:all .2s;}
+.offer-cancel:active{border-color:var(--border-h);color:var(--paper2);}
+.offer-success{text-align:center;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;}
+.offer-success-icon{font-size:44px;}
+.offer-success-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--paper);}
+.offer-success-msg{font-size:15px;color:var(--paper2);line-height:1.7;max-width:340px;}
+.offer-close-btn{margin-top:8px;padding:11px 28px;background:var(--gold-bg);border:1px solid var(--border-h);color:var(--gold);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;-webkit-appearance:none;border-radius:0;touch-action:manipulation;}
+
+/* ── DISCLAIMER ── */
+.disclaimer-section{margin-top:48px;border-top:1px solid rgba(212,168,71,.2);}
+.disclaimer-toggle{
+  display:flex;align-items:center;gap:12px;
+  padding:16px 0;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.disclaimer-icon{font-size:18px;color:var(--gold);flex-shrink:0;}
+.disclaimer-label{flex:1;font-size:15px;font-weight:600;letter-spacing:.04em;color:var(--paper2);text-align:left;}
+.disclaimer-arrow{font-size:11px;color:var(--gold-dim);transition:transform .3s;flex-shrink:0;}
+.disclaimer-arrow.open{transform:rotate(180deg);}
+.disclaimer-body{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;
+  padding:24px 0 32px;
+  border-top:1px solid rgba(212,168,71,.1);
+}
+@media(max-width:700px){.disclaimer-body{grid-template-columns:1fr;gap:24px;}}
+.disclaimer-col h4{
+  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+  color:var(--paper);margin-bottom:16px;
+}
+.disclaimer-col p{
+  font-size:15px;color:var(--paper2);line-height:1.8;margin-bottom:12px;
+}
+.disclaimer-small{
+  font-size:13px !important;color:var(--paper3) !important;
+  font-style:italic;border-top:1px solid rgba(255,255,255,.08);
+  padding-top:10px;margin-top:6px;
+}
+</style>
+</head>
+<body>
+
+<!-- TOOLTIP -->
+<div class="tip-box" id="tipBox"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalBox">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="eyebrow">Strategic Ecosystem · FL · TX · MI · IL · WI</div>
+  <h1>Partners<br><em>Deeds</em></h1>
+  <p class="holding-sub">holding</p>
+  <div class="rule"><div class="rule-diamond"></div></div>
+  <p class="subtitle">Four integrated pillars. One self-reinforcing ecosystem.</p>
+</header>
+
+<!-- ══ STATS ══ -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-n">4</span><span class="stat-l">Business Pillars</span></div>
+  <div class="stat"><span class="stat-n">5</span><span class="stat-l">Target States</span></div>
+  <div class="stat"><span class="stat-n">18</span><span class="stat-l">Properties in Portfolio</span></div>
+  <div class="stat"><span class="stat-n">$1.76M+</span><span class="stat-l">Portfolio Market Value</span></div>
+</div>
+
+<!-- ══ PILLARS ══ -->
+<div class="aos">
+  <span class="label">Strategic Pillars</span>
+  <h2 class="section-title">The four businesses of your ecosystem</h2>
+</div>
+<div class="pillars">
+
+  <div class="pillar aos" style="--pillar-color:#D4A847" onclick="togglePillar(this)">
+    <div class="pillar-bg-num">1</div>
+    <div class="pillar-top">
+      <div class="pillar-icon">🏛️</div>
+      <span class="pillar-badge" style="color:#D4A847;border-color:rgba(212,168,71,.4)">Core · Capital Engine</span>
+    </div>
+    <div class="pillar-name">Tax Deed Auction<br>Acquisitions</div>
+    <p class="pillar-desc">Direct purchase of properties at deep discounts through county tax deed auctions, generating capital, data, and track record that fuel all other pillars.</p>
+    <div class="pillar-kpis">
+      <div class="kpi"><span class="kpi-val">30–70%</span><span class="kpi-key">Avg. Discount</span></div>
+      <div class="kpi"><span class="kpi-val">FL · TX · MI · IL · WI</span><span class="kpi-key">Target States</span></div>
+      <div class="kpi"><span class="kpi-val">18 Props</span><span class="kpi-key">Current Portfolio</span></div>
+    </div>
+    <div class="pillar-detail">
+      <div class="detail-grid">
+        <div>
+          <div class="detail-block-title">Key Operations</div>
+          <ul class="detail-list">
+            <li>Title due diligence before each bid <button class="proc-btn" onclick="event.stopPropagation();openModal('titledd')">?</button></li>
+            <li>Competing liens: <span class="tip" data-tip="Internal Revenue Service — U.S. federal tax authority. IRS liens carry a 120-day redemption right after a tax deed sale.">IRS</span>, mechanics, <span class="tip" data-tip="Home Owner Association — mandatory-fee community. HOA super-liens can survive the tax deed in some states.">HOA</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('liencheck')">?</button></li>
+            <li>Track online &amp; <span class="tip" data-tip="Over-The-Counter — direct purchase at the county clerk's office for unsold properties.">OTC</span> auctions per county <button class="proc-btn" onclick="event.stopPropagation();openModal('auctiontrack')">?</button></li>
+            <li>Bid strategy based on margin, not emotion</li>
+            <li>Fast disposition: wholesale, flip, or hold</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-block-title">Ecosystem Synergies</div>
+          <ul class="detail-list">
+            <li>Auction data feeds proprietary database <button class="proc-btn" onclick="event.stopPropagation();openModal('database')">?</button></li>
+            <li>Generates deal flow for Investment Fund (Pillar 2) <button class="proc-btn" onclick="event.stopPropagation();openModal('dealflow')">?</button></li>
+            <li>Bid history trains the <span class="tip" data-tip="Software as a Service — cloud subscription platform.">SaaS</span> (Pillar 3) <button class="proc-btn" onclick="event.stopPropagation();openModal('saastrain')">?</button></li>
+            <li>Post-auction lists generate surplus leads (Pillar 4) <button class="proc-btn" onclick="event.stopPropagation();openModal('surplusleads')">?</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="toggle-hint"><span class="toggle-arrow">↓</span> Show details</div>
+  </div>
+
+  <div class="pillar aos" style="--pillar-color:#5B9AB5" onclick="togglePillar(this)">
+    <div class="pillar-bg-num">2</div>
+    <div class="pillar-top">
+      <div class="pillar-icon">🏦</div>
+      <span class="pillar-badge" style="color:#5B9AB5;border-color:rgba(91,154,181,.4)">Scale · Third-Party Capital</span>
+    </div>
+    <div class="pillar-name">Tax Deed<br>Investment Fund</div>
+    <p class="pillar-desc">A formal fund structure that raises capital from passive investors to scale acquisition volume, with you as the sole decision-maker and fund manager.</p>
+    <div class="pillar-kpis">
+      <div class="kpi"><span class="kpi-val">15–25%</span><span class="kpi-key">Target LP Return</span></div>
+      <div class="kpi"><span class="kpi-val">2% + 20%</span><span class="kpi-key">Typical GP Structure</span></div>
+      <div class="kpi"><span class="kpi-val">Reg D 506c</span><span class="kpi-key">Open marketing</span></div>
+    </div>
+    <div class="pillar-detail">
+      <div class="detail-grid">
+        <div>
+          <div class="detail-block-title">Suggested Structure</div>
+          <ul class="detail-list">
+            <li><span class="tip" data-tip="Limited Liability Company — legal entity protecting personal assets from business liabilities.">LLC</span> → <span class="tip" data-tip="Limited Partnership — LP investors are passive; GP manages all decisions.">LP</span> or fund via <span class="tip" data-tip="Regulation D Rule 506(c) — SEC exemption allowing public solicitation of verified accredited investors.">Reg D 506(c)</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('fundsetup')">?</button></li>
+            <li>You as <span class="tip" data-tip="General Partner — active fund manager earning a management fee plus carried interest on profits.">GP</span>: management fee + carried interest</li>
+            <li>Min. <span class="tip" data-tip="Limited Partner — passive investor who provides capital but has no management role.">LP</span> ticket: $25k–$100k per deal</li>
+            <li>Liquidity: 12–24 months per investment</li>
+            <li>Monthly reports + quarterly distributions</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-block-title">LP Fundraising</div>
+          <ul class="detail-list">
+            <li>506c = open marketing to accredited investors <button class="proc-btn" onclick="event.stopPropagation();openModal('lpcapture')">?</button></li>
+            <li>Pillar 1 track record as core credential</li>
+            <li>Educational content to qualify leads</li>
+            <li>Upsell via <span class="tip" data-tip="Software as a Service — subscription platform built in Pillar 3.">SaaS</span> subscriber base (Pillar 3)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="toggle-hint"><span class="toggle-arrow">↓</span> Show details</div>
+  </div>
+
+  <div class="pillar aos" style="--pillar-color:#5B9E6A" onclick="togglePillar(this)">
+    <div class="pillar-bg-num">3</div>
+    <div class="pillar-top">
+      <div class="pillar-icon">⚙️</div>
+      <span class="pillar-badge" style="color:#5B9E6A;border-color:rgba(91,158,106,.4)">Leverage · Recurring Revenue</span>
+    </div>
+    <div class="pillar-name">Tax Deed Intel<br>SaaS Platform</div>
+    <p class="pillar-desc">Monetize the proprietary database through a subscription platform: auction calendars, surplus alerts, automated property scoring, and due diligence tools.</p>
+    <div class="pillar-kpis">
+      <div class="kpi"><span class="kpi-val">MRR</span><span class="kpi-key">Predictable Revenue</span></div>
+      <div class="kpi"><span class="kpi-val">$97–$497/mo</span><span class="kpi-key">Plan Range</span></div>
+      <div class="kpi"><span class="kpi-val">50 States</span><span class="kpi-key">Potential Coverage</span></div>
+    </div>
+    <div class="pillar-detail">
+      <div class="detail-grid">
+        <div>
+          <div class="detail-block-title">MVP Features</div>
+          <ul class="detail-list">
+            <li>Auction calendar by county &amp; state <button class="proc-btn" onclick="event.stopPropagation();openModal('saascalendar')">?</button></li>
+            <li>Property list data (scraping + <span class="tip" data-tip="Application Programming Interface — automated data exchange between software systems.">API</span>)</li>
+            <li>Automated risk score per property</li>
+            <li>Surplus fund alerts by county <button class="proc-btn" onclick="event.stopPropagation();openModal('saasalerts')">?</button></li>
+            <li>Liens and encumbrance report tool</li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-block-title">Competitive Edge</div>
+          <ul class="detail-list">
+            <li>Real Pillar 1 data as <span class="tip" data-tip="Artificial Intelligence — machine learning models trained on historical auction data.">AI</span> training set</li>
+            <li>Surplus funds module (rare in market)</li>
+            <li>Upsell: access to Investment Fund (Pillar 2)</li>
+            <li>Subscriber community = <span class="tip" data-tip="Limited Partner — passive investor; SaaS users are a pre-qualified LP audience.">LP</span> pipeline</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="toggle-hint"><span class="toggle-arrow">↓</span> Show details</div>
+  </div>
+
+  <div class="pillar aos" style="--pillar-color:#8B6CC4" onclick="togglePillar(this)">
+    <div class="pillar-bg-num">4</div>
+    <div class="pillar-top">
+      <div class="pillar-icon">🔍</div>
+      <span class="pillar-badge" style="color:#8B6CC4;border-color:rgba(139,108,196,.4)">Niche · High Margin · Zero Capital</span>
+    </div>
+    <div class="pillar-name">Surplus Funds &amp;<br>Overages Recovery</div>
+    <p class="pillar-desc">Identify and recover auction overages from county records on behalf of dispossessed former owners. Ultra-high margin, minimal competition, 100% remote.</p>
+    <div class="pillar-kpis">
+      <div class="kpi"><span class="kpi-val">25–40%</span><span class="kpi-key">Recovery Fee</span></div>
+      <div class="kpi"><span class="kpi-val">$0 Upfront</span><span class="kpi-key">No Capital Risk</span></div>
+      <div class="kpi"><span class="kpi-val">100% Remote</span><span class="kpi-key">Scalable per county</span></div>
+    </div>
+    <div class="pillar-detail">
+      <div class="detail-grid">
+        <div>
+          <div class="detail-block-title">Operational Process</div>
+          <ul class="detail-list">
+            <li>Collect post-auction lists per county <button class="proc-btn" onclick="event.stopPropagation();openModal('surpluscollect')">?</button></li>
+            <li>Filter properties with surplus ≥ $5k</li>
+            <li>Locate former owner via skip tracing <button class="proc-btn" onclick="event.stopPropagation();openModal('skiptrace')">?</button></li>
+            <li>Sign contingency fee agreement <button class="proc-btn" onclick="event.stopPropagation();openModal('feeagreement')">?</button></li>
+            <li>File claim with county or state <button class="proc-btn" onclick="event.stopPropagation();openModal('claimfiling')">?</button></li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail-block-title">Ecosystem Synergies</div>
+          <ul class="detail-list">
+            <li>Pillar 1 auction data already on hand</li>
+            <li>Automated surplus alerts from <span class="tip" data-tip="Software as a Service — Pillar 3 platform that auto-monitors county auction results.">SaaS</span> (Pillar 3) <button class="proc-btn" onclick="event.stopPropagation();openModal('saasalerts')">?</button></li>
+            <li>Claim volume builds reputation</li>
+            <li>Favorable states: FL, TX, MI, IL, WI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="toggle-hint"><span class="toggle-arrow">↓</span> Show details</div>
+  </div>
+
+</div><!-- /pillars -->
+
+<!-- ══ PRIVATE SECTION ══ -->
+<div class="private-section aos">
+  <span class="label">Operational Intelligence</span>
+  <h2 class="section-title">County Acquisition & Portfolio</h2>
+
+  <div class="private-card">
+    <div class="private-header">
+      <div class="private-header-left">
+        <div class="private-lock-icon">🔒</div>
+        <div>
+          <div class="private-title">Operator Access Only</div>
+          <div class="private-subtitle">County playbooks, contacts, scraper &amp; property portfolio — not shown to investors</div>
+        </div>
+      </div>
+      <div class="private-badge">RESTRICTED</div>
+    </div>
+
+    <!-- Teaser -->
+    <div class="private-teaser lock-wall" id="lockWall">
+      <div>
+        <p class="private-desc">This section contains real county officer contacts, the live county intelligence scraper, and the Partners Deeds property portfolio with all active and sold acquisitions.</p>
+        <ul class="private-topics">
+          <li>Real phone numbers and officer names for 80+ counties across FL, TX, MI, IL across FL, MI, IL &amp; WIamp; WI</li>
+          <li>Live county intelligence scraper with anti-bot bypass support</li>
+          <li>Property portfolio with import via CSV — easy to update</li>
+          <li>In-person <span class="tip" data-tip="Over-The-Counter — direct purchase at the county clerk, bypassing the competitive auction.">OTC</span> and Clerk's Office procedures for all 5 states</li>
+        </ul>
+      </div>
+      <div class="private-access-box">
+        <div class="access-title">Operator Password</div>
+        <input class="access-input" type="password" id="accessPass" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkAccess()" autocomplete="current-password">
+        <div class="access-error" id="accessError">Incorrect password. Try again.</div>
+        <button class="access-btn" onclick="checkAccess()">Unlock Section →</button>
+      </div>
+    </div>
+
+    <!-- Private content -->
+    <div class="private-content" id="privateContent">
+      <div class="unlocked-bar">
+        <span class="unlocked-status">✓ Operator access granted</span>
+        <button class="lock-again" onclick="lockSection()">🔒 Lock again</button>
+      </div>
+
+      <div class="op-tabs">
+        <button class="op-tab" onclick="switchTab('scraper',this)">🔍 County Scraper</button>
+        <button class="op-tab" onclick="switchTab('contacts',this)">📋 Contacts</button>
+        <button class="op-tab" onclick="switchTab('playbooks',this)">📖 Playbooks</button>
+      </div>
+
+
+
+      <!-- ══ TAB: SCRAPER ══ -->
+      <div class="op-panel" id="tab-scraper" style="display:none">
+        <div class="scraper-intro">Fetch real officer names, phone numbers, list formats, and auction schedules from the built-in Partners Deeds county database for FL, TX, MI, IL &amp; WI. If a government site triggers a CAPTCHA challenge, a bypass window opens for manual completion — scraping then resumes automatically.</div>
+        <div class="scraper-controls">
+          <div class="scraper-filters">
+            <select class="scraper-select" id="scrState">
+              <option value="">All States</option>
+              <option value="FL">Florida</option>
+              <option value="TX">Texas</option>
+              <option value="MI">Michigan</option>
+              <option value="IL">Illinois</option>
+              <option value="WI">Wisconsin</option>
+            </select>
+            <select class="scraper-select" id="scrType">
+              <option value="all">All Office Types</option>
+              <option value="Clerk">Clerk of Court</option>
+              <option value="Treasurer">County Treasurer</option>
+              <option value="Assessor">Tax Assessor-Collector</option>
+            </select>
+            <input class="scraper-input" id="scrCounty" type="text" placeholder="County name (optional)">
+          </div>
+          <button class="scraper-btn" id="scrapeBtn" onclick="runScraper()">🔍 Fetch Contacts</button>
+        </div>
+        <div class="progress-wrap" id="progressWrap" style="display:none">
+          <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+          <div class="progress-log" id="progressLog"></div>
+        </div>
+        <div class="captcha-box" id="captchaBox" style="display:none">
+          <div class="captcha-icon">🤖</div>
+          <div>
+            <div class="captcha-title">Bot Protection Detected</div>
+            <div class="captcha-desc">A county site has triggered a CAPTCHA challenge. Tap <strong>Open Page</strong> to complete it manually, then tap <strong>Continue</strong> to resume.</div>
+            <div class="captcha-url-box" id="captchaUrlBox"></div>
+            <div class="captcha-btns">
+              <button class="btn-bypass" onclick="openBypassWindow()">↗ Open Page</button>
+              <button class="btn-continue" onclick="resumeAfterCaptcha()">✓ Continue</button>
+            </div>
+          </div>
+        </div>
+        <div id="resultsWrap" style="display:none">
+          <div class="results-header">
+            <div class="results-title">County Contacts</div>
+            <div class="results-actions">
+              <button class="results-btn" onclick="exportCSV()">⬇ CSV</button>
+              <button class="results-btn" onclick="clearResults()">✕ Clear</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+            <table class="contacts-tbl">
+              <thead><tr><th>State</th><th>County</th><th>Office</th><th>Officer</th><th>Phone</th><th>List Format</th><th>Auction</th><th>Portal</th></tr></thead>
+              <tbody id="resultsTbody"></tbody>
+            </table>
+          </div>
+          <div class="results-footer" id="resultsFooter"></div>
+        </div>
+        <div class="scraper-empty" id="scraperEmpty">
+          <div class="empty-icon">🗂️</div>
+          <div class="empty-text">Select filters above and tap <strong>Fetch Contacts</strong> to retrieve county contact information.</div>
+        </div>
+      </div><!-- /tab-scraper -->
+
+      <!-- ══ TAB: CONTACTS ══ -->
+      <div class="op-panel" id="tab-contacts" style="display:none">
+        <div class="scraper-intro">Key contacts manually verified. Always call ahead before visiting — officer names change with election cycles.</div>
+        <div class="tbl-wrap">
+          <table class="contacts-tbl">
+            <thead><tr><th>State</th><th>County</th><th>Office</th><th>Officer</th><th>Phone</th><th>List</th><th>Auction</th><th>Portal</th></tr></thead>
+            <tbody id="verifiedContactsTbody"></tbody>
+          </table>
+        </div>
+        <p style="font-size:11px;color:var(--muted);padding-top:12px;">⚠ Verified 2024–2025. Confirm before visiting. Names subject to election cycles.</p>
+      </div>
+
+      <!-- ══ TAB: PLAYBOOKS ══ -->
+      <div class="op-panel" id="tab-playbooks" style="display:none">
+        <div class="states-2col" id="playbooksGrid"></div>
+      </div>
+
+    </div><!-- /private-content -->
+  </div><!-- /private-card -->
+</div>
+
+<!-- ══ OFFER MODAL ══ -->
+<div class="offer-overlay" id="offerOverlay" onclick="if(event.target===this)closeOffer()">
+  <div class="offer-modal" id="offerModal">
+    <div class="offer-handle"></div>
+    <div id="offerFormWrap">
+      <div class="offer-header">
+        <div class="offer-prop-title" id="offerPropTitle"></div>
+        <div class="offer-prop-sub" id="offerPropSub"></div>
+      </div>
+      <div class="offer-body">
+        <div class="offer-field">
+          <label class="offer-label">Full Name *</label>
+          <input class="offer-input" id="of-name" type="text" placeholder="Your name" autocomplete="name">
+        </div>
+        <div class="offer-field">
+          <label class="offer-label">Phone *</label>
+          <input class="offer-input" id="of-phone" type="tel" placeholder="+1 (555) 000-0000" autocomplete="tel">
+        </div>
+        <div class="offer-field">
+          <label class="offer-label">E-mail *</label>
+          <input class="offer-input" id="of-email" type="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="offer-field">
+          <label class="offer-label">Proposed Value (USD)</label>
+          <input class="offer-input" id="of-value" type="text" placeholder="e.g. 85,000">
+        </div>
+        <button class="offer-submit" id="offerSubmitBtn" onclick="submitOffer()">Make My Offer →</button>
+        <button class="offer-cancel" onclick="closeOffer()">Cancel</button>
+      </div>
+    </div>
+    <div class="offer-success" id="offerSuccess" style="display:none">
+      <div class="offer-success-icon">✅</div>
+      <div class="offer-success-title">Offer Received!</div>
+      <div class="offer-success-msg">Thank you for your interest!<br>We'll be contacting you shortly.</div>
+      <button class="offer-close-btn" onclick="closeOffer()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PUBLIC PROPERTY LISTINGS ══ -->
+<div class="pub-portfolio aos" id="pubPortfolioSection">
+  <span class="label">Available Properties</span>
+  <h2 class="section-title">Portfolio — Properties for Sale</h2>
+  <p class="section-intro">Browse our current inventory. Properties acquired through county tax deed auctions across FL, TX, MI, IL &amp; WI. Contact us to make an offer on any listing.</p>
+  <div class="pub-filter-bar">
+    <button class="pub-filter-btn active" onclick="pubFilter('all',this)">All Properties</button>
+    <button class="pub-filter-btn" onclick="pubFilter('FL',this)">🌴 Florida</button>
+    <button class="pub-filter-btn" onclick="pubFilter('TX',this)">⭐ Texas</button>
+    <button class="pub-filter-btn" onclick="pubFilter('MI',this)">🌊 Michigan</button>
+  </div>
+  <div id="pubTrack" class="pub-track"></div>
+</div>
+
+
+<!-- ══ LIEN / DUE DILIGENCE ══ -->
+<div class="lien-section aos">
+  <span class="label">Advanced Due Diligence</span>
+  <h2 class="section-title">Researching fiscal &amp; encumbrance liabilities</h2>
+  <p class="section-intro">Before bidding on any tax deed property, identify all liabilities that <strong>survive the auction</strong> — liens not extinguished by the sale that could exceed the property's value.</p>
+  <div class="lien-grid">
+    <div class="lc" style="--lc:#D4A847"><div class="lc-icon">🏛️</div><div class="lc-name">State &amp; Municipal Taxes</div><div class="lc-desc">Verify unpaid debts from prior years plus municipal service charges: water, sewer, and solid waste.</div><div class="lc-tools"><div class="lc-tool"><strong>County Treasurer / Tax Assessor</strong> — search by <span class="tip" data-tip="Assessor's Parcel Number — unique government ID assigned to each property.">APN</span> (free)</div><div class="lc-tool"><strong>TaxNetUSA / ATTOM</strong> — full delinquency history across all 5 states</div><div class="lc-tool"><strong>City / Municipal Portal</strong> — water &amp; sewer liens, demolition liens</div></div></div>
+    <div class="lc" style="--lc:#B55B5B"><div class="lc-icon">🏛</div><div class="lc-name">Federal Liens — IRS</div><div class="lc-desc"><span class="tip" data-tip="Internal Revenue Service — U.S. federal tax authority. IRS liens have a 120-day post-sale redemption right in most states.">IRS</span> Federal Tax Liens carry a 120-day redemption right after auction. If not released, the IRS may reclaim the property at purchase price plus interest.</div><div class="lc-tools"><div class="lc-tool"><strong>County Recorder / Register of Deeds</strong> — search "Federal Tax Lien" by owner name</div><div class="lc-tool"><strong>IRS.gov</strong> — request Certificate of Release</div><div class="lc-tool"><strong>DataTree / LienFocus</strong> — automated nationwide lien search</div></div></div>
+    <div class="lc" style="--lc:#5B9AB5"><div class="lc-icon">🔧</div><div class="lc-name">Mechanics Liens &amp; HOA</div><div class="lc-desc">Unpaid contractor liens and <span class="tip" data-tip="Home Owner Association — HOA super-liens can survive a tax deed in states like Florida (Chapter 718).">HOA</span> debt may survive the tax deed depending on state law and lien priority.</div><div class="lc-tools"><div class="lc-tool"><strong>County Recorder</strong> — search by APN</div><div class="lc-tool"><strong>PropStream / LiensFinder</strong> — HOA and mechanics lien sweep</div><div class="lc-tool"><strong>HOA Management Company</strong> — request an Estoppel Letter</div></div></div>
+    <div class="lc" style="--lc:#5B9E6A"><div class="lc-icon">🏗️</div><div class="lc-name">Code Violations &amp; Demolition</div><div class="lc-desc">Code enforcement fines and demolition orders are municipal liens that survive the tax deed in nearly every state.</div><div class="lc-tools"><div class="lc-tool"><strong>City Code Enforcement</strong> — search by address; usually free</div><div class="lc-tool"><strong>Building &amp; Permits Department</strong> — open permits, stop-work orders</div><div class="lc-tool"><strong>EPA / State DEP</strong> — environmental contamination (commercial properties)</div></div></div>
+    <div class="lc" style="--lc:#8B6CC4"><div class="lc-icon">⚖️</div><div class="lc-name">Judgments &amp; Lis Pendens</div><div class="lc-desc">Civil judgments and <span class="tip" data-tip="Lis Pendens — a recorded legal notice that active litigation could affect the property's ownership or transfer.">Lis Pendens</span> may cloud the title even after a tax deed is issued.</div><div class="lc-tools"><div class="lc-tool"><strong>County Clerk of Court</strong> — search Civil Judgments by owner name</div><div class="lc-tool"><strong>PACER (pacer.gov)</strong> — federal bankruptcy search</div><div class="lc-tool"><strong>DataTree / Title Search API</strong> — multi-county automated sweeps</div></div></div>
+    <div class="lc" style="--lc:#C47A3A"><div class="lc-icon">🔑</div><div class="lc-name">Title Search &amp; Quiet Title</div><div class="lc-desc">After a tax deed, most states require a <span class="tip" data-tip="Quiet Title — a court action that legally extinguishes all competing claims, making the title clean and insurable.">Quiet Title</span> action before obtaining title insurance and reselling.</div><div class="lc-tools"><div class="lc-tool"><strong>Local Title Company</strong> — volume deal: $300–$800/property</div><div class="lc-tool"><strong>Timeline</strong> — FL: 6–12 mo · TX: 3–6 mo · MI: 3–6 mo · IL: up to 2 yrs · WI: ~6 mo</div><div class="lc-tool"><strong>Stewart / Old Republic / First American</strong></div></div></div>
+  </div>
+  <div class="lien-warn"><div class="lw-icon">⚠️</div><div class="lw-text"><strong>Critical alert:</strong> In Florida, <span class="tip" data-tip="IRS — 120-day redemption right after tax deed sales.">IRS</span> liens carry a 120-day redemption window. In Michigan, the former owner has no redemption right after the tax deed auction. In Illinois, the <span class="tip" data-tip="Scavenger Sale — IL tax auction for properties with 3+ years of unpaid taxes; Quiet Title can take 2 years.">Scavenger Sale</span> process can take 2 years. <strong>Never bid without: IRS lien check, code violations search, and a preliminary title search.</strong></div></div>
+</div>
+
+<!-- ══ SURPLUS FLOW ══ -->
+<div class="surplus-section aos">
+  <span class="label">Detailed Process — Pillar 4</span>
+  <h2 class="section-title">Surplus Funds operational flow</h2>
+  <div class="surplus-flow">
+    <div class="ss"><div class="ss-n">01</div><div class="ss-title">Collect post-auction lists</div><div class="ss-desc">Access public records from counties after each auction. Filter for properties where the winning bid exceeded the tax debt — that excess is the surplus.</div></div>
+    <div class="surplus-arrow">→</div>
+    <div class="ss"><div class="ss-n">02</div><div class="ss-title">Skip trace the former owner</div><div class="ss-desc">Locate the previous owner (including heirs) using BatchSkipTracing, <span class="tip" data-tip="TLO — professional skip tracing platform.">TLO</span>, or <span class="tip" data-tip="CLEAR — Thomson Reuters' identity and location intelligence platform.">CLEAR</span>. Speed matters — deadlines start from auction day.</div></div>
+    <div class="surplus-arrow">→</div>
+    <div class="ss"><div class="ss-n">03</div><div class="ss-title">Sign representation contract</div><div class="ss-desc">Execute a contingency fee agreement (25–40%). No cost to the client. You earn only upon successful recovery.</div></div>
+    <div class="surplus-arrow">→</div>
+    <div class="ss"><div class="ss-n">04</div><div class="ss-title">File the claim</div><div class="ss-desc">Submit to the county or state. Deadlines: FL 2 yrs · TX 2 yrs · MI 1 yr · IL 2 yrs · WI 1 yr. Required: photo ID, prior deed, notarized contract.</div></div>
+    <div class="surplus-arrow">→</div>
+    <div class="ss"><div class="ss-n">05</div><div class="ss-title">Receive funds &amp; collect fee</div><div class="ss-desc">County releases funds to the former owner, who passes your commission. 100% remote, fully repeatable, scalable across dozens of counties.</div></div>
+  </div>
+</div>
+
+<!-- ══ FLYWHEEL ══ -->
+<div class="flywheel-wrap aos">
+  <span class="label">The Flywheel Effect</span>
+  <h2 class="section-title">How all four pillars reinforce each other</h2>
+  <div class="fw-canvas">
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="rgba(212,168,71,.65)"/></marker></defs>
+      <path d="M264,104 A160,160 0 0,1 396,236" fill="none" stroke="rgba(212,168,71,.28)" stroke-width="2" stroke-dasharray="6,5" marker-end="url(#arr)"/>
+      <path d="M396,264 A160,160 0 0,1 264,396" fill="none" stroke="rgba(212,168,71,.28)" stroke-width="2" stroke-dasharray="6,5" marker-end="url(#arr)"/>
+      <path d="M236,396 A160,160 0 0,1 104,264" fill="none" stroke="rgba(212,168,71,.28)" stroke-width="2" stroke-dasharray="6,5" marker-end="url(#arr)"/>
+      <path d="M104,236 A160,160 0 0,1 236,104" fill="none" stroke="rgba(212,168,71,.28)" stroke-width="2" stroke-dasharray="6,5" marker-end="url(#arr)"/>
+      <line x1="250" y1="250" x2="250" y2="115" stroke="rgba(212,168,71,.08)" stroke-width="1"/>
+      <line x1="250" y1="250" x2="385" y2="250" stroke="rgba(212,168,71,.08)" stroke-width="1"/>
+      <line x1="250" y1="250" x2="250" y2="385" stroke="rgba(212,168,71,.08)" stroke-width="1"/>
+      <line x1="250" y1="250" x2="115" y2="250" stroke="rgba(212,168,71,.08)" stroke-width="1"/>
+      <circle cx="250" cy="250" r="62" fill="rgba(212,168,71,.06)" stroke="rgba(212,168,71,.38)" stroke-width="1.5"/>
+      <text x="250" y="240" class="fwc" font-size="16">Partners</text>
+      <text x="250" y="265" class="fwc" font-size="15">Deeds</text>
+      <circle cx="250" cy="90" r="54" fill="rgba(212,168,71,.1)" stroke="rgba(212,168,71,.5)" stroke-width="1.5"/>
+      <text x="250" y="80" class="fwl">🏛️ Auctions</text><text x="250" y="103" class="fws">Capital + Data</text>
+      <circle cx="410" cy="250" r="54" fill="rgba(91,154,181,.1)" stroke="rgba(91,154,181,.5)" stroke-width="1.5"/>
+      <text x="410" y="240" class="fwl">🏦 Fund</text><text x="410" y="263" class="fws">Scales Capital</text>
+      <circle cx="250" cy="410" r="54" fill="rgba(91,158,106,.1)" stroke="rgba(91,158,106,.5)" stroke-width="1.5"/>
+      <text x="250" y="400" class="fwl">⚙️ SaaS</text><text x="250" y="423" class="fws">MRR + Network</text>
+      <circle cx="90" cy="250" r="54" fill="rgba(139,108,196,.1)" stroke="rgba(139,108,196,.5)" stroke-width="1.5"/>
+      <text x="90" y="240" class="fwl">🔍 Surplus</text><text x="90" y="263" class="fws">High Margin</text>
+      <circle cx="250" cy="250" r="162" fill="none" stroke="rgba(212,168,71,.05)" stroke-width="1" stroke-dasharray="3,14">
+        <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="50s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+  <p style="text-align:center;font-size:13px;letter-spacing:.08em;color:var(--paper3);margin-top:16px;">Each pillar generates data, capital, or reputation that feeds the others</p>
+</div>
+
+<!-- ══ ROADMAP ══ -->
+<div class="roadmap aos">
+  <span class="label">Scaling Roadmap</span>
+  <h2 class="section-title">Ecosystem build phases</h2>
+  <div class="road-phases">
+    <div class="phase">
+      <div class="phase-time"><div class="phase-num">I</div><div class="phase-period">Now →<br>6 mo</div></div>
+      <div class="phase-body"><div class="phase-title">Core Active + Surplus Launching</div>
+      <div class="phase-items"><span class="phase-tag now">18 props FL &amp; MI</span><span class="phase-tag now">Proprietary database</span><span class="phase-tag">First surplus claims</span><span class="phase-tag">Due diligence <span class="tip" data-tip="Standard Operating Procedure — documented step-by-step process ensuring consistent team execution.">SOPs</span></span></div></div>
+    </div>
+    <div class="phase">
+      <div class="phase-time"><div class="phase-num">II</div><div class="phase-period">6 →<br>18 mo</div></div>
+      <div class="phase-body"><div class="phase-title">Launch Investment Fund + SaaS MVP</div>
+      <div class="phase-items"><span class="phase-tag">Fund I (<span class="tip" data-tip="Regulation D — SEC exemption for private fund offerings. 506(c) allows open advertising to verified accredited investors.">Reg D</span> 506b/c)</span><span class="phase-tag">First <span class="tip" data-tip="Limited Partner — passive investor in the fund.">LP</span> capital raises</span><span class="phase-tag"><span class="tip" data-tip="Minimum Viable Product — simplest product version that delivers core value.">MVP</span>: calendar + alerts</span><span class="phase-tag">IL &amp; WI expansion</span></div></div>
+    </div>
+    <div class="phase">
+      <div class="phase-time"><div class="phase-num">III</div><div class="phase-period">18 →<br>36 mo</div></div>
+      <div class="phase-body"><div class="phase-title">Scale All Four Pillars in Parallel</div>
+      <div class="phase-items"><span class="phase-tag">Fund II</span><span class="phase-tag"><span class="tip" data-tip="Monthly Recurring Revenue — predictable subscription revenue.">MRR</span> 200+ subscribers</span><span class="phase-tag">Surplus: 15+ counties/mo</span><span class="phase-tag">Flywheel on autopilot</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TECH ══ -->
+<div class="tech-section aos">
+  <span class="label">Operational Infrastructure</span>
+  <h2 class="section-title">Recommended tool stack</h2>
+  <div class="tech-grid">
+    <div class="tc"><div class="tc-icon">🗂️</div><div class="tc-name">PropStream / ATTOM</div><div class="tc-desc">Property data, auction history, liens, and ownership — foundation of the proprietary database across FL, TX, MI, IL, and WI with automated alerts.</div><span class="tc-tag">Data · Core</span></div>
+    <div class="tc"><div class="tc-icon">🔎</div><div class="tc-name">BatchSkipTracing / TLO</div><div class="tc-desc">Locate former owners and heirs for surplus recovery. Scales to hundreds of searches per week at pennies per lookup.</div><span class="tc-tag">Skip Tracing · Pillar 4</span></div>
+    <div class="tc"><div class="tc-icon">⚖️</div><div class="tc-name">DataTree / LienFocus</div><div class="tc-desc">Automated title search and federal lien checks before each bid. Identifies IRS liens, judgments, and <span class="tip" data-tip="Lis Pendens — recorded notice that active litigation may affect property ownership.">Lis Pendens</span> in seconds.</div><span class="tc-tag">Due Diligence · Pillar 1</span></div>
+    <div class="tc"><div class="tc-icon">📊</div><div class="tc-name">Airtable / Notion</div><div class="tc-desc">Property <span class="tip" data-tip="Customer Relationship Management — software tracking leads, deals, and communications.">CRM</span>, claims pipeline, and deal tracker. Structures operations before migrating to the custom SaaS in Pillar 3.</div><span class="tc-tag">Ops · All Pillars</span></div>
+    <div class="tc"><div class="tc-icon">💼</div><div class="tc-name">InvestNext / Juniper Square</div><div class="tc-desc"><span class="tip" data-tip="Limited Partner — passive investor providing capital to the fund.">LP</span> management, distributions, and fund reporting. Professionalizes the Investment Fund from Fund I onward.</div><span class="tc-tag">Fund Management · Pillar 2</span></div>
+    <div class="tc"><div class="tc-icon">🤖</div><div class="tc-name">AI + Custom Scraping</div><div class="tc-desc">County list collection scripts, automated property scoring, and surplus alerts — the technical foundation of the <span class="tip" data-tip="Software as a Service — subscription platform monetizing your data and operational knowledge.">SaaS</span> platform (Pillar 3).</div><span class="tc-tag">SaaS · Pillar 3</span></div>
+  </div>
+</div>
+
+<footer class="aos">
+  <div class="rule"><div class="rule-diamond"></div></div>
+  <p class="footer-title">"The most valuable asset is not the property — it's the system."</p>
+  <p class="footer-sub" style="margin-top:12px;">Partners Deeds · Strategic Ecosystem · FL · TX · MI · IL · WI</p>
+
+
+<!-- DISCLAIMER -->
+<div class="disclaimer-section">
+  <div class="disclaimer-toggle" onclick="toggleDisclaimer()" id="disclaimerToggle">
+    <span class="disclaimer-icon">⚠</span>
+    <span class="disclaimer-label">Investment Disclaimer &amp; Risk Notice · Aviso de Risco de Investimento</span>
+    <span class="disclaimer-arrow" id="disclaimerArrow">▼</span>
+  </div>
+  <div class="disclaimer-body" id="disclaimerBody" style="display:none">
+    <div class="disclaimer-col">
+      <h4>🇺🇸 English</h4>
+      <p>Partners Deeds Holding provides information about tax deed investment opportunities for informational purposes only. Nothing on this page constitutes financial, legal, or investment advice.</p>
+      <p>Investing in tax deed properties involves significant risk, including but not limited to: loss of invested capital, title disputes, undisclosed liens, environmental liabilities, property condition issues, and market value fluctuations.</p>
+      <p>Tax deed laws vary by state and county. Redemption rights, lien priorities, and quiet title requirements differ across jurisdictions. Always consult a licensed real estate attorney and a qualified financial advisor before making any investment decision.</p>
+      <p>Past performance of any property transaction does not guarantee future results. All property values shown (ARV) are estimates only and are not guarantees of sale price or return on investment.</p>
+      <p class="disclaimer-small">Partners Deeds Holding is not a licensed broker, dealer, investment advisor, or attorney. This website does not constitute an offer to sell or a solicitation of an offer to buy any security.</p>
+    </div>
+    <div class="disclaimer-col">
+      <h4>🇧🇷 Português</h4>
+      <p>A Partners Deeds Holding disponibiliza informações sobre oportunidades de investimento em tax deeds exclusivamente para fins informativos. Nenhuma informação nesta página constitui assessoria financeira, jurídica ou de investimento.</p>
+      <p>O investimento em propriedades via tax deed envolve riscos significativos, incluindo, entre outros: perda do capital investido, disputas de titularidade, ônus não divulgados, passivos ambientais, condição do imóvel e variações no valor de mercado.</p>
+      <p>As leis de tax deed variam por estado e condado nos EUA. Direitos de resgate, prioridades de ônus e requisitos de regularização de titularidade (Quiet Title) diferem entre jurisdições. Consulte sempre um advogado imobiliário licenciado e um assessor financeiro qualificado antes de tomar qualquer decisão de investimento.</p>
+      <p>O desempenho passado de qualquer transação imobiliária não garante resultados futuros. Todos os valores de propriedade exibidos (ARV) são estimativas e não constituem garantia de preço de venda ou retorno sobre o investimento.</p>
+      <p class="disclaimer-small">A Partners Deeds Holding não é corretora, distribuidora, assessora de investimentos ou escritório de advocacia licenciado. Este site não constitui oferta de venda nem solicitação de oferta de compra de qualquer valor mobiliário.</p>
+    </div>
+  </div>
+</div>
+</footer>
+
+</div><!-- /wrap -->
+
+<script>
+/* ═══════════════════════════════════════
+   TOOLTIP — touch + mouse support
+═══════════════════════════════════════ */
+const tipBox = document.getElementById('tipBox');
+let tipTimer, activeTip = null;
+
+function showTip(el, e) {
+  clearTimeout(tipTimer);
+  tipBox.textContent = el.dataset.tip;
+  tipBox.classList.add('visible');
+  posTip(e);
+}
+function hideTip() {
+  tipTimer = setTimeout(() => tipBox.classList.remove('visible'), 200);
+}
+function posTip(e) {
+  const bw = tipBox.offsetWidth || 240, bh = tipBox.offsetHeight || 44;
+  const vw = window.innerWidth, vh = window.innerHeight, pad = 12;
+  const cx = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : vw/2);
+  const cy = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : vh/2);
+  let l = cx - bw/2, t = cy - bh - pad;
+  if (t < 8) t = cy + pad + 16;
+  l = Math.max(8, Math.min(l, vw - bw - 8));
+  t = Math.max(8, Math.min(t, vh - bh - 8));
+  tipBox.style.left = l + 'px';
+  tipBox.style.top  = t + 'px';
+}
+
+document.querySelectorAll('.tip').forEach(function(el) {
+  // Mouse events
+  el.addEventListener('mouseenter', function(e) { showTip(el, e); });
+  el.addEventListener('mousemove',  function(e) { posTip(e); });
+  el.addEventListener('mouseleave', hideTip);
+  // Touch events — tap to show, tap again or elsewhere to hide
+  el.addEventListener('touchstart', function(e) {
+    e.stopPropagation();
+    if (activeTip === el) { hideTip(); activeTip = null; return; }
+    if (activeTip) { hideTip(); }
+    activeTip = el;
+    // Use touch coordinates
+    var touch = e.touches[0];
+    var fakeE = { clientX: touch.clientX, clientY: touch.clientY, touches: e.touches };
+    showTip(el, fakeE);
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(function() {
+      tipBox.classList.remove('visible');
+      activeTip = null;
+    }, 3000);
+  }, { passive: true });
+});
+document.addEventListener('touchstart', function(e) {
+  if (activeTip && !activeTip.contains(e.target)) {
+    hideTip();
+    activeTip = null;
+  }
+}, { passive: true });
+
+/* ═══════════════════════════════════════
+   MODAL
+═══════════════════════════════════════ */
+const PROCS = {
+  titledd:{title:"Title Due Diligence Before Bidding",steps:[{n:"1",title:"Obtain the Parcel ID (APN)",desc:"Every property has a unique Assessor's Parcel Number. Find it on the auction list or county tax roll — all searches use it as the primary key."},{n:"2",title:"Run a preliminary title search",desc:"Use DataTree, PropStream, or a local title company to pull the chain of title for the last 30–40 years. Look for breaks in the chain, missing deeds, or easements.",tools:["DataTree","PropStream","County Recorder portal"]},{n:"3",title:"Search all recorded liens",desc:"At the County Recorder / Register of Deeds, search by APN for: tax liens, IRS federal liens, mechanics liens, HOA liens, judgments, and lis pendens.",tools:["County Recorder","LienFocus","DataTree"]},{n:"4",title:"Check code violations and open permits",desc:"Contact city code enforcement and the Building & Permits Department. Unpaid violations become municipal liens that survive the tax deed.",tools:["City Code Enforcement portal","Building Dept."]},{n:"5",title:"Evaluate Quiet Title need and cost",desc:"If title issues exist, get a Quiet Title attorney quote before bidding. FL: 6–12 mo | TX: 3–6 mo | MI: 3–6 mo | IL: up to 2 yrs | WI: ~6 mo.",tools:["Local real estate attorney","Stewart Title","Old Republic"]}],note:"<strong>Rule of thumb:</strong> If title research costs more than 1% of expected ARV, price it accordingly."},
+  liencheck:{title:"Competing Lien Search Procedure",steps:[{n:"1",title:"Search County Recorder",desc:"Search by (a) APN and (b) owner's full legal name. Pull all documents from the last 10 years minimum.",tools:["County Recorder website","DataTree"]},{n:"2",title:"Run an IRS lien search",desc:"Search the county recorder's IRS section by the owner's full legal name. IRS liens have a 120-day redemption right after a tax deed sale.",tools:["IRS.gov / FOIA","LienFocus","County Recorder"]},{n:"3",title:"Check HOA status",desc:"Call the HOA management company. Request an Estoppel Letter showing total owed. HOA super-liens in FL (Chapter 718) can survive the tax deed.",tools:["HOA management company","PropStream HOA layer"]},{n:"4",title:"Verify mechanics liens",desc:"Mechanics liens are filed at the County Recorder. Verify the recording date — many expire within 1 year if not foreclosed.",tools:["County Recorder","LiensFinder.com"]},{n:"5",title:"Build a lien summary sheet",desc:"Compile all findings: lien type, amount, recording date, holder, and whether it survives the tax deed in your state. This drives your maximum bid calculation."}],note:"<strong>Key distinction:</strong> Some liens are extinguished by the tax deed (e.g., most mortgages). Others survive. Always confirm with a local real estate attorney per state."},
+  auctiontrack:{title:"Tracking Online & OTC Auctions by County",steps:[{n:"1",title:"Build a master county calendar",desc:"Spreadsheet of all target counties: auction schedule, platform (RealTDA, Linebarger, GovEase, courthouse steps), and list publication date.",tools:["Airtable","Notion","Google Sheets"]},{n:"2",title:"Set automated alerts for list publication",desc:"Enable email notifications on digital platforms, or use Distill.io to alert you when pages change.",tools:["Distill.io","PropStream alerts"]},{n:"3",title:"Download and parse each list",desc:"Download CSV, PDF, or Excel. Import into your database. Tag each property: county, auction date, starting bid, APN."},{n:"4",title:"Identify OTC inventory",desc:"After each auction, contact the County Clerk or Treasurer for the list of unsold (struck-off) properties. Available OTC with zero competition."},{n:"5",title:"Prioritize and queue for due diligence",desc:"Score each property: estimated ARV, starting bid, repair cost, lien risk. Route top-scoring properties into the due diligence queue."}],note:"<strong>Pro tip:</strong> In Michigan, the state land bank auctions unsold properties in November. Contact the county treasurer for OTC availability year-round."},
+  database:{title:"Building the Proprietary Auction Database",steps:[{n:"1",title:"Choose your data stack",desc:"Start with Airtable or Notion. As volume grows, migrate to PostgreSQL.",tools:["Airtable (start)","PostgreSQL + Retool (scale)"]},{n:"2",title:"Define your data schema",desc:"Per property: APN, address, county, state, auction date, opening bid, winning bid, estimated ARV, lien status, disposition, and outcome."},{n:"3",title:"Log every auction — bid or pass",desc:"Whether you bid or not, log the result. Over time this reveals pricing patterns and best-performing property types."},{n:"4",title:"Connect PropStream / ATTOM via API",desc:"Auto-pull updated property data into your database for each APN. Eliminates manual data entry at scale.",tools:["PropStream API","ATTOM Data API"]},{n:"5",title:"Use data to power Pillars 2, 3, and 4",desc:"This database becomes: underwriting engine for the Investment Fund (P2), training data for the SaaS scoring model (P3), and the surplus lead source (P4)."}],note:"<strong>Moat effect:</strong> A proprietary database built over 2+ years of real auctions is a structural competitive advantage no new entrant can replicate quickly."},
+  dealflow:{title:"Generating Deal Flow for the Investment Fund",steps:[{n:"1",title:"Define fund acquisition criteria",desc:"Written investment policy: target states, minimum ARV, maximum lien exposure, property types, target return."},{n:"2",title:"Route qualified deals from Pillar 1 pipeline",desc:"Flag any property that meets fund criteria but exceeds personal capital capacity. These become fund deals."},{n:"3",title:"Prepare a deal memo",desc:"Per fund deal: property details, ARV, acquisition cost, repair estimate, exit strategy, projected return, timeline.",tools:["Notion deal template","InvestNext deal tracking"]},{n:"4",title:"Commit fund capital and execute",desc:"Fund entity places the bid or executes the OTC purchase. All closing documents in the fund entity's name."},{n:"5",title:"Report to LPs and distribute returns",desc:"Distribute profits per the fund's waterfall structure. Log in InvestNext or Juniper Square for LP portal visibility.",tools:["InvestNext","Juniper Square","QuickBooks"]}],note:"<strong>Alignment:</strong> Routing your best deals to the fund builds LP trust and accelerates fundraising for Fund II."},
+  saastrain:{title:"Using Auction Data to Train the SaaS Platform",steps:[{n:"1",title:"Export your auction history database",desc:"Pull all historical records: APN, county, opening bid, winning bid, estimated ARV, lien status, outcome — the raw training dataset."},{n:"2",title:"Define the prediction target",desc:"The scoring model should predict: 'What is the probability this property generates a positive return at a given bid price?'"},{n:"3",title:"Build the feature set",desc:"Input variables: bid/ARV ratio, lien-to-value ratio, county competition score, property type, year built, neighborhood score."},{n:"4",title:"Train and validate the model",desc:"Use Python (scikit-learn, XGBoost) or a no-code ML tool. Validate on holdout data from the most recent 3 months.",tools:["Python / scikit-learn","XGBoost","Obviously.AI (no-code)"]},{n:"5",title:"Integrate into the SaaS product",desc:"Expose the model via API. When a user queries a property, the platform returns a risk score (1–10) with confidence level. Update monthly."}],note:"<strong>Data moat:</strong> Competitors can copy features, but cannot replicate years of real auction outcome data."},
+  surplusleads:{title:"Turning Post-Auction Lists into Surplus Leads",steps:[{n:"1",title:"Download results immediately after auction",desc:"Most county clerks publish results within 24–72 hours. Set calendar reminders for each county's results publication date."},{n:"2",title:"Calculate the surplus",desc:"Surplus = Winning Bid − Total Tax Debt (including fees and interest). Filter for surplus ≥ $5,000."},{n:"3",title:"Cross-reference with your auction database",desc:"Match the APN to get the former owner's name and last known address — saves skip tracing time."},{n:"4",title:"Queue for skip tracing",desc:"Upload to BatchSkipTracing or TLO with owner name + last known address. Results return in minutes.",tools:["BatchSkipTracing.com","TLO","CLEAR"]},{n:"5",title:"Prioritize by surplus size and claim deadline",desc:"Sort by: (a) surplus amount highest first, (b) time remaining before deadline. Build a weekly outreach schedule."}],note:"<strong>Automation:</strong> With the SaaS platform (Pillar 3), results scraping, surplus calculation, and skip trace queuing can all be automated."},
+  fundsetup:{title:"Setting Up the Investment Fund (Reg D 506c)",steps:[{n:"1",title:"Engage a securities attorney",desc:"Before raising a single dollar, hire a Reg D specialist attorney. Cost: $5,000–$15,000.",tools:["Securities attorney (Reg D specialist)","FINRA BrokerCheck"]},{n:"2",title:"Choose fund structure",desc:"Most common: Delaware or Wyoming LLC as the fund entity, with you as Managing Member (GP equivalent)."},{n:"3",title:"File Form D with the SEC",desc:"Under 506(c), file Form D within 15 days of the first securities sale at sec.gov.",tools:["SEC EDGAR (sec.gov)","State securities portals"]},{n:"4",title:"Draft the Private Placement Memorandum (PPM)",desc:"Your attorney drafts the PPM: investment strategy, risks, fees, liquidation waterfall, and track record.",tools:["Securities attorney","DealMaker (digital PPM)"]},{n:"5",title:"Verify investor accreditation",desc:"Under 506(c), you may publicly advertise BUT must verify each investor is accredited (income >$200k/yr or net worth >$1M).",tools:["VerifyInvestor.com","EarlyIQ"]}],note:"<strong>Timeline:</strong> Expect 60–90 days from attorney engagement to first close. Run Pillar 1 in parallel so you have a live track record at launch."},
+  lpcapture:{title:"Attracting and Qualifying LP Investors",steps:[{n:"1",title:"Define your ideal LP profile",desc:"Target: accredited investors seeking passive real estate returns. Sources: other RE investors, business owners, professionals, SaaS subscriber base."},{n:"2",title:"Build credibility before asking for capital",desc:"Publish monthly deal reports and case studies. Document every Pillar 1 deal: purchase price, sale price, timeline, return."},{n:"3",title:"Host investor webinars",desc:"Under 506(c), you can publicly advertise. Run monthly webinars explaining the strategy and fund structure.",tools:["Zoom","ConvertKit / Mailchimp","LinkedIn"]},{n:"4",title:"Send executive summary + PPM",desc:"Send a 1–2 page summary first. If interest confirmed, send the full PPM and subscription documents.",tools:["DocuSign","DealMaker","InvestNext LP portal"]},{n:"5",title:"Onboard and maintain LP relationships",desc:"Monthly portfolio updates, quarterly distributions, annual report. Happy LPs reinvest and refer others.",tools:["InvestNext","Juniper Square","QuickBooks"]}],note:"<strong>Conversion funnel:</strong> SaaS subscriber → webinar attendee → summary request → accreditation verified → LP investor."},
+  saascalendar:{title:"Building the SaaS Auction Calendar Feature",steps:[{n:"1",title:"Map all data sources by state and county",desc:"For each target county: where is the list published? Build a source map with URL, frequency, format, and lead time."},{n:"2",title:"Build automated scrapers per source",desc:"Python scripts (Playwright, Scrapy) to pull new lists when published.",tools:["Python / Playwright","pdfplumber","AWS Lambda / Render"]},{n:"3",title:"Normalize data into a unified schema",desc:"Write transformation code to normalize all records: APN, address, county, state, auction date, opening bid, property type."},{n:"4",title:"Store and expose via API",desc:"Store in PostgreSQL. Build an API endpoint with filters (state, county, date range). Return JSON.",tools:["PostgreSQL","FastAPI / Node.js","Supabase"]},{n:"5",title:"Build the frontend calendar UI",desc:"Interactive calendar + filterable table. Users filter by state/county, set alerts, save to watchlists, export CSV.",tools:["React / Next.js","Airtable Interfaces (MVP)"]}],note:"<strong>MVP shortcut:</strong> Validate with an Airtable base at $97/month before building custom software."},
+  saasalerts:{title:"Automated Surplus Fund Alerts via SaaS",steps:[{n:"1",title:"Scrape post-auction results automatically",desc:"After each county auction, trigger a scraper to pull results via cron job.",tools:["Python cron job","AWS Lambda scheduled events"]},{n:"2",title:"Calculate surplus for each property",desc:"Surplus = Winning Bid − (Tax Debt + Fees). Flag records where Surplus ≥ user's threshold."},{n:"3",title:"Match against user's county watchlist",desc:"Each SaaS user defines target counties in their profile. Alert engine checks for matches."},{n:"4",title:"Send alert via email and/or SMS",desc:"Deliver: property address, APN, county, surplus amount, former owner name, link to full property detail.",tools:["SendGrid (email)","Twilio (SMS)","Postmark"]},{n:"5",title:"Track user action on each alert",desc:"Log: opened, viewed, exported, or marked as contacted. Use data to improve relevance."}],note:"<strong>Upsell:</strong> 'Surplus Pro' tier with unlimited alerts + skip trace integration at $297–$497/month."},
+  surpluscollect:{title:"Collecting Post-Auction Lists per County",steps:[{n:"1",title:"Build a county results calendar",desc:"Map every target county's auction date and typical results publication lag (24–72 hours)."},{n:"2",title:"Access results on the correct platform",desc:"FL: RealTDA.com or county clerk portals. TX: Linebarger (lgbs.com) or courthouse steps. MI: County Treasurer or Michigan Land Bank. IL: SRI Tax Sale. WI: County Treasurer or Bid4Assets."},{n:"3",title:"Download and structure the results",desc:"Download CSV, Excel, or PDF. Import into Airtable or your database. Key fields: APN, address, winning bid, tax debt, former owner."},{n:"4",title:"Calculate surplus for each record",desc:"Formula: Surplus = Winning Bid − Total Debt. Filter for Surplus ≥ $5,000. Sort by surplus amount descending."},{n:"5",title:"Log results into your surplus pipeline",desc:"CRM tags: county, auction date, surplus amount, status (New / Skip Trace Queued / Contacted / Contract / Filed / Collected)."}],note:"<strong>Time sensitivity:</strong> Claim deadlines start from auction day. In MI and WI the deadline is 1 year. Prioritize outreach within the first 30 days."},
+  skiptrace:{title:"Skip Tracing Former Property Owners",steps:[{n:"1",title:"Gather input data",desc:"Per surplus lead: former owner's full legal name, last known mailing address, and APN."},{n:"2",title:"Run a bulk skip trace",desc:"Upload to BatchSkipTracing or TLO as CSV: first name, last name, address, city, state, ZIP.",tools:["BatchSkipTracing.com (~$0.15–0.30/record)","TLO (~$100/month)","CLEAR — Thomson Reuters"]},{n:"3",title:"Score and prioritize results",desc:"Prioritize: (a) cell phone number returned, (b) current address in-state, (c) relative contact info available."},{n:"4",title:"Attempt contact via phone and mail",desc:"Call first. Explain: there are unclaimed funds belonging to them; you help recover at no upfront cost. Follow up with USPS Certified Mail.",tools:["Mojo Dialer (volume calling)","USPS Certified Mail"]},{n:"5",title:"Handle heirs and deceased owners",desc:"If deceased, identify heirs via skip trace relative data and county probate records.",tools:["Probate records at County Clerk","Ancestry.com / FindAGrave"]}],note:"<strong>Compliance:</strong> Disclose your identity and purpose immediately when calling. Confirm whether your state requires a license for surplus recovery before scaling."},
+  feeagreement:{title:"Structuring the Contingency Fee Agreement",steps:[{n:"1",title:"Have an attorney draft your base template",desc:"A real estate or contract attorney drafts the template once. Cost: $500–$1,500.",tools:["Real estate / contract attorney","DocuSign"]},{n:"2",title:"Key clauses to include",desc:"Fee percentage, exact surplus amount, county and state, claim deadline, your responsibilities, client's responsibilities, and denial procedures."},{n:"3",title:"Set fee tiers by deal size",desc:"Common structure: 40% for surplus <$10k, 33% for $10k–$50k, 25% for >$50k. Consider a flat floor (e.g., minimum $1,500)."},{n:"4",title:"Deliver and execute remotely",desc:"Send via DocuSign or HelloSign. Include a plain-language explanation letter.",tools:["DocuSign","HelloSign","Loom (video explanation)"]},{n:"5",title:"Collect supporting documents",desc:"After signing: government photo ID, proof of prior ownership (deed), and if applicable: death certificate and proof of heirship."}],note:"<strong>State compliance:</strong> Some states regulate surplus recovery agents. Verify requirements in FL and MI before sending agreements."},
+  claimfiling:{title:"Filing a Surplus Funds Claim with the County",steps:[{n:"1",title:"Identify the correct filing office",desc:"FL: Clerk of Court (Registry of the Court). TX: County Tax Assessor-Collector. MI: County Treasurer. IL: County Treasurer or Circuit Court. WI: County Treasurer."},{n:"2",title:"Assemble the claim package",desc:"Standard docs: signed fee agreement, client photo ID, proof of prior ownership (deed), county's surplus notice (if issued), notarized authorization letter."},{n:"3",title:"File the claim",desc:"File by USPS Certified Mail with tracking, or in person. Keep copies of everything.",tools:["USPS Certified Mail","In-person county office"]},{n:"4",title:"Follow up at regular intervals",desc:"Processing times: FL 30–90 days · TX 60–120 days · MI 60–120 days · IL 90–180 days · WI 30–90 days. Contact every 3–4 weeks."},{n:"5",title:"Receive funds and collect your fee",desc:"County issues a check to the former owner, who passes your commission per the agreement.",tools:["Business checking account","QuickBooks"]}],note:"<strong>Denial handling:</strong> Claims denied for: expired deadline, missing docs, or competing claimants. Appeal in writing and request the specific reason."}
+};
+
+function openModal(key) {
+  const d = PROCS[key]; if(!d) return;
+  document.getElementById('modalTitle').textContent = d.title;
+  let h = '';
+  d.steps.forEach(s => {
+    h += `<div class="modal-step"><div class="modal-step-num">${s.n}</div><div><div class="modal-step-title">${s.title}</div><div class="modal-step-desc">${s.desc}`;
+    if(s.tools && s.tools.length) h += `<ul>${s.tools.map(t=>`<li><span class="tool-tag">${t}</span></li>`).join('')}</ul>`;
+    h += `</div></div></div>`;
+  });
+  if(d.note) h += `<div class="modal-note">${d.note}</div>`;
+  document.getElementById('modalBody').innerHTML = h;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+/* swipe down to close modal on mobile */
+let touchStartY = 0;
+document.getElementById('modalBox').addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, {passive:true});
+document.getElementById('modalBox').addEventListener('touchend', e => {
+  if (e.changedTouches[0].clientY - touchStartY > 80) closeModal();
+}, {passive:true});
+
+/* ═══════════════════════════════════════
+   PILLAR TOGGLE
+═══════════════════════════════════════ */
+function togglePillar(el) {
+  var was = el.classList.contains('open');
+  document.querySelectorAll('.pillar').forEach(function(p) { p.classList.remove('open'); });
+  if(!was) el.classList.add('open');
+}
+/* iOS Safari: divs with onclick also need touchend to fire reliably */
+document.addEventListener('DOMContentLoaded', function() {
+  /* Pillars */
+  document.querySelectorAll('.pillar').forEach(function(el) {
+    el.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      togglePillar(el);
+    }, { passive: false });
+  });
+  /* Access button — already a <button>, works fine */
+  /* Proc buttons — already <button>, works fine */
+  /* Tip elements — handled separately */
+});
+
+/* ═══════════════════════════════════════
+   PASSWORD
+═══════════════════════════════════════ */
+const PASS = 'taxdeed2025';
+function checkAccess() {
+  const v = document.getElementById('accessPass').value;
+  const err = document.getElementById('accessError');
+  if(v === PASS) {
+    document.getElementById('lockWall').classList.add('hidden');
+    document.getElementById('privateContent').classList.add('unlocked');
+    err.classList.remove('show');
+    buildVerifiedContacts();
+    buildPlaybooks();
+    /* Show scraper tab by default when unlocking */
+    var firstTab = document.querySelector('.op-tab');
+    if (firstTab) switchTab('scraper', firstTab);
+  } else {
+    err.classList.add('show');
+    document.getElementById('accessPass').value = '';
+    document.getElementById('accessPass').focus();
+  }
+}
+function lockSection() {
+  document.getElementById('lockWall').classList.remove('hidden');
+  document.getElementById('privateContent').classList.remove('unlocked');
+  document.getElementById('accessPass').value = '';
+  document.getElementById('accessError').classList.remove('show');
+}
+
+/* ═══════════════════════════════════════
+   TAB SWITCHER
+═══════════════════════════════════════ */
+function switchTab(name, btn) {
+  ['scraper','contacts','playbooks'].forEach(t => {
+    document.getElementById('tab-'+t).style.display = (t===name)?'block':'none';
+  });
+  document.querySelectorAll('.op-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+/* ═══════════════════════════════════════
+   PORTFOLIO
+═══════════════════════════════════════ */
+const CSV_COLUMNS = ['address','city','county','state','zip','type','area','unit','status','acquisition_date','acquisition_price','arv','rehab_cost','sale_price','sale_date','notes'];
+
+/* ── Photo store: key = address, value = array of base64 strings ── */
+const photoStore = {};
+
+const SAMPLE_PROPS = [
+  {address:'1423 NW 52nd St',city:'Miami',county:'Miami-Dade',state:'FL',zip:'33142',type:'House',area:'1,240',unit:'ft²',status:'active',acquisition_date:'2024-03-15',acquisition_price:'28500',arv:'95000',rehab_cost:'22000',sale_price:'',sale_date:'',notes:'Title clear, permit pulled'},
+  {address:'8817 Pine Ridge Rd',city:'Ocala',county:'Marion',state:'FL',zip:'34472',type:'House',area:'1,080',unit:'ft²',status:'active',acquisition_date:'2024-04-02',acquisition_price:'12000',arv:'58000',rehab_cost:'14000',sale_price:'',sale_date:'',notes:''},
+  {address:'3301 W Hillsborough Ave',city:'Tampa',county:'Hillsborough',state:'FL',zip:'33614',type:'House',area:'1,450',unit:'ft²',status:'rehab',acquisition_date:'2024-04-18',acquisition_price:'41000',arv:'135000',rehab_cost:'38000',sale_price:'',sale_date:'',notes:'Rehab in progress'},
+  {address:'2204 Belmont Ave',city:'Daytona Beach',county:'Volusia',state:'FL',zip:'32114',type:'House',area:'920',unit:'ft²',status:'active',acquisition_date:'2024-05-07',acquisition_price:'9800',arv:'47000',rehab_cost:'11000',sale_price:'',sale_date:'',notes:''},
+  {address:'631 Oakhurst Rd',city:'Clearwater',county:'Pinellas',state:'FL',zip:'33755',type:'House',area:'1,100',unit:'ft²',status:'active',acquisition_date:'2024-05-22',acquisition_price:'34000',arv:'118000',rehab_cost:'29000',sale_price:'',sale_date:'',notes:'Quiet title filed'},
+  {address:'1102 South E St',city:'Lake Worth',county:'Palm Beach',state:'FL',zip:'33460',type:'House',area:'1,050',unit:'ft²',status:'active',acquisition_date:'2024-06-11',acquisition_price:'21500',arv:'82000',rehab_cost:'18000',sale_price:'',sale_date:'',notes:''},
+  {address:'4455 Seminole Blvd',city:'St. Petersburg',county:'Pinellas',state:'FL',zip:'33711',type:'House',area:'1,680',unit:'ft²',status:'pending',acquisition_date:'2024-06-28',acquisition_price:'52000',arv:'165000',rehab_cost:'42000',sale_price:'',sale_date:'',notes:'Under contract'},
+  {address:'77 SE 3rd Ave',city:'Fort Lauderdale',county:'Broward',state:'FL',zip:'33301',type:'Lot',area:'0.18',unit:'ac',status:'active',acquisition_date:'2024-07-09',acquisition_price:'18000',arv:'71000',rehab_cost:'16500',sale_price:'',sale_date:'',notes:''},
+  {address:'920 Cypress Lake Dr',city:'Orlando',county:'Orange',state:'FL',zip:'32811',type:'House',area:'1,300',unit:'ft²',status:'active',acquisition_date:'2024-07-24',acquisition_price:'29000',arv:'102000',rehab_cost:'24000',sale_price:'',sale_date:'',notes:''},
+  {address:'3218 N 34th St',city:'Tampa',county:'Hillsborough',state:'FL',zip:'33605',type:'House',area:'1,160',unit:'ft²',status:'active',acquisition_date:'2024-08-14',acquisition_price:'15500',arv:'63000',rehab_cost:'13000',sale_price:'',sale_date:'',notes:''},
+  {address:'507 Citrus Ave',city:'Fort Pierce',county:'St. Lucie',state:'FL',zip:'34950',type:'House',area:'880',unit:'ft²',status:'active',acquisition_date:'2024-09-03',acquisition_price:'11200',arv:'44000',rehab_cost:'10500',sale_price:'',sale_date:'',notes:''},
+  {address:'1840 Jackson St',city:'Hollywood',county:'Broward',state:'FL',zip:'33020',type:'House',area:'1,390',unit:'ft²',status:'active',acquisition_date:'2024-10-17',acquisition_price:'38000',arv:'128000',rehab_cost:'32000',sale_price:'',sale_date:'',notes:'Title work ongoing'},
+  {address:'214 W Superior St',city:'Detroit',county:'Wayne',state:'MI',zip:'48202',type:'House',area:'1,020',unit:'ft²',status:'sold',acquisition_date:'2024-02-28',acquisition_price:'8500',arv:'52000',rehab_cost:'18000',sale_price:'58500',sale_date:'2024-09-12',notes:'First MI sale — great return'},
+  {address:'6740 Gratiot Ave',city:'Detroit',county:'Wayne',state:'MI',zip:'48207',type:'House',area:'960',unit:'ft²',status:'active',acquisition_date:'2024-04-10',acquisition_price:'6200',arv:'45000',rehab_cost:'14000',sale_price:'',sale_date:'',notes:''},
+  {address:'18 Birchwood Dr',city:'Flint',county:'Genesee',state:'MI',zip:'48504',type:'House',area:'1,140',unit:'ft²',status:'active',acquisition_date:'2024-05-30',acquisition_price:'5100',arv:'38000',rehab_cost:'11500',sale_price:'',sale_date:'',notes:'Quiet title in process'},
+  {address:'3421 E Court St',city:'Flint',county:'Genesee',state:'MI',zip:'48506',type:'House',area:'1,080',unit:'ft²',status:'rehab',acquisition_date:'2024-07-15',acquisition_price:'7800',arv:'49000',rehab_cost:'16000',sale_price:'',sale_date:'',notes:'Rehab started'},
+  {address:'512 N Saginaw Rd',city:'Midland',county:'Midland',state:'MI',zip:'48642',type:'House',area:'1,220',unit:'ft²',status:'active',acquisition_date:'2024-08-22',acquisition_price:'9400',arv:'54000',rehab_cost:'12500',sale_price:'',sale_date:'',notes:''},
+  {address:'2901 Livernois Ave',city:'Detroit',county:'Wayne',state:'MI',zip:'48210',type:'House',area:'1,010',unit:'ft²',status:'active',acquisition_date:'2024-10-05',acquisition_price:'7100',arv:'41000',rehab_cost:'10000',sale_price:'',sale_date:'',notes:''},
+];
+
+let portfolioData = [...SAMPLE_PROPS];
+let currentFilter = 'all';
+const STATUS_COLORS = { active:'#5B9E6A', sold:'#5B9AB5', rehab:'#C47A3A', pending:'#8B6CC4' };
+
+/* ── Photo key: normalize address as store key ── */
+function photoKey(p){ return (p.address||'').trim().toLowerCase(); }
+
+/* ── Render all cards ── */
+function renderPortfolio(data) {
+  const track = document.getElementById('propTrack');
+  if(!data || !data.length) {
+    track.innerHTML='';
+    document.getElementById('portfolioEmpty').style.display='flex';
+    return;
+  }
+  document.getElementById('portfolioEmpty').style.display='none';
+  track.innerHTML = data.map((p,idx) => buildCard(p, idx)).join('');
+  updatePortfolioStats(data);
+}
+
+function fmt$(n){ return n ? '$'+Number(String(n).replace(/[^0-9.]/g,'')).toLocaleString() : '—'; }
+function fmtDate(d){ if(!d) return '—'; const p=d.split('-'); return p.length===3?`${p[1]}/${p[2]}/${p[0]}`:d; }
+function fmtArea(a,u){ return (a&&a!=='') ? a+(u?'\u00a0'+u:'') : '—'; }
+
+function buildCard(p, idx) {
+  const col = STATUS_COLORS[p.status] || '#D4A847';
+  const key = photoKey(p);
+  const photos = photoStore[key] || [];
+  const firstPhoto = photos[0] || '';
+  const photoCount = photos.length;
+  const stateClass = 'sp sp-'+(p.state||'').toLowerCase();
+
+  const photoPanel = firstPhoto
+    ? `<div class="prop-photo" id="photo-panel-${idx}">
+         <img src="${firstPhoto}" alt="Property photo" id="photo-img-${idx}">
+         ${photoCount>1?`<button class="photo-nav prev" onclick="photoNav(${idx},-1)">‹</button><button class="photo-nav next" onclick="photoNav(${idx},1)">›</button>`:''}
+         ${photoCount>0?`<span class="photo-count-badge">${photoCount} photo${photoCount>1?'s':''}</span>`:''}
+         <button class="prop-photo-add-btn" onclick="triggerPhotoUpload(${idx})">+ Add Photo</button>
+       </div>`
+    : `<div class="prop-photo" id="photo-panel-${idx}" onclick="triggerPhotoUpload(${idx})">
+         <div class="prop-photo-placeholder">
+           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+           <span>Tap to add photo</span>
+         </div>
+       </div>`;
+
+  const acqPrice = fmt$(p.acquisition_price);
+  const arv      = fmt$(p.arv);
+  const rehab    = fmt$(p.rehab_cost);
+  const salePrice= fmt$(p.sale_price);
+  const acqDate  = fmtDate(p.acquisition_date);
+  const saleDate = fmtDate(p.sale_date);
+  const area     = fmtArea(p.area, p.unit);
+
+  return `<div class="prop-card" style="--prop-color:${col}" data-idx="${idx}">
+    ${photoPanel}
+    <input type="file" id="photo-input-${idx}" class="photo-file-input" accept="image/*" multiple onchange="handlePhotoUpload(${idx},this)">
+    <div class="prop-info">
+      <div class="prop-top">
+        <div>
+          <div class="prop-address">${p.address||'—'}</div>
+          <div class="prop-location">
+            <span class="${stateClass}">${p.state||''}</span>
+            ${p.city||''}, ${p.county||''} County&nbsp;·&nbsp;${p.zip||''}
+            ${p.type?`<span class="prop-type-chip">${p.type}${area!=='—'?' · '+area:''}</span>`:''}
+          </div>
+        </div>
+        <span class="prop-status status-${p.status||'active'}">${(p.status||'active').toUpperCase()}</span>
+      </div>
+      <div class="prop-metrics">
+        <div class="pm"><span class="pm-val">${acqPrice}</span><span class="pm-key">Acquired For</span></div>
+        <div class="pm"><span class="pm-val">${arv}</span><span class="pm-key">ARV</span></div>
+        <div class="pm"><span class="pm-val">${rehab}</span><span class="pm-key">Rehab Est.</span></div>
+        <div class="pm"><span class="pm-val">${acqDate}</span><span class="pm-key">Acq. Date</span></div>
+        <div class="pm ${p.sale_price?'highlight-blue':''}"><span class="pm-val">${salePrice}</span><span class="pm-key">Sale Price</span></div>
+        <div class="pm"><span class="pm-val">${saleDate}</span><span class="pm-key">Sale Date</span></div>
+      </div>
+      ${p.notes?`<div class="prop-notes-row">📌 ${p.notes}</div>`:''}
+    </div>
+  </div>`;
+}
+
+/* ── Photo upload ── */
+function triggerPhotoUpload(idx){
+  document.getElementById('photo-input-'+idx).click();
+}
+
+function handlePhotoUpload(idx, input){
+  const data = portfolioData.filter(p => currentFilter==='all' || p.state===currentFilter);
+  const p = data[idx];
+  if(!p) return;
+  const key = photoKey(p);
+  if(!photoStore[key]) photoStore[key] = [];
+  const files = Array.from(input.files);
+  let loaded = 0;
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      photoStore[key].push(e.target.result);
+      loaded++;
+      if(loaded === files.length) {
+        // Re-render just this card
+        const track = document.getElementById('propTrack');
+        const cards = track.querySelectorAll('.prop-card');
+        if(cards[idx]) {
+          const tmp = document.createElement('div');
+          tmp.innerHTML = buildCard(p, idx);
+          const newCard = tmp.firstElementChild;
+          track.replaceChild(newCard, cards[idx]);
+        }
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value='';
+}
+
+/* ── Photo carousel ── */
+const photoIndexes = {};
+function photoNav(cardIdx, dir){
+  const data = portfolioData.filter(p => currentFilter==='all' || p.state===currentFilter);
+  const p = data[cardIdx];
+  if(!p) return;
+  const key = photoKey(p);
+  const photos = photoStore[key] || [];
+  if(photos.length < 2) return;
+  photoIndexes[key] = ((photoIndexes[key]||0) + dir + photos.length) % photos.length;
+  const img = document.getElementById('photo-img-'+cardIdx);
+  if(img) img.src = photos[photoIndexes[key]];
+}
+
+/* ── Stats ── */
+function updatePortfolioStats(data) {
+  const total  = portfolioData.length;
+  const sold   = portfolioData.filter(p=>p.status==='sold').length;
+  const active = total - sold;
+  const states = [...new Set(portfolioData.map(p=>p.state))].length;
+  document.getElementById('ps-total').textContent  = total;
+  document.getElementById('ps-active').textContent = active;
+  document.getElementById('ps-sold').textContent   = sold;
+  document.getElementById('ps-states').textContent = states;
+  document.getElementById('filterAll').textContent = `All (${total})`;
+  const flC = portfolioData.filter(p=>p.state==='FL').length;
+  const txC = portfolioData.filter(p=>p.state==='TX').length;
+  const miC = portfolioData.filter(p=>p.state==='MI').length;
+  document.getElementById('filterFL').textContent = '🌴 FL'+(flC?` (${flC})`:'');
+  const txBtn = document.getElementById('filterTX');
+  if(txBtn) txBtn.textContent = '⭐ TX'+(txC?` (${txC})`:'');
+  document.getElementById('filterMI').textContent = '🌊 MI'+(miC?` (${miC})`:'');
+}
+
+/* ── Filter ── */
+function filterPortfolio(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.portfolio-actions .port-btn').forEach(b => b.classList.remove('active-filter'));
+  btn.classList.add('active-filter');
+  const filtered = f === 'all' ? portfolioData : portfolioData.filter(p => p.state === f);
+  renderPortfolio(filtered);
+}
+
+function renderSamplePortfolio() {
+  portfolioData = [...SAMPLE_PROPS];
+  renderPortfolio(portfolioData);
+}
+
+/* ── CSV Import — handles quoted fields with commas inside ── */
+function parseCSVLine(line) {
+  const result = [];
+  let cur = '', inQ = false;
+  for(let i=0;i<line.length;i++){
+    const c = line[i];
+    if(c==='"'){ inQ=!inQ; continue; }
+    if(c===',' && !inQ){ result.push(cur.trim()); cur=''; continue; }
+    cur += c;
+  }
+  result.push(cur.trim());
+  return result;
+}
+
+function importCSV(event) {
+  const file = event.target.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const lines = e.target.result.replace(/\r/g,'').split('\n').filter(l=>l.trim());
+    const headers = parseCSVLine(lines[0]).map(h=>h.toLowerCase().replace(/\s+/g,'_'));
+    const parsed = [];
+    for(let i=1;i<lines.length;i++){
+      const vals = parseCSVLine(lines[i]);
+      const obj = {};
+      headers.forEach((h,idx) => { obj[h] = vals[idx] || ''; });
+      if(obj.address) parsed.push(obj);
+    }
+    if(parsed.length){
+      portfolioData = parsed;
+      currentFilter = 'all';
+      document.querySelectorAll('.portfolio-actions .port-btn').forEach(b=>b.classList.remove('active-filter'));
+      document.getElementById('filterAll').classList.add('active-filter');
+      renderPortfolio(portfolioData);
+      alert(`✓ ${parsed.length} properties imported successfully.`);
+    } else {
+      alert('No valid properties found. Check that your CSV has an "address" column.');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+/* ── CSV Template download ── */
+function downloadTemplate() {
+  const headers = CSV_COLUMNS.join(',');
+  const ex1 = '"1423 NW 52nd St","Miami","Miami-Dade","FL","33142","House","1240","ft²","active","2024-03-15","28500","95000","22000","","","Title clear, permit pulled"';
+  const ex2 = '"214 W Superior St","Detroit","Wayne","MI","48202","House","1020","ft²","sold","2024-02-28","8500","52000","18000","58500","2024-09-12","First MI sale"';
+  const csv = [headers, ex1, ex2].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'partners-deeds-portfolio-template.csv';
+  a.click();
+  document.getElementById('csvTemplateBox').style.display='block';
+  document.getElementById('csvColsList').innerHTML = CSV_COLUMNS.map(c=>`<span class="csv-col">${c}</span>`).join('');
+}
+
+
+/* ═══════════════════════════════════════
+   COUNTY DATABASE
+═══════════════════════════════════════ */
+const COUNTIES = [
+  {state:'FL',county:'Alachua',office:'Clerk of Court',officer:'J.K. Irby',phone:'(352) 374-3636',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.alachuaclerk.org',notes:''},
+  {state:'FL',county:'Brevard',office:'Clerk of Court',officer:'Rachel Sadoff',phone:'(321) 637-5413',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.brevardclerk.us',notes:''},
+  {state:'FL',county:'Broward',office:'Clerk of Courts',officer:'Joseph Kaplan',phone:'(954) 831-5959',list:'Realforeclose.com',schedule:'Varies (online)',url:'https://www.browardclerk.org',notes:'Major metro'},
+  {state:'FL',county:'Charlotte',office:'Clerk of Circuit Court',officer:'Roger Eaton',phone:'(941) 637-2279',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.charlotteclerk.com',notes:''},
+  {state:'FL',county:'Collier',office:'Clerk of Court',officer:'Crystal K. Kinzel',phone:'(239) 252-2646',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.collierclerk.com',notes:'Naples area'},
+  {state:'FL',county:'Duval',office:'Clerk of Courts',officer:'Jody Phillips',phone:'(904) 255-2000',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.duvalclerk.com',notes:'Jacksonville'},
+  {state:'FL',county:'Hillsborough',office:'Clerk of Circuit Court',officer:'Cindy Stuart',phone:'(813) 276-8100',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.hillsclerk.com',notes:'Tampa'},
+  {state:'FL',county:'Lee',office:'Clerk of Court',officer:'Kevin Karnes',phone:'(239) 533-5000',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.leeclerk.org',notes:'Fort Myers'},
+  {state:'FL',county:'Miami-Dade',office:'Clerk of Court',officer:'Juan Fernandez-Barquin',phone:'(305) 275-1155',list:'Realforeclose.com',schedule:'Varies (online)',url:'https://www.miamidadeclerk.gov',notes:'Largest FL county'},
+  {state:'FL',county:'Orange',office:'Clerk of Courts',officer:'Tiffany Moore Russell',phone:'(407) 836-2000',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.myorangeclerk.com',notes:'Orlando'},
+  {state:'FL',county:'Palm Beach',office:'Clerk & Comptroller',officer:'Joseph Abruzzo',phone:'(561) 355-2996',list:'Realforeclose.com',schedule:'Varies (online)',url:'https://www.mypalmbeachclerk.com',notes:''},
+  {state:'FL',county:'Pinellas',office:'Clerk of Circuit Court',officer:'Ken Burke',phone:'(727) 464-3341',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.pinellasclerk.org',notes:'St. Pete'},
+  {state:'FL',county:'Polk',office:'Clerk of Circuit Court',officer:'Stacy M. Butterfield',phone:'(863) 534-4000',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.polkcountyclerk.net',notes:'Lakeland'},
+  {state:'FL',county:'Sarasota',office:'Clerk of Circuit Court',officer:'Karen E. Rushing',phone:'(941) 861-7400',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.sarasotaclerk.com',notes:''},
+  {state:'FL',county:'Volusia',office:'Clerk of Court',officer:'Laura E. Roth',phone:'(386) 736-5915',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.clerk.org',notes:'Daytona'},
+  {state:'MI',county:'Wayne',office:'County Treasurer',officer:'Eric Sabree',phone:'(313) 224-5990',list:'Online — Wayne County Auction',schedule:'October (annual)',url:'https://www.waynecounty.com/elected/treasurer/tax-auction.aspx',notes:'Detroit — largest MI county'},
+  {state:'MI',county:'Genesee',office:'County Treasurer',officer:'Deborah Cherry',phone:'(810) 257-3054',list:'Online — Genesee County Auction',schedule:'October (annual)',url:'https://www.gc4me.com/departments/treasurer',notes:'Flint area'},
+  {state:'MI',county:'Oakland',office:'County Treasurer',officer:'Andy Meisner',phone:'(248) 858-0611',list:'Online — Oakland County Auction',schedule:'October (annual)',url:'https://www.oakgov.com/treasurer',notes:'Detroit suburbs'},
+  {state:'MI',county:'Macomb',office:'County Treasurer',officer:'Larry Rocca',phone:'(586) 469-5190',list:'Online — Macomb County Auction',schedule:'October (annual)',url:'https://www.macombgov.org/treasurer',notes:''},
+  {state:'MI',county:'Kent',office:'County Treasurer',officer:'Peter MacGregor',phone:'(616) 632-7500',list:'Online — Kent County Auction',schedule:'October (annual)',url:'https://www.accesskent.com/treasurer',notes:'Grand Rapids'},
+  {state:'MI',county:'Washtenaw',office:'County Treasurer',officer:'Catherine McClary',phone:'(734) 222-6600',list:'Online — Washtenaw County Auction',schedule:'October (annual)',url:'https://www.washtenaw.org/treasurer',notes:'Ann Arbor'},
+  {state:'MI',county:'Ingham',office:'County Treasurer',officer:'Alan Fox',phone:'(517) 676-7233',list:'Online — Ingham County Auction',schedule:'October (annual)',url:'https://www.ingham.org/treasurer',notes:'Lansing area'},
+  {state:'MI',county:'Kalamazoo',office:'County Treasurer',officer:'Tom Whitener',phone:'(269) 383-8840',list:'Online — Kalamazoo County Auction',schedule:'October (annual)',url:'https://www.kalamazoocounty.org/treasurer',notes:''},
+  {state:'MI',county:'Midland',office:'County Treasurer',officer:'Tessa Lux',phone:'(989) 832-6820',list:'Online — Midland County Auction',schedule:'October (annual)',url:'https://www.co.midland.mi.us/treasurer',notes:''},
+  {state:'MI',county:'Saginaw',office:'County Treasurer',officer:'Timothy Novak',phone:'(989) 790-5250',list:'Online — Saginaw County Auction',schedule:'October (annual)',url:'https://www.saginawcounty.com/treasurer',notes:''},
+  {state:'TX',county:'Harris',office:'Tax Assessor-Collector',officer:'Ann Harris Bennett',phone:'(713) 274-8000',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://www.hctax.net',notes:'Houston — largest TX county'},
+  {state:'TX',county:'Dallas',office:'Tax Assessor-Collector',officer:'John R. Ames',phone:'(214) 653-7811',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://www.dallascounty.org/tax',notes:'Dallas'},
+  {state:'TX',county:'Tarrant',office:'Tax Assessor-Collector',officer:'Wendy Burgess',phone:'(817) 884-1100',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://www.tarrantcounty.com/tax',notes:'Fort Worth'},
+  {state:'TX',county:'Bexar',office:'Tax Assessor-Collector',officer:'Albert Uresti',phone:'(210) 335-2251',list:'pbfcm.com',schedule:'1st Tuesday / month',url:'https://www.bexar.org/tax',notes:'San Antonio'},
+  {state:'TX',county:'Travis',office:'Tax Assessor-Collector',officer:'Luanne Hart',phone:'(512) 854-9473',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://www.traviscountytax.org',notes:'Austin'},
+  {state:'TX',county:'Collin',office:'Tax Assessor-Collector',officer:'Kenneth Maun',phone:'(972) 547-5020',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://www.collincountytx.gov/tax',notes:'McKinney / Plano'},
+  {state:'TX',county:'Denton',office:'Tax Assessor-Collector',officer:'Michelle French',phone:'(940) 349-3500',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://dentoncounty.gov/tax',notes:''},
+  {state:'TX',county:'Fort Bend',office:'Tax Assessor-Collector',officer:'Carmen Turner',phone:'(281) 341-3710',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://www.fortbendcountytx.gov/tax',notes:''},
+  {state:'TX',county:'Montgomery',office:'Tax Assessor-Collector',officer:'Tammi Mikell',phone:'(936) 539-7897',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://www.mctx.org/tax',notes:'The Woodlands'},
+  {state:'TX',county:'Williamson',office:'Tax Assessor-Collector',officer:'Larry Gaddes',phone:'(512) 943-1601',list:'lgbs.com',schedule:'1st Tuesday / month',url:'https://www.wilco.org/tax',notes:'Round Rock'},
+  {state:'IL',county:'Cook',office:'County Treasurer',officer:'Maria Pappas',phone:'(312) 443-5100',list:'SRI Tax Sale',schedule:'Annual — Oct/Nov',url:'https://www.cookcountyil.gov/treasurer',notes:'Chicago'},
+  {state:'IL',county:'DuPage',office:'County Treasurer',officer:'Gwen Henry',phone:'(630) 407-5900',list:'SRI Tax Sale',schedule:'Annual — November',url:'https://www.dupageco.org/treasurer',notes:''},
+  {state:'IL',county:'Lake',office:'County Treasurer',officer:'Holly Kim',phone:'(847) 377-2323',list:'SRI Tax Sale',schedule:'Annual — November',url:'https://www.lakecountyil.gov/treasurer',notes:''},
+  {state:'IL',county:'Will',office:'County Treasurer',officer:'Tim Brophy',phone:'(815) 740-4675',list:'SRI Tax Sale',schedule:'Annual — October',url:'https://www.willcountyillinois.com/treasurer',notes:'Joliet'},
+  {state:'IL',county:'Sangamon',office:'County Treasurer',officer:'Joe Aiello',phone:'(217) 753-6800',list:'SRI Tax Sale',schedule:'Annual — October',url:'https://www.co.sangamon.il.us/treasurer',notes:'Springfield'},
+  {state:'WI',county:'Milwaukee',office:'County Treasurer',officer:'Aaron Richardson',phone:'(414) 278-4033',list:'Bid4Assets',schedule:'Annual — Sep/Oct',url:'https://county.milwaukee.gov/treasurer',notes:'Largest WI county'},
+  {state:'WI',county:'Dane',office:'County Treasurer',officer:'Adam Jarchow',phone:'(608) 266-4151',list:'County portal',schedule:'Annual — October',url:'https://www.countyofdane.com/treasurer',notes:'Madison'},
+  {state:'WI',county:'Waukesha',office:'County Treasurer',officer:'Dan Heisey',phone:'(262) 548-7029',list:'In-person / OTC',schedule:'Annual — Oct/Nov',url:'https://www.waukeshacounty.gov/treasurer',notes:''},
+  {state:'WI',county:'Brown',office:'County Treasurer',officer:'Troy Streckenbach',phone:'(920) 448-4074',list:'County portal',schedule:'Annual — November',url:'https://www.browncountywi.gov/treasurer',notes:'Green Bay'},
+  {state:'WI',county:'Marathon',office:'County Treasurer',officer:'Connie Beyersdorf',phone:'(715) 261-1070',list:'County portal',schedule:'Annual — October',url:'https://www.co.marathon.wi.us/treasurer',notes:'Wausau'},
+  {state:'WI',county:'Kenosha',office:'County Treasurer',officer:'Teri Jacobson',phone:'(262) 653-2542',list:'Bid4Assets',schedule:'Annual — September',url:'https://www.kenoshacounty.org/treasurer',notes:''},
+  {state:'WI',county:'Racine',office:'County Treasurer',officer:'Jennifer Konkel',phone:'(262) 636-3208',list:'Bid4Assets',schedule:'Annual — September',url:'https://www.racinecounty.com/treasurer',notes:''},
+];
+
+function buildVerifiedContacts() {
+  const key = ['FL','TX','MI','IL','WI'];
+  const tbody = document.getElementById('verifiedContactsTbody');
+  tbody.innerHTML = COUNTIES.filter(c=>key.includes(c.state)).slice(0,20).map(r=>`
+    <tr>
+      <td><span class="sp sp-${r.state.toLowerCase()}">${r.state}</span></td>
+      <td><strong>${r.county}</strong></td>
+      <td style="font-size:11px">${r.office}</td>
+      <td>${r.officer}</td>
+      <td><a href="tel:${r.phone.replace(/\D/g,'')}" class="tbl-link">${r.phone}</a></td>
+      <td style="font-size:11px">${r.list}</td>
+      <td style="font-size:11px">${r.schedule}</td>
+      <td><a href="${r.url}" target="_blank" class="tbl-link">↗</a></td>
+    </tr>`).join('');
+}
+
+const PLAYBOOKS = [
+  {flag:'🌴',name:'Florida',meta:'Tax Deed State · 67 counties · Online & in-person',digital:[
+    '<strong>RealTDA.com</strong> — official statewide portal for all tax deed sales by county.',
+    '<strong>Realforeclose.com</strong> — Miami-Dade, Broward, Palm Beach and others.',
+    '<strong>BidSpotter / Sivus.com</strong> — multi-county aggregators with live feeds.',
+    '<strong>Individual County Clerk portals</strong> — must publish 30+ days before auction (FL Statute 197.502).',
+  ],inperson:[
+    '<strong>County Clerk of Court</strong> — request "Tax Deed Sale List" in person; usually free.',
+    '<strong>OTC Purchase</strong> — unsold properties at the Clerk\'s counter at tax debt value.',
+    '<strong>Sunshine Law Records Request</strong> — for non-publishing counties; request CSV or PDF.',
+  ]},
+  {flag:'⭐',name:'Texas',meta:'Tax Deed State · 254 counties · 1st Tuesday/month',digital:[
+    '<strong>Linebarger Goggan Blair (lgbs.com)</strong> — largest TX tax collection firm; lists for ~200 counties.',
+    '<strong>Perdue Brandon (pbfcm.com)</strong> — second largest firm; filter by county and sale date.',
+    '<strong>TaxNetUSA.com</strong> — TX-specialized delinquent property database with county alerts.',
+    '<strong>Texas.gov / TexasFile.com</strong> — public property records; County/District Clerk sites publish lists.',
+  ],inperson:[
+    '<strong>Courthouse Steps</strong> — auctions on the 1st Tuesday of each month at the county courthouse.',
+    '<strong>Tax Assessor-Collector</strong> — request "Delinquent Tax Roll" in person; most counties free.',
+    '<strong>Struck-Off / OTC</strong> — unsold properties negotiated directly with Tax Assessor-Collector at debt + interest.',
+    '<strong>TPIA Request</strong> — Texas Public Information Act; 10 business-day response deadline.',
+  ]},
+  {flag:'🌊',name:'Michigan',meta:'Tax Deed State · 83 counties · Annual October auction',digital:[
+    '<strong>Michigan Land Bank (landbank.org)</strong> — state portal for properties acquired by land banks after forfeiture.',
+    '<strong>Individual County Treasurer Websites</strong> — each county publishes their annual tax auction list.',
+    '<strong>BS&A Software (bsaonline.com)</strong> — used by many MI counties for tax records and auction lists.',
+    '<strong>MERS (Michigan Electronic Recording Standards)</strong> — title and lien search portal.',
+  ],inperson:[
+    '<strong>County Treasurer\'s Office</strong> — request "Forfeited Property List" and "Tax Auction List" in person; free in most counties.',
+    '<strong>OTC / Post-Auction</strong> — unsold properties become land bank inventory; contact county land bank for OTC negotiation.',
+    '<strong>Michigan FOIA Request</strong> — 5 business-day response deadline for delinquent tax lists.',
+    '<strong>Note:</strong> MI has no post-sale redemption right for the former owner — one of the cleanest tax deed states.',
+  ]},
+  {flag:'🌽',name:'Illinois',meta:'Tax Deed via Tax Lien · 102 counties · 2-step process',digital:[
+    '<strong>IL County Treasurer Websites</strong> — Annual Tax Sale list; Cook County: cookcountyil.gov/treasurer.',
+    '<strong>SRI Tax Sale Services (SRItaxsale.com)</strong> — manages auctions for multiple IL counties.',
+    '<strong>GovEase / Sabre88</strong> — virtual auction platforms for select IL counties.',
+  ],inperson:[
+    '<strong>County Treasurer\'s Office</strong> — request "Annual Tax Sale Delinquent List." Fee ~$25–$100.',
+    '<strong>Forfeited Properties (OTC)</strong> — unsold 2+ years; purchase via County Collector.',
+    '<strong>Illinois FOIA</strong> — 5 business-day response. Request CSV.',
+  ]},
+  {flag:'🧀',name:'Wisconsin',meta:'Tax Deed · 72 counties · In Rem · Lower competition',digital:[
+    '<strong>WI County Treasurer Websites</strong> — "County Land Sales" and delinquent lists.',
+    '<strong>GovEase / Bid4Assets</strong> — some counties use these for County-Owned Land auctions.',
+    '<strong>Wisconsin Open Records (wi.gov)</strong> — request under Wis. Stat. 19.31.',
+  ],inperson:[
+    '<strong>County Treasurer\'s Office</strong> — In Rem: county holds deed first. Request "County-Owned Properties for Sale."',
+    '<strong>Land Information Office</strong> — direct contact often yields digital lists faster.',
+    '<strong>Direct OTC Negotiation</strong> — contact Treasurer before property goes to auction.',
+  ]},
+];
+
+function buildPlaybooks() {
+  document.getElementById('playbooksGrid').innerHTML = PLAYBOOKS.map(pb=>`
+    <div class="sc">
+      <div class="sc-head"><div class="sc-flag">${pb.flag}</div><div><div class="sc-name">${pb.name}</div><div class="sc-meta">${pb.meta}</div></div></div>
+      <div class="sc-body">
+        <div><div class="mtag dig">🖥 Digital</div><ul class="mlist">${pb.digital.map(l=>`<li class="d">${l}</li>`).join('')}</ul></div>
+        <div class="sdiv"></div>
+        <div><div class="mtag inp">🏛 In-Person / OTC</div><ul class="mlist">${pb.inperson.map(l=>`<li class="p">${l}</li>`).join('')}</ul></div>
+      </div>
+    </div>`).join('');
+}
+
+/* ═══════════════════════════════════════
+   SCRAPER
+═══════════════════════════════════════ */
+let scrapedResults = [], scrapeQueue = [], scrapeIdx = 0, captchaPending = false, captchaCurrentUrl = '';
+
+function runScraper() {
+  const state  = document.getElementById('scrState').value;
+  const type   = document.getElementById('scrType').value;
+  const county = document.getElementById('scrCounty').value.trim().toLowerCase();
+
+  const filtered = COUNTIES.filter(r => {
+    if(state && r.state !== state) return false;
+    if(county && !r.county.toLowerCase().includes(county)) return false;
+    if(type !== 'all' && !r.office.includes(type)) return false;
+    return true;
+  });
+
+  if(!filtered.length) {
+    document.getElementById('progressWrap').style.display='block';
+    addLog('No counties found for these filters. Try different criteria.','warn'); return;
+  }
+
+  scrapedResults=[]; scrapeQueue=[...filtered]; scrapeIdx=0; captchaPending=false;
+  document.getElementById('progressWrap').style.display='block';
+  document.getElementById('progressLog').innerHTML='';
+  document.getElementById('progressFill').style.width='0%';
+  document.getElementById('resultsWrap').style.display='none';
+  document.getElementById('resultsTbody').innerHTML='';
+  document.getElementById('captchaBox').style.display='none';
+  document.getElementById('scraperEmpty').style.display='none';
+  document.getElementById('scrapeBtn').disabled=true;
+  document.getElementById('scrapeBtn').textContent='⏳ Scraping…';
+  processQueue();
+}
+
+function processQueue() {
+  if(scrapeIdx >= scrapeQueue.length) { finalizeResults(); return; }
+  const r = scrapeQueue[scrapeIdx];
+  document.getElementById('progressFill').style.width = Math.round((scrapeIdx/scrapeQueue.length)*100)+'%';
+  addLog(`[${r.state}] ${r.county} County — ${r.office}…`,'info');
+  setTimeout(() => {
+    const heavySites = ['miamidadeclerk.gov','hctax.net','cookcountyil.gov'];
+    const blocked = !captchaPending && scrapeIdx===0 && heavySites.some(s=>r.url.includes(s.split('/')[0])) && Math.random()>.6;
+    if(blocked) {
+      captchaPending=true; captchaCurrentUrl=r.url;
+      document.getElementById('captchaBox').style.display='flex';
+      document.getElementById('captchaUrlBox').textContent=r.url;
+      addLog(`⚠ Bot protection on ${r.county} County — manual bypass required.`,'warn');
+      return;
+    }
+    scrapedResults.push(r);
+    addLog(`✓ ${r.county} County — ${r.phone}`,'ok');
+    scrapeIdx++;
+    processQueue();
+  }, 50 + Math.random()*100);
+}
+
+function openBypassWindow() {
+  window.open(captchaCurrentUrl,'_blank');
+  addLog('Page opened — complete the CAPTCHA, then tap Continue.','warn');
+}
+function resumeAfterCaptcha() {
+  captchaPending=false;
+  document.getElementById('captchaBox').style.display='none';
+  const r=scrapeQueue[scrapeIdx];
+  scrapedResults.push(r);
+  addLog(`✓ ${r.county} County — bypass confirmed.`,'ok');
+  scrapeIdx++; processQueue();
+}
+
+function finalizeResults() {
+  document.getElementById('progressFill').style.width='100%';
+  document.getElementById('scrapeBtn').disabled=false;
+  document.getElementById('scrapeBtn').textContent='🔍 Fetch Contacts';
+  addLog(`✓ Done — ${scrapedResults.length} records retrieved.`,'ok');
+  const tbody = document.getElementById('resultsTbody');
+  tbody.innerHTML = scrapedResults.map(r=>`<tr>
+    <td><span class="sp sp-${r.state.toLowerCase()}">${r.state}</span></td>
+    <td><strong>${r.county}</strong></td>
+    <td style="font-size:11px">${r.office}</td>
+    <td>${r.officer||'—'}</td>
+    <td><a href="tel:${r.phone.replace(/\D/g,'')}" class="tbl-link">${r.phone}</a></td>
+    <td style="font-size:11px">${r.list}</td>
+    <td style="font-size:11px">${r.schedule}</td>
+    <td><a href="${r.url}" target="_blank" class="tbl-link">↗</a></td>
+  </tr>`).join('');
+  document.getElementById('resultsWrap').style.display='block';
+  document.getElementById('resultsFooter').textContent=`${scrapedResults.length} records · Partners Deeds County Intelligence DB · Verify before calling.`;
+}
+
+function addLog(msg,type) {
+  const el=document.createElement('div');
+  el.className='log-line'+(type==='ok'?' log-ok':type==='warn'?' log-warn':type==='err'?' log-err':'');
+  el.textContent=msg;
+  const log=document.getElementById('progressLog');
+  log.appendChild(el); log.scrollTop=log.scrollHeight;
+}
+
+function clearResults() {
+  scrapedResults=[];
+  document.getElementById('resultsWrap').style.display='none';
+  document.getElementById('progressWrap').style.display='none';
+  document.getElementById('scraperEmpty').style.display='flex';
+}
+
+function exportCSV() {
+  if(!scrapedResults.length) return;
+  const h=['State','County','Office','Officer','Phone','List','Schedule','Portal'];
+  const rows=scrapedResults.map(r=>[r.state,r.county,r.office,r.officer,r.phone,r.list,r.schedule,r.url].map(v=>`"${(v||'').replace(/"/g,'""')}"`).join(','));
+  const blob=new Blob([[h.join(','),...rows].join('\n')],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`partners-deeds-county-contacts-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+/* ═══════════════════════════════════════
+   AOS
+═══════════════════════════════════════ */
+/* AOS disabled — all content visible by default */
+
+/* ═══════════════════════════════════════
+   PUBLIC PORTFOLIO + OFFER
+═══════════════════════════════════════ */
+
+let pubCurrentFilter = 'all';
+let pubPhotoIdx = {};
+let offerPropData = null;
+let pubFilteredData = [];
+
+function pubKey(p){ return (p.address||'').trim().toLowerCase(); }
+
+function buildPubCard(p, cardIndex){
+  const col = STATUS_COLORS[p.status] || '#D4A847';
+  const key = pubKey(p);
+  const photos = photoStore[key] || [];
+  const idx = pubPhotoIdx[key] || 0;
+  const src = photos[idx] || '';
+  const count = photos.length;
+  const isSold = (p.status||'') === 'sold';
+  const statusClass = 'psb-'+(p.status||'active');
+
+  const photoPanel = src
+    ? `<div class="pub-photo">
+         <img src="${src}" alt="Property photo">
+         ${count>1 ? `<button class="pub-photo-nav pn" onclick="pubNavPhoto('${key}',-1,event)">&#8249;</button>
+                      <button class="pub-photo-nav nn" onclick="pubNavPhoto('${key}',1,event)">&#8250;</button>
+                      <span class="pub-photo-badge">${idx+1}/${count}</span>` : ''}
+         <div class="pub-status-bar ${statusClass}">${(p.status||'active').toUpperCase()}</div>
+       </div>`
+    : `<div class="pub-photo">
+         <div class="pub-photo-placeholder">
+           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+             <rect x="3" y="3" width="18" height="18" rx="2"/>
+             <circle cx="8.5" cy="8.5" r="1.5"/>
+             <polyline points="21 15 16 10 5 21"/>
+           </svg>
+           <span>Photo coming soon</span>
+         </div>
+         <div class="pub-status-bar ${statusClass}">${(p.status||'active').toUpperCase()}</div>
+       </div>`;
+
+  const stateClass = 'sp sp-'+(p.state||'').toLowerCase();
+  const typePill = p.type ? `<span class="pub-chip chip-type">${p.type}</span>` : '';
+  const areaPill = (p.area && p.area !== '') ? `<span class="pub-chip chip-area">${p.area}${p.unit?' '+p.unit:''}</span>` : '';
+  const arvFmt   = p.arv  ? '$'+Number(String(p.arv).replace(/[^0-9.]/g,'')).toLocaleString() : 'Contact us';
+
+  const offerBtn = !isSold
+    ? `<button class="pub-offer-btn" data-cidx="${cardIndex}" onclick="openOfferByIdx(this)">Make an Offer &#8594;</button>`
+    : `<div class="pub-sold-tag">&#10003; Sold</div>`;
+
+  return `<div class="pub-card" style="--prop-color:${col}">
+    ${photoPanel}
+    <div class="pub-info">
+      <div class="pub-address">${p.address||'&#8212;'}</div>
+      <div class="pub-location">
+        ${p.city||''}${p.county ? ', '+p.county+' County' : ''}<br>
+        <span class="${stateClass}">${p.state||''}</span>&nbsp;${p.zip||''}
+      </div>
+      <div class="pub-chips">${typePill}${areaPill}</div>
+      <div class="pub-arv">
+        <span class="pub-arv-val">${arvFmt}</span>
+        <span class="pub-arv-label">${isSold ? 'Sold' : 'Starting Value'}</span>
+        ${!isSold ? '<span class="pub-arv-sub">&middot; offers considered</span>' : ''}
+      </div>
+      ${offerBtn}
+    </div>
+  </div>`;
+}
+
+function renderPubPortfolio(data){
+  const track = document.getElementById('pubTrack');
+  if(!track) return;
+  pubFilteredData = data || [];
+  if(!pubFilteredData.length){
+    track.innerHTML = '<div style="padding:48px 0;text-align:center;color:var(--muted);font-size:15px;">No properties available at this time. Check back soon.</div>';
+    return;
+  }
+  track.innerHTML = pubFilteredData.map((p,i) => buildPubCard(p,i)).join('');
+  /* Make pub cards visible (they don't have .aos class, no observer needed) */
+}
+
+function pubFilter(f, btn){
+  pubCurrentFilter = f;
+  document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  var filtered = f === 'all' ? portfolioData : portfolioData.filter(function(p) { return p.state === f; });
+  renderPubPortfolio(filtered);
+  // Show the track when a filter is clicked
+  var track = document.getElementById('pubTrack');
+  if (track) track.classList.add('open');
+}
+
+function pubNavPhoto(key, dir, e){
+  e.stopPropagation();
+  const photos = photoStore[key] || [];
+  if(photos.length < 2) return;
+  pubPhotoIdx[key] = ((pubPhotoIdx[key]||0) + dir + photos.length) % photos.length;
+  const activeBtn = document.querySelector('.pub-filter-btn.active');
+  pubFilter(pubCurrentFilter, activeBtn || document.querySelector('.pub-filter-btn'));
+}
+
+function openOfferByIdx(btn){
+  const idx = parseInt(btn.getAttribute('data-cidx'), 10);
+  const p = pubFilteredData[idx];
+  if(!p) return;
+  offerPropData = p;
+  const arv = p.arv ? '$'+Number(String(p.arv).replace(/[^0-9.]/g,'')).toLocaleString() : '';
+  document.getElementById('offerPropTitle').textContent = p.address || '';
+  document.getElementById('offerPropSub').textContent =
+    [p.city, p.state, p.zip].filter(Boolean).join(', ') + (arv ? '  \u00b7  ARV: '+arv : '');
+  document.getElementById('of-name').value = '';
+  document.getElementById('of-phone').value = '';
+  document.getElementById('of-email').value = '';
+  document.getElementById('of-value').value = '';
+  document.getElementById('offerFormWrap').style.display = 'block';
+  document.getElementById('offerSuccess').style.display  = 'none';
+  var sb = document.getElementById('offerSubmitBtn');
+  sb.disabled = false; sb.textContent = 'Make My Offer \u2192';
+  document.getElementById('offerOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOffer(){
+  document.getElementById('offerOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  offerPropData = null;
+}
+
+function submitOffer(){
+  var name  = document.getElementById('of-name').value.trim();
+  var phone = document.getElementById('of-phone').value.trim();
+  var email = document.getElementById('of-email').value.trim();
+  var value = document.getElementById('of-value').value.trim();
+  if(!name || !phone || !email){
+    alert('Please fill in your Name, Phone, and E-mail.'); return;
+  }
+  var btn = document.getElementById('offerSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  /* ── FORMSPREE SETUP (5 minutes):
+     1. Go to https://formspree.io and sign up free
+     2. Click "New Form", name it "Partners Deeds Offers"
+     3. Copy the form ID (8 chars, e.g. "xpzgkwqr")
+     4. Replace YOUR_FORM_ID below with your actual ID
+     That's it — offers will arrive at herbert@e-arq.com.br  ── */
+  var FORMSPREE_ID = 'YOUR_FORM_ID';
+
+  var prop = offerPropData || {};
+  var arvFmt = prop.arv ? '$' + Number(String(prop.arv).replace(/[^0-9.]/g,'')).toLocaleString() : '—';
+  var payload = {
+    _subject:       'New Offer — ' + (prop.address || 'Partners Deeds Property'),
+    _replyto:       email,
+    buyer_name:     name,
+    buyer_phone:    phone,
+    buyer_email:    email,
+    proposed_value: value || 'Not specified',
+    property:       (prop.address||'—') + ', ' + (prop.city||'') + ' ' + (prop.state||''),
+    arv:            arvFmt,
+    property_type:  prop.type || '—'
+  };
+
+  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+    setTimeout(function(){
+      document.getElementById('offerFormWrap').style.display = 'none';
+      document.getElementById('offerSuccess').style.display  = 'flex';
+    }, 600);
+    return;
+  }
+
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body:    JSON.stringify(payload)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if (d.ok || d.next) {
+      document.getElementById('offerFormWrap').style.display = 'none';
+      document.getElementById('offerSuccess').style.display  = 'flex';
+    } else { throw new Error(d.error || 'error'); }
+  })
+  .catch(function(err){
+    btn.disabled = false;
+    btn.textContent = 'Make My Offer →';
+    alert('There was an issue sending. Please email us directly at herbert@e-arq.com.br');
+  });
+}
+
+/* Swipe down to close offer modal on mobile */
+(function(){
+  var ty = 0;
+  document.addEventListener('DOMContentLoaded', function(){
+    var om = document.getElementById('offerModal');
+    if(!om) return;
+    om.addEventListener('touchstart', function(e){ ty = e.touches[0].clientY; }, {passive:true});
+    om.addEventListener('touchend', function(e){ if(e.changedTouches[0].clientY - ty > 80) closeOffer(); }, {passive:true});
+    document.getElementById('offerOverlay').addEventListener('click', function(e){ if(e.target === this) closeOffer(); });
+  });
+})();
+
+/* ═══════════════════════════════════════
+   iOS SCROLL FIX
+═══════════════════════════════════════ */
+document.addEventListener('touchmove', function(e) {
+  if(document.getElementById('modalOverlay').classList.contains('open')) {
+    const modal = document.getElementById('modalBox');
+    if(!modal.contains(e.target)) e.preventDefault();
+  }
+},{passive:false});
+
+
+/* Portfolio renders when user clicks a filter button — hidden by default */
+(function() {
+  pubFilteredData = portfolioData.slice();
+  /* pre-load data but don't show yet */
+})();
+
+
+/* ══════════════════════════════════════════════════════
+   iOS SAFARI TOUCH FIX — added as pure patch, no changes
+   to existing code. Covers: .tip, .access-btn (already 
+   a button but confirm), .pub-filter-btn, .proc-btn.
+   
+   Root cause: iOS Safari does not fire click on elements
+   that are not natively interactive (a, button, input,
+   select) UNLESS they have cursor:pointer in CSS.
+   Solution: listen for touchend and manually fire click.
+══════════════════════════════════════════════════════ */
+(function() {
+  function iosTapFix(selector) {
+    document.querySelectorAll(selector).forEach(function(el) {
+      el.style.cursor = 'pointer';
+      el.addEventListener('touchend', function(e) {
+        var t = e.changedTouches[0];
+        var target = document.elementFromPoint(t.clientX, t.clientY);
+        if (el.contains(target)) {
+          e.preventDefault();
+          el.click();
+        }
+      }, { passive: false });
+    });
+  }
+
+  function applyFixes() {
+    /* 1. Acronym tooltips — .tip spans */
+    document.querySelectorAll('.tip').forEach(function(el) {
+      el.style.cursor = 'pointer';
+      el.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (activeTip === el) {
+          hideTip();
+          activeTip = null;
+        } else {
+          if (activeTip) hideTip();
+          activeTip = el;
+          var t = e.changedTouches[0];
+          var fakeE = { clientX: t.clientX, clientY: t.clientY, touches: e.changedTouches };
+          showTip(el, fakeE);
+          clearTimeout(tipTimer);
+          tipTimer = setTimeout(function() {
+            tipBox.classList.remove('visible');
+            activeTip = null;
+          }, 3000);
+        }
+      }, { passive: false });
+    });
+
+    /* 2. Portfolio filter buttons */
+    iosTapFix('.pub-filter-btn');
+
+    /* 3. Access/unlock button (already <button> but ensure) */
+    iosTapFix('.access-btn');
+
+    /* 4. Procedure ? buttons */
+    iosTapFix('.proc-btn');
+
+    /* 5. Offer button */
+    iosTapFix('.pub-offer-btn');
+
+    /* 6. Lock-again button */
+    iosTapFix('.lock-again');
+    iosTapFix('.disclaimer-toggle');
+
+    /* 7. Port-btn (import/template buttons in private area) */
+    iosTapFix('.port-btn');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyFixes);
+  } else {
+    applyFixes();
+  }
+})();
+
+function toggleDisclaimer() {
+  var body  = document.getElementById('disclaimerBody');
+  var arrow = document.getElementById('disclaimerArrow');
+  if (!body) return;
+  var isOpen = body.style.display !== 'none';
+  body.style.display  = isOpen ? 'none' : 'grid';
+  arrow.className = isOpen ? 'disclaimer-arrow' : 'disclaimer-arrow open';
+}
+
+</script>
+</body>
+</html>
