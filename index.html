@@ -831,12 +831,40 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
       </div>
 
       <div class="op-tabs">
+        <button class="op-tab active" onclick="switchTab('portfolio',this)">🏠 Portfolio</button>
         <button class="op-tab" onclick="switchTab('scraper',this)">🔍 County Scraper</button>
         <button class="op-tab" onclick="switchTab('contacts',this)">📋 Contacts</button>
         <button class="op-tab" onclick="switchTab('playbooks',this)">📖 Playbooks</button>
       </div>
 
 
+
+      <!-- ══ TAB: PORTFOLIO ══ -->
+      <div class="op-panel" id="tab-portfolio">
+        <div class="scraper-intro">Manage the Partners Deeds property portfolio. Import properties via CSV, download the template to fill in your data, and export the current list at any time.</div>
+
+        <div class="portfolio-stats" id="portfolioStats">
+          <div class="pstat"><span class="pstat-n" id="ps-total">18</span><span class="pstat-l">Total Properties</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-active">17</span><span class="pstat-l">Active / Held</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-sold">1</span><span class="pstat-l">Sold</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-states">2</span><span class="pstat-l">States</span></div>
+        </div>
+
+        <div class="portfolio-actions">
+          <span id="pvStateFilters"><!-- state filters rendered by JS --></span>
+          <button class="port-btn" onclick="document.getElementById('csvFileInput').click()">⬆ Import CSV</button>
+          <button class="port-btn" onclick="downloadTemplate()">⬇ CSV Template</button>
+          <button class="port-btn" onclick="exportPortfolioCSV()">⬇ Export Current</button>
+        </div>
+        <input type="file" id="csvFileInput" class="import-file-input" accept=".csv" onchange="importCSV(event)">
+
+        <div id="propTrackPrivate" class="pub-track" style="display:flex"></div>
+
+        <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;padding:12px;background:rgba(212,168,71,.04);border:1px solid var(--border);">
+          <strong style="color:var(--paper2);">How to update the portfolio:</strong>
+          Click <em>⬇ CSV Template</em> to get the column format → fill in Excel or Google Sheets → save as CSV → click <em>⬆ Import CSV</em>. To add a new property, add a row and re-import. To export the current list, click <em>⬇ Export Current</em>.
+        </div>
+      </div><!-- /tab-portfolio -->
 
       <!-- ══ TAB: SCRAPER ══ -->
       <div class="op-panel" id="tab-scraper" style="display:none">
@@ -1275,8 +1303,9 @@ function lockSection() {
    TAB SWITCHER
 ═══════════════════════════════════════ */
 function switchTab(name, btn) {
-  ['scraper','contacts','playbooks'].forEach(t => {
-    document.getElementById('tab-'+t).style.display = (t===name)?'block':'none';
+  ['portfolio','scraper','contacts','playbooks'].forEach(function(t) {
+    var el = document.getElementById('tab-'+t);
+    if (el) el.style.display = (t===name) ? 'block' : 'none';
   });
   document.querySelectorAll('.op-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -1926,31 +1955,23 @@ function submitOffer(){
   }
   var btn = document.getElementById('offerSubmitBtn');
   btn.disabled = true;
-  btn.textContent = 'Sending…';
+  btn.textContent = 'Sending\u2026';
 
-  /* ── FORMSPREE SETUP (5 minutes):
-     1. Go to https://formspree.io and sign up free
-     2. Click "New Form", name it "Partners Deeds Offers"
-     3. Copy the form ID (8 chars, e.g. "xpzgkwqr")
-     4. Replace YOUR_FORM_ID below with your actual ID
-     That's it — offers will arrive at herbert@e-arq.com.br  ── */
-  var FORMSPREE_ID = 'YOUR_FORM_ID';
+  /* ── WEB3FORMS — free, 250 emails/month, NO account needed ──────────────
+     Instructions (2 minutes):
+     1. Go to https://web3forms.com
+     2. Enter your email: herbert@e-arq.com.br  →  click "Create Access Key"
+     3. Check your email inbox → copy the Access Key (looks like a long UUID)
+     4. Replace YOUR_ACCESS_KEY below with that key
+     5. Re-upload the HTML file — done. No login, no dashboard needed.
+     ─────────────────────────────────────────────────────────────────────── */
+  var ACCESS_KEY = 'YOUR_ACCESS_KEY';
 
   var prop = offerPropData || {};
-  var arvFmt = prop.arv ? '$' + Number(String(prop.arv).replace(/[^0-9.]/g,'')).toLocaleString() : '—';
-  var payload = {
-    _subject:       'New Offer — ' + (prop.address || 'Partners Deeds Property'),
-    _replyto:       email,
-    buyer_name:     name,
-    buyer_phone:    phone,
-    buyer_email:    email,
-    proposed_value: value || 'Not specified',
-    property:       (prop.address||'—') + ', ' + (prop.city||'') + ' ' + (prop.state||''),
-    arv:            arvFmt,
-    property_type:  prop.type || '—'
-  };
+  var arvFmt = prop.arv ? '$' + Number(String(prop.arv).replace(/[^0-9.]/g,'')).toLocaleString() : '\u2014';
 
-  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+  if (ACCESS_KEY === 'YOUR_ACCESS_KEY') {
+    /* Demo mode — shows success without sending */
     setTimeout(function(){
       document.getElementById('offerFormWrap').style.display = 'none';
       document.getElementById('offerSuccess').style.display  = 'flex';
@@ -1958,22 +1979,38 @@ function submitOffer(){
     return;
   }
 
-  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+  var payload = {
+    access_key:   ACCESS_KEY,
+    subject:      'New Offer \u2014 ' + (prop.address || 'Partners Deeds Property'),
+    from_name:    'Partners Deeds Website',
+    replyto:      email,
+    name:         name,
+    phone:        phone,
+    buyer_email:  email,
+    proposed_value: value || 'Not specified',
+    property:     (prop.address||'\u2014') + ', ' + (prop.city||'') + ' ' + (prop.state||''),
+    arv:          arvFmt,
+    property_type: prop.type || '\u2014',
+    botcheck:     ''
+  };
+
+  fetch('https://api.web3forms.com/submit', {
     method:  'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body:    JSON.stringify(payload)
   })
   .then(function(r){ return r.json(); })
   .then(function(d){
-    if (d.ok || d.next) {
+    if (d.success) {
       document.getElementById('offerFormWrap').style.display = 'none';
       document.getElementById('offerSuccess').style.display  = 'flex';
-    } else { throw new Error(d.error || 'error'); }
+    } else { throw new Error(d.message || 'Submission failed'); }
   })
   .catch(function(err){
     btn.disabled = false;
-    btn.textContent = 'Make My Offer →';
-    alert('There was an issue sending. Please email us directly at herbert@e-arq.com.br');
+    btn.textContent = 'Make My Offer \u2192';
+    alert('There was an issue sending your offer. Please email us directly at herbert@e-arq.com.br');
+    console.error('Web3Forms error:', err);
   });
 }
 
@@ -2092,6 +2129,92 @@ function toggleDisclaimer() {
   body.style.display  = isOpen ? 'none' : 'grid';
   arrow.className = isOpen ? 'disclaimer-arrow' : 'disclaimer-arrow open';
 }
+
+
+/* ── Private portfolio tab renderer ── */
+function renderPrivatePortfolio(data) {
+  var track = document.getElementById('propTrackPrivate');
+  if (!track) return;
+  var display = data || portfolioData;
+  if (!display.length) {
+    track.innerHTML = '<div style="padding:32px;text-align:center;color:var(--muted);font-size:14px;">No properties. Import a CSV to get started.</div>';
+  } else {
+    track.innerHTML = display.map(function(p, i) { return buildPubCard(p, i); }).join('');
+  }
+
+  /* Rebuild dynamic state filter buttons */
+  var states = [...new Set(portfolioData.map(function(p){ return p.state; }))].sort();
+  var stateEmoji = { FL:'🌴', TX:'⭐', MI:'🌊', IL:'🌽', WI:'🧀' };
+  var filtersEl = document.getElementById('pvStateFilters');
+  if (filtersEl) {
+    var html = '<button class="port-btn active-filter" id="pvFilterAll" onclick="pvFilter(\'all\',this)">All (' + portfolioData.length + ')</button>';
+    states.forEach(function(st) {
+      var count = portfolioData.filter(function(p){ return p.state === st; }).length;
+      if (count > 0) {
+        html += '<button class="port-btn" onclick="pvFilter(\'' + st + '\',this)">' + (stateEmoji[st]||'') + ' ' + st + ' (' + count + ')</button>';
+      }
+    });
+    filtersEl.innerHTML = html;
+    /* Re-apply iOS tap fix to new buttons */
+    if (typeof iosTapFix === 'function') {
+      filtersEl.querySelectorAll('.port-btn').forEach(function(el) {
+        el.style.cursor = 'pointer';
+        el.addEventListener('touchend', function(e) {
+          var t = e.changedTouches[0];
+          var target = document.elementFromPoint(t.clientX, t.clientY);
+          if (el.contains(target)) { e.preventDefault(); el.click(); }
+        }, { passive: false });
+      });
+    }
+  }
+
+  /* Update stats */
+  var total  = portfolioData.length;
+  var sold   = portfolioData.filter(function(x){ return x.status === 'sold'; }).length;
+  var stateCount = states.length;
+  var el;
+  el = document.getElementById('ps-total');  if(el) el.textContent = total;
+  el = document.getElementById('ps-active'); if(el) el.textContent = total - sold;
+  el = document.getElementById('ps-sold');   if(el) el.textContent = sold;
+  el = document.getElementById('ps-states'); if(el) el.textContent = stateCount;
+}
+
+function pvFilter(f, btn) {
+  /* Mark active button */
+  var filtersEl = document.getElementById('pvStateFilters');
+  if (filtersEl) {
+    filtersEl.querySelectorAll('.port-btn').forEach(function(b){ b.classList.remove('active-filter'); });
+  }
+  var allBtn = document.getElementById('pvFilterAll');
+  if (allBtn) allBtn.classList.remove('active-filter');
+  btn.classList.add('active-filter');
+  var filtered = f === 'all' ? portfolioData : portfolioData.filter(function(p){ return p.state === f; });
+  var track = document.getElementById('propTrackPrivate');
+  if (track) track.innerHTML = filtered.map(function(p, i){ return buildPubCard(p, i); }).join('');
+}
+
+function exportPortfolioCSV() {
+  if (!portfolioData.length) { alert('No properties to export.'); return; }
+  var rows = portfolioData.map(function(p) {
+    return CSV_COLUMNS.map(function(col) { return '"' + (p[col]||'').replace(/"/g,'""') + '"'; }).join(',');
+  });
+  var csv = CSV_COLUMNS.join(',') + '\n' + rows.join('\n');
+  var a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'partners-deeds-portfolio-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+/* Re-render private portfolio when unlocked */
+var _origCheckAccess = checkAccess;
+checkAccess = function() {
+  _origCheckAccess();
+  setTimeout(function() {
+    if (document.getElementById('privateContent').classList.contains('unlocked')) {
+      renderPrivatePortfolio(portfolioData);
+    }
+  }, 100);
+};
 
 </script>
 </body>
