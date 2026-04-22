@@ -618,7 +618,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 <div class="stats-bar">
   <div class="stat"><span class="stat-n">4</span><span class="stat-l">Business Pillars</span></div>
   <div class="stat"><span class="stat-n">5</span><span class="stat-l">Target States</span></div>
-  <div class="stat"><span class="stat-n">18</span><span class="stat-l">Properties in Portfolio</span></div>
+  <div class="stat"><span class="stat-n" id="topStatProps">18</span><span class="stat-l">Properties in Portfolio</span></div>
   <div class="stat"><span class="stat-n">$1.76M+</span><span class="stat-l">Portfolio Market Value</span></div>
 </div>
 
@@ -640,7 +640,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     <div class="pillar-kpis">
       <div class="kpi"><span class="kpi-val">30–70%</span><span class="kpi-key">Avg. Discount</span></div>
       <div class="kpi"><span class="kpi-val">FL · TX · MI · IL · WI</span><span class="kpi-key">Target States</span></div>
-      <div class="kpi"><span class="kpi-val">18 Props</span><span class="kpi-key">Current Portfolio</span></div>
+      <div class="kpi"><span class="kpi-val" id="kpiProps">18 Props</span><span class="kpi-key">Current Portfolio</span></div>
     </div>
     <div class="pillar-detail">
       <div class="detail-grid">
@@ -1477,10 +1477,12 @@ function updatePortfolioStats(data) {
   const sold   = portfolioData.filter(p=>p.status==='sold').length;
   const active = total - sold;
   const states = [...new Set(portfolioData.map(p=>p.state))].length;
+  /* Private section stats */
   document.getElementById('ps-total').textContent  = total;
   document.getElementById('ps-active').textContent = active;
   document.getElementById('ps-sold').textContent   = sold;
   document.getElementById('ps-states').textContent = states;
+  /* Public filter buttons */
   document.getElementById('filterAll').textContent = `All (${total})`;
   const flC = portfolioData.filter(p=>p.state==='FL').length;
   const txC = portfolioData.filter(p=>p.state==='TX').length;
@@ -1489,6 +1491,11 @@ function updatePortfolioStats(data) {
   const txBtn = document.getElementById('filterTX');
   if(txBtn) txBtn.textContent = '⭐ TX'+(txC?` (${txC})`:'');
   document.getElementById('filterMI').textContent = '🌊 MI'+(miC?` (${miC})`:'');
+  /* Top stats bar and Pillar 1 KPI — sync with actual portfolio size */
+  const topStat = document.getElementById('topStatProps');
+  if(topStat) topStat.textContent = total;
+  const kpiEl = document.getElementById('kpiProps');
+  if(kpiEl) kpiEl.textContent = total + ' Props';
 }
 
 /* ── Filter ── */
@@ -1861,7 +1868,14 @@ function buildPubCard(p, cardIndex){
   const stateClass = 'sp sp-'+(p.state||'').toLowerCase();
   const typePill = p.type ? `<span class="pub-chip chip-type">${p.type}</span>` : '';
   const areaPill = (p.area && p.area !== '') ? `<span class="pub-chip chip-area">${p.area}${p.unit?' '+p.unit:''}</span>` : '';
-  const arvFmt   = p.arv  ? '$'+Number(String(p.arv).replace(/[^0-9.]/g,'')).toLocaleString() : 'Contact us';
+  /* Starting value = sale_price if set, otherwise arv, otherwise blank */
+  const startingRaw = (p.sale_price && String(p.sale_price).replace(/[^0-9.]/g,'') !== '')
+    ? p.sale_price
+    : (p.arv || '');
+  const startingFmt = startingRaw
+    ? '$' + Number(String(startingRaw).replace(/[^0-9.]/g,'')).toLocaleString()
+    : '';
+  const arvFmt = startingFmt || 'Contact us';
 
   const offerBtn = !isSold
     ? `<button class="pub-offer-btn" data-cidx="${cardIndex}" onclick="openOfferByIdx(this)">Make an Offer &#8594;</button>`
@@ -1877,9 +1891,15 @@ function buildPubCard(p, cardIndex){
       </div>
       <div class="pub-chips">${typePill}${areaPill}</div>
       <div class="pub-arv">
-        <span class="pub-arv-val">${arvFmt}</span>
-        <span class="pub-arv-label">${isSold ? 'Sold' : 'Starting Value'}</span>
-        ${!isSold ? '<span class="pub-arv-sub">&middot; offers considered</span>' : ''}
+        ${isSold
+          ? '<span class=\"pub-arv-val\" style=\"font-size:18px\">&#10003; Sold</span>'
+          : startingFmt
+            ? '<span class=\"pub-arv-label\" style=\"font-size:13px\">Contact us</span>'
+              + '<span class=\"pub-arv-label\" style=\"color:var(--muted);margin:0 6px\">&middot;</span>'
+              + '<span class=\"pub-arv-label\">Starting value: ' + startingFmt + '</span>'
+              + '<span class=\"pub-arv-sub\">&middot; offers considered</span>'
+            : '<span class=\"pub-arv-val\" style=\"font-size:16px\">Contact us for pricing</span>'
+        }
       </div>
       ${offerBtn}
     </div>
@@ -1960,7 +1980,7 @@ function submitOffer(){
   /* ── WEB3FORMS — free, 250 emails/month, NO account needed ──────────────
      Instructions (2 minutes):
      1. Go to https://web3forms.com
-     2. Enter your email: herbert@e-arq.com.br  →  click "Create Access Key"
+     2. Enter your email: herbert63@gmail.com  →  click "Create Access Key"
      3. Check your email inbox → copy the Access Key (looks like a long UUID)
      4. Replace YOUR_ACCESS_KEY below with that key
      5. Re-upload the HTML file — done. No login, no dashboard needed.
@@ -2009,7 +2029,7 @@ function submitOffer(){
   .catch(function(err){
     btn.disabled = false;
     btn.textContent = 'Make My Offer \u2192';
-    alert('There was an issue sending your offer. Please email us directly at herbert@e-arq.com.br');
+    alert('There was an issue sending your offer. Please email us directly at herbert63@gmail.com');
     console.error('Web3Forms error:', err);
   });
 }
