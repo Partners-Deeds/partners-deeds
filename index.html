@@ -589,6 +589,13 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 .lang-bar{display:flex;justify-content:flex-end;gap:6px;padding:10px 0 0;margin-bottom:-28px;position:relative;z-index:10;}
 .lang-btn{background:none;border:1px solid var(--border);color:var(--paper3);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;cursor:pointer;transition:all .2s;border-radius:2px;display:inline-flex;align-items:center;gap:4px;-webkit-appearance:none;}
 .lang-btn:hover,.lang-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(212,168,71,.08);}
+
+/* -- Photo persistence UI -- */
+.photo-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink3);border:1px solid var(--gold);color:var(--gold);font-size:13px;font-weight:600;padding:10px 20px;border-radius:4px;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;}
+.photo-feedback.show{opacity:1;}
+.photo-del-btn{position:absolute;top:6px;right:6px;width:22px;height:22px;background:rgba(181,91,91,.85);border:none;color:#fff;font-size:13px;font-weight:700;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;z-index:5;opacity:0;transition:opacity .2s;}
+.prop-photo:hover .photo-del-btn{opacity:1;}
+.photo-storage-info{font-size:11px;color:var(--paper3);padding:6px 10px;background:rgba(212,168,71,.04);border:1px solid var(--border);border-radius:2px;display:inline-block;margin-left:8px;}
 </style>
 </head>
 <body>
@@ -863,6 +870,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
           <button class="port-btn" onclick="document.getElementById('csvFileInput').click()">⬆ Import CSV</button>
           <button class="port-btn" onclick="downloadTemplate()">⬇ CSV Template</button>
           <button class="port-btn" onclick="exportPortfolioCSV()">⬇ Export Current</button>
+            <span class="photo-storage-info" id="photoStorageInfo">📷 Loading…</span>
         </div>
         <input type="file" id="csvFileInput" class="import-file-input" accept=".csv" onchange="importCSV(event)">
 
@@ -1322,8 +1330,34 @@ function switchTab(name, btn) {
 ═══════════════════════════════════════ */
 const CSV_COLUMNS = ['address','city','county','state','zip','type','area','unit','status','acquisition_date','acquisition_price','arv','rehab_cost','sale_price','sale_date','notes'];
 
-/* ── Photo store: key = address, value = array of base64 strings ── */
-const photoStore = {};
+/* ══════════════════════════════════════════════════════
+   PHOTO PERSISTENCE — localStorage
+   Photos survive browser restarts. Stored under key
+   'pd_photos_v1' as JSON {address_key: [base64, ...]}
+══════════════════════════════════════════════════════ */
+var PHOTO_STORAGE_KEY = 'pd_photos_v1';
+
+var photoStore = (function() {
+  try {
+    var s = localStorage.getItem('pd_photos_v1');
+    return s ? JSON.parse(s) : {};
+  } catch(e) { return {}; }
+})();
+
+function savePhotoStore() {
+  try {
+    localStorage.setItem('pd_photos_v1', JSON.stringify(photoStore));
+  } catch(e) {
+    console.warn('Partners Deeds: photo save failed:', e.message);
+  }
+}
+
+function deleteOnePhoto(key, idx) {
+  if (!photoStore[key]) return;
+  photoStore[key].splice(idx, 1);
+  if (photoStore[key].length === 0) delete photoStore[key];
+  savePhotoStore();
+}
 
 const SAMPLE_PROPS = [
   {address:'3598 Allegra Circle (Lot 146)',city:'Saint Cloud',county:'Osceola',state:'FL',zip:'34772',type:'lot in condominium',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-10-07',acquisition_price:'3323.10',arv:'',rehab_cost:'',sale_price:'19590.00',sale_date:'',notes:'Title clear, permit pulled'},
@@ -1408,6 +1442,7 @@ function buildCard(p, idx) {
          ${photoCount>1?`<button class="photo-nav prev" onclick="photoNav(${idx},-1)">‹</button><button class="photo-nav next" onclick="photoNav(${idx},1)">›</button>`:''}
          ${photoCount>0?`<span class="photo-count-badge">${photoCount} photo${photoCount>1?'s':''}</span>`:''}
          <button class="prop-photo-add-btn" onclick="triggerPhotoUpload(${idx})">+ Add Photo</button>
+         <button class="photo-del-btn" onclick="deletePhoto(${idx},${photoIndexes[key]||0},event)" title="Remove this photo">×</button>
        </div>`
     : `<div class="prop-photo" id="photo-panel-${idx}" onclick="triggerPhotoUpload(${idx})">
          <div class="prop-photo-placeholder">
@@ -1471,7 +1506,7 @@ function handlePhotoUpload(idx, input){
       photoStore[key].push(e.target.result);
       loaded++;
       if(loaded === files.length) {
-        // Re-render just this card
+        savePhotoStore();
         const track = document.getElementById('propTrack');
         const cards = track.querySelectorAll('.prop-card');
         if(cards[idx]) {
@@ -1480,6 +1515,10 @@ function handlePhotoUpload(idx, input){
           const newCard = tmp.firstElementChild;
           track.replaceChild(newCard, cards[idx]);
         }
+        if (pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
+        showPhotoFeedback('✓ ' + files.length + ' photo' + (files.length > 1 ? 's' : '') + ' saved permanently.');
+        var si = document.getElementById('photoStorageInfo');
+        if (si) si.textContent = '📷 ' + getPhotoStorageInfo();
       }
     };
     reader.readAsDataURL(file);
@@ -2244,13 +2283,15 @@ function exportPortfolioCSV() {
   a.click();
 }
 
-/* Re-render private portfolio when unlocked */
-var _origCheckAccess = checkAccess;
+/* Re-render private portfolio + update photo info when unlocked */
+var _origCheckAccess2 = checkAccess;
 checkAccess = function() {
-  _origCheckAccess();
+  _origCheckAccess2();
   setTimeout(function() {
     if (document.getElementById('privateContent').classList.contains('unlocked')) {
       renderPrivatePortfolio(portfolioData);
+      var si = document.getElementById('photoStorageInfo');
+      if (si) si.textContent = '\uD83D\uDCF7 ' + getPhotoStorageInfo();
     }
   }, 100);
 };
@@ -2580,6 +2621,84 @@ function setLang(lang) {
   if (pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
 }
 
+
+
+/* -- Photo UI functions -- */
+var _feedbackTimer = null;
+function showPhotoFeedback(msg) {
+  var el = document.getElementById('photoFeedback');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(_feedbackTimer);
+  _feedbackTimer = setTimeout(function() { el.classList.remove('show'); }, 3000);
+}
+function deletePhoto(propIdx, photoIdx, event) {
+  if (event) { event.stopPropagation(); event.preventDefault(); }
+  var data = portfolioData.filter(function(p){ return currentFilter==='all'||p.state===currentFilter; });
+  var p = data[propIdx]; if (!p) return;
+  var key = photoKey(p);
+  deleteOnePhoto(key, photoIdx);
+  var track = document.getElementById('propTrack');
+  var cards = track ? track.querySelectorAll('.prop-card') : [];
+  if (cards[propIdx]) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = buildCard(p, propIdx);
+    track.replaceChild(tmp.firstElementChild, cards[propIdx]);
+  }
+  if (pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
+  showPhotoFeedback('Photo removed.');
+  var si = document.getElementById('photoStorageInfo');
+  if (si) si.textContent = '📷 ' + getPhotoStorageInfo();
+}
+function getPhotoStorageInfo() {
+  try {
+    var raw = localStorage.getItem('pd_photos_v1') || '';
+    var kb = Math.round(raw.length * 2 / 1024);
+    var keys = Object.keys(photoStore);
+    var total = keys.reduce(function(a,k){return a+(photoStore[k]||[]).length;},0);
+    return total+' photo(s) across '+keys.length+' propert'+(keys.length===1?'y':'ies')+' | '+kb+' KB stored';
+  } catch(e) { return 'Storage info unavailable'; }
+}
+function clearAllPhotos() {
+  if (!confirm('Remove ALL photos? This cannot be undone.')) return;
+  Object.keys(photoStore).forEach(function(k){delete photoStore[k];});
+  savePhotoStore();
+  renderPrivatePortfolio(portfolioData);
+  if (pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
+  showPhotoFeedback('All photos cleared.');
+  var si = document.getElementById('photoStorageInfo');
+  if (si) si.textContent = '📷 No photos stored';
+}
+/* -- Global exports -- */
+window.checkAccess        = checkAccess;
+window.lockSection        = lockSection;
+window.switchTab          = switchTab;
+window.togglePillar       = togglePillar;
+window.toggleDisclaimer   = toggleDisclaimer;
+window.openModal          = openModal;
+window.closeModal         = closeModal;
+window.pubFilter          = pubFilter;
+window.pubNavPhoto        = pubNavPhoto;
+window.openOfferByIdx     = openOfferByIdx;
+window.closeOffer         = closeOffer;
+window.submitOffer        = submitOffer;
+window.photoNav           = photoNav;
+window.triggerPhotoUpload = triggerPhotoUpload;
+window.downloadTemplate   = downloadTemplate;
+window.exportPortfolioCSV = exportPortfolioCSV;
+window.runScraper         = runScraper;
+window.openBypassWindow   = openBypassWindow;
+window.resumeAfterCaptcha = resumeAfterCaptcha;
+window.clearResults       = clearResults;
+window.exportCSV          = exportCSV;
+window.pvFilter           = pvFilter;
+window.setLang            = setLang;
+window.deletePhoto        = deletePhoto;
+window.showPhotoFeedback  = showPhotoFeedback;
+window.clearAllPhotos     = clearAllPhotos;
+
 </script>
+<div class="photo-feedback" id="photoFeedback"></div>
 </body>
 </html>
