@@ -626,10 +626,10 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
 <!-- ══ STATS ══ -->
 <div class="stats-bar">
-  <div class="stat"><span class="stat-n">4</span><span class="stat-l">Business Pillars</span></div>
-  <div class="stat"><span class="stat-n">5</span><span class="stat-l">Target States</span></div>
-  <div class="stat"><span class="stat-n" id="topStatProps">20</span><span class="stat-l">Properties in Portfolio</span></div>
-  <div class="stat"><span class="stat-n">$1.76M+</span><span class="stat-l">Portfolio Market Value</span></div>
+  <div class="stat"><span class="stat-n">4</span><span class="stat-l" id="i18n-stat-pillars">Business Pillars</span></div>
+  <div class="stat"><span class="stat-n">5</span><span class="stat-l" id="i18n-stat-states">Target States</span></div>
+  <div class="stat"><span class="stat-n" id="topStatProps">20</span><span class="stat-l" id="i18n-stat-props">Properties in Portfolio</span></div>
+  <div class="stat"><span class="stat-n">$1.76M+</span><span class="stat-l" id="i18n-stat-value">Portfolio Market Value</span></div>
 </div>
 
 <!-- ══ PILLARS ══ -->
@@ -646,7 +646,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
       <span class="pillar-badge" style="color:#D4A847;border-color:rgba(212,168,71,.4)">Core · Capital Engine</span>
     </div>
     <div class="pillar-name">Tax Deed Auction<br>Acquisitions</div>
-    <p class="pillar-desc">Direct purchase of properties at deep discounts through county tax deed auctions, generating capital, data, and track record that fuel all other pillars.</p>
+    <p class="pillar-desc" id="i18n-p1-desc">Direct purchase of properties at deep discounts through county tax deed auctions, generating capital, data, and track record that fuel all other pillars.</p>
     <div class="pillar-kpis">
       <div class="kpi"><span class="kpi-val">30–70%</span><span class="kpi-key">Avg. Discount</span></div>
       <div class="kpi"><span class="kpi-val">FL · TX · MI · IL · WI</span><span class="kpi-key">Target States</span></div>
@@ -659,7 +659,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
           <ul class="detail-list">
             <li>Title due diligence before each bid <button class="proc-btn" onclick="event.stopPropagation();openModal('titledd')">?</button></li>
             <li>Competing liens: <span class="tip" data-tip="Internal Revenue Service — U.S. federal tax authority. IRS liens carry a 120-day redemption right after a tax deed sale.">IRS</span>, mechanics, <span class="tip" data-tip="Home Owner Association — mandatory-fee community. HOA super-liens can survive the tax deed in some states.">HOA</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('liencheck')">?</button></li>
-            <li>Track online &amp; <span class="tip" data-tip="Over-The-Counter — direct purchase at the county clerk's office for unsold properties.">OTC</span> auctions per county <button class="proc-btn" onclick="event.stopPropagation();openModal('auctiontrack')">?</button></li>
+            <li>Track online &amp; <span class="tip" data-tip="Over-The-Counter — direct purchase at the county clerk\'s office for unsold properties.">OTC</span> auctions per county <button class="proc-btn" onclick="event.stopPropagation();openModal('auctiontrack')">?</button></li>
             <li>Bid strategy based on margin, not emotion</li>
             <li>Fast disposition: wholesale, flip, or hold</li>
           </ul>
@@ -724,7 +724,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
       <span class="pillar-badge" style="color:#5B9E6A;border-color:rgba(91,158,106,.4)">Leverage · Recurring Revenue</span>
     </div>
     <div class="pillar-name">Tax Deed Intel<br>SaaS Platform</div>
-    <p class="pillar-desc">Monetize the proprietary database through a subscription platform: auction calendars, surplus alerts, automated property scoring, and due diligence tools.</p>
+    <p class="pillar-desc" id="i18n-p3-desc">Monetize the proprietary database through a subscription platform: auction calendars, surplus alerts, automated property scoring, and due diligence tools.</p>
     <div class="pillar-kpis">
       <div class="kpi"><span class="kpi-val">MRR</span><span class="kpi-key">Predictable Revenue</span></div>
       <div class="kpi"><span class="kpi-val">$97–$497/mo</span><span class="kpi-key">Plan Range</span></div>
@@ -763,7 +763,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
       <span class="pillar-badge" style="color:#8B6CC4;border-color:rgba(139,108,196,.4)">Niche · High Margin · Zero Capital</span>
     </div>
     <div class="pillar-name">Surplus Funds &amp;<br>Overages Recovery</div>
-    <p class="pillar-desc">Identify and recover auction overages from county records on behalf of dispossessed former owners. Ultra-high margin, minimal competition, 100% remote.</p>
+    <p class="pillar-desc" id="i18n-p4-desc">Identify and recover auction overages from county records on behalf of dispossessed former owners. Ultra-high margin, minimal competition, 100% remote.</p>
     <div class="pillar-kpis">
       <div class="kpi"><span class="kpi-val">25–40%</span><span class="kpi-key">Recovery Fee</span></div>
       <div class="kpi"><span class="kpi-val">$0 Upfront</span><span class="kpi-key">No Capital Risk</span></div>
@@ -808,7 +808,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         <div class="private-lock-icon">🔒</div>
         <div>
           <div class="private-title">Operator Access Only</div>
-          <div class="private-subtitle">County playbooks, contacts, scraper &amp; property portfolio — not shown to investors</div>
+          <div class="private-subtitle" id="i18n-private-subtitle">County playbooks, contacts, scraper &amp; property portfolio — not shown to investors</div>
         </div>
       </div>
       <div class="private-badge">RESTRICTED</div>
@@ -836,7 +836,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     <!-- Private content -->
     <div class="private-content" id="privateContent">
       <div class="unlocked-bar">
-        <span class="unlocked-status">✓ Operator access granted</span>
+        <span class="unlocked-status" id="i18n-unlocked-status">✓ Operator access granted</span>
         <button class="lock-again" onclick="lockSection()">🔒 Lock again</button>
       </div>
 
@@ -988,8 +988,8 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     </div>
     <div class="offer-success" id="offerSuccess" style="display:none">
       <div class="offer-success-icon">✅</div>
-      <div class="offer-success-title">Offer Received!</div>
-      <div class="offer-success-msg">Thank you for your interest!<br>We'll be contacting you shortly.</div>
+      <div class="offer-success-title" id="i18n-offer-success-title">Offer Received!</div>
+      <div class="offer-success-msg" id="i18n-offer-success-msg">Thank you for your interest!<br>We'll be contacting you shortly.</div>
       <button class="offer-close-btn" onclick="closeOffer()">Close</button>
     </div>
   </div>
@@ -1079,21 +1079,21 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 <!-- ══ ROADMAP ══ -->
 <div class="roadmap aos">
   <span class="label">Scaling Roadmap</span>
-  <h2 class="section-title">Ecosystem build phases</h2>
+  <h2 class="section-title" id="i18n-roadmap-title">Ecosystem build phases</h2>
   <div class="road-phases">
     <div class="phase">
       <div class="phase-time"><div class="phase-num">I</div><div class="phase-period">Now →<br>6 mo</div></div>
-      <div class="phase-body"><div class="phase-title">Core Active + Surplus Launching</div>
+      <div class="phase-body"><div class="phase-title" id="i18n-phase1-title">Core Active + Surplus Launching</div>
       <div class="phase-items"><span class="phase-tag now">20 props FL, MI &amp; MS</span><span class="phase-tag now">Proprietary database</span><span class="phase-tag">First surplus claims</span><span class="phase-tag">Due diligence <span class="tip" data-tip="Standard Operating Procedure — documented step-by-step process ensuring consistent team execution.">SOPs</span></span></div></div>
     </div>
     <div class="phase">
       <div class="phase-time"><div class="phase-num">II</div><div class="phase-period">6 →<br>18 mo</div></div>
-      <div class="phase-body"><div class="phase-title">Launch Investment Fund + SaaS MVP</div>
+      <div class="phase-body"><div class="phase-title" id="i18n-phase2-title">Launch Investment Fund + SaaS MVP</div>
       <div class="phase-items"><span class="phase-tag">Fund I (<span class="tip" data-tip="Regulation D — SEC exemption for private fund offerings. 506(c) allows open advertising to verified accredited investors.">Reg D</span> 506b/c)</span><span class="phase-tag">First <span class="tip" data-tip="Limited Partner — passive investor in the fund.">LP</span> capital raises</span><span class="phase-tag"><span class="tip" data-tip="Minimum Viable Product — simplest product version that delivers core value.">MVP</span>: calendar + alerts</span><span class="phase-tag">IL &amp; WI expansion</span></div></div>
     </div>
     <div class="phase">
       <div class="phase-time"><div class="phase-num">III</div><div class="phase-period">18 →<br>36 mo</div></div>
-      <div class="phase-body"><div class="phase-title">Scale All Four Pillars in Parallel</div>
+      <div class="phase-body"><div class="phase-title" id="i18n-phase3-title">Scale All Four Pillars in Parallel</div>
       <div class="phase-items"><span class="phase-tag">Fund II</span><span class="phase-tag"><span class="tip" data-tip="Monthly Recurring Revenue — predictable subscription revenue.">MRR</span> 200+ subscribers</span><span class="phase-tag">Surplus: 15+ counties/mo</span><span class="phase-tag">Flywheel on autopilot</span></div></div>
     </div>
   </div>
@@ -1927,12 +1927,16 @@ function buildPubCard(p, cardIndex, isPrivate){
       <div class="pub-arv">
         ${isSold
           ? '<span class=\"pub-arv-val\" style=\"font-size:18px\">&#10003; Sold</span>'
-          : startingFmt
-            ? '<span class=\"pub-arv-label\" style=\"font-size:13px\">Contact us</span>'
-              + '<span class=\"pub-arv-label\" style=\"color:var(--muted);margin:0 6px\">·</span>'
-              + '<span class=\"pub-arv-label\">Starting value: ' + startingFmt + '</span>'
-              + '<span class=\"pub-arv-sub\">· offers considered</span>'
-            : '<span class=\"pub-arv-val\" style=\"font-size:16px\">Contact us for pricing</span>'
+          : isPrivate
+            ? (startingFmt
+              ? '<span class=\"pub-arv-label\">Estimated sale price: ' + startingFmt + '</span>'
+              : '<span class=\"pub-arv-label\" style=\"color:var(--muted)\">No price set</span>')
+            : (startingFmt
+              ? '<span class=\"pub-arv-label\" style=\"font-size:13px\">Contact us</span>'
+                + '<span class=\"pub-arv-label\" style=\"color:var(--muted);margin:0 6px\">·</span>'
+                + '<span class=\"pub-arv-label\">Starting value: ' + startingFmt + '</span>'
+                + '<span class=\"pub-arv-sub\">· offers considered</span>'
+              : '<span class=\"pub-arv-val\" style=\"font-size:16px\">Contact us for pricing</span>')
         }
       </div>
       ${offerBtn}
@@ -2251,21 +2255,329 @@ checkAccess = function() {
   }, 100);
 };
 
-/* ── i18n ── */
-var LANG='en';
-var I18N={
-  en:{tagline:'Four integrated pillars. One self-reinforcing ecosystem.',pillars_title:'The four businesses of our ecosystem',pub_title:'Current Property Inventory',pub_intro:'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.'},
-  pt:{tagline:'Quatro pilares integrados. Um ecossistema autossustentável.',pillars_title:'Os quatro negócios do nosso ecossistema',pub_title:'Inventário Atual de Imóveis',pub_intro:'Confira nosso inventário atual. Imóveis adquiridos em leilões de tax deed nos estados FL, MI e MS. Entre em contato para fazer uma oferta.'},
-  es:{tagline:'Cuatro pilares integrados. Un ecosistema autorreforzado.',pillars_title:'Los cuatro negocios de nuestro ecosistema',pub_title:'Inventario Actual de Propiedades',pub_intro:'Explore nuestro inventario actual. Propiedades adquiridas en subastas de tax deed en FL, MI y MS. Contáctenos para hacer una oferta.'}
+
+/* ── i18n / Full Translation System ── */
+var LANG = 'en';
+
+var I18N = {
+  en: {
+    /* ── Nav & Header ── */
+    tagline: 'Four integrated pillars. One self-reinforcing ecosystem.',
+    pillars_title: 'The four businesses of our ecosystem',
+    pub_title: 'Current Property Inventory',
+    pub_intro: 'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.',
+    /* ── Stats bar ── */
+    stat_pillars: 'Business Pillars',
+    stat_states: 'Target States',
+    stat_props: 'Properties in Portfolio',
+    stat_value: 'Portfolio Market Value',
+    /* ── Pillar names & descriptions ── */
+    p1_name: 'Tax Deed Acquisitions',
+    p1_badge: 'Core Engine',
+    p1_desc: 'Direct purchase of properties at deep discounts through county tax deed auctions, generating capital, data, and track record that fuel all other pillars.',
+    p2_name: 'Investment Fund',
+    p2_badge: 'Capital Vehicle',
+    p2_desc: 'Pool investor capital to scale acquisition volume beyond personal limits. Reg D 506(c) private fund with LP investors co-investing alongside the GP.',
+    p3_name: 'SaaS Platform',
+    p3_badge: 'Recurring Revenue',
+    p3_desc: 'Monetize the proprietary database through a subscription platform: auction calendars, surplus alerts, automated property scoring, and due diligence tools.',
+    p4_name: 'Surplus Recovery',
+    p4_badge: 'High Margin',
+    p4_desc: 'Identify and recover auction overages from county records on behalf of dispossessed former owners. Ultra-high margin, minimal competition, 100% remote.',
+    /* ── Roadmap ── */
+    roadmap_title: 'Ecosystem build phases',
+    phase1_title: 'Core Active + Surplus Launching',
+    phase2_title: 'Launch Investment Fund + SaaS MVP',
+    phase3_title: 'Scale All Four Pillars in Parallel',
+    /* ── Portfolio public ── */
+    filter_all: 'All Properties',
+    contact_us: 'Contact us',
+    starting_val: 'Starting value:',
+    offers_considered: '· offers considered',
+    contact_pricing: 'Contact us for pricing',
+    make_offer: 'Make an Offer →',
+    sold_tag: '✓ Sold',
+    photo_soon: 'Photo coming soon',
+    /* ── Private section ── */
+    private_title: 'Operator Dashboard',
+    private_subtitle: 'County playbooks, contacts, scraper & property portfolio — not shown to investors',
+    access_title: 'Operator Access',
+    access_ph: 'Enter password',
+    access_btn: 'Unlock Section →',
+    access_err: 'Incorrect password. Try again.',
+    unlocked_status: '✓ Operator access granted',
+    lock_again: 'Lock',
+    tab_portfolio: 'Portfolio',
+    tab_scraper: 'County Scraper',
+    tab_contacts: 'Contacts DB',
+    tab_playbooks: 'State Playbooks',
+    est_sale_price: 'Estimated sale price:',
+    no_price_set: 'No price set',
+    /* ── Offer form ── */
+    offer_title_prefix: 'Make an Offer on',
+    offer_name: 'Full Name',
+    offer_phone: 'Phone',
+    offer_email: 'E-mail',
+    offer_value: 'Proposed Value (optional)',
+    offer_submit: 'Make My Offer →',
+    offer_cancel: 'Cancel',
+    offer_success_title: 'Offer Received!',
+    offer_success_msg: "Thank you. We’ll review your offer and be in touch within 1 business day.",
+    offer_close: 'Close',
+    /* ── Disclaimer ── */
+    disclaimer_title: '⚠ Investment Risk Disclaimer',
+    /* ── Surplus section ── */
+    surplus_title: 'Surplus Recovery — How It Works',
+    /* ── Tooltips ── */
+    tip_IRS: 'Internal Revenue Service — U.S. federal tax authority. IRS liens carry a 120-day redemption right after a tax deed sale.',
+    tip_HOA: 'Home Owner Association — mandatory-fee community. HOA super-liens can survive the tax deed in some states.',
+    tip_OTC: 'Over-The-Counter — direct purchase at the county clerk\'s office for unsold properties.',
+    tip_SaaS: 'Software as a Service — cloud subscription platform.',
+    tip_LLC: 'Limited Liability Company — legal entity protecting personal assets from business liabilities.',
+    tip_LP_fund: 'Limited Partnership — LP investors are passive; GP manages all decisions.',
+    tip_RegD: 'Regulation D Rule 506(c) — SEC exemption allowing public solicitation of verified accredited investors.',
+    tip_GP: 'General Partner — active fund manager earning a management fee plus carried interest on profits.',
+    tip_LP: 'Limited Partner — passive investor who provides capital but has no management role.',
+    tip_API: 'Application Programming Interface — automated data exchange between software systems.',
+    tip_AI: 'Artificial Intelligence — machine learning models trained on historical auction data.',
+    tip_SOP: 'Standard Operating Procedure — documented step-by-step process ensuring consistent team execution.',
+    tip_MVP: 'Minimum Viable Product — simplest product version that delivers core value.',
+    tip_MRR: 'Monthly Recurring Revenue — predictable subscription revenue.',
+  },
+
+  pt: {
+    tagline: 'Quatro pilares integrados. Um ecossistema autossustentável.',
+    pillars_title: 'Os quatro negócios do nosso ecossistema',
+    pub_title: 'Inventário Atual de Imóveis',
+    pub_intro: 'Confira nosso inventário atual. Imóveis adquiridos em leilões de tax deed nos estados FL, MI e MS. Entre em contato para fazer uma oferta.',
+    stat_pillars: 'Pilares de Negócio',
+    stat_states: 'Estados-Alvo',
+    stat_props: 'Imóveis no Portfólio',
+    stat_value: 'Valor de Mercado do Portfólio',
+    p1_name: 'Aquisições Tax Deed',
+    p1_badge: 'Motor Principal',
+    p1_desc: 'Compra direta de imóveis com grandes descontos em leilões county tax deed, gerando capital, dados e histórico que alimentam todos os outros pilares.',
+    p2_name: 'Fundo de Investimento',
+    p2_badge: 'Veículo de Capital',
+    p2_desc: 'Captação de capital de investidores para escalar o volume de aquisições além dos limites pessoais. Fundo privado Reg D 506(c) com investidores LP.',
+    p3_name: 'Plataforma SaaS',
+    p3_badge: 'Receita Recorrente',
+    p3_desc: 'Monetize o banco de dados proprietário por meio de uma plataforma de assinatura: calendários de leilões, alertas de excedentes, pontuação de propriedades e ferramentas de due diligence.',
+    p4_name: 'Recuperação de Excedentes',
+    p4_badge: 'Alta Margem',
+    p4_desc: 'Identifique e recupere excedentes de leilões nos registros do county em nome dos antigos proprietários. Margem ultra-alta, pouca concorrência, 100% remoto.',
+    roadmap_title: 'Fases de construção do ecossistema',
+    phase1_title: 'Core Ativo + Lançamento de Excedentes',
+    phase2_title: 'Lançar Fundo de Investimento + MVP SaaS',
+    phase3_title: 'Escalar os Quatro Pilares em Paralelo',
+    filter_all: 'Todos os Imóveis',
+    contact_us: 'Consulte-nos',
+    starting_val: 'Valor inicial:',
+    offers_considered: '· ofertas aceitas',
+    contact_pricing: 'Consulte o preço',
+    make_offer: 'Fazer uma Oferta →',
+    sold_tag: '✓ Vendido',
+    photo_soon: 'Foto em breve',
+    private_title: 'Painel do Operador',
+    private_subtitle: 'Playbooks de county, contatos, scraper e portfólio — não exibido a investidores',
+    access_title: 'Acesso do Operador',
+    access_ph: 'Digite a senha',
+    access_btn: 'Desbloquear Seção →',
+    access_err: 'Senha incorreta. Tente novamente.',
+    unlocked_status: '✓ Acesso de operador concedido',
+    lock_again: 'Bloquear',
+    tab_portfolio: 'Portfólio',
+    tab_scraper: 'Scraper de County',
+    tab_contacts: 'Banco de Contatos',
+    tab_playbooks: 'Playbooks por Estado',
+    est_sale_price: 'Preço estimado de venda:',
+    no_price_set: 'Preço não definido',
+    offer_title_prefix: 'Fazer Oferta em',
+    offer_name: 'Nome Completo',
+    offer_phone: 'Telefone',
+    offer_email: 'E-mail',
+    offer_value: 'Valor Proposto (opcional)',
+    offer_submit: 'Enviar Minha Oferta →',
+    offer_cancel: 'Cancelar',
+    offer_success_title: 'Oferta Recebida!',
+    offer_success_msg: 'Obrigado. Analisaremos sua oferta e retornaremos em até 1 dia útil.',
+    offer_close: 'Fechar',
+    disclaimer_title: '⚠ Aviso de Risco de Investimento',
+    surplus_title: 'Recuperação de Excedentes — Como Funciona',
+    tip_IRS: 'Internal Revenue Service — autoridade fiscal federal dos EUA. Penhoras do IRS têm direito de resgate de 120 dias após leilões tax deed.',
+    tip_HOA: 'Home Owner Association — condomínio com taxas obrigatórias. Super-penhoras de HOA podem sobreviver ao tax deed em alguns estados.',
+    tip_OTC: 'Over-The-Counter — compra direta no cartório do county para propriedades não vendidas em leilão.',
+    tip_SaaS: 'Software as a Service — plataforma de assinatura na nuvem.',
+    tip_LLC: 'Limited Liability Company — entidade jurídica que protege o patrimônio pessoal de responsabilidades empresariais.',
+    tip_LP_fund: 'Limited Partnership — investidores LP são passivos; o GP gerencia todas as decisões.',
+    tip_RegD: 'Regulation D Rule 506(c) — isenção da SEC que permite captar publicamente de investidores acreditados verificados.',
+    tip_GP: 'General Partner — gestor ativo do fundo, recebe taxa de administração + participação nos lucros.',
+    tip_LP: 'Limited Partner — investidor passivo que fornece capital sem papel de gestão.',
+    tip_API: 'Application Programming Interface — troca automatizada de dados entre sistemas.',
+    tip_AI: 'Inteligência Artificial — modelos de machine learning treinados com dados históricos de leilões.',
+    tip_SOP: 'Procedimento Operacional Padrão — processo documentado passo a passo para execução consistente.',
+    tip_MVP: 'Produto Mínimo Viável — versão mais simples do produto que entrega valor essencial.',
+    tip_MRR: 'Receita Recorrente Mensal — receita previsível de assinaturas.',
+  },
+
+  es: {
+    tagline: 'Cuatro pilares integrados. Un ecosistema autorreforzado.',
+    pillars_title: 'Los cuatro negocios de nuestro ecosistema',
+    pub_title: 'Inventario Actual de Propiedades',
+    pub_intro: 'Explore nuestro inventario actual. Propiedades adquiridas en subastas de tax deed en FL, MI y MS. Contáctenos para hacer una oferta.',
+    stat_pillars: 'Pilares de Negocio',
+    stat_states: 'Estados Objetivo',
+    stat_props: 'Propiedades en Portafolio',
+    stat_value: 'Valor de Mercado del Portafolio',
+    p1_name: 'Adquisiciones Tax Deed',
+    p1_badge: 'Motor Principal',
+    p1_desc: 'Compra directa de propiedades con grandes descuentos en subastas county tax deed, generando capital, datos y trayectoria que alimentan todos los pilares.',
+    p2_name: 'Fondo de Inversión',
+    p2_badge: 'Vehículo de Capital',
+    p2_desc: 'Captación de capital de inversores para escalar el volumen de adquisiciones más allá de los límites personales. Fondo privado Reg D 506(c) con inversores LP.',
+    p3_name: 'Plataforma SaaS',
+    p3_badge: 'Ingresos Recurrentes',
+    p3_desc: 'Monetice la base de datos propia a través de una plataforma de suscripción: calendarios de subastas, alertas de excedentes, puntuación de propiedades y herramientas de due diligence.',
+    p4_name: 'Recuperación de Excedentes',
+    p4_badge: 'Alto Margen',
+    p4_desc: 'Identifique y recupere excedentes de subastas en los registros del county en nombre de los antiguos propietarios. Margen ultra-alto, poca competencia, 100% remoto.',
+    roadmap_title: 'Fases de construcción del ecosistema',
+    phase1_title: 'Core Activo + Lanzamiento de Excedentes',
+    phase2_title: 'Lanzar Fondo de Inversión + MVP SaaS',
+    phase3_title: 'Escalar los Cuatro Pilares en Paralelo',
+    filter_all: 'Todas las Propiedades',
+    contact_us: 'Consúltenos',
+    starting_val: 'Valor inicial:',
+    offers_considered: '· se aceptan ofertas',
+    contact_pricing: 'Consultar precio',
+    make_offer: 'Hacer una Oferta →',
+    sold_tag: '✓ Vendido',
+    photo_soon: 'Foto próximamente',
+    private_title: 'Panel del Operador',
+    private_subtitle: 'Playbooks de county, contactos, scraper y portafolio — no visible a inversores',
+    access_title: 'Acceso del Operador',
+    access_ph: 'Ingrese la contraseña',
+    access_btn: 'Desbloquear Sección →',
+    access_err: 'Contraseña incorrecta. Inténtelo de nuevo.',
+    unlocked_status: '✓ Acceso de operador concedido',
+    lock_again: 'Bloquear',
+    tab_portfolio: 'Portafolio',
+    tab_scraper: 'Scraper de County',
+    tab_contacts: 'Base de Contactos',
+    tab_playbooks: 'Playbooks por Estado',
+    est_sale_price: 'Precio estimado de venta:',
+    no_price_set: 'Precio no definido',
+    offer_title_prefix: 'Hacer Oferta en',
+    offer_name: 'Nombre Completo',
+    offer_phone: 'Teléfono',
+    offer_email: 'Correo electrónico',
+    offer_value: 'Valor Propuesto (opcional)',
+    offer_submit: 'Enviar Mi Oferta →',
+    offer_cancel: 'Cancelar',
+    offer_success_title: '¡Oferta Recibida!',
+    offer_success_msg: 'Gracias. Revisaremos su oferta y nos pondremos en contacto en 1 día hábil.',
+    offer_close: 'Cerrar',
+    disclaimer_title: '⚠ Aviso de Riesgo de Inversión',
+    surplus_title: 'Recuperación de Excedentes — Cómo Funciona',
+    tip_IRS: 'Internal Revenue Service — autoridad fiscal federal de EE.UU. Los gravámenes del IRS tienen derecho de rescate de 120 días tras subastas tax deed.',
+    tip_HOA: 'Home Owner Association — comunidad de cuotas obligatorias. Los super-gravámenes de HOA pueden sobrevivir al tax deed en algunos estados.',
+    tip_OTC: 'Over-The-Counter — compra directa en la oficina del county para propiedades no vendidas en subasta.',
+    tip_SaaS: 'Software as a Service — plataforma de suscripción en la nube.',
+    tip_LLC: 'Limited Liability Company — entidad jurídica que protege el patrimonio personal de responsabilidades empresariales.',
+    tip_LP_fund: 'Limited Partnership — los inversores LP son pasivos; el GP gestiona todas las decisiones.',
+    tip_RegD: 'Regulation D Rule 506(c) — exención de la SEC que permite captar públicamente de inversores acreditados verificados.',
+    tip_GP: 'General Partner — gestor activo del fondo, recibe comisión de gestión + participación en beneficios.',
+    tip_LP: 'Limited Partner — inversor pasivo que aporta capital sin rol de gestión.',
+    tip_API: 'Application Programming Interface — intercambio automatizado de datos entre sistemas.',
+    tip_AI: 'Inteligencia Artificial — modelos de machine learning entrenados con datos históricos de subastas.',
+    tip_SOP: 'Procedimiento Operativo Estándar — proceso documentado paso a paso para ejecución consistente.',
+    tip_MVP: 'Producto Mínimo Viable — versión más simple del producto que entrega valor esencial.',
+    tip_MRR: 'Ingresos Recurrentes Mensuales — ingresos predecibles de suscripciones.',
+  }
 };
-function setLang(lang){
-  LANG=lang;
-  document.querySelectorAll('.lang-btn').forEach(function(b,i){b.classList.toggle('active',['en','pt','es'][i]===lang);});
-  var t=I18N[lang],el;
-  el=document.getElementById('i18n-tagline');       if(el)el.innerHTML=t.tagline;
-  el=document.getElementById('i18n-pillars-title'); if(el)el.innerHTML=t.pillars_title;
-  el=document.getElementById('i18n-pub-title');     if(el)el.innerHTML=t.pub_title;
-  el=document.getElementById('i18n-pub-intro');     if(el)el.innerHTML=t.pub_intro;
+
+function setLang(lang) {
+  LANG = lang;
+  var t = I18N[lang];
+  /* flag buttons */
+  document.querySelectorAll('.lang-btn').forEach(function(b, i) {
+    b.classList.toggle('active', ['en','pt','es'][i] === lang);
+  });
+  /* helper */
+  function tx(id, val) { var el = document.getElementById(id); if (el && val) el.innerHTML = val; }
+  function txText(id, val) { var el = document.getElementById(id); if (el && val) el.textContent = val; }
+  function txAttr(id, attr, val) { var el = document.getElementById(id); if (el && val) el.setAttribute(attr, val); }
+
+  /* header */
+  tx('i18n-tagline', t.tagline);
+  tx('i18n-pillars-title', t.pillars_title);
+
+  /* stats bar */
+  tx('i18n-stat-pillars', t.stat_pillars);
+  tx('i18n-stat-states', t.stat_states);
+  tx('i18n-stat-props', t.stat_props);
+  tx('i18n-stat-value', t.stat_value);
+
+  /* pillar names, badges, descs */
+  tx('i18n-p1-name', t.p1_name); tx('i18n-p1-badge', t.p1_badge); tx('i18n-p1-desc', t.p1_desc);
+  tx('i18n-p2-name', t.p2_name); tx('i18n-p2-badge', t.p2_badge); tx('i18n-p2-desc', t.p2_desc);
+  tx('i18n-p3-name', t.p3_name); tx('i18n-p3-badge', t.p3_badge); tx('i18n-p3-desc', t.p3_desc);
+  tx('i18n-p4-name', t.p4_name); tx('i18n-p4-badge', t.p4_badge); tx('i18n-p4-desc', t.p4_desc);
+
+  /* roadmap */
+  tx('i18n-roadmap-title', t.roadmap_title);
+  tx('i18n-phase1-title', t.phase1_title);
+  tx('i18n-phase2-title', t.phase2_title);
+  tx('i18n-phase3-title', t.phase3_title);
+
+  /* public portfolio */
+  tx('i18n-pub-title', t.pub_title);
+  tx('i18n-pub-intro', t.pub_intro);
+
+  /* private section */
+  tx('i18n-private-title', t.private_title);
+  tx('i18n-private-subtitle', t.private_subtitle);
+  tx('i18n-access-title', t.access_title);
+  txAttr('accessPass', 'placeholder', t.access_ph);
+  var ab = document.getElementById('accessBtn'); if (ab) ab.textContent = t.access_btn;
+  tx('i18n-unlocked-status', t.unlocked_status);
+  var la = document.querySelector('.lock-again'); if (la) la.textContent = t.lock_again;
+
+  /* tabs */
+  tx('i18n-tab-portfolio', t.tab_portfolio);
+  tx('i18n-tab-scraper', t.tab_scraper);
+  tx('i18n-tab-contacts', t.tab_contacts);
+  tx('i18n-tab-playbooks', t.tab_playbooks);
+
+  /* offer form */
+  tx('i18n-offer-name', t.offer_name);
+  tx('i18n-offer-phone', t.offer_phone);
+  tx('i18n-offer-email', t.offer_email);
+  tx('i18n-offer-value', t.offer_value);
+  var sb = document.getElementById('offerSubmitBtn'); if (sb && !sb.disabled) sb.textContent = t.offer_submit;
+  var cb = document.querySelector('.offer-cancel'); if (cb) cb.textContent = t.offer_cancel;
+  tx('i18n-offer-success-title', t.offer_success_title);
+  tx('i18n-offer-success-msg', t.offer_success_msg);
+  var ocb = document.querySelector('.offer-close-btn'); if (ocb) ocb.textContent = t.offer_close;
+
+  /* disclaimer */
+  tx('i18n-disclaimer-title', t.disclaimer_title);
+
+  /* tooltips — update data-tip attributes live */
+  var tipMap = {
+    'IRS': t.tip_IRS, 'HOA': t.tip_HOA, 'OTC': t.tip_OTC,
+    'SaaS': t.tip_SaaS, 'LLC': t.tip_LLC, 'LP': t.tip_LP,
+    'GP': t.tip_GP, 'API': t.tip_API, 'AI': t.tip_AI,
+    'SOP': t.tip_SOP, 'MVP': t.tip_MVP, 'MRR': t.tip_MRR,
+    'Reg D 506(c)': t.tip_RegD, 'Reg D': t.tip_RegD
+  };
+  document.querySelectorAll('.tip').forEach(function(el) {
+    var abbr = el.textContent.trim();
+    if (tipMap[abbr]) el.setAttribute('data-tip', tipMap[abbr]);
+  });
+
+  /* re-render public portfolio so card texts update */
+  if (pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
 }
 
 </script>
