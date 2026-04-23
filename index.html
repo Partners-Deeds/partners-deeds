@@ -8,7 +8,7 @@
 <title>Partners Deeds — Strategic Ecosystem</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 <style>
-/* ─── TOKENS ─── */
+
 :root{
   --gold:#D4A847;--gold-light:#EFC96A;--gold-dim:#7A6030;--gold-bg:rgba(212,168,71,.08);
   --ink:#0A090C;--ink2:#14131C;--ink3:#1E1D28;
@@ -17,7 +17,6 @@
   --border:rgba(212,168,71,.16);--border-h:rgba(212,168,71,.45);
 }
 
-/* ─── RESET ─── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
@@ -29,13 +28,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 strong{color:var(--paper);font-weight:600;}
 a{-webkit-touch-callout:none;}
 
-/* ─── TYPE ─── */
 .label{font-size:12px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
 .section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--paper);margin-bottom:18px;line-height:1.15;}
 @media(min-width:600px){.section-title{font-size:36px;margin-bottom:20px;}}
 .section-intro{font-size:15px;color:var(--paper2);line-height:1.8;max-width:860px;margin-bottom:36px;}
 
-/* ─── HEADER ─── */
 header{text-align:center;margin-bottom:64px;animation:fadeDown .9s ease both;}
 @media(min-width:600px){header{margin-bottom:88px;}}
 .eyebrow{font-size:17px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:600;}
@@ -50,7 +47,6 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .rule::after{content:'';flex:1;height:1px;background:linear-gradient(270deg,transparent,var(--gold-dim));}
 .rule-diamond{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
 
-/* ─── STATS BAR ─── */
 .stats-bar{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--border);margin-bottom:64px;animation:fadeUp .9s .15s ease both;}
 @media(min-width:700px){.stats-bar{grid-template-columns:repeat(4,1fr);margin-bottom:88px;}}
 .stat{padding:24px 16px;text-align:center;border-right:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--gold-bg);transition:background .3s;}
@@ -62,16 +58,13 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 @media(min-width:600px){.stat-n{font-size:44px;}}
 .stat-l{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--paper2);margin-top:8px;display:block;}
 
-/* ─── TOOLTIP — tap-friendly on iOS ─── */
 .tip{position:relative;display:inline;border-bottom:1px dashed var(--gold-dim);color:var(--gold-light);cursor:pointer;}
 .tip-box{position:fixed;z-index:9999;max-width:min(300px,85vw);min-width:160px;background:var(--ink3);border:1px solid var(--border-h);color:var(--paper);font-family:'Inter',sans-serif;font-size:14px;font-weight:400;font-style:normal;line-height:1.55;padding:10px 14px;box-shadow:0 12px 36px rgba(0,0,0,.65);pointer-events:none;opacity:0;transition:opacity .15s;white-space:normal;border-radius:2px;}
 .tip-box.visible{opacity:1;}
 
-/* ─── PROC BTN ─── */
 .proc-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(212,168,71,.15);border:1px solid rgba(212,168,71,.4);color:var(--gold);font-size:11px;font-weight:700;cursor:pointer;margin-left:7px;flex-shrink:0;vertical-align:middle;transition:background .2s;line-height:1;font-family:'Inter',sans-serif;-webkit-appearance:none;touch-action:manipulation;}
 .proc-btn:active{background:rgba(212,168,71,.35);}
 
-/* ─── MODAL ─── */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:9000;align-items:flex-end;justify-content:center;padding:0;cursor:pointer;}
 @media(min-width:600px){.modal-overlay{align-items:center;padding:24px;}}
 .modal-overlay.open{display:flex;}
@@ -101,7 +94,6 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .modal-handle{width:36px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin:10px auto 0;display:block;}
 @media(min-width:600px){.modal-handle{display:none;}}
 
-/* ─── PILLARS ─── */
 .pillars{display:grid;grid-template-columns:1fr;gap:3px;margin-bottom:80px;}
 @media(min-width:640px){.pillars{grid-template-columns:repeat(2,1fr);margin-bottom:96px;}}
 .pillar{background:var(--ink2);border:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .3s;touch-action:manipulation;}
@@ -137,7 +129,6 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .toggle-arrow{transition:transform .3s;display:inline-block;}
 .pillar.open .toggle-arrow{transform:rotate(180deg);}
 
-/* ─── PRIVATE SECTION ─── */
 .private-section{margin-bottom:80px;}
 @media(min-width:600px){.private-section{margin-bottom:96px;}}
 .private-card{background:var(--ink2);border:1px solid var(--border-h);overflow:hidden;}
@@ -173,7 +164,6 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .unlocked-status{font-size:12px;color:var(--green);font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
 .lock-again{font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:6px;touch-action:manipulation;}
 
-/* ─── TABS ─── */
 .op-tabs{display:flex;gap:2px;padding:16px 20px 0;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .op-tabs::-webkit-scrollbar{display:none;}
 @media(min-width:600px){.op-tabs{padding:20px 40px 0;gap:3px;overflow-x:visible;}}
@@ -184,7 +174,6 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .op-panel{padding:20px;}
 @media(min-width:600px){.op-panel{padding:28px 40px;}}
 
-/* ─── SCRAPER ─── */
 .scraper-intro{background:rgba(212,168,71,.04);border:1px solid var(--border);padding:14px 16px;margin-bottom:18px;font-size:13px;color:var(--paper2);line-height:1.75;}
 .scraper-controls{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
 @media(min-width:600px){.scraper-controls{flex-direction:row;flex-wrap:wrap;align-items:flex-end;}}
@@ -460,9 +449,6 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 .aos{opacity:1;transform:none;}
 .aos.animated{opacity:1;transform:none;}
 
-/* ═══════════════════════════════════════
-   PUBLIC PORTFOLIO SECTION
-═══════════════════════════════════════ */
 .pub-portfolio{margin-bottom:88px;}
 .pub-track{display:none;flex-direction:column;gap:12px;}
 .pub-track.open{display:flex;}
@@ -584,6 +570,13 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   font-style:italic;border-top:1px solid rgba(255,255,255,.08);
   padding-top:10px;margin-top:6px;
 }
+
+/* ─── LANGUAGE SWITCHER ─── */
+.lang-bar{display:flex;justify-content:flex-end;gap:8px;padding:12px 0 0;margin-bottom:-32px;position:relative;z-index:10;}
+.lang-btn{background:none;border:1px solid var(--border);color:var(--paper3);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;cursor:pointer;transition:all .2s;border-radius:2px;display:flex;align-items:center;gap:5px;-webkit-appearance:none;}
+.lang-btn:hover,.lang-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-bg);}
+.lang-flag{font-size:14px;}
+
 </style>
 </head>
 <body>
@@ -604,6 +597,11 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 </div>
 
 <div class="wrap">
+<div class="lang-bar">
+  <button class="lang-btn active" data-lang="en" onclick="setLang('en')"><span class="lang-flag">🇺🇸</span> EN</button>
+  <button class="lang-btn" data-lang="pt" onclick="setLang('pt')"><span class="lang-flag">🇧🇷</span> PT</button>
+  <button class="lang-btn" data-lang="es" onclick="setLang('es')"><span class="lang-flag">🇪🇸</span> ES</button>
+</div>
 
 <!-- ══ HEADER ══ -->
 <header>
@@ -611,21 +609,21 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   <h1>Partners<br><em>Deeds</em></h1>
   <p class="holding-sub">holding</p>
   <div class="rule"><div class="rule-diamond"></div></div>
-  <p class="subtitle">Four integrated pillars. One self-reinforcing ecosystem.</p>
+  <p class="subtitle" id="i18n-tagline">Four integrated pillars. One self-reinforcing ecosystem.</p>
 </header>
 
 <!-- ══ STATS ══ -->
 <div class="stats-bar">
   <div class="stat"><span class="stat-n">4</span><span class="stat-l">Business Pillars</span></div>
   <div class="stat"><span class="stat-n">5</span><span class="stat-l">Target States</span></div>
-  <div class="stat"><span class="stat-n" id="topStatProps">18</span><span class="stat-l">Properties in Portfolio</span></div>
+  <div class="stat"><span class="stat-n" id="topStatProps">20</span><span class="stat-l">Properties in Portfolio</span></div>
   <div class="stat"><span class="stat-n">$1.76M+</span><span class="stat-l">Portfolio Market Value</span></div>
 </div>
 
 <!-- ══ PILLARS ══ -->
 <div class="aos">
   <span class="label">Strategic Pillars</span>
-  <h2 class="section-title">The four businesses of your ecosystem</h2>
+  <h2 class="section-title" id="i18n-pillars-title">The four businesses of our ecosystem</h2>
 </div>
 <div class="pillars">
 
@@ -837,17 +835,15 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         <button class="op-tab" onclick="switchTab('playbooks',this)">📖 Playbooks</button>
       </div>
 
-
-
       <!-- ══ TAB: PORTFOLIO ══ -->
       <div class="op-panel" id="tab-portfolio">
         <div class="scraper-intro">Manage the Partners Deeds property portfolio. Import properties via CSV, download the template to fill in your data, and export the current list at any time.</div>
 
         <div class="portfolio-stats" id="portfolioStats">
-          <div class="pstat"><span class="pstat-n" id="ps-total">18</span><span class="pstat-l">Total Properties</span></div>
-          <div class="pstat"><span class="pstat-n" id="ps-active">17</span><span class="pstat-l">Active / Held</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-total">20</span><span class="pstat-l">Total Properties</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-active">19</span><span class="pstat-l">Active / Held</span></div>
           <div class="pstat"><span class="pstat-n" id="ps-sold">1</span><span class="pstat-l">Sold</span></div>
-          <div class="pstat"><span class="pstat-n" id="ps-states">2</span><span class="pstat-l">States</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-states">3</span><span class="pstat-l">States</span></div>
         </div>
 
         <div class="portfolio-actions">
@@ -980,7 +976,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     </div>
     <div class="offer-success" id="offerSuccess" style="display:none">
       <div class="offer-success-icon">✅</div>
-      <div class="offer-success-title">Offer Received!</div>
+      <div class="offer-success-title" id="i18n-offer-success-title">Offer Received!</div>
       <div class="offer-success-msg">Thank you for your interest!<br>We'll be contacting you shortly.</div>
       <button class="offer-close-btn" onclick="closeOffer()">Close</button>
     </div>
@@ -991,7 +987,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 <div class="pub-portfolio aos" id="pubPortfolioSection">
   <span class="label">Available Properties</span>
   <h2 class="section-title">Portfolio — Properties for Sale</h2>
-  <p class="section-intro">Browse our current inventory. Properties acquired through county tax deed auctions across FL, TX, MI, IL &amp; WI. Contact us to make an offer on any listing.</p>
+  <p class="section-intro" id="i18n-pub-intro">Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.</p>
   <div class="pub-filter-bar">
     <button class="pub-filter-btn active" onclick="pubFilter('all',this)">All Properties</button>
     <button class="pub-filter-btn" onclick="pubFilter('FL',this)">🌴 Florida</button>
@@ -1000,7 +996,6 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   </div>
   <div id="pubTrack" class="pub-track"></div>
 </div>
-
 
 <!-- ══ LIEN / DUE DILIGENCE ══ -->
 <div class="lien-section aos">
@@ -1077,7 +1072,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     <div class="phase">
       <div class="phase-time"><div class="phase-num">I</div><div class="phase-period">Now →<br>6 mo</div></div>
       <div class="phase-body"><div class="phase-title">Core Active + Surplus Launching</div>
-      <div class="phase-items"><span class="phase-tag now">18 props FL &amp; MI</span><span class="phase-tag now">Proprietary database</span><span class="phase-tag">First surplus claims</span><span class="phase-tag">Due diligence <span class="tip" data-tip="Standard Operating Procedure — documented step-by-step process ensuring consistent team execution.">SOPs</span></span></div></div>
+      <div class="phase-items"><span class="phase-tag now">20 props FL, MI &amp; MS</span><span class="phase-tag now">Proprietary database</span><span class="phase-tag">First surplus claims</span><span class="phase-tag">Due diligence <span class="tip" data-tip="Standard Operating Procedure — documented step-by-step process ensuring consistent team execution.">SOPs</span></span></div></div>
     </div>
     <div class="phase">
       <div class="phase-time"><div class="phase-num">II</div><div class="phase-period">6 →<br>18 mo</div></div>
@@ -1110,7 +1105,6 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   <div class="rule"><div class="rule-diamond"></div></div>
   <p class="footer-title">"The most valuable asset is not the property — it's the system."</p>
   <p class="footer-sub" style="margin-top:12px;">Partners Deeds · Strategic Ecosystem · FL · TX · MI · IL · WI</p>
-
 
 <!-- DISCLAIMER -->
 <div class="disclaimer-section">
@@ -1299,9 +1293,6 @@ function lockSection() {
   document.getElementById('accessError').classList.remove('show');
 }
 
-/* ═══════════════════════════════════════
-   TAB SWITCHER
-═══════════════════════════════════════ */
 function switchTab(name, btn) {
   ['portfolio','scraper','contacts','playbooks'].forEach(function(t) {
     var el = document.getElementById('tab-'+t);
@@ -1311,43 +1302,39 @@ function switchTab(name, btn) {
   btn.classList.add('active');
 }
 
-/* ═══════════════════════════════════════
-   PORTFOLIO
-═══════════════════════════════════════ */
 const CSV_COLUMNS = ['address','city','county','state','zip','type','area','unit','status','acquisition_date','acquisition_price','arv','rehab_cost','sale_price','sale_date','notes'];
 
-/* ── Photo store: key = address, value = array of base64 strings ── */
 const photoStore = {};
 
 const SAMPLE_PROPS = [
-  {address:'1423 NW 52nd St',city:'Miami',county:'Miami-Dade',state:'FL',zip:'33142',type:'House',area:'1,240',unit:'ft²',status:'active',acquisition_date:'2024-03-15',acquisition_price:'28500',arv:'95000',rehab_cost:'22000',sale_price:'',sale_date:'',notes:'Title clear, permit pulled'},
-  {address:'8817 Pine Ridge Rd',city:'Ocala',county:'Marion',state:'FL',zip:'34472',type:'House',area:'1,080',unit:'ft²',status:'active',acquisition_date:'2024-04-02',acquisition_price:'12000',arv:'58000',rehab_cost:'14000',sale_price:'',sale_date:'',notes:''},
-  {address:'3301 W Hillsborough Ave',city:'Tampa',county:'Hillsborough',state:'FL',zip:'33614',type:'House',area:'1,450',unit:'ft²',status:'rehab',acquisition_date:'2024-04-18',acquisition_price:'41000',arv:'135000',rehab_cost:'38000',sale_price:'',sale_date:'',notes:'Rehab in progress'},
-  {address:'2204 Belmont Ave',city:'Daytona Beach',county:'Volusia',state:'FL',zip:'32114',type:'House',area:'920',unit:'ft²',status:'active',acquisition_date:'2024-05-07',acquisition_price:'9800',arv:'47000',rehab_cost:'11000',sale_price:'',sale_date:'',notes:''},
-  {address:'631 Oakhurst Rd',city:'Clearwater',county:'Pinellas',state:'FL',zip:'33755',type:'House',area:'1,100',unit:'ft²',status:'active',acquisition_date:'2024-05-22',acquisition_price:'34000',arv:'118000',rehab_cost:'29000',sale_price:'',sale_date:'',notes:'Quiet title filed'},
-  {address:'1102 South E St',city:'Lake Worth',county:'Palm Beach',state:'FL',zip:'33460',type:'House',area:'1,050',unit:'ft²',status:'active',acquisition_date:'2024-06-11',acquisition_price:'21500',arv:'82000',rehab_cost:'18000',sale_price:'',sale_date:'',notes:''},
-  {address:'4455 Seminole Blvd',city:'St. Petersburg',county:'Pinellas',state:'FL',zip:'33711',type:'House',area:'1,680',unit:'ft²',status:'pending',acquisition_date:'2024-06-28',acquisition_price:'52000',arv:'165000',rehab_cost:'42000',sale_price:'',sale_date:'',notes:'Under contract'},
-  {address:'77 SE 3rd Ave',city:'Fort Lauderdale',county:'Broward',state:'FL',zip:'33301',type:'Lot',area:'0.18',unit:'ac',status:'active',acquisition_date:'2024-07-09',acquisition_price:'18000',arv:'71000',rehab_cost:'16500',sale_price:'',sale_date:'',notes:''},
-  {address:'920 Cypress Lake Dr',city:'Orlando',county:'Orange',state:'FL',zip:'32811',type:'House',area:'1,300',unit:'ft²',status:'active',acquisition_date:'2024-07-24',acquisition_price:'29000',arv:'102000',rehab_cost:'24000',sale_price:'',sale_date:'',notes:''},
-  {address:'3218 N 34th St',city:'Tampa',county:'Hillsborough',state:'FL',zip:'33605',type:'House',area:'1,160',unit:'ft²',status:'active',acquisition_date:'2024-08-14',acquisition_price:'15500',arv:'63000',rehab_cost:'13000',sale_price:'',sale_date:'',notes:''},
-  {address:'507 Citrus Ave',city:'Fort Pierce',county:'St. Lucie',state:'FL',zip:'34950',type:'House',area:'880',unit:'ft²',status:'active',acquisition_date:'2024-09-03',acquisition_price:'11200',arv:'44000',rehab_cost:'10500',sale_price:'',sale_date:'',notes:''},
-  {address:'1840 Jackson St',city:'Hollywood',county:'Broward',state:'FL',zip:'33020',type:'House',area:'1,390',unit:'ft²',status:'active',acquisition_date:'2024-10-17',acquisition_price:'38000',arv:'128000',rehab_cost:'32000',sale_price:'',sale_date:'',notes:'Title work ongoing'},
-  {address:'214 W Superior St',city:'Detroit',county:'Wayne',state:'MI',zip:'48202',type:'House',area:'1,020',unit:'ft²',status:'sold',acquisition_date:'2024-02-28',acquisition_price:'8500',arv:'52000',rehab_cost:'18000',sale_price:'58500',sale_date:'2024-09-12',notes:'First MI sale — great return'},
-  {address:'6740 Gratiot Ave',city:'Detroit',county:'Wayne',state:'MI',zip:'48207',type:'House',area:'960',unit:'ft²',status:'active',acquisition_date:'2024-04-10',acquisition_price:'6200',arv:'45000',rehab_cost:'14000',sale_price:'',sale_date:'',notes:''},
-  {address:'18 Birchwood Dr',city:'Flint',county:'Genesee',state:'MI',zip:'48504',type:'House',area:'1,140',unit:'ft²',status:'active',acquisition_date:'2024-05-30',acquisition_price:'5100',arv:'38000',rehab_cost:'11500',sale_price:'',sale_date:'',notes:'Quiet title in process'},
-  {address:'3421 E Court St',city:'Flint',county:'Genesee',state:'MI',zip:'48506',type:'House',area:'1,080',unit:'ft²',status:'rehab',acquisition_date:'2024-07-15',acquisition_price:'7800',arv:'49000',rehab_cost:'16000',sale_price:'',sale_date:'',notes:'Rehab started'},
-  {address:'512 N Saginaw Rd',city:'Midland',county:'Midland',state:'MI',zip:'48642',type:'House',area:'1,220',unit:'ft²',status:'active',acquisition_date:'2024-08-22',acquisition_price:'9400',arv:'54000',rehab_cost:'12500',sale_price:'',sale_date:'',notes:''},
-  {address:'2901 Livernois Ave',city:'Detroit',county:'Wayne',state:'MI',zip:'48210',type:'House',area:'1,010',unit:'ft²',status:'active',acquisition_date:'2024-10-05',acquisition_price:'7100',arv:'41000',rehab_cost:'10000',sale_price:'',sale_date:'',notes:''},
+  {address:'3598 Allegra Circle (Lot 146)',city:'Saint Cloud',county:'Osceola',state:'FL',zip:'34772',type:'lot in condominium',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-10-07',acquisition_price:'3323.10',arv:'',rehab_cost:'',sale_price:'19590.00',sale_date:'',notes:'Title clear, permit pulled'},
+  {address:'3600 Davidson Rd.',city:'Flint',county:'Wayne',state:'MI',zip:'48506',type:'commercial building',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-11-19',acquisition_price:'5230.00',arv:'',rehab_cost:'',sale_price:'29970.00',sale_date:'',notes:'First MI sale'},
+  {address:'3073 W Dayton St.',city:'Flint',county:'Genesee',state:'MI',zip:'48504',type:'residential land',area:'10.23',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'11780.00',arv:'',rehab_cost:'',sale_price:'297900.00',sale_date:'',notes:''},
+  {address:'440 Michigan Ave. W',city:'Battle Creek',county:'Calhoun',state:'MI',zip:'49037',type:'commercial building',area:'0.80',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'14000.00',arv:'',rehab_cost:'5250.00',sale_price:'299970.00',sale_date:'',notes:''},
+  {address:'450 Michigan Ave. W',city:'Battle Creek',county:'Calhoun',state:'MI',zip:'49037',type:'commercial building',area:'0.90',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'14000.00',arv:'',rehab_cost:'5250.00',sale_price:'197940.00',sale_date:'',notes:''},
+  {address:'3102 & 3402 Martin Luther King Ave.',city:'Flint',county:'Genesee',state:'MI',zip:'48505',type:'commercial building',area:'1',unit:'ft²',status:'sold',acquisition_date:'2025-11-19',acquisition_price:'29298.02',arv:'',rehab_cost:'',sale_price:'54000.00',sale_date:'2025-12-07',notes:''},
+  {address:'2050 Irlo Bronson Memorial Hwy - Suite 108',city:'Kissimmee',county:'Osceola',state:'FL',zip:'34744',type:'hotel suite',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-12-09',acquisition_price:'3423.80',arv:'',rehab_cost:'11500.00',sale_price:'78970.00',sale_date:'',notes:''},
+  {address:'283 Rhapsody Ave.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3031.00',arv:'',rehab_cost:'',sale_price:'16570.00',sale_date:'',notes:''},
+  {address:'6110 County Rd. 17 S',city:'Sebring',county:'Highlands',state:'FL',zip:'33876',type:'residential lot',area:'7500',unit:'ft²',status:'active',acquisition_date:'2026-01-23',acquisition_price:'4038.00',arv:'',rehab_cost:'',sale_price:'21550.00',sale_date:'',notes:''},
+  {address:'240 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3635.20',arv:'',rehab_cost:'',sale_price:'19490.00',sale_date:'',notes:''},
+  {address:'229 Sunway Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3534.50',arv:'',rehab_cost:'',sale_price:'19290.00',sale_date:'',notes:''},
+  {address:'315 Summersweet Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-11',acquisition_price:'3653.70',arv:'',rehab_cost:'',sale_price:'19970.00',sale_date:'',notes:''},
+  {address:'504 N Florida Ave.',city:'Howey-in-The-Hills',county:'Lake',state:'FL',zip:'34737',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-03',acquisition_price:'6152.70',arv:'',rehab_cost:'',sale_price:'84770.00',sale_date:'',notes:''},
+  {address:'245 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3323.10',arv:'',rehab_cost:'',sale_price:'14490.00',sale_date:'',notes:''},
+  {address:'241 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3333.10',arv:'',rehab_cost:'',sale_price:'18290.00',sale_date:'',notes:''},
+  {address:'1105 Grapefruit Ave.',city:'Sebring',county:'Highlands',state:'FL',zip:'33870',type:'residential lot',area:'9263',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3121.70',arv:'',rehab_cost:'',sale_price:'17590.00',sale_date:'',notes:''},
+  {address:'2231 Marchfield Preserve Way',city:'Kissimmee',county:'Osceola',state:'FL',zip:'34746',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-17',acquisition_price:'42092.60',arv:'',rehab_cost:'900.00',sale_price:'99700.00',sale_date:'',notes:''},
+  {address:'1325 Reddix St.',city:'Jackson',county:'Hinds',state:'MS',zip:'39209',type:'house',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-19',acquisition_price:'2500.00',arv:'',rehab_cost:'',sale_price:'14590.00',sale_date:'',notes:''},
+  {address:'NA Number, Wiggins Dr.',city:'Jackson',county:'Hinds',state:'MS',zip:'39209',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-12-31',acquisition_price:'2500.00',arv:'',rehab_cost:'',sale_price:'14590.00',sale_date:'',notes:''},
+  {address:'309 Greenwood St.',city:'Ishpeming',county:'Marquette',state:'MI',zip:'49849',type:'Commercial building',area:'25696',unit:'ft²',status:'active',acquisition_date:'2026-01-01',acquisition_price:'1000.00',arv:'',rehab_cost:'',sale_price:'37970.00',sale_date:'',notes:''},
 ];
 
 let portfolioData = [...SAMPLE_PROPS];
 let currentFilter = 'all';
 const STATUS_COLORS = { active:'#5B9E6A', sold:'#5B9AB5', rehab:'#C47A3A', pending:'#8B6CC4' };
 
-/* ── Photo key: normalize address as store key ── */
 function photoKey(p){ return (p.address||'').trim().toLowerCase(); }
 
-/* ── Render all cards ── */
 function renderPortfolio(data) {
   const track = document.getElementById('propTrack');
   if(!data || !data.length) {
@@ -1361,7 +1348,44 @@ function renderPortfolio(data) {
 }
 
 function fmt$(n){ return n ? '$'+Number(String(n).replace(/[^0-9.]/g,'')).toLocaleString() : '—'; }
-function fmtDate(d){ if(!d) return '—'; const p=d.split('-'); return p.length===3?`${p[1]}/${p[2]}/${p[0]}`:d; }
+
+function parseUniversalNumber(val) {
+  if (!val && val !== 0) return NaN;
+  var s = String(val).trim().replace(/[^0-9.,\-]/g, '');
+  if (!s) return NaN;
+  var lastComma = s.lastIndexOf(',');
+  var lastDot   = s.lastIndexOf('.');
+  if (lastComma > lastDot) {
+    // PT format: 1.234,56 — comma is decimal
+    s = s.replace(/\./g, '').replace(',', '.');
+  } else if (lastDot > lastComma) {
+    // EN format: 1,234.56 — dot is decimal
+    s = s.replace(/,/g, '');
+  } else {
+    // No separator or only one type
+    s = s.replace(',', '.');
+  }
+  return parseFloat(s);
+}
+
+function parseUniversalDate(val) {
+  if (!val) return null;
+  var s = String(val).trim();
+  // ISO: 2025-10-07
+  if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+  // PT: 07/10/2025
+  var m = s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);
+  if (m) return m[3] + '-' + m[2].padStart(2,'0') + '-' + m[1].padStart(2,'0');
+  return s;
+}
+
+function fmtUniversalNumber(val) {
+  var n = parseUniversalNumber(val);
+  if (isNaN(n)) return '';
+  return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+function fmtDate(d){ if(!d) return '—'; var iso=parseUniversalDate(d); if(!iso) return d; var p=iso.split('-'); return p.length===3?p[1]+'/'+p[2]+'/'+p[0]:d; }
 function fmtArea(a,u){ return (a&&a!=='') ? a+(u?'\u00a0'+u:'') : '—'; }
 
 function buildCard(p, idx) {
@@ -1539,6 +1563,16 @@ function importCSV(event) {
       headers.forEach((h,idx) => { obj[h] = vals[idx] || ''; });
       if(obj.address) parsed.push(obj);
     }
+    /* Normalize numbers and dates parsed from CSV */
+    parsed = parsed.map(function(p) {
+      ['acquisition_price','arv','rehab_cost','sale_price'].forEach(function(k) {
+        if (p[k]) { var n = parseUniversalNumber(p[k]); p[k] = isNaN(n) ? '' : String(n); }
+      });
+      ['acquisition_date','sale_date'].forEach(function(k) {
+        if (p[k]) p[k] = parseUniversalDate(p[k]) || p[k];
+      });
+      return p;
+    });
     if(parsed.length){
       portfolioData = parsed;
       currentFilter = 'all';
@@ -1568,10 +1602,6 @@ function downloadTemplate() {
   document.getElementById('csvColsList').innerHTML = CSV_COLUMNS.map(c=>`<span class="csv-col">${c}</span>`).join('');
 }
 
-
-/* ═══════════════════════════════════════
-   COUNTY DATABASE
-═══════════════════════════════════════ */
 const COUNTIES = [
   {state:'FL',county:'Alachua',office:'Clerk of Court',officer:'J.K. Irby',phone:'(352) 374-3636',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.alachuaclerk.org',notes:''},
   {state:'FL',county:'Brevard',office:'Clerk of Court',officer:'Rachel Sadoff',phone:'(321) 637-5413',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.brevardclerk.us',notes:''},
@@ -1703,9 +1733,6 @@ function buildPlaybooks() {
     </div>`).join('');
 }
 
-/* ═══════════════════════════════════════
-   SCRAPER
-═══════════════════════════════════════ */
 let scrapedResults = [], scrapeQueue = [], scrapeIdx = 0, captchaPending = false, captchaCurrentUrl = '';
 
 function runScraper() {
@@ -1819,15 +1846,6 @@ function exportCSV() {
   a.click();
 }
 
-/* ═══════════════════════════════════════
-   AOS
-═══════════════════════════════════════ */
-/* AOS disabled — all content visible by default */
-
-/* ═══════════════════════════════════════
-   PUBLIC PORTFOLIO + OFFER
-═══════════════════════════════════════ */
-
 let pubCurrentFilter = 'all';
 let pubPhotoIdx = {};
 let offerPropData = null;
@@ -1835,7 +1853,7 @@ let pubFilteredData = [];
 
 function pubKey(p){ return (p.address||'').trim().toLowerCase(); }
 
-function buildPubCard(p, cardIndex){
+function buildPubCard(p, cardIndex, isPrivate){
   const col = STATUS_COLORS[p.status] || '#D4A847';
   const key = pubKey(p);
   const photos = photoStore[key] || [];
@@ -1869,17 +1887,13 @@ function buildPubCard(p, cardIndex){
   const typePill = p.type ? `<span class="pub-chip chip-type">${p.type}</span>` : '';
   const areaPill = (p.area && p.area !== '') ? `<span class="pub-chip chip-area">${p.area}${p.unit?' '+p.unit:''}</span>` : '';
   /* Starting value = sale_price if set, otherwise arv, otherwise blank */
-  const startingRaw = (p.sale_price && String(p.sale_price).replace(/[^0-9.]/g,'') !== '')
-    ? p.sale_price
-    : (p.arv || '');
-  const startingFmt = startingRaw
-    ? '$' + Number(String(startingRaw).replace(/[^0-9.]/g,'')).toLocaleString()
-    : '';
+  const startingRaw = (p.sale_price && String(p.sale_price).replace(/[^0-9.,]/g,'') !== '') ? p.sale_price : (p.arv || '');
+  const startingFmt = startingRaw ? fmtUniversalNumber(startingRaw) : '';
   const arvFmt = startingFmt || 'Contact us';
 
-  const offerBtn = !isSold
+  const offerBtn = isPrivate ? '' : (!isSold
     ? `<button class="pub-offer-btn" data-cidx="${cardIndex}" onclick="openOfferByIdx(this)">Make an Offer &#8594;</button>`
-    : `<div class="pub-sold-tag">&#10003; Sold</div>`;
+    : `<div class="pub-sold-tag">&#10003; Sold</div>`);
 
   return `<div class="pub-card" style="--prop-color:${col}">
     ${photoPanel}
@@ -1915,7 +1929,7 @@ function renderPubPortfolio(data){
     return;
   }
   track.innerHTML = pubFilteredData.map((p,i) => buildPubCard(p,i)).join('');
-  /* Make pub cards visible (they don't have .aos class, no observer needed) */
+  
 }
 
 function pubFilter(f, btn){
@@ -1943,7 +1957,7 @@ function openOfferByIdx(btn){
   const p = pubFilteredData[idx];
   if(!p) return;
   offerPropData = p;
-  const arv = p.arv ? '$'+Number(String(p.arv).replace(/[^0-9.]/g,'')).toLocaleString() : '';
+  const arv = p.arv ? fmtUniversalNumber(p.arv) : '';
   document.getElementById('offerPropTitle').textContent = p.address || '';
   document.getElementById('offerPropSub').textContent =
     [p.city, p.state, p.zip].filter(Boolean).join(', ') + (arv ? '  \u00b7  ARV: '+arv : '');
@@ -1977,21 +1991,13 @@ function submitOffer(){
   btn.disabled = true;
   btn.textContent = 'Sending\u2026';
 
-  /* ── WEB3FORMS — free, 250 emails/month, NO account needed ──────────────
-     Instructions (2 minutes):
-     1. Go to https://web3forms.com
-     2. Enter your email: herbert63@gmail.com  →  click "Create Access Key"
-     3. Check your email inbox → copy the Access Key (looks like a long UUID)
-     4. Replace YOUR_ACCESS_KEY below with that key
-     5. Re-upload the HTML file — done. No login, no dashboard needed.
-     ─────────────────────────────────────────────────────────────────────── */
   var ACCESS_KEY = '0662eeb5-d026-497b-b698-b52dfd1ca131';
 
   var prop = offerPropData || {};
-  var arvFmt = prop.arv ? '$' + Number(String(prop.arv).replace(/[^0-9.]/g,'')).toLocaleString() : '\u2014';
+  var arvFmt = prop.arv ? fmtUniversalNumber(prop.arv) : '\u2014';
 
-  if (ACCESS_KEY === '0662eeb5-d026-497b-b698-b52dfd1ca131') {
-    /* Demo mode — shows success without sending */
+  if (ACCESS_KEY === 'YOUR_ACCESS_KEY') {
+    
     setTimeout(function(){
       document.getElementById('offerFormWrap').style.display = 'none';
       document.getElementById('offerSuccess').style.display  = 'flex';
@@ -2001,6 +2007,7 @@ function submitOffer(){
 
   var payload = {
     access_key:   ACCESS_KEY,
+    to:           'herbert63@gmail.com',
     subject:      'New Offer \u2014 ' + (prop.address || 'Partners Deeds Property'),
     from_name:    'Partners Deeds Website',
     replyto:      email,
@@ -2046,9 +2053,6 @@ function submitOffer(){
   });
 })();
 
-/* ═══════════════════════════════════════
-   iOS SCROLL FIX
-═══════════════════════════════════════ */
 document.addEventListener('touchmove', function(e) {
   if(document.getElementById('modalOverlay').classList.contains('open')) {
     const modal = document.getElementById('modalBox');
@@ -2056,24 +2060,11 @@ document.addEventListener('touchmove', function(e) {
   }
 },{passive:false});
 
-
-/* Portfolio renders when user clicks a filter button — hidden by default */
 (function() {
   pubFilteredData = portfolioData.slice();
   /* pre-load data but don't show yet */
 })();
 
-
-/* ══════════════════════════════════════════════════════
-   iOS SAFARI TOUCH FIX — added as pure patch, no changes
-   to existing code. Covers: .tip, .access-btn (already 
-   a button but confirm), .pub-filter-btn, .proc-btn.
-   
-   Root cause: iOS Safari does not fire click on elements
-   that are not natively interactive (a, button, input,
-   select) UNLESS they have cursor:pointer in CSS.
-   Solution: listen for touchend and manually fire click.
-══════════════════════════════════════════════════════ */
 (function() {
   function iosTapFix(selector) {
     document.querySelectorAll(selector).forEach(function(el) {
@@ -2150,8 +2141,6 @@ function toggleDisclaimer() {
   arrow.className = isOpen ? 'disclaimer-arrow' : 'disclaimer-arrow open';
 }
 
-
-/* ── Private portfolio tab renderer ── */
 function renderPrivatePortfolio(data) {
   var track = document.getElementById('propTrackPrivate');
   if (!track) return;
@@ -2159,7 +2148,7 @@ function renderPrivatePortfolio(data) {
   if (!display.length) {
     track.innerHTML = '<div style="padding:32px;text-align:center;color:var(--muted);font-size:14px;">No properties. Import a CSV to get started.</div>';
   } else {
-    track.innerHTML = display.map(function(p, i) { return buildPubCard(p, i); }).join('');
+    track.innerHTML = display.map(function(p, i) { return buildPubCard(p, i, true); }).join('');
   }
 
   /* Rebuild dynamic state filter buttons */
@@ -2210,7 +2199,7 @@ function pvFilter(f, btn) {
   btn.classList.add('active-filter');
   var filtered = f === 'all' ? portfolioData : portfolioData.filter(function(p){ return p.state === f; });
   var track = document.getElementById('propTrackPrivate');
-  if (track) track.innerHTML = filtered.map(function(p, i){ return buildPubCard(p, i); }).join('');
+  if (track) track.innerHTML = filtered.map(function(p, i){ return buildPubCard(p, i, true); }).join('');
 }
 
 function exportPortfolioCSV() {
@@ -2225,7 +2214,6 @@ function exportPortfolioCSV() {
   a.click();
 }
 
-/* Re-render private portfolio when unlocked */
 var _origCheckAccess = checkAccess;
 checkAccess = function() {
   _origCheckAccess();
@@ -2235,6 +2223,121 @@ checkAccess = function() {
     }
   }, 100);
 };
+
+/* ═══════════════════════════════════════
+   LANGUAGE / i18n
+═══════════════════════════════════════ */
+var LANG = 'en';
+var I18N = {
+  en: {
+    eyebrow: 'Partners Deeds',
+    tagline: 'Four integrated pillars. One self-reinforcing ecosystem.',
+    pillars_title: 'The four businesses of our ecosystem',
+    pub_title: 'Current Property Inventory',
+    pub_intro: 'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.',
+    make_offer: 'Make an Offer →',
+    contact_us: 'Contact us for pricing',
+    starting: 'Starting value:',
+    sold_tag: '✓ Sold',
+    filter_all: 'All Properties',
+    access_title: 'Operator Access',
+    access_ph: 'Enter access code',
+    access_btn: 'Unlock',
+    access_err: 'Incorrect code — try again.',
+    offer_name: 'Full Name',
+    offer_phone: 'Phone',
+    offer_email: 'E-mail',
+    offer_value: 'Proposed Value (optional)',
+    offer_submit: 'Make My Offer →',
+    offer_success_title: 'Offer Received!',
+    offer_success_msg: 'Thank you. We'll review your offer and be in touch within 1 business day.',
+    disclaimer_title: '⚠ Investment Risk Disclaimer',
+  },
+  pt: {
+    eyebrow: 'Partners Deeds',
+    tagline: 'Quatro pilares integrados. Um ecossistema autossustentável.',
+    pillars_title: 'Os quatro negócios do nosso ecossistema',
+    pub_title: 'Inventário Atual de Imóveis',
+    pub_intro: 'Confira nosso inventário atual. Imóveis adquiridos em leilões de tax deed nos estados FL, MI e MS. Entre em contato para fazer uma oferta.',
+    make_offer: 'Fazer uma Oferta →',
+    contact_us: 'Consulte o preço',
+    starting: 'Valor inicial:',
+    sold_tag: '✓ Vendido',
+    filter_all: 'Todos os Imóveis',
+    access_title: 'Acesso do Operador',
+    access_ph: 'Digite o código de acesso',
+    access_btn: 'Acessar',
+    access_err: 'Código incorreto — tente novamente.',
+    offer_name: 'Nome Completo',
+    offer_phone: 'Telefone',
+    offer_email: 'E-mail',
+    offer_value: 'Valor Proposto (opcional)',
+    offer_submit: 'Enviar Minha Oferta →',
+    offer_success_title: 'Oferta Recebida!',
+    offer_success_msg: 'Obrigado. Analisaremos sua oferta e retornaremos em até 1 dia útil.',
+    disclaimer_title: '⚠ Aviso de Risco de Investimento',
+  },
+  es: {
+    eyebrow: 'Partners Deeds',
+    tagline: 'Cuatro pilares integrados. Un ecosistema autorreforzado.',
+    pillars_title: 'Los cuatro negocios de nuestro ecosistema',
+    pub_title: 'Inventario Actual de Propiedades',
+    pub_intro: 'Explore nuestro inventario actual. Propiedades adquiridas en subastas de tax deed en FL, MI y MS. Contáctenos para hacer una oferta.',
+    make_offer: 'Hacer una Oferta →',
+    contact_us: 'Consultar precio',
+    starting: 'Valor inicial:',
+    sold_tag: '✓ Vendido',
+    filter_all: 'Todas las Propiedades',
+    access_title: 'Acceso del Operador',
+    access_ph: 'Ingrese el código de acceso',
+    access_btn: 'Acceder',
+    access_err: 'Código incorrecto — inténtelo de nuevo.',
+    offer_name: 'Nombre Completo',
+    offer_phone: 'Teléfono',
+    offer_email: 'Correo electrónico',
+    offer_value: 'Valor Propuesto (opcional)',
+    offer_submit: 'Enviar Mi Oferta →',
+    offer_success_title: '¡Oferta Recibida!',
+    offer_success_msg: 'Gracias. Revisaremos su oferta y nos pondremos en contacto en 1 día hábil.',
+    disclaimer_title: '⚠ Aviso de Riesgo de Inversión',
+  }
+};
+
+function setLang(lang) {
+  LANG = lang;
+  var t = I18N[lang];
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+  function setText(id, val) { var el=document.getElementById(id); if(el) el.innerHTML=val; }
+  function setAttr(id, attr, val) { var el=document.getElementById(id); if(el) el.setAttribute(attr,val); }
+  setText('i18n-tagline', t.tagline);
+  setText('i18n-pillars-title', t.pillars_title);
+  setText('i18n-pub-title', t.pub_title);
+  setText('i18n-pub-intro', t.pub_intro);
+  setText('i18n-disclaimer-title', t.disclaimer_title);
+  setAttr('accessInput', 'placeholder', t.access_ph);
+  var accessBtn = document.getElementById('accessBtn');
+  if (accessBtn) accessBtn.textContent = t.access_btn;
+  var accessErr = document.getElementById('accessError');
+  // offer modal labels
+  setText('i18n-offer-name', t.offer_name);
+  setText('i18n-offer-phone', t.offer_phone);
+  setText('i18n-offer-email', t.offer_email);
+  setText('i18n-offer-value', t.offer_value);
+  var submitBtn = document.getElementById('offerSubmitBtn');
+  if (submitBtn && !submitBtn.disabled) submitBtn.textContent = t.offer_submit;
+  setText('i18n-offer-success-title', t.offer_success_title);
+  setText('i18n-offer-success-msg', t.offer_success_msg);
+  // re-render public portfolio with updated language
+  var activeFilter = document.querySelector('.pub-filter-btn.active');
+  if (activeFilter) {
+    var allBtn = document.querySelector('.pub-filter-btn[data-filter="all"]');
+    if (allBtn) allBtn.textContent = t.filter_all;
+  }
+  // Re-render pub cards so offer button / sold tag update
+  if (pubFilteredData.length) renderPubPortfolio(pubFilteredData);
+}
 
 </script>
 </body>
