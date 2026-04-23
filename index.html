@@ -2250,7 +2250,7 @@ var I18N = {
     offer_value: 'Proposed Value (optional)',
     offer_submit: 'Make My Offer →',
     offer_success_title: 'Offer Received!',
-    offer_success_msg: 'Thank you. We'll review your offer and be in touch within 1 business day.',
+    offer_success_msg: 'Thank you. We\'ll review your offer and be in touch within 1 business day.',
     disclaimer_title: '⚠ Investment Risk Disclaimer',
   },
   pt: {
@@ -2338,6 +2338,31 @@ function setLang(lang) {
   // Re-render pub cards so offer button / sold tag update
   if (pubFilteredData.length) renderPubPortfolio(pubFilteredData);
 }
+
+/* ── Expose all interactive functions to global scope (onclick compatibility) ── */
+window.checkAccess       = checkAccess;
+window.lockSection       = lockSection;
+window.switchTab         = switchTab;
+window.togglePillar      = togglePillar;
+window.toggleDisclaimer  = toggleDisclaimer;
+window.openModal         = openModal;
+window.closeModal        = closeModal;
+window.pubFilter         = pubFilter;
+window.pubNavPhoto       = pubNavPhoto;
+window.openOfferByIdx    = openOfferByIdx;
+window.closeOffer        = closeOffer;
+window.submitOffer       = submitOffer;
+window.photoNav          = photoNav;
+window.triggerPhotoUpload= triggerPhotoUpload;
+window.downloadTemplate  = downloadTemplate;
+window.exportPortfolioCSV= exportPortfolioCSV;
+window.runScraper        = runScraper;
+window.openBypassWindow  = openBypassWindow;
+window.resumeAfterCaptcha= resumeAfterCaptcha;
+window.clearResults      = clearResults;
+window.exportCSV         = exportCSV;
+window.pvFilter          = pvFilter;
+window.setLang           = setLang;
 
 </script>
 </body>
