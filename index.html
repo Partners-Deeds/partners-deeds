@@ -8,7 +8,7 @@
 <title>Partners Deeds — Strategic Ecosystem</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 <style>
-
+/* ─── TOKENS ─── */
 :root{
   --gold:#D4A847;--gold-light:#EFC96A;--gold-dim:#7A6030;--gold-bg:rgba(212,168,71,.08);
   --ink:#0A090C;--ink2:#14131C;--ink3:#1E1D28;
@@ -17,6 +17,7 @@
   --border:rgba(212,168,71,.16);--border-h:rgba(212,168,71,.45);
 }
 
+/* ─── RESET ─── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
@@ -28,11 +29,13 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 strong{color:var(--paper);font-weight:600;}
 a{-webkit-touch-callout:none;}
 
+/* ─── TYPE ─── */
 .label{font-size:12px;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
 .section-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--paper);margin-bottom:18px;line-height:1.15;}
 @media(min-width:600px){.section-title{font-size:36px;margin-bottom:20px;}}
 .section-intro{font-size:15px;color:var(--paper2);line-height:1.8;max-width:860px;margin-bottom:36px;}
 
+/* ─── HEADER ─── */
 header{text-align:center;margin-bottom:64px;animation:fadeDown .9s ease both;}
 @media(min-width:600px){header{margin-bottom:88px;}}
 .eyebrow{font-size:17px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:600;}
@@ -47,6 +50,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .rule::after{content:'';flex:1;height:1px;background:linear-gradient(270deg,transparent,var(--gold-dim));}
 .rule-diamond{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
 
+/* ─── STATS BAR ─── */
 .stats-bar{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--border);margin-bottom:64px;animation:fadeUp .9s .15s ease both;}
 @media(min-width:700px){.stats-bar{grid-template-columns:repeat(4,1fr);margin-bottom:88px;}}
 .stat{padding:24px 16px;text-align:center;border-right:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--gold-bg);transition:background .3s;}
@@ -58,13 +62,16 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 @media(min-width:600px){.stat-n{font-size:44px;}}
 .stat-l{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--paper2);margin-top:8px;display:block;}
 
+/* ─── TOOLTIP — tap-friendly on iOS ─── */
 .tip{position:relative;display:inline;border-bottom:1px dashed var(--gold-dim);color:var(--gold-light);cursor:pointer;}
 .tip-box{position:fixed;z-index:9999;max-width:min(300px,85vw);min-width:160px;background:var(--ink3);border:1px solid var(--border-h);color:var(--paper);font-family:'Inter',sans-serif;font-size:14px;font-weight:400;font-style:normal;line-height:1.55;padding:10px 14px;box-shadow:0 12px 36px rgba(0,0,0,.65);pointer-events:none;opacity:0;transition:opacity .15s;white-space:normal;border-radius:2px;}
 .tip-box.visible{opacity:1;}
 
+/* ─── PROC BTN ─── */
 .proc-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(212,168,71,.15);border:1px solid rgba(212,168,71,.4);color:var(--gold);font-size:11px;font-weight:700;cursor:pointer;margin-left:7px;flex-shrink:0;vertical-align:middle;transition:background .2s;line-height:1;font-family:'Inter',sans-serif;-webkit-appearance:none;touch-action:manipulation;}
 .proc-btn:active{background:rgba(212,168,71,.35);}
 
+/* ─── MODAL ─── */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:9000;align-items:flex-end;justify-content:center;padding:0;cursor:pointer;}
 @media(min-width:600px){.modal-overlay{align-items:center;padding:24px;}}
 .modal-overlay.open{display:flex;}
@@ -94,6 +101,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .modal-handle{width:36px;height:4px;background:rgba(255,255,255,.15);border-radius:2px;margin:10px auto 0;display:block;}
 @media(min-width:600px){.modal-handle{display:none;}}
 
+/* ─── PILLARS ─── */
 .pillars{display:grid;grid-template-columns:1fr;gap:3px;margin-bottom:80px;}
 @media(min-width:640px){.pillars{grid-template-columns:repeat(2,1fr);margin-bottom:96px;}}
 .pillar{background:var(--ink2);border:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .3s;touch-action:manipulation;}
@@ -129,6 +137,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .toggle-arrow{transition:transform .3s;display:inline-block;}
 .pillar.open .toggle-arrow{transform:rotate(180deg);}
 
+/* ─── PRIVATE SECTION ─── */
 .private-section{margin-bottom:80px;}
 @media(min-width:600px){.private-section{margin-bottom:96px;}}
 .private-card{background:var(--ink2);border:1px solid var(--border-h);overflow:hidden;}
@@ -164,6 +173,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .unlocked-status{font-size:12px;color:var(--green);font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
 .lock-again{font-size:12px;color:var(--muted);background:none;border:none;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding:6px;touch-action:manipulation;}
 
+/* ─── TABS ─── */
 .op-tabs{display:flex;gap:2px;padding:16px 20px 0;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .op-tabs::-webkit-scrollbar{display:none;}
 @media(min-width:600px){.op-tabs{padding:20px 40px 0;gap:3px;overflow-x:visible;}}
@@ -174,6 +184,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .op-panel{padding:20px;}
 @media(min-width:600px){.op-panel{padding:28px 40px;}}
 
+/* ─── SCRAPER ─── */
 .scraper-intro{background:rgba(212,168,71,.04);border:1px solid var(--border);padding:14px 16px;margin-bottom:18px;font-size:13px;color:var(--paper2);line-height:1.75;}
 .scraper-controls{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
 @media(min-width:600px){.scraper-controls{flex-direction:row;flex-wrap:wrap;align-items:flex-end;}}
@@ -449,6 +460,9 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 .aos{opacity:1;transform:none;}
 .aos.animated{opacity:1;transform:none;}
 
+/* ═══════════════════════════════════════
+   PUBLIC PORTFOLIO SECTION
+═══════════════════════════════════════ */
 .pub-portfolio{margin-bottom:88px;}
 .pub-track{display:none;flex-direction:column;gap:12px;}
 .pub-track.open{display:flex;}
@@ -571,12 +585,10 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   padding-top:10px;margin-top:6px;
 }
 
-/* ─── LANGUAGE SWITCHER ─── */
-.lang-bar{display:flex;justify-content:flex-end;gap:8px;padding:12px 0 0;margin-bottom:-32px;position:relative;z-index:10;}
-.lang-btn{background:none;border:1px solid var(--border);color:var(--paper3);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;cursor:pointer;transition:all .2s;border-radius:2px;display:flex;align-items:center;gap:5px;-webkit-appearance:none;}
-.lang-btn:hover,.lang-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-bg);}
-.lang-flag{font-size:14px;}
-
+/* ── LANGUAGE SWITCHER ── */
+.lang-bar{display:flex;justify-content:flex-end;gap:6px;padding:10px 0 0;margin-bottom:-28px;position:relative;z-index:10;}
+.lang-btn{background:none;border:1px solid var(--border);color:var(--paper3);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;cursor:pointer;transition:all .2s;border-radius:2px;display:inline-flex;align-items:center;gap:4px;-webkit-appearance:none;}
+.lang-btn:hover,.lang-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(212,168,71,.08);}
 </style>
 </head>
 <body>
@@ -598,9 +610,9 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
 <div class="wrap">
 <div class="lang-bar">
-  <button class="lang-btn active" data-lang="en" onclick="setLang('en')"><span class="lang-flag">🇺🇸</span> EN</button>
-  <button class="lang-btn" data-lang="pt" onclick="setLang('pt')"><span class="lang-flag">🇧🇷</span> PT</button>
-  <button class="lang-btn" data-lang="es" onclick="setLang('es')"><span class="lang-flag">🇪🇸</span> ES</button>
+  <button class="lang-btn active" onclick="setLang('en')">&#127482;&#127480; EN</button>
+  <button class="lang-btn" onclick="setLang('pt')">&#127463;&#127479; PT</button>
+  <button class="lang-btn" onclick="setLang('es')">&#127466;&#127480; ES</button>
 </div>
 
 <!-- ══ HEADER ══ -->
@@ -976,7 +988,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     </div>
     <div class="offer-success" id="offerSuccess" style="display:none">
       <div class="offer-success-icon">✅</div>
-      <div class="offer-success-title" id="i18n-offer-success-title">Offer Received!</div>
+      <div class="offer-success-title">Offer Received!</div>
       <div class="offer-success-msg">Thank you for your interest!<br>We'll be contacting you shortly.</div>
       <button class="offer-close-btn" onclick="closeOffer()">Close</button>
     </div>
@@ -987,7 +999,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 <div class="pub-portfolio aos" id="pubPortfolioSection">
   <span class="label">Available Properties</span>
   <h2 class="section-title">Portfolio — Properties for Sale</h2>
-  <p class="section-intro" id="i18n-pub-intro">Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI & MS. Contact us to make an offer on any listing.</p>
+  <p class="section-intro" id="i18n-pub-intro">Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.</p>
   <div class="pub-filter-bar">
     <button class="pub-filter-btn active" onclick="pubFilter('all',this)">All Properties</button>
     <button class="pub-filter-btn" onclick="pubFilter('FL',this)">🌴 Florida</button>
@@ -1236,14 +1248,11 @@ function closeModal() {
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
 /* swipe down to close modal on mobile */
-var touchStartY = 0;
-document.addEventListener('DOMContentLoaded', function() {
-  var mb = document.getElementById('modalBox');
-  if (mb) {
-    mb.addEventListener('touchstart', function(e){ touchStartY = e.touches[0].clientY; }, {passive:true});
-    mb.addEventListener('touchend', function(e){ if(e.changedTouches[0].clientY - touchStartY > 80) closeModal(); }, {passive:true});
-  }
-});
+let touchStartY = 0;
+document.getElementById('modalBox').addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, {passive:true});
+document.getElementById('modalBox').addEventListener('touchend', e => {
+  if (e.changedTouches[0].clientY - touchStartY > 80) closeModal();
+}, {passive:true});
 
 /* ═══════════════════════════════════════
    PILLAR TOGGLE
@@ -1280,7 +1289,6 @@ function checkAccess() {
     err.classList.remove('show');
     buildVerifiedContacts();
     buildPlaybooks();
-    setTimeout(function(){ renderPrivatePortfolio(portfolioData); }, 50);
     /* Show scraper tab by default when unlocking */
     var firstTab = document.querySelector('.op-tab');
     if (firstTab) switchTab('scraper', firstTab);
@@ -1297,6 +1305,9 @@ function lockSection() {
   document.getElementById('accessError').classList.remove('show');
 }
 
+/* ═══════════════════════════════════════
+   TAB SWITCHER
+═══════════════════════════════════════ */
 function switchTab(name, btn) {
   ['portfolio','scraper','contacts','playbooks'].forEach(function(t) {
     var el = document.getElementById('tab-'+t);
@@ -1306,8 +1317,12 @@ function switchTab(name, btn) {
   btn.classList.add('active');
 }
 
+/* ═══════════════════════════════════════
+   PORTFOLIO
+═══════════════════════════════════════ */
 const CSV_COLUMNS = ['address','city','county','state','zip','type','area','unit','status','acquisition_date','acquisition_price','arv','rehab_cost','sale_price','sale_date','notes'];
 
+/* ── Photo store: key = address, value = array of base64 strings ── */
 const photoStore = {};
 
 const SAMPLE_PROPS = [
@@ -1337,8 +1352,10 @@ let portfolioData = [...SAMPLE_PROPS];
 let currentFilter = 'all';
 const STATUS_COLORS = { active:'#5B9E6A', sold:'#5B9AB5', rehab:'#C47A3A', pending:'#8B6CC4' };
 
+/* ── Photo key: normalize address as store key ── */
 function photoKey(p){ return (p.address||'').trim().toLowerCase(); }
 
+/* ── Render all cards ── */
 function renderPortfolio(data) {
   const track = document.getElementById('propTrack');
   if(!data || !data.length) {
@@ -1352,44 +1369,29 @@ function renderPortfolio(data) {
 }
 
 function fmt$(n){ return n ? '$'+Number(String(n).replace(/[^0-9.]/g,'')).toLocaleString() : '—'; }
-
-function parseUniversalNumber(val) {
-  if (!val && val !== 0) return NaN;
-  var s = String(val).trim().replace(/[^0-9.,\-]/g, '');
-  if (!s) return NaN;
-  var lastComma = s.lastIndexOf(',');
-  var lastDot   = s.lastIndexOf('.');
-  if (lastComma > lastDot) {
-    // PT format: 1.234,56 — comma is decimal
-    s = s.replace(/\./g, '').replace(',', '.');
-  } else if (lastDot > lastComma) {
-    // EN format: 1,234.56 — dot is decimal
-    s = s.replace(/,/g, '');
-  } else {
-    // No separator or only one type
-    s = s.replace(',', '.');
-  }
+function parseUniversalNumber(val){
+  if(!val&&val!==0)return NaN;
+  var s=String(val).trim().replace(/[^0-9.,-]/g,'');
+  if(!s)return NaN;
+  var lc=s.lastIndexOf(','),ld=s.lastIndexOf('.');
+  if(lc>ld){s=s.replace(/\./g,'').replace(',','.');}
+  else{s=s.replace(/,/g,'');}
   return parseFloat(s);
 }
-
-function parseUniversalDate(val) {
-  if (!val) return null;
-  var s = String(val).trim();
-  // ISO: 2025-10-07
-  if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
-  // PT: 07/10/2025
-  var m = s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);
-  if (m) return m[3] + '-' + m[2].padStart(2,'0') + '-' + m[1].padStart(2,'0');
+function parseUniversalDate(val){
+  if(!val)return null;
+  var s=String(val).trim();
+  if(/^\d{4}-\d{2}-\d{2}/.test(s))return s.slice(0,10);
+  var m=s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);
+  if(m)return m[3]+'-'+m[2].padStart(2,'0')+'-'+m[1].padStart(2,'0');
   return s;
 }
-
-function fmtUniversalNumber(val) {
-  var n = parseUniversalNumber(val);
-  if (isNaN(n)) return '';
-  return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+function fmtMoney(val){
+  var n=parseUniversalNumber(val);
+  if(isNaN(n)||n===0)return '';
+  return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 }
-
-function fmtDate(d){ if(!d) return '—'; var iso=parseUniversalDate(d); if(!iso) return d; var p=iso.split('-'); return p.length===3?p[1]+'/'+p[2]+'/'+p[0]:d; }
+function fmtDate(d){ if(!d) return '—'; var iso=parseUniversalDate(d)||d; var p=iso.split('-'); return p.length===3?p[1]+'/'+p[2]+'/'+p[0]:d; }
 function fmtArea(a,u){ return (a&&a!=='') ? a+(u?'\u00a0'+u:'') : '—'; }
 
 function buildCard(p, idx) {
@@ -1567,15 +1569,14 @@ function importCSV(event) {
       headers.forEach((h,idx) => { obj[h] = vals[idx] || ''; });
       if(obj.address) parsed.push(obj);
     }
-    /* Normalize numbers and dates parsed from CSV */
-    parsed = parsed.map(function(p) {
-      ['acquisition_price','arv','rehab_cost','sale_price'].forEach(function(k) {
-        if (p[k]) { var n = parseUniversalNumber(p[k]); p[k] = isNaN(n) ? '' : String(n); }
+    parsed=parsed.map(function(row){
+      ['acquisition_price','arv','rehab_cost','sale_price'].forEach(function(k){
+        if(row[k]){var n=parseUniversalNumber(row[k]);row[k]=isNaN(n)?'':String(n);}
       });
-      ['acquisition_date','sale_date'].forEach(function(k) {
-        if (p[k]) p[k] = parseUniversalDate(p[k]) || p[k];
+      ['acquisition_date','sale_date'].forEach(function(k){
+        if(row[k])row[k]=parseUniversalDate(row[k])||row[k];
       });
-      return p;
+      return row;
     });
     if(parsed.length){
       portfolioData = parsed;
@@ -1606,6 +1607,9 @@ function downloadTemplate() {
   document.getElementById('csvColsList').innerHTML = CSV_COLUMNS.map(c=>`<span class="csv-col">${c}</span>`).join('');
 }
 
+/* ═══════════════════════════════════════
+   COUNTY DATABASE
+═══════════════════════════════════════ */
 const COUNTIES = [
   {state:'FL',county:'Alachua',office:'Clerk of Court',officer:'J.K. Irby',phone:'(352) 374-3636',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.alachuaclerk.org',notes:''},
   {state:'FL',county:'Brevard',office:'Clerk of Court',officer:'Rachel Sadoff',phone:'(321) 637-5413',list:'RealTDA.com',schedule:'Varies (online)',url:'https://www.brevardclerk.us',notes:''},
@@ -1737,6 +1741,9 @@ function buildPlaybooks() {
     </div>`).join('');
 }
 
+/* ═══════════════════════════════════════
+   SCRAPER
+═══════════════════════════════════════ */
 let scrapedResults = [], scrapeQueue = [], scrapeIdx = 0, captchaPending = false, captchaCurrentUrl = '';
 
 function runScraper() {
@@ -1850,6 +1857,15 @@ function exportCSV() {
   a.click();
 }
 
+/* ═══════════════════════════════════════
+   AOS
+═══════════════════════════════════════ */
+/* AOS disabled — all content visible by default */
+
+/* ═══════════════════════════════════════
+   PUBLIC PORTFOLIO + OFFER
+═══════════════════════════════════════ */
+
 let pubCurrentFilter = 'all';
 let pubPhotoIdx = {};
 let offerPropData = null;
@@ -1891,8 +1907,8 @@ function buildPubCard(p, cardIndex, isPrivate){
   const typePill = p.type ? `<span class="pub-chip chip-type">${p.type}</span>` : '';
   const areaPill = (p.area && p.area !== '') ? `<span class="pub-chip chip-area">${p.area}${p.unit?' '+p.unit:''}</span>` : '';
   /* Starting value = sale_price if set, otherwise arv, otherwise blank */
-  const startingRaw = (p.sale_price && String(p.sale_price).replace(/[^0-9.,]/g,'') !== '') ? p.sale_price : (p.arv || '');
-  const startingFmt = startingRaw ? fmtUniversalNumber(startingRaw) : '';
+  const startingRaw=(p.sale_price&&String(p.sale_price).replace(/[^0-9.,]/g,'')!=='')?p.sale_price:(p.arv||'');
+  const startingFmt=fmtMoney(startingRaw);
   const arvFmt = startingFmt || 'Contact us';
 
   const offerBtn = isPrivate ? '' : (!isSold
@@ -1933,7 +1949,7 @@ function renderPubPortfolio(data){
     return;
   }
   track.innerHTML = pubFilteredData.map((p,i) => buildPubCard(p,i)).join('');
-  
+  /* Make pub cards visible (they don't have .aos class, no observer needed) */
 }
 
 function pubFilter(f, btn){
@@ -1961,7 +1977,7 @@ function openOfferByIdx(btn){
   const p = pubFilteredData[idx];
   if(!p) return;
   offerPropData = p;
-  const arv = p.arv ? fmtUniversalNumber(p.arv) : '';
+  const arv = p.arv ? fmtMoney(p.arv) : '';
   document.getElementById('offerPropTitle').textContent = p.address || '';
   document.getElementById('offerPropSub').textContent =
     [p.city, p.state, p.zip].filter(Boolean).join(', ') + (arv ? '  \u00b7  ARV: '+arv : '');
@@ -1998,18 +2014,9 @@ function submitOffer(){
   var ACCESS_KEY = '0662eeb5-d026-497b-b698-b52dfd1ca131';
 
   var prop = offerPropData || {};
-  var arvFmt = prop.arv ? fmtUniversalNumber(prop.arv) : '\u2014';
+  var arvFmt = prop.arv ? '$' + Number(String(prop.arv).replace(/[^0-9.]/g,'')).toLocaleString() : '\u2014';
 
-  if (ACCESS_KEY === 'YOUR_ACCESS_KEY') {
-    
-    setTimeout(function(){
-      document.getElementById('offerFormWrap').style.display = 'none';
-      document.getElementById('offerSuccess').style.display  = 'flex';
-    }, 600);
-    return;
-  }
-
-  var payload = {
+    var payload = {
     access_key:   ACCESS_KEY,
     to:           'herbert63@gmail.com',
     subject:      'New Offer \u2014 ' + (prop.address || 'Partners Deeds Property'),
@@ -2057,6 +2064,9 @@ function submitOffer(){
   });
 })();
 
+/* ═══════════════════════════════════════
+   iOS SCROLL FIX
+═══════════════════════════════════════ */
 document.addEventListener('touchmove', function(e) {
   if(document.getElementById('modalOverlay').classList.contains('open')) {
     const modal = document.getElementById('modalBox');
@@ -2064,11 +2074,22 @@ document.addEventListener('touchmove', function(e) {
   }
 },{passive:false});
 
+/* Portfolio renders when user clicks a filter button — hidden by default */
 (function() {
   pubFilteredData = portfolioData.slice();
   /* pre-load data but don't show yet */
 })();
 
+/* ══════════════════════════════════════════════════════
+   iOS SAFARI TOUCH FIX — added as pure patch, no changes
+   to existing code. Covers: .tip, .access-btn (already 
+   a button but confirm), .pub-filter-btn, .proc-btn.
+   
+   Root cause: iOS Safari does not fire click on elements
+   that are not natively interactive (a, button, input,
+   select) UNLESS they have cursor:pointer in CSS.
+   Solution: listen for touchend and manually fire click.
+══════════════════════════════════════════════════════ */
 (function() {
   function iosTapFix(selector) {
     document.querySelectorAll(selector).forEach(function(el) {
@@ -2145,6 +2166,7 @@ function toggleDisclaimer() {
   arrow.className = isOpen ? 'disclaimer-arrow' : 'disclaimer-arrow open';
 }
 
+/* ── Private portfolio tab renderer ── */
 function renderPrivatePortfolio(data) {
   var track = document.getElementById('propTrackPrivate');
   if (!track) return;
@@ -2218,146 +2240,33 @@ function exportPortfolioCSV() {
   a.click();
 }
 
-/* private portfolio re-renders on unlock via checkAccess directly */
-/* ═══════════════════════════════════════
-   LANGUAGE / i18n
-═══════════════════════════════════════ */
-var LANG = 'en';
-var I18N = {
-  en: {
-    eyebrow: 'Partners Deeds',
-    tagline: 'Four integrated pillars. One self-reinforcing ecosystem.',
-    pillars_title: 'The four businesses of our ecosystem',
-    pub_title: 'Current Property Inventory',
-    pub_intro: 'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI & MS. Contact us to make an offer on any listing.',
-    make_offer: 'Make an Offer →',
-    contact_us: 'Contact us for pricing',
-    starting: 'Starting value:',
-    sold_tag: '✓ Sold',
-    filter_all: 'All Properties',
-    access_title: 'Operator Access',
-    access_ph: 'Enter access code',
-    access_btn: 'Unlock',
-    access_err: 'Incorrect code — try again.',
-    offer_name: 'Full Name',
-    offer_phone: 'Phone',
-    offer_email: 'E-mail',
-    offer_value: 'Proposed Value (optional)',
-    offer_submit: 'Make My Offer →',
-    offer_success_title: 'Offer Received!',
-    offer_success_msg: 'Thank you. We\'ll review your offer and be in touch within 1 business day.',
-    disclaimer_title: '⚠ Investment Risk Disclaimer',
-  },
-  pt: {
-    eyebrow: 'Partners Deeds',
-    tagline: 'Quatro pilares integrados. Um ecossistema autossustentável.',
-    pillars_title: 'Os quatro negócios do nosso ecossistema',
-    pub_title: 'Inventário Atual de Imóveis',
-    pub_intro: 'Confira nosso inventário atual. Imóveis adquiridos em leilões de tax deed nos estados FL, MI e MS. Entre em contato para fazer uma oferta.',
-    make_offer: 'Fazer uma Oferta →',
-    contact_us: 'Consulte o preço',
-    starting: 'Valor inicial:',
-    sold_tag: '✓ Vendido',
-    filter_all: 'Todos os Imóveis',
-    access_title: 'Acesso do Operador',
-    access_ph: 'Digite o código de acesso',
-    access_btn: 'Acessar',
-    access_err: 'Código incorreto — tente novamente.',
-    offer_name: 'Nome Completo',
-    offer_phone: 'Telefone',
-    offer_email: 'E-mail',
-    offer_value: 'Valor Proposto (opcional)',
-    offer_submit: 'Enviar Minha Oferta →',
-    offer_success_title: 'Oferta Recebida!',
-    offer_success_msg: 'Obrigado. Analisaremos sua oferta e retornaremos em até 1 dia útil.',
-    disclaimer_title: '⚠ Aviso de Risco de Investimento',
-  },
-  es: {
-    eyebrow: 'Partners Deeds',
-    tagline: 'Cuatro pilares integrados. Un ecosistema autorreforzado.',
-    pillars_title: 'Los cuatro negocios de nuestro ecosistema',
-    pub_title: 'Inventario Actual de Propiedades',
-    pub_intro: 'Explore nuestro inventario actual. Propiedades adquiridas en subastas de tax deed en FL, MI y MS. Contáctenos para hacer una oferta.',
-    make_offer: 'Hacer una Oferta →',
-    contact_us: 'Consultar precio',
-    starting: 'Valor inicial:',
-    sold_tag: '✓ Vendido',
-    filter_all: 'Todas las Propiedades',
-    access_title: 'Acceso del Operador',
-    access_ph: 'Ingrese el código de acceso',
-    access_btn: 'Acceder',
-    access_err: 'Código incorrecto — inténtelo de nuevo.',
-    offer_name: 'Nombre Completo',
-    offer_phone: 'Teléfono',
-    offer_email: 'Correo electrónico',
-    offer_value: 'Valor Propuesto (opcional)',
-    offer_submit: 'Enviar Mi Oferta →',
-    offer_success_title: '¡Oferta Recibida!',
-    offer_success_msg: 'Gracias. Revisaremos su oferta y nos pondremos en contacto en 1 día hábil.',
-    disclaimer_title: '⚠ Aviso de Riesgo de Inversión',
-  }
+/* Re-render private portfolio when unlocked */
+var _origCheckAccess = checkAccess;
+checkAccess = function() {
+  _origCheckAccess();
+  setTimeout(function() {
+    if (document.getElementById('privateContent').classList.contains('unlocked')) {
+      renderPrivatePortfolio(portfolioData);
+    }
+  }, 100);
 };
 
-function setLang(lang) {
-  LANG = lang;
-  var t = I18N[lang];
-  document.querySelectorAll('.lang-btn').forEach(function(b) {
-    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
-  });
-  function setText(id, val) { var el=document.getElementById(id); if(el) el.innerHTML=val; }
-  function setAttr(id, attr, val) { var el=document.getElementById(id); if(el) el.setAttribute(attr,val); }
-  setText('i18n-tagline', t.tagline);
-  setText('i18n-pillars-title', t.pillars_title);
-  setText('i18n-pub-title', t.pub_title);
-  setText('i18n-pub-intro', t.pub_intro);
-  setText('i18n-disclaimer-title', t.disclaimer_title);
-  setAttr('accessInput', 'placeholder', t.access_ph);
-  var accessBtn = document.getElementById('accessBtn');
-  if (accessBtn) accessBtn.textContent = t.access_btn;
-  var accessErr = document.getElementById('accessError');
-  // offer modal labels
-  setText('i18n-offer-name', t.offer_name);
-  setText('i18n-offer-phone', t.offer_phone);
-  setText('i18n-offer-email', t.offer_email);
-  setText('i18n-offer-value', t.offer_value);
-  var submitBtn = document.getElementById('offerSubmitBtn');
-  if (submitBtn && !submitBtn.disabled) submitBtn.textContent = t.offer_submit;
-  setText('i18n-offer-success-title', t.offer_success_title);
-  setText('i18n-offer-success-msg', t.offer_success_msg);
-  // re-render public portfolio with updated language
-  var activeFilter = document.querySelector('.pub-filter-btn.active');
-  if (activeFilter) {
-    var allBtn = document.querySelector('.pub-filter-btn[data-filter="all"]');
-    if (allBtn) allBtn.textContent = t.filter_all;
-  }
-  // Re-render pub cards so offer button / sold tag update
-  if (pubFilteredData.length) renderPubPortfolio(pubFilteredData);
+/* ── i18n ── */
+var LANG='en';
+var I18N={
+  en:{tagline:'Four integrated pillars. One self-reinforcing ecosystem.',pillars_title:'The four businesses of our ecosystem',pub_title:'Current Property Inventory',pub_intro:'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.'},
+  pt:{tagline:'Quatro pilares integrados. Um ecossistema autossustentável.',pillars_title:'Os quatro negócios do nosso ecossistema',pub_title:'Inventário Atual de Imóveis',pub_intro:'Confira nosso inventário atual. Imóveis adquiridos em leilões de tax deed nos estados FL, MI e MS. Entre em contato para fazer uma oferta.'},
+  es:{tagline:'Cuatro pilares integrados. Un ecosistema autorreforzado.',pillars_title:'Los cuatro negocios de nuestro ecosistema',pub_title:'Inventario Actual de Propiedades',pub_intro:'Explore nuestro inventario actual. Propiedades adquiridas en subastas de tax deed en FL, MI y MS. Contáctenos para hacer una oferta.'}
+};
+function setLang(lang){
+  LANG=lang;
+  document.querySelectorAll('.lang-btn').forEach(function(b,i){b.classList.toggle('active',['en','pt','es'][i]===lang);});
+  var t=I18N[lang],el;
+  el=document.getElementById('i18n-tagline');       if(el)el.innerHTML=t.tagline;
+  el=document.getElementById('i18n-pillars-title'); if(el)el.innerHTML=t.pillars_title;
+  el=document.getElementById('i18n-pub-title');     if(el)el.innerHTML=t.pub_title;
+  el=document.getElementById('i18n-pub-intro');     if(el)el.innerHTML=t.pub_intro;
 }
-
-/* ── Global exports for onclick handlers ── */
-window.checkAccess        = checkAccess;
-window.lockSection        = lockSection;
-window.switchTab          = switchTab;
-window.togglePillar       = togglePillar;
-window.toggleDisclaimer   = toggleDisclaimer;
-window.openModal          = openModal;
-window.closeModal         = closeModal;
-window.pubFilter          = pubFilter;
-window.pubNavPhoto        = pubNavPhoto;
-window.openOfferByIdx     = openOfferByIdx;
-window.closeOffer         = closeOffer;
-window.submitOffer        = submitOffer;
-window.photoNav           = photoNav;
-window.triggerPhotoUpload = triggerPhotoUpload;
-window.downloadTemplate   = downloadTemplate;
-window.exportPortfolioCSV = exportPortfolioCSV;
-window.runScraper         = runScraper;
-window.openBypassWindow   = openBypassWindow;
-window.resumeAfterCaptcha = resumeAfterCaptcha;
-window.clearResults       = clearResults;
-window.exportCSV          = exportCSV;
-window.pvFilter           = pvFilter;
-window.setLang            = setLang;
 
 </script>
 </body>
