@@ -987,7 +987,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 <div class="pub-portfolio aos" id="pubPortfolioSection">
   <span class="label">Available Properties</span>
   <h2 class="section-title">Portfolio — Properties for Sale</h2>
-  <p class="section-intro" id="i18n-pub-intro">Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.</p>
+  <p class="section-intro" id="i18n-pub-intro">Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI & MS. Contact us to make an offer on any listing.</p>
   <div class="pub-filter-bar">
     <button class="pub-filter-btn active" onclick="pubFilter('all',this)">All Properties</button>
     <button class="pub-filter-btn" onclick="pubFilter('FL',this)">🌴 Florida</button>
@@ -1236,11 +1236,14 @@ function closeModal() {
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
 
 /* swipe down to close modal on mobile */
-let touchStartY = 0;
-document.getElementById('modalBox').addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, {passive:true});
-document.getElementById('modalBox').addEventListener('touchend', e => {
-  if (e.changedTouches[0].clientY - touchStartY > 80) closeModal();
-}, {passive:true});
+var touchStartY = 0;
+document.addEventListener('DOMContentLoaded', function() {
+  var mb = document.getElementById('modalBox');
+  if (mb) {
+    mb.addEventListener('touchstart', function(e){ touchStartY = e.touches[0].clientY; }, {passive:true});
+    mb.addEventListener('touchend', function(e){ if(e.changedTouches[0].clientY - touchStartY > 80) closeModal(); }, {passive:true});
+  }
+});
 
 /* ═══════════════════════════════════════
    PILLAR TOGGLE
@@ -1277,6 +1280,7 @@ function checkAccess() {
     err.classList.remove('show');
     buildVerifiedContacts();
     buildPlaybooks();
+    setTimeout(function(){ renderPrivatePortfolio(portfolioData); }, 50);
     /* Show scraper tab by default when unlocking */
     var firstTab = document.querySelector('.op-tab');
     if (firstTab) switchTab('scraper', firstTab);
@@ -1427,7 +1431,7 @@ function buildCard(p, idx) {
           <div class="prop-address">${p.address||'—'}</div>
           <div class="prop-location">
             <span class="${stateClass}">${p.state||''}</span>
-            ${p.city||''}, ${p.county||''} County&nbsp;·&nbsp;${p.zip||''}
+            ${p.city||''}, ${p.county||''} County · ${p.zip||''}
             ${p.type?`<span class="prop-type-chip">${p.type}${area!=='—'?' · '+area:''}</span>`:''}
           </div>
         </div>
@@ -1556,7 +1560,7 @@ function importCSV(event) {
   reader.onload = function(e) {
     const lines = e.target.result.replace(/\r/g,'').split('\n').filter(l=>l.trim());
     const headers = parseCSVLine(lines[0]).map(h=>h.toLowerCase().replace(/\s+/g,'_'));
-    const parsed = [];
+    let parsed = [];
     for(let i=1;i<lines.length;i++){
       const vals = parseCSVLine(lines[i]);
       const obj = {};
@@ -1901,7 +1905,7 @@ function buildPubCard(p, cardIndex, isPrivate){
       <div class="pub-address">${p.address||'&#8212;'}</div>
       <div class="pub-location">
         ${p.city||''}${p.county ? ', '+p.county+' County' : ''}<br>
-        <span class="${stateClass}">${p.state||''}</span>&nbsp;${p.zip||''}
+        <span class="${stateClass}">${p.state||''}</span> ${p.zip||''}
       </div>
       <div class="pub-chips">${typePill}${areaPill}</div>
       <div class="pub-arv">
@@ -1909,9 +1913,9 @@ function buildPubCard(p, cardIndex, isPrivate){
           ? '<span class=\"pub-arv-val\" style=\"font-size:18px\">&#10003; Sold</span>'
           : startingFmt
             ? '<span class=\"pub-arv-label\" style=\"font-size:13px\">Contact us</span>'
-              + '<span class=\"pub-arv-label\" style=\"color:var(--muted);margin:0 6px\">&middot;</span>'
+              + '<span class=\"pub-arv-label\" style=\"color:var(--muted);margin:0 6px\">·</span>'
               + '<span class=\"pub-arv-label\">Starting value: ' + startingFmt + '</span>'
-              + '<span class=\"pub-arv-sub\">&middot; offers considered</span>'
+              + '<span class=\"pub-arv-sub\">· offers considered</span>'
             : '<span class=\"pub-arv-val\" style=\"font-size:16px\">Contact us for pricing</span>'
         }
       </div>
@@ -2214,16 +2218,7 @@ function exportPortfolioCSV() {
   a.click();
 }
 
-var _origCheckAccess = checkAccess;
-checkAccess = function() {
-  _origCheckAccess();
-  setTimeout(function() {
-    if (document.getElementById('privateContent').classList.contains('unlocked')) {
-      renderPrivatePortfolio(portfolioData);
-    }
-  }, 100);
-};
-
+/* private portfolio re-renders on unlock via checkAccess directly */
 /* ═══════════════════════════════════════
    LANGUAGE / i18n
 ═══════════════════════════════════════ */
@@ -2234,7 +2229,7 @@ var I18N = {
     tagline: 'Four integrated pillars. One self-reinforcing ecosystem.',
     pillars_title: 'The four businesses of our ecosystem',
     pub_title: 'Current Property Inventory',
-    pub_intro: 'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.',
+    pub_intro: 'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI & MS. Contact us to make an offer on any listing.',
     make_offer: 'Make an Offer →',
     contact_us: 'Contact us for pricing',
     starting: 'Starting value:',
@@ -2339,30 +2334,30 @@ function setLang(lang) {
   if (pubFilteredData.length) renderPubPortfolio(pubFilteredData);
 }
 
-/* ── Expose all interactive functions to global scope (onclick compatibility) ── */
-window.checkAccess       = checkAccess;
-window.lockSection       = lockSection;
-window.switchTab         = switchTab;
-window.togglePillar      = togglePillar;
-window.toggleDisclaimer  = toggleDisclaimer;
-window.openModal         = openModal;
-window.closeModal        = closeModal;
-window.pubFilter         = pubFilter;
-window.pubNavPhoto       = pubNavPhoto;
-window.openOfferByIdx    = openOfferByIdx;
-window.closeOffer        = closeOffer;
-window.submitOffer       = submitOffer;
-window.photoNav          = photoNav;
-window.triggerPhotoUpload= triggerPhotoUpload;
-window.downloadTemplate  = downloadTemplate;
-window.exportPortfolioCSV= exportPortfolioCSV;
-window.runScraper        = runScraper;
-window.openBypassWindow  = openBypassWindow;
-window.resumeAfterCaptcha= resumeAfterCaptcha;
-window.clearResults      = clearResults;
-window.exportCSV         = exportCSV;
-window.pvFilter          = pvFilter;
-window.setLang           = setLang;
+/* ── Global exports for onclick handlers ── */
+window.checkAccess        = checkAccess;
+window.lockSection        = lockSection;
+window.switchTab          = switchTab;
+window.togglePillar       = togglePillar;
+window.toggleDisclaimer   = toggleDisclaimer;
+window.openModal          = openModal;
+window.closeModal         = closeModal;
+window.pubFilter          = pubFilter;
+window.pubNavPhoto        = pubNavPhoto;
+window.openOfferByIdx     = openOfferByIdx;
+window.closeOffer         = closeOffer;
+window.submitOffer        = submitOffer;
+window.photoNav           = photoNav;
+window.triggerPhotoUpload = triggerPhotoUpload;
+window.downloadTemplate   = downloadTemplate;
+window.exportPortfolioCSV = exportPortfolioCSV;
+window.runScraper         = runScraper;
+window.openBypassWindow   = openBypassWindow;
+window.resumeAfterCaptcha = resumeAfterCaptcha;
+window.clearResults       = clearResults;
+window.exportCSV          = exportCSV;
+window.pvFilter           = pvFilter;
+window.setLang            = setLang;
 
 </script>
 </body>
