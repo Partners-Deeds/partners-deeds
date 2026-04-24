@@ -42,7 +42,7 @@ header{text-align:center;margin-bottom:64px;animation:fadeDown .9s ease both;}
 h1{font-family:'Playfair Display',serif;font-size:clamp(48px,11vw,110px);font-weight:900;line-height:.9;letter-spacing:-2px;color:var(--paper);}
 @media(min-width:600px){h1{letter-spacing:-3px;}}
 h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.3);}
-.holding-sub{font-size:17px;letter-spacing:.4em;text-transform:uppercase;color:rgba(212,168,71,.88);margin-top:10px;font-weight:500;}
+.<span data-i18n="header_holding">holding</span>-sub{font-size:17px;letter-spacing:.4em;text-transform:uppercase;color:rgba(212,168,71,.88);margin-top:10px;font-weight:500;}
 .subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--paper2);margin-top:18px;}
 @media(min-width:600px){.subtitle{font-size:22px;}}
 .rule{display:flex;align-items:center;gap:14px;margin:28px auto;max-width:300px;}
@@ -624,7 +624,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
 <!-- ══ HEADER ══ -->
 <header>
-  <div class="eyebrow">Strategic Ecosystem · FL · TX · MI · IL · WI</div>
+  <div class="eyebrow"><span data-i18n="header_sub">Strategic Ecosystem · FL · TX · MI · IL · WI</span></div>
   <h1>Partners<br><em>Deeds</em></h1>
   <p class="holding-sub">holding</p>
   <div class="rule"><div class="rule-diamond"></div></div>
@@ -633,15 +633,15 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
 <!-- ══ STATS ══ -->
 <div class="stats-bar">
-  <div class="stat"><span class="stat-n">4</span><span class="stat-l" id="i18n-stat-pillars">Business Pillars</span></div>
-  <div class="stat"><span class="stat-n">5</span><span class="stat-l" id="i18n-stat-states">Target States</span></div>
-  <div class="stat"><span class="stat-n" id="topStatProps">20</span><span class="stat-l" id="i18n-stat-props">Properties in Portfolio</span></div>
-  <div class="stat"><span class="stat-n">$1.76M+</span><span class="stat-l" id="i18n-stat-value">Portfolio Market Value</span></div>
+  <div class="stat"><span class="stat-n">4</span><span class="stat-l" id="i18n-stat-pillars" data-i18n="stat_pillars">Business Pillars</span></div>
+  <div class="stat"><span class="stat-n">5</span><span class="stat-l" id="i18n-stat-states" data-i18n="stat_states">Target States</span></div>
+  <div class="stat"><span class="stat-n" id="topStatProps">20</span><span class="stat-l" id="i18n-stat-props" data-i18n="stat_props">Properties in Portfolio</span></div>
+  <div class="stat"><span class="stat-n">$1.76M+</span><span class="stat-l" id="i18n-stat-value" data-i18n="stat_value">Portfolio Market Value</span></div>
 </div>
 
 <!-- ══ PILLARS ══ -->
 <div class="aos">
-  <span class="label">Strategic Pillars</span>
+  <span class="label" data-i18n="sect_pillars_label">Strategic Pillars</span>
   <h2 class="section-title" id="i18n-pillars-title">The four businesses of our ecosystem</h2>
 </div>
 <div class="pillars">
@@ -650,34 +650,34 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     <div class="pillar-bg-num">1</div>
     <div class="pillar-top">
       <div class="pillar-icon">🏛️</div>
-      <span class="pillar-badge" style="color:#D4A847;border-color:rgba(212,168,71,.4)">Core · Capital Engine</span>
+      <span class="pillar-badge" style="color:#D4A847;border-color:rgba(212,168,71,.4)" data-i18n="p1_badge">Core · Capital Engine</span>
     </div>
-    <div class="pillar-name">Tax Deed Auction<br>Acquisitions</div>
+    <div class="pillar-name" data-i18n="p1_title1">Tax Deed Auction<br data-i18n="p1_title2">Acquisitions</div>
     <p class="pillar-desc" id="i18n-p1-desc">Direct purchase of properties at deep discounts through county tax deed auctions, generating capital, data, and track record that fuel all other pillars.</p>
     <div class="pillar-kpis">
-      <div class="kpi"><span class="kpi-val">30–70%</span><span class="kpi-key">Avg. Discount</span></div>
+      <div class="kpi"><span class="kpi-val">30–70%</span><span class="kpi-key" data-i18n="p1_kpi1">Avg. Discount</span></div>
       <div class="kpi"><span class="kpi-val">FL · TX · MI · IL · WI</span><span class="kpi-key">Target States</span></div>
-      <div class="kpi"><span class="kpi-val" id="kpiProps">18 Props</span><span class="kpi-key">Current Portfolio</span></div>
+      <div class="kpi"><span class="kpi-val" id="kpiProps">18 Props</span><span class="kpi-key" data-i18n="p1_kpi2">Current Portfolio</span></div>
     </div>
     <div class="pillar-detail">
       <div class="detail-grid">
         <div>
-          <div class="detail-block-title">Key Operations</div>
+          <div class="detail-block-title" data-i18n="p1_ops_title">Key Operations</div>
           <ul class="detail-list">
-            <li>Title due diligence before each bid <button class="proc-btn" onclick="event.stopPropagation();openModal('titledd')">?</button></li>
+            <li><span data-i18n="p1_op1">Title due diligence before each bid</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('titledd')">?</button></li>
             <li>Competing liens: <span class="tip" data-tip="Internal Revenue Service — U.S. federal tax authority. IRS liens carry a 120-day redemption right after a tax deed sale.">IRS</span>, mechanics, <span class="tip" data-tip="Home Owner Association — mandatory-fee community. HOA super-liens can survive the tax deed in some states.">HOA</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('liencheck')">?</button></li>
             <li>Track online &amp; <span class="tip" data-tip="Over-The-Counter — direct purchase at the county clerk\'s office for unsold properties.">OTC</span> auctions per county <button class="proc-btn" onclick="event.stopPropagation();openModal('auctiontrack')">?</button></li>
-            <li>Bid strategy based on margin, not emotion</li>
-            <li>Fast disposition: wholesale, flip, or hold</li>
+            <li data-i18n="p1_op3">Bid strategy based on margin, not emotion</li>
+            <li data-i18n="p1_op4">Fast disposition: wholesale, flip, or hold</li>
           </ul>
         </div>
         <div>
-          <div class="detail-block-title">Ecosystem Synergies</div>
+          <div class="detail-block-title" data-i18n="p1_syn_title">Ecosystem Synergies</div>
           <ul class="detail-list">
-            <li>Auction data feeds proprietary database <button class="proc-btn" onclick="event.stopPropagation();openModal('database')">?</button></li>
-            <li>Generates deal flow for Investment Fund (Pillar 2) <button class="proc-btn" onclick="event.stopPropagation();openModal('dealflow')">?</button></li>
+            <li><span data-i18n="p1_syn1">Auction data feeds proprietary database</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('database')">?</button></li>
+            <li><span data-i18n="p1_syn2">Generates deal flow for Investment Fund (Pillar 2)</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('dealflow')">?</button></li>
             <li>Bid history trains the <span class="tip" data-tip="Software as a Service — cloud subscription platform.">SaaS</span> (Pillar 3) <button class="proc-btn" onclick="event.stopPropagation();openModal('saastrain')">?</button></li>
-            <li>Post-auction lists generate surplus leads (Pillar 4) <button class="proc-btn" onclick="event.stopPropagation();openModal('surplusleads')">?</button></li>
+            <li><span data-i18n="p1_syn3">Post-auction lists generate surplus leads (Pillar 4)</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('surplusleads')">?</button></li>
           </ul>
         </div>
       </div>
@@ -689,33 +689,33 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     <div class="pillar-bg-num">2</div>
     <div class="pillar-top">
       <div class="pillar-icon">🏦</div>
-      <span class="pillar-badge" style="color:#5B9AB5;border-color:rgba(91,154,181,.4)">Scale · Third-Party Capital</span>
+      <span class="pillar-badge" style="color:#5B9AB5;border-color:rgba(91,154,181,.4)" data-i18n="p2_badge">Scale · Third-Party Capital</span>
     </div>
-    <div class="pillar-name">Tax Deed<br>Investment Fund</div>
+    <div class="pillar-name" data-i18n="p2_title1">Tax Deed<br data-i18n="p2_title2">Investment Fund</div>
     <p class="pillar-desc">A formal fund structure that raises capital from passive investors to scale acquisition volume, with you as the sole decision-maker and fund manager.</p>
     <div class="pillar-kpis">
-      <div class="kpi"><span class="kpi-val">15–25%</span><span class="kpi-key">Target LP Return</span></div>
-      <div class="kpi"><span class="kpi-val">2% + 20%</span><span class="kpi-key">Typical GP Structure</span></div>
-      <div class="kpi"><span class="kpi-val">Reg D 506c</span><span class="kpi-key">Open marketing</span></div>
+      <div class="kpi"><span class="kpi-val">15–25%</span><span class="kpi-key" data-i18n="p2_kpi1">Target LP Return</span></div>
+      <div class="kpi"><span class="kpi-val">2% + 20%</span><span class="kpi-key" data-i18n="p2_kpi2">Typical GP Structure</span></div>
+      <div class="kpi"><span class="kpi-val">Reg D 506c</span><span class="kpi-key" data-i18n="p2_kpi3">Open marketing</span></div>
     </div>
     <div class="pillar-detail">
       <div class="detail-grid">
         <div>
-          <div class="detail-block-title">Suggested Structure</div>
+          <div class="detail-block-title" data-i18n="p2_struct_title">Suggested Structure</div>
           <ul class="detail-list">
             <li><span class="tip" data-tip="Limited Liability Company — legal entity protecting personal assets from business liabilities.">LLC</span> → <span class="tip" data-tip="Limited Partnership — LP investors are passive; GP manages all decisions.">LP</span> or fund via <span class="tip" data-tip="Regulation D Rule 506(c) — SEC exemption allowing public solicitation of verified accredited investors.">Reg D 506(c)</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('fundsetup')">?</button></li>
-            <li>You as <span class="tip" data-tip="General Partner — active fund manager earning a management fee plus carried interest on profits.">GP</span>: management fee + carried interest</li>
+            <li>You as <span class="tip" data-tip="General Partner — active fund manager earning a management fee plus carried interest on profits.">GP</span data-i18n="p2_gp_desc">: management fee + carried interest</li>
             <li>Min. <span class="tip" data-tip="Limited Partner — passive investor who provides capital but has no management role.">LP</span> ticket: $25k–$100k per deal</li>
-            <li>Liquidity: 12–24 months per investment</li>
-            <li>Monthly reports + quarterly distributions</li>
+            <li data-i18n="p2_liq">Liquidity: 12–24 months per investment</li>
+            <li data-i18n="p2_reports">Monthly reports + quarterly distributions</li>
           </ul>
         </div>
         <div>
-          <div class="detail-block-title">LP Fundraising</div>
+          <div class="detail-block-title" data-i18n="p2_fund_title">LP Fundraising</div>
           <ul class="detail-list">
-            <li>506c = open marketing to accredited investors <button class="proc-btn" onclick="event.stopPropagation();openModal('lpcapture')">?</button></li>
-            <li>Pillar 1 track record as core credential</li>
-            <li>Educational content to qualify leads</li>
+            <li><span data-i18n="p2_f1">506c = open marketing to accredited investors</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('lpcapture')">?</button></li>
+            <li><span data-i18n="p2_f2">Pillar 1 track record as core credential</span></li>
+            <li><span data-i18n="p2_f3">Educational content to qualify leads</span></li>
             <li>Upsell via <span class="tip" data-tip="Software as a Service — subscription platform built in Pillar 3.">SaaS</span> subscriber base (Pillar 3)</li>
           </ul>
         </div>
@@ -728,33 +728,33 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     <div class="pillar-bg-num">3</div>
     <div class="pillar-top">
       <div class="pillar-icon">⚙️</div>
-      <span class="pillar-badge" style="color:#5B9E6A;border-color:rgba(91,158,106,.4)">Leverage · Recurring Revenue</span>
+      <span class="pillar-badge" style="color:#5B9E6A;border-color:rgba(91,158,106,.4)" data-i18n="p3_badge">Leverage · Recurring Revenue</span>
     </div>
-    <div class="pillar-name">Tax Deed Intel<br>SaaS Platform</div>
+    <div class="pillar-name" data-i18n="p3_title1">Tax Deed Intel<br data-i18n="p3_title2">SaaS Platform</div>
     <p class="pillar-desc" id="i18n-p3-desc">Monetize the proprietary database through a subscription platform: auction calendars, surplus alerts, automated property scoring, and due diligence tools.</p>
     <div class="pillar-kpis">
-      <div class="kpi"><span class="kpi-val">MRR</span><span class="kpi-key">Predictable Revenue</span></div>
-      <div class="kpi"><span class="kpi-val">$97–$497/mo</span><span class="kpi-key">Plan Range</span></div>
-      <div class="kpi"><span class="kpi-val">50 States</span><span class="kpi-key">Potential Coverage</span></div>
+      <div class="kpi"><span class="kpi-val">MRR</span><span class="kpi-key" data-i18n="p3_kpi1">Predictable Revenue</span></div>
+      <div class="kpi"><span class="kpi-val">$97–$497/mo</span><span class="kpi-key" data-i18n="p3_kpi2">Plan Range</span></div>
+      <div class="kpi"><span class="kpi-val">50 States</span><span class="kpi-key" data-i18n="p3_kpi3">Potential Coverage</span></div>
     </div>
     <div class="pillar-detail">
       <div class="detail-grid">
         <div>
-          <div class="detail-block-title">MVP Features</div>
+          <div class="detail-block-title" data-i18n="p3_mvp_title">MVP Features</div>
           <ul class="detail-list">
             <li>Auction calendar by county &amp; state <button class="proc-btn" onclick="event.stopPropagation();openModal('saascalendar')">?</button></li>
             <li>Property list data (scraping + <span class="tip" data-tip="Application Programming Interface — automated data exchange between software systems.">API</span>)</li>
-            <li>Automated risk score per property</li>
+            <li data-i18n="p3_f3">Automated risk score per property</li>
             <li>Surplus fund alerts by county <button class="proc-btn" onclick="event.stopPropagation();openModal('saasalerts')">?</button></li>
-            <li>Liens and encumbrance report tool</li>
+            <li data-i18n="p3_f5">Liens and encumbrance report tool</li>
           </ul>
         </div>
         <div>
-          <div class="detail-block-title">Competitive Edge</div>
+          <div class="detail-block-title" data-i18n="p3_edge_title">Competitive Edge</div>
           <ul class="detail-list">
             <li>Real Pillar 1 data as <span class="tip" data-tip="Artificial Intelligence — machine learning models trained on historical auction data.">AI</span> training set</li>
-            <li>Surplus funds module (rare in market)</li>
-            <li>Upsell: access to Investment Fund (Pillar 2)</li>
+            <li><span data-i18n="p3_e2">Surplus funds module (rare in market)</span></li>
+            <li><span data-i18n="p3_e3">Upsell: access to Investment Fund (Pillar 2)</span></li>
             <li>Subscriber community = <span class="tip" data-tip="Limited Partner — passive investor; SaaS users are a pre-qualified LP audience.">LP</span> pipeline</li>
           </ul>
         </div>
@@ -767,34 +767,34 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
     <div class="pillar-bg-num">4</div>
     <div class="pillar-top">
       <div class="pillar-icon">🔍</div>
-      <span class="pillar-badge" style="color:#8B6CC4;border-color:rgba(139,108,196,.4)">Niche · High Margin · Zero Capital</span>
+      <span class="pillar-badge" style="color:#8B6CC4;border-color:rgba(139,108,196,.4)" data-i18n="p4_badge">Niche · High Margin · Zero Capital</span>
     </div>
     <div class="pillar-name">Surplus Funds &amp;<br>Overages Recovery</div>
     <p class="pillar-desc" id="i18n-p4-desc">Identify and recover auction overages from county records on behalf of dispossessed former owners. Ultra-high margin, minimal competition, 100% remote.</p>
     <div class="pillar-kpis">
-      <div class="kpi"><span class="kpi-val">25–40%</span><span class="kpi-key">Recovery Fee</span></div>
-      <div class="kpi"><span class="kpi-val">$0 Upfront</span><span class="kpi-key">No Capital Risk</span></div>
-      <div class="kpi"><span class="kpi-val">100% Remote</span><span class="kpi-key">Scalable per county</span></div>
+      <div class="kpi"><span class="kpi-val">25–40%</span><span class="kpi-key" data-i18n="p4_kpi1">Recovery Fee</span></div>
+      <div class="kpi"><span class="kpi-val">$0 Upfront</span><span class="kpi-key" data-i18n="p4_kpi2">No Capital Risk</span></div>
+      <div class="kpi"><span class="kpi-val">100% Remote</span><span class="kpi-key" data-i18n="p4_kpi3">Scalable per county</span></div>
     </div>
     <div class="pillar-detail">
       <div class="detail-grid">
         <div>
-          <div class="detail-block-title">Operational Process</div>
+          <div class="detail-block-title" data-i18n="p4_ops_title">Operational Process</div>
           <ul class="detail-list">
-            <li>Collect post-auction lists per county <button class="proc-btn" onclick="event.stopPropagation();openModal('surpluscollect')">?</button></li>
-            <li>Filter properties with surplus ≥ $5k</li>
-            <li>Locate former owner via skip tracing <button class="proc-btn" onclick="event.stopPropagation();openModal('skiptrace')">?</button></li>
-            <li>Sign contingency fee agreement <button class="proc-btn" onclick="event.stopPropagation();openModal('feeagreement')">?</button></li>
-            <li>File claim with county or state <button class="proc-btn" onclick="event.stopPropagation();openModal('claimfiling')">?</button></li>
+            <li><span data-i18n="p4_op1">Collect post-auction lists per county</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('surpluscollect')">?</button></li>
+            <li><span data-i18n="p4_op2">Filter properties with surplus ≥ $5k</span></li>
+            <li><span data-i18n="p4_op3">Locate former owner via skip tracing</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('skiptrace')">?</button></li>
+            <li><span data-i18n="p4_op4">Sign contingency fee agreement</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('feeagreement')">?</button></li>
+            <li><span data-i18n="p4_op5">File claim with county or state</span> <button class="proc-btn" onclick="event.stopPropagation();openModal('claimfiling')">?</button></li>
           </ul>
         </div>
         <div>
           <div class="detail-block-title">Ecosystem Synergies</div>
           <ul class="detail-list">
-            <li>Pillar 1 auction data already on hand</li>
+            <li><span data-i18n="p4_syn1">Pillar 1 auction data already on hand</span></li>
             <li>Automated surplus alerts from <span class="tip" data-tip="Software as a Service — Pillar 3 platform that auto-monitors county auction results.">SaaS</span> (Pillar 3) <button class="proc-btn" onclick="event.stopPropagation();openModal('saasalerts')">?</button></li>
-            <li>Claim volume builds reputation</li>
-            <li>Favorable states: FL, TX, MI, IL, WI</li>
+            <li><span data-i18n="p4_syn2">Claim volume builds reputation</span></li>
+            <li><span data-i18n="p4_syn3">Favorable states: FL, TX, MI, IL, WI</span></li>
           </ul>
         </div>
       </div>
@@ -818,13 +818,13 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
           <div class="private-subtitle" id="i18n-private-subtitle">County playbooks, contacts, scraper &amp; property portfolio — not shown to investors</div>
         </div>
       </div>
-      <div class="private-badge">RESTRICTED</div>
+      <div class="private-badge" data-i18n="restricted_badge">RESTRICTED</div>
     </div>
 
     <!-- Teaser -->
     <div class="private-teaser lock-wall" id="lockWall">
       <div>
-        <p class="private-desc">This section contains real county officer contacts, the live county intelligence scraper, and the Partners Deeds property portfolio with all active and sold acquisitions.</p>
+        <p class="private-desc"><span data-i18n="private_desc">This section contains real county officer contacts, the live county intelligence scraper, and the Partners Deeds property portfolio with all active and sold acquisitions.</p>
         <ul class="private-topics">
           <li>Real phone numbers and officer names for 80+ counties across FL, TX, MI, IL across FL, MI, IL &amp; WIamp; WI</li>
           <li>Live county intelligence scraper with anti-bot bypass support</li>
@@ -833,7 +833,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         </ul>
       </div>
       <div class="private-access-box">
-        <div class="access-title">Operator Password</div>
+        <div class="access-title" data-i18n="access_title">Operator Password</div>
         <input class="access-input" type="password" id="accessPass" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkAccess()" autocomplete="current-password">
         <div class="access-error" id="accessError">Incorrect password. Try again.</div>
         <button class="access-btn" onclick="checkAccess()">Unlock Section →</button>
@@ -859,10 +859,10 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         <div class="scraper-intro">Manage the Partners Deeds property portfolio. Import properties via CSV, download the template to fill in your data, and export the current list at any time.</div>
 
         <div class="portfolio-stats" id="portfolioStats">
-          <div class="pstat"><span class="pstat-n" id="ps-total">20</span><span class="pstat-l">Total Properties</span></div>
-          <div class="pstat"><span class="pstat-n" id="ps-active">19</span><span class="pstat-l">Active / Held</span></div>
-          <div class="pstat"><span class="pstat-n" id="ps-sold">1</span><span class="pstat-l">Sold</span></div>
-          <div class="pstat"><span class="pstat-n" id="ps-states">3</span><span class="pstat-l">States</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-total">20</span><span class="pstat-l" data-i18n="ps_total">Total Properties</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-active">19</span><span class="pstat-l" data-i18n="ps_active">Active / Held</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-sold">1</span><span class="pstat-l" data-i18n="ps_sold">Sold</span></div>
+          <div class="pstat"><span class="pstat-n" id="ps-states">3</span><span class="pstat-l" data-i18n="ps_states">States</span></div>
         </div>
 
         <div class="portfolio-actions">
@@ -877,7 +877,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         <div id="propTrackPrivate" class="pub-track" style="display:flex"></div>
 
         <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;padding:12px;background:rgba(212,168,71,.04);border:1px solid var(--border);">
-          <strong style="color:var(--paper2);">How to update the portfolio:</strong>
+          <strong style="color:var(--paper2);" data-i18n="portfolio_how">How to update the portfolio:</strong>
           Click <em>⬇ CSV Template</em> to get the column format → fill in Excel or Google Sheets → save as CSV → click <em>⬆ Import CSV</em>. To add a new property, add a row and re-import. To export the current list, click <em>⬇ Export Current</em>.
         </div>
       </div><!-- /tab-portfolio -->
@@ -896,10 +896,10 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
               <option value="WI">Wisconsin</option>
             </select>
             <select class="scraper-select" id="scrType">
-              <option value="all">All Office Types</option>
-              <option value="Clerk">Clerk of Court</option>
-              <option value="Treasurer">County Treasurer</option>
-              <option value="Assessor">Tax Assessor-Collector</option>
+              <option value="all" data-i18n="scraper_all_offices">All Office Types</option>
+              <option value="Clerk" data-i18n="scraper_clerk">Clerk of Court</option>
+              <option value="Treasurer" data-i18n="scraper_treasurer">County Treasurer</option>
+              <option value="Assessor" data-i18n="scraper_tax_assessor">Tax Assessor-Collector</option>
             </select>
             <input class="scraper-input" id="scrCounty" type="text" placeholder="County name (optional)">
           </div>
@@ -912,7 +912,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         <div class="captcha-box" id="captchaBox" style="display:none">
           <div class="captcha-icon">🤖</div>
           <div>
-            <div class="captcha-title">Bot Protection Detected</div>
+            <div class="captcha-title" data-i18n="captcha_title">Bot Protection Detected</div>
             <div class="captcha-desc">A county site has triggered a CAPTCHA challenge. Tap <strong>Open Page</strong> to complete it manually, then tap <strong>Continue</strong> to resume.</div>
             <div class="captcha-url-box" id="captchaUrlBox"></div>
             <div class="captcha-btns">
@@ -923,7 +923,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         </div>
         <div id="resultsWrap" style="display:none">
           <div class="results-header">
-            <div class="results-title">County Contacts</div>
+            <div class="results-title" data-i18n="contacts_title">County Contacts</div>
             <div class="results-actions">
               <button class="results-btn" onclick="exportCSV()">⬇ CSV</button>
               <button class="results-btn" onclick="clearResults()">✕ Clear</button>
@@ -931,7 +931,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
           </div>
           <div class="tbl-wrap">
             <table class="contacts-tbl">
-              <thead><tr><th>State</th><th>County</th><th>Office</th><th>Officer</th><th>Phone</th><th>List Format</th><th>Auction</th><th>Portal</th></tr></thead>
+              <thead><tr><th data-i18n="col_state">State</th><th data-i18n="col_county">County</th><th data-i18n="col_office">Office</th><th data-i18n="col_officer">Officer</th><th data-i18n="col_phone">Phone</th><th data-i18n="col_list">List Format</th><th data-i18n="col_auction">Auction</th><th data-i18n="col_portal">Portal</th></tr></thead>
               <tbody id="resultsTbody"></tbody>
             </table>
           </div>
@@ -975,19 +975,19 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
       </div>
       <div class="offer-body">
         <div class="offer-field">
-          <label class="offer-label">Full Name *</label>
+          <label class="offer-label" data-i18n="offer_name_label">Full Name *</label>
           <input class="offer-input" id="of-name" type="text" placeholder="Your name" autocomplete="name">
         </div>
         <div class="offer-field">
-          <label class="offer-label">Phone *</label>
+          <label class="offer-label" data-i18n="offer_phone_label">Phone *</label>
           <input class="offer-input" id="of-phone" type="tel" placeholder="+1 (555) 000-0000" autocomplete="tel">
         </div>
         <div class="offer-field">
-          <label class="offer-label">E-mail *</label>
+          <label class="offer-label" data-i18n="offer_email_label">E-mail *</label>
           <input class="offer-input" id="of-email" type="email" placeholder="you@example.com" autocomplete="email">
         </div>
         <div class="offer-field">
-          <label class="offer-label">Proposed Value (USD)</label>
+          <label class="offer-label" data-i18n="offer_value_label">Proposed Value (USD)</label>
           <input class="offer-input" id="of-value" type="text" placeholder="e.g. 85,000">
         </div>
         <button class="offer-submit" id="offerSubmitBtn" onclick="submitOffer()">Make My Offer →</button>
@@ -1005,8 +1005,8 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
 <!-- ══ PUBLIC PROPERTY LISTINGS ══ -->
 <div class="pub-portfolio aos" id="pubPortfolioSection">
-  <span class="label">Available Properties</span>
-  <h2 class="section-title">Portfolio — Properties for Sale</h2>
+  <span class="label" data-i18n="pub_available">Available Properties</span>
+  <h2 class="section-title" data-i18n="pub_portfolio_title">Portfolio — Properties for Sale</h2>
   <p class="section-intro" id="i18n-pub-intro">Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.</p>
   <div class="pub-filter-bar">
     <button class="pub-filter-btn active" onclick="pubFilter('all',this)">All Properties</button>
@@ -1019,41 +1019,41 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
 <!-- ══ LIEN / DUE DILIGENCE ══ -->
 <div class="lien-section aos">
-  <span class="label">Advanced Due Diligence</span>
-  <h2 class="section-title">Researching fiscal &amp; encumbrance liabilities</h2>
+  <span class="label" data-i18n="dd_title">Advanced Due Diligence</span>
+  <h2 class="section-title" data-i18n="dd_sub">Researching fiscal &amp; encumbrance liabilities</h2>
   <p class="section-intro">Before bidding on any tax deed property, identify all liabilities that <strong>survive the auction</strong> — liens not extinguished by the sale that could exceed the property's value.</p>
   <div class="lien-grid">
-    <div class="lc" style="--lc:#D4A847"><div class="lc-icon">🏛️</div><div class="lc-name">State &amp; Municipal Taxes</div><div class="lc-desc">Verify unpaid debts from prior years plus municipal service charges: water, sewer, and solid waste.</div><div class="lc-tools"><div class="lc-tool"><strong>County Treasurer / Tax Assessor</strong> — search by <span class="tip" data-tip="Assessor's Parcel Number — unique government ID assigned to each property.">APN</span> (free)</div><div class="lc-tool"><strong>TaxNetUSA / ATTOM</strong> — full delinquency history across all 5 states</div><div class="lc-tool"><strong>City / Municipal Portal</strong> — water &amp; sewer liens, demolition liens</div></div></div>
-    <div class="lc" style="--lc:#B55B5B"><div class="lc-icon">🏛</div><div class="lc-name">Federal Liens — IRS</div><div class="lc-desc"><span class="tip" data-tip="Internal Revenue Service — U.S. federal tax authority. IRS liens have a 120-day post-sale redemption right in most states.">IRS</span> Federal Tax Liens carry a 120-day redemption right after auction. If not released, the IRS may reclaim the property at purchase price plus interest.</div><div class="lc-tools"><div class="lc-tool"><strong>County Recorder / Register of Deeds</strong> — search "Federal Tax Lien" by owner name</div><div class="lc-tool"><strong>IRS.gov</strong> — request Certificate of Release</div><div class="lc-tool"><strong>DataTree / LienFocus</strong> — automated nationwide lien search</div></div></div>
-    <div class="lc" style="--lc:#5B9AB5"><div class="lc-icon">🔧</div><div class="lc-name">Mechanics Liens &amp; HOA</div><div class="lc-desc">Unpaid contractor liens and <span class="tip" data-tip="Home Owner Association — HOA super-liens can survive a tax deed in states like Florida (Chapter 718).">HOA</span> debt may survive the tax deed depending on state law and lien priority.</div><div class="lc-tools"><div class="lc-tool"><strong>County Recorder</strong> — search by APN</div><div class="lc-tool"><strong>PropStream / LiensFinder</strong> — HOA and mechanics lien sweep</div><div class="lc-tool"><strong>HOA Management Company</strong> — request an Estoppel Letter</div></div></div>
-    <div class="lc" style="--lc:#5B9E6A"><div class="lc-icon">🏗️</div><div class="lc-name">Code Violations &amp; Demolition</div><div class="lc-desc">Code enforcement fines and demolition orders are municipal liens that survive the tax deed in nearly every state.</div><div class="lc-tools"><div class="lc-tool"><strong>City Code Enforcement</strong> — search by address; usually free</div><div class="lc-tool"><strong>Building &amp; Permits Department</strong> — open permits, stop-work orders</div><div class="lc-tool"><strong>EPA / State DEP</strong> — environmental contamination (commercial properties)</div></div></div>
-    <div class="lc" style="--lc:#8B6CC4"><div class="lc-icon">⚖️</div><div class="lc-name">Judgments &amp; Lis Pendens</div><div class="lc-desc">Civil judgments and <span class="tip" data-tip="Lis Pendens — a recorded legal notice that active litigation could affect the property's ownership or transfer.">Lis Pendens</span> may cloud the title even after a tax deed is issued.</div><div class="lc-tools"><div class="lc-tool"><strong>County Clerk of Court</strong> — search Civil Judgments by owner name</div><div class="lc-tool"><strong>PACER (pacer.gov)</strong> — federal bankruptcy search</div><div class="lc-tool"><strong>DataTree / Title Search API</strong> — multi-county automated sweeps</div></div></div>
-    <div class="lc" style="--lc:#C47A3A"><div class="lc-icon">🔑</div><div class="lc-name">Title Search &amp; Quiet Title</div><div class="lc-desc">After a tax deed, most states require a <span class="tip" data-tip="Quiet Title — a court action that legally extinguishes all competing claims, making the title clean and insurable.">Quiet Title</span> action before obtaining title insurance and reselling.</div><div class="lc-tools"><div class="lc-tool"><strong>Local Title Company</strong> — volume deal: $300–$800/property</div><div class="lc-tool"><strong>Timeline</strong> — FL: 6–12 mo · TX: 3–6 mo · MI: 3–6 mo · IL: up to 2 yrs · WI: ~6 mo</div><div class="lc-tool"><strong>Stewart / Old Republic / First American</strong></div></div></div>
+    <div class="lc" style="--lc:#D4A847"><div class="lc-icon">🏛️</div><div class="lc-name" data-i18n="dd_s1_title">State &amp; Municipal Taxes</div><div class="lc-desc">Verify unpaid debts from prior years plus municipal service charges: water, sewer, and solid waste.</div><div class="lc-tools"><div class="lc-tool"><strong>County Treasurer / Tax Assessor</strong> — search by <span class="tip" data-tip="Assessor's Parcel Number — unique government ID assigned to each property.">APN</span> (free)</div><div class="lc-tool"><strong>TaxNetUSA / ATTOM</strong> — full delinquency history across all 5 states</div><div class="lc-tool"><strong>City / Municipal Portal</strong> — water &amp; sewer liens, demolition liens</div></div></div>
+    <div class="lc" style="--lc:#B55B5B"><div class="lc-icon">🏛</div><div class="lc-name" data-i18n="dd_s2_title">Federal Liens — IRS</div><div class="lc-desc"><span class="tip" data-tip="Internal Revenue Service — U.S. federal tax authority. IRS liens have a 120-day post-sale redemption right in most states.">IRS</span> Federal Tax Liens carry a 120-day redemption right after auction. If not released, the IRS may reclaim the property at purchase price plus interest.</div><div class="lc-tools"><div class="lc-tool"><strong>County Recorder / Register of Deeds</strong> — search "Federal Tax Lien" by owner name</div><div class="lc-tool"><strong>IRS.gov</strong> — request Certificate of Release</div><div class="lc-tool"><strong>DataTree / LienFocus</strong> — automated nationwide lien search</div></div></div>
+    <div class="lc" style="--lc:#5B9AB5"><div class="lc-icon">🔧</div><div class="lc-name" data-i18n="dd_s3_title">Mechanics Liens &amp; HOA</div><div class="lc-desc">Unpaid contractor liens and <span class="tip" data-tip="Home Owner Association — HOA super-liens can survive a tax deed in states like Florida (Chapter 718).">HOA</span> debt may survive the tax deed depending on state law and lien priority.</div><div class="lc-tools"><div class="lc-tool"><strong>County Recorder</strong> — search by APN</div><div class="lc-tool"><strong>PropStream / LiensFinder</strong> — HOA and mechanics lien sweep</div><div class="lc-tool"><strong>HOA Management Company</strong> — request an Estoppel Letter</div></div></div>
+    <div class="lc" style="--lc:#5B9E6A"><div class="lc-icon">🏗️</div><div class="lc-name" data-i18n="dd_s4_title">Code Violations &amp; Demolition</div><div class="lc-desc">Code enforcement fines and demolition orders are municipal liens that survive the tax deed in nearly every state.</div><div class="lc-tools"><div class="lc-tool"><strong>City Code Enforcement</strong> — search by address; usually free</div><div class="lc-tool"><strong>Building &amp; Permits Department</strong> — open permits, stop-work orders</div><div class="lc-tool"><strong>EPA / State DEP</strong> — environmental contamination (commercial properties)</div></div></div>
+    <div class="lc" style="--lc:#8B6CC4"><div class="lc-icon">⚖️</div><div class="lc-name" data-i18n="dd_s5_title">Judgments &amp; Lis Pendens</div><div class="lc-desc">Civil judgments and <span class="tip" data-tip="Lis Pendens — a recorded legal notice that active litigation could affect the property's ownership or transfer.">Lis Pendens</span> may cloud the title even after a tax deed is issued.</div><div class="lc-tools"><div class="lc-tool"><strong>County Clerk of Court</strong> — search Civil Judgments by owner name</div><div class="lc-tool"><strong>PACER (pacer.gov)</strong> — federal bankruptcy search</div><div class="lc-tool"><strong>DataTree / Title Search API</strong> — multi-county automated sweeps</div></div></div>
+    <div class="lc" style="--lc:#C47A3A"><div class="lc-icon">🔑</div><div class="lc-name" data-i18n="dd_s6_title">Title Search &amp; Quiet Title</div><div class="lc-desc">After a tax deed, most states require a <span class="tip" data-tip="Quiet Title — a court action that legally extinguishes all competing claims, making the title clean and insurable.">Quiet Title</span> action before obtaining title insurance and reselling.</div><div class="lc-tools"><div class="lc-tool"><strong>Local Title Company</strong> — volume deal: $300–$800/property</div><div class="lc-tool"><strong>Timeline</strong> — FL: 6–12 mo · TX: 3–6 mo · MI: 3–6 mo · IL: up to 2 yrs · WI: ~6 mo</div><div class="lc-tool"><strong>Stewart / Old Republic / First American</strong></div></div></div>
   </div>
   <div class="lien-warn"><div class="lw-icon">⚠️</div><div class="lw-text"><strong>Critical alert:</strong> In Florida, <span class="tip" data-tip="IRS — 120-day redemption right after tax deed sales.">IRS</span> liens carry a 120-day redemption window. In Michigan, the former owner has no redemption right after the tax deed auction. In Illinois, the <span class="tip" data-tip="Scavenger Sale — IL tax auction for properties with 3+ years of unpaid taxes; Quiet Title can take 2 years.">Scavenger Sale</span> process can take 2 years. <strong>Never bid without: IRS lien check, code violations search, and a preliminary title search.</strong></div></div>
 </div>
 
 <!-- ══ SURPLUS FLOW ══ -->
 <div class="surplus-section aos">
-  <span class="label">Detailed Process — Pillar 4</span>
-  <h2 class="section-title">Surplus Funds operational flow</h2>
+  <span class="label" data-i18n="surplus_section_title">Detailed Process — Pillar 4</span>
+  <h2 class="section-title" data-i18n="surplus_section_sub">Surplus Funds operational flow</h2>
   <div class="surplus-flow">
-    <div class="ss"><div class="ss-n">01</div><div class="ss-title">Collect post-auction lists</div><div class="ss-desc">Access public records from counties after each auction. Filter for properties where the winning bid exceeded the tax debt — that excess is the surplus.</div></div>
+    <div class="ss"><div class="ss-n">01</div><div class="ss-title" data-i18n="surplus_step1_title">Collect post-auction lists</div><div class="ss-desc">Access public records from counties after each auction. Filter for properties where the winning bid exceeded the tax debt — that excess is the surplus.</div></div>
     <div class="surplus-arrow">→</div>
-    <div class="ss"><div class="ss-n">02</div><div class="ss-title">Skip trace the former owner</div><div class="ss-desc">Locate the previous owner (including heirs) using BatchSkipTracing, <span class="tip" data-tip="TLO — professional skip tracing platform.">TLO</span>, or <span class="tip" data-tip="CLEAR — Thomson Reuters' identity and location intelligence platform.">CLEAR</span>. Speed matters — deadlines start from auction day.</div></div>
+    <div class="ss"><div class="ss-n">02</div><div class="ss-title" data-i18n="surplus_step2_title">Skip trace the former owner</div><div class="ss-desc">Locate the previous owner (including heirs) using BatchSkipTracing, <span class="tip" data-tip="TLO — professional skip tracing platform.">TLO</span>, or <span class="tip" data-tip="CLEAR — Thomson Reuters' identity and location intelligence platform.">CLEAR</span>. Speed matters — deadlines start from auction day.</div></div>
     <div class="surplus-arrow">→</div>
-    <div class="ss"><div class="ss-n">03</div><div class="ss-title">Sign representation contract</div><div class="ss-desc">Execute a contingency fee agreement (25–40%). No cost to the client. You earn only upon successful recovery.</div></div>
+    <div class="ss"><div class="ss-n">03</div><div class="ss-title" data-i18n="surplus_step3_title">Sign representation contract</div><div class="ss-desc">Execute a contingency fee agreement (25–40%). No cost to the client. You earn only upon successful recovery.</div></div>
     <div class="surplus-arrow">→</div>
-    <div class="ss"><div class="ss-n">04</div><div class="ss-title">File the claim</div><div class="ss-desc">Submit to the county or state. Deadlines: FL 2 yrs · TX 2 yrs · MI 1 yr · IL 2 yrs · WI 1 yr. Required: photo ID, prior deed, notarized contract.</div></div>
+    <div class="ss"><div class="ss-n">04</div><div class="ss-title" data-i18n="surplus_step4_title">File the claim</div><div class="ss-desc">Submit to the county or state. Deadlines: FL 2 yrs · TX 2 yrs · MI 1 yr · IL 2 yrs · WI 1 yr. Required: photo ID, prior deed, notarized contract.</div></div>
     <div class="surplus-arrow">→</div>
-    <div class="ss"><div class="ss-n">05</div><div class="ss-title">Receive funds &amp; collect fee</div><div class="ss-desc">County releases funds to the former owner, who passes your commission. 100% remote, fully repeatable, scalable across dozens of counties.</div></div>
+    <div class="ss"><div class="ss-n">05</div><div class="ss-title" data-i18n="surplus_step5_title">Receive funds &amp; collect fee</div><div class="ss-desc">County releases funds to the former owner, who passes your commission. 100% remote, fully repeatable, scalable across dozens of counties.</div></div>
   </div>
 </div>
 
 <!-- ══ FLYWHEEL ══ -->
 <div class="flywheel-wrap aos">
-  <span class="label">The Flywheel Effect</span>
-  <h2 class="section-title">How all four pillars reinforce each other</h2>
+  <span class="label" data-i18n="flywheel_title">The Flywheel Effect</span>
+  <h2 class="section-title" data-i18n="flywheel_sub">How all four pillars reinforce each other</h2>
   <div class="fw-canvas">
     <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="rgba(212,168,71,.65)"/></marker></defs>
@@ -1081,12 +1081,12 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
       </circle>
     </svg>
   </div>
-  <p style="text-align:center;font-size:13px;letter-spacing:.08em;color:var(--paper3);margin-top:16px;">Each pillar generates data, capital, or reputation that feeds the others</p>
+  <p style="text-align:center;font-size:13px;letter-spacing:.08em;color:var(--paper3);margin-top:16px;"><span data-i18n="flywheel_desc">Each pillar generates data, capital, or reputation that feeds the others</span></p>
 </div>
 
 <!-- ══ ROADMAP ══ -->
 <div class="roadmap aos">
-  <span class="label">Scaling Roadmap</span>
+  <span class="label" data-i18n="roadmap_label">Scaling Roadmap</span>
   <h2 class="section-title" id="i18n-roadmap-title">Ecosystem build phases</h2>
   <div class="road-phases">
     <div class="phase">
@@ -1109,8 +1109,8 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
 <!-- ══ TECH ══ -->
 <div class="tech-section aos">
-  <span class="label">Operational Infrastructure</span>
-  <h2 class="section-title">Recommended tool stack</h2>
+  <span class="label" data-i18n="tools_title">Operational Infrastructure</span>
+  <h2 class="section-title" data-i18n="tools_sub">Recommended tool stack</h2>
   <div class="tech-grid">
     <div class="tc"><div class="tc-icon">🗂️</div><div class="tc-name">PropStream / ATTOM</div><div class="tc-desc">Property data, auction history, liens, and ownership — foundation of the proprietary database across FL, TX, MI, IL, and WI with automated alerts.</div><span class="tc-tag">Data · Core</span></div>
     <div class="tc"><div class="tc-icon">🔎</div><div class="tc-name">BatchSkipTracing / TLO</div><div class="tc-desc">Locate former owners and heirs for surplus recovery. Scales to hundreds of searches per week at pennies per lookup.</div><span class="tc-tag">Skip Tracing · Pillar 4</span></div>
@@ -1217,7 +1217,7 @@ document.addEventListener('touchstart', function(e) {
 /* ═══════════════════════════════════════
    MODAL
 ═══════════════════════════════════════ */
-const PROCS = {
+var PROCS_EN = {
   titledd:{title:"Title Due Diligence Before Bidding",steps:[{n:"1",title:"Obtain the Parcel ID (APN)",desc:"Every property has a unique Assessor's Parcel Number. Find it on the auction list or county tax roll — all searches use it as the primary key."},{n:"2",title:"Run a preliminary title search",desc:"Use DataTree, PropStream, or a local title company to pull the chain of title for the last 30–40 years. Look for breaks in the chain, missing deeds, or easements.",tools:["DataTree","PropStream","County Recorder portal"]},{n:"3",title:"Search all recorded liens",desc:"At the County Recorder / Register of Deeds, search by APN for: tax liens, IRS federal liens, mechanics liens, HOA liens, judgments, and lis pendens.",tools:["County Recorder","LienFocus","DataTree"]},{n:"4",title:"Check code violations and open permits",desc:"Contact city code enforcement and the Building & Permits Department. Unpaid violations become municipal liens that survive the tax deed.",tools:["City Code Enforcement portal","Building Dept."]},{n:"5",title:"Evaluate Quiet Title need and cost",desc:"If title issues exist, get a Quiet Title attorney quote before bidding. FL: 6–12 mo | TX: 3–6 mo | MI: 3–6 mo | IL: up to 2 yrs | WI: ~6 mo.",tools:["Local real estate attorney","Stewart Title","Old Republic"]}],note:"<strong>Rule of thumb:</strong> If title research costs more than 1% of expected ARV, price it accordingly."},
   liencheck:{title:"Competing Lien Search Procedure",steps:[{n:"1",title:"Search County Recorder",desc:"Search by (a) APN and (b) owner's full legal name. Pull all documents from the last 10 years minimum.",tools:["County Recorder website","DataTree"]},{n:"2",title:"Run an IRS lien search",desc:"Search the county recorder's IRS section by the owner's full legal name. IRS liens have a 120-day redemption right after a tax deed sale.",tools:["IRS.gov / FOIA","LienFocus","County Recorder"]},{n:"3",title:"Check HOA status",desc:"Call the HOA management company. Request an Estoppel Letter showing total owed. HOA super-liens in FL (Chapter 718) can survive the tax deed.",tools:["HOA management company","PropStream HOA layer"]},{n:"4",title:"Verify mechanics liens",desc:"Mechanics liens are filed at the County Recorder. Verify the recording date — many expire within 1 year if not foreclosed.",tools:["County Recorder","LiensFinder.com"]},{n:"5",title:"Build a lien summary sheet",desc:"Compile all findings: lien type, amount, recording date, holder, and whether it survives the tax deed in your state. This drives your maximum bid calculation."}],note:"<strong>Key distinction:</strong> Some liens are extinguished by the tax deed (e.g., most mortgages). Others survive. Always confirm with a local real estate attorney per state."},
   auctiontrack:{title:"Tracking Online & OTC Auctions by County",steps:[{n:"1",title:"Build a master county calendar",desc:"Spreadsheet of all target counties: auction schedule, platform (RealTDA, Linebarger, GovEase, courthouse steps), and list publication date.",tools:["Airtable","Notion","Google Sheets"]},{n:"2",title:"Set automated alerts for list publication",desc:"Enable email notifications on digital platforms, or use Distill.io to alert you when pages change.",tools:["Distill.io","PropStream alerts"]},{n:"3",title:"Download and parse each list",desc:"Download CSV, PDF, or Excel. Import into your database. Tag each property: county, auction date, starting bid, APN."},{n:"4",title:"Identify OTC inventory",desc:"After each auction, contact the County Clerk or Treasurer for the list of unsold (struck-off) properties. Available OTC with zero competition."},{n:"5",title:"Prioritize and queue for due diligence",desc:"Score each property: estimated ARV, starting bid, repair cost, lien risk. Route top-scoring properties into the due diligence queue."}],note:"<strong>Pro tip:</strong> In Michigan, the state land bank auctions unsold properties in November. Contact the county treasurer for OTC availability year-round."},
@@ -1235,8 +1235,12 @@ const PROCS = {
   claimfiling:{title:"Filing a Surplus Funds Claim with the County",steps:[{n:"1",title:"Identify the correct filing office",desc:"FL: Clerk of Court (Registry of the Court). TX: County Tax Assessor-Collector. MI: County Treasurer. IL: County Treasurer or Circuit Court. WI: County Treasurer."},{n:"2",title:"Assemble the claim package",desc:"Standard docs: signed fee agreement, client photo ID, proof of prior ownership (deed), county's surplus notice (if issued), notarized authorization letter."},{n:"3",title:"File the claim",desc:"File by USPS Certified Mail with tracking, or in person. Keep copies of everything.",tools:["USPS Certified Mail","In-person county office"]},{n:"4",title:"Follow up at regular intervals",desc:"Processing times: FL 30–90 days · TX 60–120 days · MI 60–120 days · IL 90–180 days · WI 30–90 days. Contact every 3–4 weeks."},{n:"5",title:"Receive funds and collect your fee",desc:"County issues a check to the former owner, who passes your commission per the agreement.",tools:["Business checking account","QuickBooks"]}],note:"<strong>Denial handling:</strong> Claims denied for: expired deadline, missing docs, or competing claimants. Appeal in writing and request the specific reason."}
 };
 
+var _currentPROCS = null;
+var _currentPLAYBOOKS = null;
+function getPROCS() { return _currentPROCS || PROCS_EN; }
+function getPlaybooks() { return _currentPLAYBOOKS || PLAYBOOKS_EN; }
 function openModal(key) {
-  const d = PROCS[key]; if(!d) return;
+  const d = getPROCS()[key]; if(!d) return;
   document.getElementById('modalTitle').textContent = d.title;
   let h = '';
   d.steps.forEach(s => {
@@ -1715,7 +1719,9 @@ function buildVerifiedContacts() {
     </tr>`).join('');
 }
 
-const PLAYBOOKS = [
+var PLAYBOOKS_EN = [
+/* English playbooks */
+
   {flag:'🌴',name:'Florida',meta:'Tax Deed State · 67 counties · Online & in-person',digital:[
     '<strong>RealTDA.com</strong> — official statewide portal for all tax deed sales by county.',
     '<strong>Realforeclose.com</strong> — Miami-Dade, Broward, Palm Beach and others.',
@@ -1768,8 +1774,10 @@ const PLAYBOOKS = [
   ]},
 ];
 
+var currentPlaybooks = null;
+function getPlaybooks() { return currentPlaybooks || PLAYBOOKS_EN; }
 function buildPlaybooks() {
-  document.getElementById('playbooksGrid').innerHTML = PLAYBOOKS.map(pb=>`
+  document.getElementById('playbooksGrid').innerHTML = getPlaybooks().map(pb=>`
     <div class="sc">
       <div class="sc-head"><div class="sc-flag">${pb.flag}</div><div><div class="sc-name">${pb.name}</div><div class="sc-meta">${pb.meta}</div></div></div>
       <div class="sc-body">
@@ -2300,328 +2308,649 @@ checkAccess = function() {
 /* ── i18n / Full Translation System ── */
 var LANG = 'en';
 
-var I18N = {
+/* ── Static text translations ── */
+var T = {
   en: {
-    /* ── Nav & Header ── */
-    tagline: 'Four integrated pillars. One self-reinforcing ecosystem.',
-    pillars_title: 'The four businesses of our ecosystem',
-    pub_title: 'Current Property Inventory',
-    pub_intro: 'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI &amp; MS. Contact us to make an offer on any listing.',
-    /* ── Stats bar ── */
-    stat_pillars: 'Business Pillars',
-    stat_states: 'Target States',
-    stat_props: 'Properties in Portfolio',
-    stat_value: 'Portfolio Market Value',
-    /* ── Pillar names & descriptions ── */
-    p1_name: 'Tax Deed Acquisitions',
-    p1_badge: 'Core Engine',
-    p1_desc: 'Direct purchase of properties at deep discounts through county tax deed auctions, generating capital, data, and track record that fuel all other pillars.',
-    p2_name: 'Investment Fund',
-    p2_badge: 'Capital Vehicle',
-    p2_desc: 'Pool investor capital to scale acquisition volume beyond personal limits. Reg D 506(c) private fund with LP investors co-investing alongside the GP.',
-    p3_name: 'SaaS Platform',
-    p3_badge: 'Recurring Revenue',
-    p3_desc: 'Monetize the proprietary database through a subscription platform: auction calendars, surplus alerts, automated property scoring, and due diligence tools.',
-    p4_name: 'Surplus Recovery',
-    p4_badge: 'High Margin',
-    p4_desc: 'Identify and recover auction overages from county records on behalf of dispossessed former owners. Ultra-high margin, minimal competition, 100% remote.',
-    /* ── Roadmap ── */
-    roadmap_title: 'Ecosystem build phases',
-    phase1_title: 'Core Active + Surplus Launching',
-    phase2_title: 'Launch Investment Fund + SaaS MVP',
-    phase3_title: 'Scale All Four Pillars in Parallel',
-    /* ── Portfolio public ── */
-    filter_all: 'All Properties',
-    contact_us: 'Contact us',
-    starting_val: 'Starting value:',
-    offers_considered: '· offers considered',
-    contact_pricing: 'Contact us for pricing',
-    make_offer: 'Make an Offer →',
-    sold_tag: '✓ Sold',
-    photo_soon: 'Photo coming soon',
-    /* ── Private section ── */
-    private_title: 'Operator Dashboard',
-    private_subtitle: 'County playbooks, contacts, scraper & property portfolio — not shown to investors',
-    access_title: 'Operator Access',
-    access_ph: 'Enter password',
-    access_btn: 'Unlock Section →',
-    access_err: 'Incorrect password. Try again.',
-    unlocked_status: '✓ Operator access granted',
-    lock_again: 'Lock',
-    tab_portfolio: 'Portfolio',
-    tab_scraper: 'County Scraper',
-    tab_contacts: 'Contacts DB',
-    tab_playbooks: 'State Playbooks',
-    est_sale_price: 'Estimated sale price:',
-    no_price_set: 'No price set',
-    /* ── Offer form ── */
-    offer_title_prefix: 'Make an Offer on',
-    offer_name: 'Full Name',
-    offer_phone: 'Phone',
-    offer_email: 'E-mail',
-    offer_value: 'Proposed Value (optional)',
-    offer_submit: 'Make My Offer →',
-    offer_cancel: 'Cancel',
-    offer_success_title: 'Offer Received!',
-    offer_success_msg: "Thank you. We’ll review your offer and be in touch within 1 business day.",
-    offer_close: 'Close',
-    /* ── Disclaimer ── */
-    disclaimer_title: '⚠ Investment Risk Disclaimer',
-    /* ── Surplus section ── */
-    surplus_title: 'Surplus Recovery — How It Works',
-    /* ── Tooltips ── */
-    tip_IRS: 'Internal Revenue Service — U.S. federal tax authority. IRS liens carry a 120-day redemption right after a tax deed sale.',
-    tip_HOA: 'Home Owner Association — mandatory-fee community. HOA super-liens can survive the tax deed in some states.',
-    tip_OTC: 'Over-The-Counter — direct purchase at the county clerk\'s office for unsold properties.',
-    tip_SaaS: 'Software as a Service — cloud subscription platform.',
-    tip_LLC: 'Limited Liability Company — legal entity protecting personal assets from business liabilities.',
-    tip_LP_fund: 'Limited Partnership — LP investors are passive; GP manages all decisions.',
-    tip_RegD: 'Regulation D Rule 506(c) — SEC exemption allowing public solicitation of verified accredited investors.',
-    tip_GP: 'General Partner — active fund manager earning a management fee plus carried interest on profits.',
-    tip_LP: 'Limited Partner — passive investor who provides capital but has no management role.',
-    tip_API: 'Application Programming Interface — automated data exchange between software systems.',
-    tip_AI: 'Artificial Intelligence — machine learning models trained on historical auction data.',
-    tip_SOP: 'Standard Operating Procedure — documented step-by-step process ensuring consistent team execution.',
-    tip_MVP: 'Minimum Viable Product — simplest product version that delivers core value.',
-    tip_MRR: 'Monthly Recurring Revenue — predictable subscription revenue.',
+    /* Header */
+    header_sub:'Strategic Ecosystem · FL · TX · MI · WI · MS',
+    header_holding:'holding',
+    /* Stats */
+    stat_pillars:'Business Pillars', stat_states:'Target States',
+    stat_props:'Properties in Portfolio', stat_value:'Portfolio Market Value',
+    /* Section labels */
+    sect_pillars_label:'Strategic Pillars',
+    show_details:'Show details',
+    /* Pillar 1 */
+    p1_badge:'Core · Capital Engine', p1_title1:'Tax Deed Auction', p1_title2:'Acquisitions',
+    p1_desc:'Direct purchase of properties at deep discounts through county tax deed auctions, generating capital, data, and track record that fuel all other pillars.',
+    p1_kpi1:'Avg. Discount', p1_kpi2:'Current Portfolio',
+    p1_ops_title:'Key Operations',
+    p1_op1:'Title due diligence before each bid',
+    p1_op2a:'Competing liens:', p1_op2b:', mechanics,',
+    p1_op3:'Bid strategy based on margin, not emotion',
+    p1_op4:'Fast disposition: wholesale, flip, or hold',
+    p1_syn_title:'Ecosystem Synergies',
+    p1_syn1:'Auction data feeds proprietary database',
+    p1_syn2:'Generates deal flow for Investment Fund (Pillar 2)',
+    p1_syn3:'Post-auction lists generate surplus leads (Pillar 4)',
+    /* Pillar 2 */
+    p2_badge:'Scale · Third-Party Capital', p2_title1:'Tax Deed', p2_title2:'Investment Fund',
+    p2_desc:'A formal fund structure that raises capital from passive investors to scale acquisition volume, with you as the sole decision-maker and fund manager.',
+    p2_kpi1:'Target LP Return', p2_kpi2:'Typical GP Structure', p2_kpi3:'Open marketing',
+    p2_struct_title:'Suggested Structure',
+    p2_gp_desc:': management fee + carried interest',
+    p2_ticket:'ticket: $25k–$100k per deal',
+    p2_liq:'Liquidity: 12–24 months per investment',
+    p2_reports:'Monthly reports + quarterly distributions',
+    p2_fund_title:'LP Fundraising',
+    p2_f1:'506c = open marketing to accredited investors',
+    p2_f2:'Pillar 1 track record as core credential',
+    p2_f3:'Educational content to qualify leads',
+    p2_f4:'subscriber base (Pillar 3)',
+    /* Pillar 3 */
+    p3_badge:'Leverage · Recurring Revenue', p3_title1:'Tax Deed Intel', p3_title2:'SaaS Platform',
+    p3_desc:'Monetize the proprietary database through a subscription platform: auction calendars, surplus alerts, automated property scoring, and due diligence tools.',
+    p3_kpi1:'Predictable Revenue', p3_kpi2:'Plan Range', p3_kpi3:'Potential Coverage',
+    p3_mvp_title:'MVP Features',
+    p3_f3:'Automated risk score per property',
+    p3_f5:'Liens and encumbrance report tool',
+    p3_edge_title:'Competitive Edge',
+    p3_e1:'training set', p3_e2:'Surplus funds module (rare in market)',
+    p3_e3:'Upsell: access to Investment Fund (Pillar 2)', p3_e4:'pipeline',
+    /* Pillar 4 */
+    p4_badge:'Niche · High Margin · Zero Capital',
+    p4_desc:'Identify and recover auction overages from county records on behalf of dispossessed former owners. Ultra-high margin, minimal competition, 100% remote.',
+    p4_kpi1:'Recovery Fee', p4_kpi2:'No Capital Risk', p4_kpi3:'Scalable per county',
+    p4_ops_title:'Operational Process',
+    p4_op1:'Collect post-auction lists per county', p4_op2:'Filter properties with surplus \u2265 $5k',
+    p4_op3:'Locate former owner via skip tracing', p4_op4:'Sign contingency fee agreement',
+    p4_op5:'File claim with county or state',
+    p4_syn1:'Pillar 1 auction data already on hand',
+    p4_syn2:'Claim volume builds reputation',
+    p4_syn3:'Favorable states: FL, TX, MI, IL, WI',
+    /* Private section */
+    restricted_badge:'RESTRICTED',
+    private_desc:'This section contains real county officer contacts, the live county intelligence scraper, and the Partners Deeds property portfolio with all active and sold acquisitions.',
+    access_title:'Operator Password',
+    ps_total:'Total Properties', ps_active:'Active / Held', ps_sold:'Sold', ps_states:'States',
+    portfolio_how:'How to update the portfolio:',
+    /* Due diligence */
+    dd_title:'Advanced Due Diligence',
+    dd_sub:'Researching fiscal & encumbrance liabilities',
+    dd_s1_title:'State & Municipal Taxes', dd_s2_title:'Federal Liens \u2014 IRS',
+    dd_s3_title:'Mechanics Liens & HOA', dd_s4_title:'Code Violations & Demolition',
+    dd_s5_title:'Judgments & Lis Pendens', dd_s6_title:'Title Search & Quiet Title',
+    /* Surplus flow */
+    surplus_section_title:'Detailed Process \u2014 Pillar 4',
+    surplus_section_sub:'Surplus Funds operational flow',
+    surplus_step1_title:'Collect post-auction lists',
+    surplus_step2_title:'Skip trace the former owner',
+    surplus_step3_title:'Sign representation contract',
+    surplus_step4_title:'File the claim',
+    surplus_step5_title:'Receive funds & collect fee',
+    /* Flywheel */
+    flywheel_title:'The Flywheel Effect',
+    flywheel_sub:'How all four pillars reinforce each other',
+    flywheel_desc:'Each pillar generates data, capital, or reputation that feeds the others',
+    /* Roadmap */
+    roadmap_label:'Scaling Roadmap',
+    roadmap_title:'Ecosystem build phases',
+    phase1_title:'Core Active + Surplus Launching',
+    phase2_title:'Launch Investment Fund + SaaS MVP',
+    phase3_title:'Scale All Four Pillars in Parallel',
+    /* Tools */
+    tools_title:'Operational Infrastructure', tools_sub:'Recommended tool stack',
+    /* Public portfolio */
+    pub_available:'Available Properties',
+    pub_portfolio_title:'Portfolio \u2014 Properties for Sale',
+    pub_title:'Current Property Inventory',
+    pub_intro:'Browse our current inventory. Properties acquired through county tax deed auctions across FL, MI & MS. Contact us to make an offer on any listing.',
+    /* Offer form */
+    offer_name_label:'Full Name *', offer_phone_label:'Phone *',
+    offer_email_label:'E-mail *', offer_value_label:'Proposed Value (USD)',
+    offer_submit_btn:'Make My Offer \u2192', offer_cancel_btn:'Cancel',
+    offer_success_title:'Offer Received!',
+    offer_success_msg:"Thank you. We\u2019ll review your offer and be in touch within 1 business day.",
+    offer_close_btn:'Close',
+    /* Scraper / contacts */
+    scraper_all_offices:'All Office Types',
+    scraper_clerk:'Clerk of Court', scraper_treasurer:'County Treasurer',
+    scraper_tax_assessor:'Tax Assessor-Collector',
+    captcha_title:'Bot Protection Detected',
+    contacts_title:'County Contacts',
+    col_state:'State', col_county:'County', col_office:'Office', col_officer:'Officer',
+    col_phone:'Phone', col_list:'List Format', col_auction:'Auction', col_portal:'Portal',
+    /* Pillars i18n IDs */
+    pillars_title:'The four businesses of our ecosystem',
+    tagline:'Four integrated pillars. One self-reinforcing ecosystem.',
+    disclaimer_title:'\u26a0 Investment Risk Disclaimer',
   },
 
   pt: {
-    tagline: 'Quatro pilares integrados. Um ecossistema autossustentável.',
-    pillars_title: 'Os quatro negócios do nosso ecossistema',
-    pub_title: 'Inventário Atual de Imóveis',
-    pub_intro: 'Confira nosso inventário atual. Imóveis adquiridos em leilões de tax deed nos estados FL, MI e MS. Entre em contato para fazer uma oferta.',
-    stat_pillars: 'Pilares de Negócio',
-    stat_states: 'Estados-Alvo',
-    stat_props: 'Imóveis no Portfólio',
-    stat_value: 'Valor de Mercado do Portfólio',
-    p1_name: 'Aquisições Tax Deed',
-    p1_badge: 'Motor Principal',
-    p1_desc: 'Compra direta de imóveis com grandes descontos em leilões county tax deed, gerando capital, dados e histórico que alimentam todos os outros pilares.',
-    p2_name: 'Fundo de Investimento',
-    p2_badge: 'Veículo de Capital',
-    p2_desc: 'Captação de capital de investidores para escalar o volume de aquisições além dos limites pessoais. Fundo privado Reg D 506(c) com investidores LP.',
-    p3_name: 'Plataforma SaaS',
-    p3_badge: 'Receita Recorrente',
-    p3_desc: 'Monetize o banco de dados proprietário por meio de uma plataforma de assinatura: calendários de leilões, alertas de excedentes, pontuação de propriedades e ferramentas de due diligence.',
-    p4_name: 'Recuperação de Excedentes',
-    p4_badge: 'Alta Margem',
-    p4_desc: 'Identifique e recupere excedentes de leilões nos registros do county em nome dos antigos proprietários. Margem ultra-alta, pouca concorrência, 100% remoto.',
-    roadmap_title: 'Fases de construção do ecossistema',
-    phase1_title: 'Core Ativo + Lançamento de Excedentes',
-    phase2_title: 'Lançar Fundo de Investimento + MVP SaaS',
-    phase3_title: 'Escalar os Quatro Pilares em Paralelo',
-    filter_all: 'Todos os Imóveis',
-    contact_us: 'Consulte-nos',
-    starting_val: 'Valor inicial:',
-    offers_considered: '· ofertas aceitas',
-    contact_pricing: 'Consulte o preço',
-    make_offer: 'Fazer uma Oferta →',
-    sold_tag: '✓ Vendido',
-    photo_soon: 'Foto em breve',
-    private_title: 'Painel do Operador',
-    private_subtitle: 'Playbooks de county, contatos, scraper e portfólio — não exibido a investidores',
-    access_title: 'Acesso do Operador',
-    access_ph: 'Digite a senha',
-    access_btn: 'Desbloquear Seção →',
-    access_err: 'Senha incorreta. Tente novamente.',
-    unlocked_status: '✓ Acesso de operador concedido',
-    lock_again: 'Bloquear',
-    tab_portfolio: 'Portfólio',
-    tab_scraper: 'Scraper de County',
-    tab_contacts: 'Banco de Contatos',
-    tab_playbooks: 'Playbooks por Estado',
-    est_sale_price: 'Preço estimado de venda:',
-    no_price_set: 'Preço não definido',
-    offer_title_prefix: 'Fazer Oferta em',
-    offer_name: 'Nome Completo',
-    offer_phone: 'Telefone',
-    offer_email: 'E-mail',
-    offer_value: 'Valor Proposto (opcional)',
-    offer_submit: 'Enviar Minha Oferta →',
-    offer_cancel: 'Cancelar',
-    offer_success_title: 'Oferta Recebida!',
-    offer_success_msg: 'Obrigado. Analisaremos sua oferta e retornaremos em até 1 dia útil.',
-    offer_close: 'Fechar',
-    disclaimer_title: '⚠ Aviso de Risco de Investimento',
-    surplus_title: 'Recuperação de Excedentes — Como Funciona',
-    tip_IRS: 'Internal Revenue Service — autoridade fiscal federal dos EUA. Penhoras do IRS têm direito de resgate de 120 dias após leilões tax deed.',
-    tip_HOA: 'Home Owner Association — condomínio com taxas obrigatórias. Super-penhoras de HOA podem sobreviver ao tax deed em alguns estados.',
-    tip_OTC: 'Over-The-Counter — compra direta no cartório do county para propriedades não vendidas em leilão.',
-    tip_SaaS: 'Software as a Service — plataforma de assinatura na nuvem.',
-    tip_LLC: 'Limited Liability Company — entidade jurídica que protege o patrimônio pessoal de responsabilidades empresariais.',
-    tip_LP_fund: 'Limited Partnership — investidores LP são passivos; o GP gerencia todas as decisões.',
-    tip_RegD: 'Regulation D Rule 506(c) — isenção da SEC que permite captar publicamente de investidores acreditados verificados.',
-    tip_GP: 'General Partner — gestor ativo do fundo, recebe taxa de administração + participação nos lucros.',
-    tip_LP: 'Limited Partner — investidor passivo que fornece capital sem papel de gestão.',
-    tip_API: 'Application Programming Interface — troca automatizada de dados entre sistemas.',
-    tip_AI: 'Inteligência Artificial — modelos de machine learning treinados com dados históricos de leilões.',
-    tip_SOP: 'Procedimento Operacional Padrão — processo documentado passo a passo para execução consistente.',
-    tip_MVP: 'Produto Mínimo Viável — versão mais simples do produto que entrega valor essencial.',
-    tip_MRR: 'Receita Recorrente Mensal — receita previsível de assinaturas.',
+    header_sub:'Ecossistema Estrat\u00e9gico \u00b7 FL \u00b7 TX \u00b7 MI \u00b7 WI \u00b7 MS',
+    header_holding:'holding',
+    stat_pillars:'Pilares de Neg\u00f3cio', stat_states:'Estados-Alvo',
+    stat_props:'Im\u00f3veis no Portf\u00f3lio', stat_value:'Valor de Mercado do Portf\u00f3lio',
+    sect_pillars_label:'Pilares Estrat\u00e9gicos',
+    show_details:'Ver detalhes',
+    p1_badge:'Motor Principal · Capital', p1_title1:'Leil\u00e3o Tax Deed', p1_title2:'Aquisi\u00e7\u00f5es',
+    p1_desc:'Compra direta de im\u00f3veis com grandes descontos em leil\u00f5es county tax deed, gerando capital, dados e hist\u00f3rico que alimentam todos os outros pilares.',
+    p1_kpi1:'Desconto M\u00e9dio', p1_kpi2:'Portf\u00f3lio Atual',
+    p1_ops_title:'Opera\u00e7\u00f5es-Chave',
+    p1_op1:'Due diligence de t\u00edtulo antes de cada lance',
+    p1_op2a:'Penhoras concorrentes:', p1_op2b:', mec\u00e2nicos,',
+    p1_op3:'Estrat\u00e9gia de lance baseada em margem, n\u00e3o emo\u00e7\u00e3o',
+    p1_op4:'Disposi\u00e7\u00e3o r\u00e1pida: atacado, reforma ou manuten\u00e7\u00e3o',
+    p1_syn_title:'Sinergias do Ecossistema',
+    p1_syn1:'Dados de leil\u00e3o alimentam o banco de dados propriet\u00e1rio',
+    p1_syn2:'Gera fluxo de neg\u00f3cios para o Fundo (Pilar 2)',
+    p1_syn3:'Listas p\u00f3s-leil\u00e3o geram leads de excedentes (Pilar 4)',
+    p2_badge:'Escala \u00b7 Capital de Terceiros', p2_title1:'Tax Deed', p2_title2:'Fundo de Investimento',
+    p2_desc:'Estrutura formal de fundo para captar capital de investidores passivos e escalar o volume de aquisi\u00e7\u00f5es, com voc\u00ea como \u00fanico gestor.',
+    p2_kpi1:'Retorno Alvo LP', p2_kpi2:'Estrutura GP T\u00edpica', p2_kpi3:'Marketing aberto',
+    p2_struct_title:'Estrutura Sugerida',
+    p2_gp_desc:': taxa de gest\u00e3o + participa\u00e7\u00e3o nos lucros',
+    p2_ticket:'ticket m\u00ednimo: $25k\u2013$100k por neg\u00f3cio',
+    p2_liq:'Liquidez: 12\u201324 meses por investimento',
+    p2_reports:'Relat\u00f3rios mensais + distribui\u00e7\u00f5es trimestrais',
+    p2_fund_title:'Captac\u00e3o de LPs',
+    p2_f1:'506c = marketing aberto a investidores acreditados',
+    p2_f2:'Hist\u00f3rico do Pilar 1 como credencial principal',
+    p2_f3:'Conte\u00fado educativo para qualificar leads',
+    p2_f4:'base de assinantes (Pilar 3)',
+    p3_badge:'Alavancagem \u00b7 Receita Recorrente', p3_title1:'Tax Deed Intel', p3_title2:'Plataforma SaaS',
+    p3_desc:'Monetize o banco de dados propriet\u00e1rio por meio de uma plataforma de assinatura: calend\u00e1rios de leil\u00f5es, alertas de excedentes, pontua\u00e7\u00e3o de propriedades e ferramentas de due diligence.',
+    p3_kpi1:'Receita Previs\u00edvel', p3_kpi2:'Faixa de Planos', p3_kpi3:'Cobertura Potencial',
+    p3_mvp_title:'Funcionalidades MVP',
+    p3_f3:'Score de risco automatizado por propriedade',
+    p3_f5:'Ferramenta de relat\u00f3rio de penhoras',
+    p3_edge_title:'Diferencial Competitivo',
+    p3_e1:'conjunto de treinamento', p3_e2:'M\u00f3dulo de excedentes (raro no mercado)',
+    p3_e3:'Upsell: acesso ao Fundo de Investimento (Pilar 2)', p3_e4:'pipeline',
+    p4_badge:'Nicho \u00b7 Alta Margem \u00b7 Sem Capital',
+    p4_desc:'Identifique e recupere excedentes de leil\u00f5es nos registros do county em nome dos antigos propriet\u00e1rios. Margem ultra-alta, pouca concorr\u00eancia, 100% remoto.',
+    p4_kpi1:'Taxa de Recupera\u00e7\u00e3o', p4_kpi2:'Sem Risco de Capital', p4_kpi3:'Escal\u00e1vel por county',
+    p4_ops_title:'Processo Operacional',
+    p4_op1:'Coletar listas p\u00f3s-leil\u00e3o por county', p4_op2:'Filtrar propriedades com excedente \u2265 $5k',
+    p4_op3:'Localizar antigo propriet\u00e1rio via skip tracing', p4_op4:'Assinar contrato de honorários contingentes',
+    p4_op5:'Protocolar reivindica\u00e7\u00e3o no county ou estado',
+    p4_syn1:'Dados de leil\u00e3o do Pilar 1 j\u00e1 dispon\u00edveis',
+    p4_syn2:'Volume de reivindica\u00e7\u00f5es constr\u00f3i reputac\u00e3o',
+    p4_syn3:'Estados favor\u00e1veis: FL, TX, MI, IL, WI',
+    restricted_badge:'RESTRITO',
+    private_desc:'Esta se\u00e7\u00e3o cont\u00e9m contatos reais de oficiais de county, o scraper de intelig\u00eancia de county e o portf\u00f3lio de propriedades da Partners Deeds.',
+    access_title:'Senha do Operador',
+    ps_total:'Total de Im\u00f3veis', ps_active:'Ativos / Em Posse', ps_sold:'Vendidos', ps_states:'Estados',
+    portfolio_how:'Como atualizar o portf\u00f3lio:',
+    dd_title:'Due Diligence Avan\u00e7ado',
+    dd_sub:'Pesquisando passivos fiscais e penhoras',
+    dd_s1_title:'Impostos Estaduais e Municipais', dd_s2_title:'Penhoras Federais \u2014 IRS',
+    dd_s3_title:'Penhoras Mec\u00e2nicas e HOA', dd_s4_title:'Viola\u00e7\u00f5es de C\u00f3digo e Demoli\u00e7\u00e3o',
+    dd_s5_title:'Julgamentos e Lis Pendens', dd_s6_title:'Pesquisa de T\u00edtulo e Quiet Title',
+    surplus_section_title:'Processo Detalhado \u2014 Pilar 4',
+    surplus_section_sub:'Fluxo operacional de recupera\u00e7\u00e3o de excedentes',
+    surplus_step1_title:'Coletar listas p\u00f3s-leil\u00e3o',
+    surplus_step2_title:'Localizar o antigo propriet\u00e1rio',
+    surplus_step3_title:'Assinar contrato de representa\u00e7\u00e3o',
+    surplus_step4_title:'Protocolar a reivindica\u00e7\u00e3o',
+    surplus_step5_title:'Receber fundos e cobrar honor\u00e1rios',
+    flywheel_title:'O Efeito Volante',
+    flywheel_sub:'Como os quatro pilares se refor\u00e7am mutuamente',
+    flywheel_desc:'Cada pilar gera dados, capital ou reputa\u00e7\u00e3o que alimenta os demais',
+    roadmap_label:'Roteiro de Escala',
+    roadmap_title:'Fases de constru\u00e7\u00e3o do ecossistema',
+    phase1_title:'Core Ativo + Lan\u00e7amento de Excedentes',
+    phase2_title:'Lan\u00e7ar Fundo de Investimento + MVP SaaS',
+    phase3_title:'Escalar os Quatro Pilares em Paralelo',
+    tools_title:'Infraestrutura Operacional', tools_sub:'Stack de ferramentas recomendado',
+    pub_available:'Im\u00f3veis Dispon\u00edveis',
+    pub_portfolio_title:'Portf\u00f3lio \u2014 Im\u00f3veis \u00e0 Venda',
+    pub_title:'Invent\u00e1rio Atual de Im\u00f3veis',
+    pub_intro:'Confira nosso invent\u00e1rio atual. Im\u00f3veis adquiridos em leil\u00f5es de tax deed nos estados FL, MI e MS. Entre em contato para fazer uma oferta.',
+    offer_name_label:'Nome Completo *', offer_phone_label:'Telefone *',
+    offer_email_label:'E-mail *', offer_value_label:'Valor Proposto (USD)',
+    offer_submit_btn:'Enviar Minha Oferta \u2192', offer_cancel_btn:'Cancelar',
+    offer_success_title:'Oferta Recebida!',
+    offer_success_msg:'Obrigado. Analisaremos sua oferta e retornaremos em at\u00e9 1 dia \u00fatil.',
+    offer_close_btn:'Fechar',
+    scraper_all_offices:'Todos os Tipos de Of\u00edcio',
+    scraper_clerk:'Cart\u00f3rio do County', scraper_treasurer:'Tesoureiro do County',
+    scraper_tax_assessor:'Avaliador-Cobrador de Impostos',
+    captcha_title:'Prote\u00e7\u00e3o contra Bots Detectada',
+    contacts_title:'Contatos do County',
+    col_state:'Estado', col_county:'County', col_office:'Of\u00edcio', col_officer:'Oficial',
+    col_phone:'Telefone', col_list:'Formato da Lista', col_auction:'Leil\u00e3o', col_portal:'Portal',
+    pillars_title:'Os quatro neg\u00f3cios do nosso ecossistema',
+    tagline:'Quatro pilares integrados. Um ecossistema autossustent\u00e1vel.',
+    disclaimer_title:'\u26a0 Aviso de Risco de Investimento',
   },
 
   es: {
-    tagline: 'Cuatro pilares integrados. Un ecosistema autorreforzado.',
-    pillars_title: 'Los cuatro negocios de nuestro ecosistema',
-    pub_title: 'Inventario Actual de Propiedades',
-    pub_intro: 'Explore nuestro inventario actual. Propiedades adquiridas en subastas de tax deed en FL, MI y MS. Contáctenos para hacer una oferta.',
-    stat_pillars: 'Pilares de Negocio',
-    stat_states: 'Estados Objetivo',
-    stat_props: 'Propiedades en Portafolio',
-    stat_value: 'Valor de Mercado del Portafolio',
-    p1_name: 'Adquisiciones Tax Deed',
-    p1_badge: 'Motor Principal',
-    p1_desc: 'Compra directa de propiedades con grandes descuentos en subastas county tax deed, generando capital, datos y trayectoria que alimentan todos los pilares.',
-    p2_name: 'Fondo de Inversión',
-    p2_badge: 'Vehículo de Capital',
-    p2_desc: 'Captación de capital de inversores para escalar el volumen de adquisiciones más allá de los límites personales. Fondo privado Reg D 506(c) con inversores LP.',
-    p3_name: 'Plataforma SaaS',
-    p3_badge: 'Ingresos Recurrentes',
-    p3_desc: 'Monetice la base de datos propia a través de una plataforma de suscripción: calendarios de subastas, alertas de excedentes, puntuación de propiedades y herramientas de due diligence.',
-    p4_name: 'Recuperación de Excedentes',
-    p4_badge: 'Alto Margen',
-    p4_desc: 'Identifique y recupere excedentes de subastas en los registros del county en nombre de los antiguos propietarios. Margen ultra-alto, poca competencia, 100% remoto.',
-    roadmap_title: 'Fases de construcción del ecosistema',
-    phase1_title: 'Core Activo + Lanzamiento de Excedentes',
-    phase2_title: 'Lanzar Fondo de Inversión + MVP SaaS',
-    phase3_title: 'Escalar los Cuatro Pilares en Paralelo',
-    filter_all: 'Todas las Propiedades',
-    contact_us: 'Consúltenos',
-    starting_val: 'Valor inicial:',
-    offers_considered: '· se aceptan ofertas',
-    contact_pricing: 'Consultar precio',
-    make_offer: 'Hacer una Oferta →',
-    sold_tag: '✓ Vendido',
-    photo_soon: 'Foto próximamente',
-    private_title: 'Panel del Operador',
-    private_subtitle: 'Playbooks de county, contactos, scraper y portafolio — no visible a inversores',
-    access_title: 'Acceso del Operador',
-    access_ph: 'Ingrese la contraseña',
-    access_btn: 'Desbloquear Sección →',
-    access_err: 'Contraseña incorrecta. Inténtelo de nuevo.',
-    unlocked_status: '✓ Acceso de operador concedido',
-    lock_again: 'Bloquear',
-    tab_portfolio: 'Portafolio',
-    tab_scraper: 'Scraper de County',
-    tab_contacts: 'Base de Contactos',
-    tab_playbooks: 'Playbooks por Estado',
-    est_sale_price: 'Precio estimado de venta:',
-    no_price_set: 'Precio no definido',
-    offer_title_prefix: 'Hacer Oferta en',
-    offer_name: 'Nombre Completo',
-    offer_phone: 'Teléfono',
-    offer_email: 'Correo electrónico',
-    offer_value: 'Valor Propuesto (opcional)',
-    offer_submit: 'Enviar Mi Oferta →',
-    offer_cancel: 'Cancelar',
-    offer_success_title: '¡Oferta Recibida!',
-    offer_success_msg: 'Gracias. Revisaremos su oferta y nos pondremos en contacto en 1 día hábil.',
-    offer_close: 'Cerrar',
-    disclaimer_title: '⚠ Aviso de Riesgo de Inversión',
-    surplus_title: 'Recuperación de Excedentes — Cómo Funciona',
-    tip_IRS: 'Internal Revenue Service — autoridad fiscal federal de EE.UU. Los gravámenes del IRS tienen derecho de rescate de 120 días tras subastas tax deed.',
-    tip_HOA: 'Home Owner Association — comunidad de cuotas obligatorias. Los super-gravámenes de HOA pueden sobrevivir al tax deed en algunos estados.',
-    tip_OTC: 'Over-The-Counter — compra directa en la oficina del county para propiedades no vendidas en subasta.',
-    tip_SaaS: 'Software as a Service — plataforma de suscripción en la nube.',
-    tip_LLC: 'Limited Liability Company — entidad jurídica que protege el patrimonio personal de responsabilidades empresariales.',
-    tip_LP_fund: 'Limited Partnership — los inversores LP son pasivos; el GP gestiona todas las decisiones.',
-    tip_RegD: 'Regulation D Rule 506(c) — exención de la SEC que permite captar públicamente de inversores acreditados verificados.',
-    tip_GP: 'General Partner — gestor activo del fondo, recibe comisión de gestión + participación en beneficios.',
-    tip_LP: 'Limited Partner — inversor pasivo que aporta capital sin rol de gestión.',
-    tip_API: 'Application Programming Interface — intercambio automatizado de datos entre sistemas.',
-    tip_AI: 'Inteligencia Artificial — modelos de machine learning entrenados con datos históricos de subastas.',
-    tip_SOP: 'Procedimiento Operativo Estándar — proceso documentado paso a paso para ejecución consistente.',
-    tip_MVP: 'Producto Mínimo Viable — versión más simple del producto que entrega valor esencial.',
-    tip_MRR: 'Ingresos Recurrentes Mensuales — ingresos predecibles de suscripciones.',
+    header_sub:'Ecosistema Estrat\u00e9gico \u00b7 FL \u00b7 TX \u00b7 MI \u00b7 WI \u00b7 MS',
+    header_holding:'holding',
+    stat_pillars:'Pilares de Negocio', stat_states:'Estados Objetivo',
+    stat_props:'Propiedades en Portafolio', stat_value:'Valor de Mercado del Portafolio',
+    sect_pillars_label:'Pilares Estrat\u00e9gicos',
+    show_details:'Ver detalles',
+    p1_badge:'Motor Principal \u00b7 Capital', p1_title1:'Subasta Tax Deed', p1_title2:'Adquisiciones',
+    p1_desc:'Compra directa de propiedades con grandes descuentos en subastas county tax deed, generando capital, datos y trayectoria que alimentan todos los pilares.',
+    p1_kpi1:'Descuento Promedio', p1_kpi2:'Portafolio Actual',
+    p1_ops_title:'Operaciones Clave',
+    p1_op1:'Due diligence de t\u00edtulo antes de cada puja',
+    p1_op2a:'Gravámenes concurrentes:', p1_op2b:', mec\u00e1nicos,',
+    p1_op3:'Estrategia de puja basada en margen, no en emoci\u00f3n',
+    p1_op4:'Disposici\u00f3n r\u00e1pida: mayorista, reforma o retenci\u00f3n',
+    p1_syn_title:'Sinergias del Ecosistema',
+    p1_syn1:'Datos de subasta alimentan la base de datos propia',
+    p1_syn2:'Genera flujo de negocios para el Fondo (Pilar 2)',
+    p1_syn3:'Listas post-subasta generan leads de excedentes (Pilar 4)',
+    p2_badge:'Escala \u00b7 Capital de Terceros', p2_title1:'Tax Deed', p2_title2:'Fondo de Inversi\u00f3n',
+    p2_desc:'Estructura formal de fondo para captar capital de inversores pasivos y escalar el volumen de adquisiciones, con usted como \u00fanico gestor.',
+    p2_kpi1:'Retorno Objetivo LP', p2_kpi2:'Estructura GP T\u00edpica', p2_kpi3:'Marketing abierto',
+    p2_struct_title:'Estructura Sugerida',
+    p2_gp_desc:': comisi\u00f3n de gesti\u00f3n + participaci\u00f3n en beneficios',
+    p2_ticket:'ticket m\u00ednimo: $25k\u2013$100k por negocio',
+    p2_liq:'Liquidez: 12\u201324 meses por inversi\u00f3n',
+    p2_reports:'Informes mensuales + distribuciones trimestrales',
+    p2_fund_title:'Captaci\u00f3n de LPs',
+    p2_f1:'506c = marketing abierto a inversores acreditados',
+    p2_f2:'Trayectoria del Pilar 1 como credencial principal',
+    p2_f3:'Contenido educativo para calificar leads',
+    p2_f4:'base de suscriptores (Pilar 3)',
+    p3_badge:'Apalancamiento \u00b7 Ingresos Recurrentes', p3_title1:'Tax Deed Intel', p3_title2:'Plataforma SaaS',
+    p3_desc:'Monetice la base de datos propia a trav\u00e9s de una plataforma de suscripci\u00f3n: calendarios de subastas, alertas de excedentes, puntuaci\u00f3n de propiedades y herramientas de due diligence.',
+    p3_kpi1:'Ingresos Predecibles', p3_kpi2:'Rango de Planes', p3_kpi3:'Cobertura Potencial',
+    p3_mvp_title:'Funcionalidades MVP',
+    p3_f3:'Score de riesgo automatizado por propiedad',
+    p3_f5:'Herramienta de informe de gravámenes',
+    p3_edge_title:'Ventaja Competitiva',
+    p3_e1:'conjunto de entrenamiento', p3_e2:'M\u00f3dulo de excedentes (raro en el mercado)',
+    p3_e3:'Upsell: acceso al Fondo de Inversi\u00f3n (Pilar 2)', p3_e4:'pipeline',
+    p4_badge:'Nicho \u00b7 Alto Margen \u00b7 Sin Capital',
+    p4_desc:'Identifique y recupere excedentes de subastas en los registros del county en nombre de los antiguos propietarios. Margen ultra-alto, poca competencia, 100% remoto.',
+    p4_kpi1:'Tasa de Recuperaci\u00f3n', p4_kpi2:'Sin Riesgo de Capital', p4_kpi3:'Escalable por county',
+    p4_ops_title:'Proceso Operacional',
+    p4_op1:'Recopilar listas post-subasta por county', p4_op2:'Filtrar propiedades con excedente \u2265 $5k',
+    p4_op3:'Localizar al antiguo propietario via skip tracing', p4_op4:'Firmar contrato de honorarios contingentes',
+    p4_op5:'Presentar reclamaci\u00f3n al county o estado',
+    p4_syn1:'Datos de subasta del Pilar 1 ya disponibles',
+    p4_syn2:'El volumen de reclamaciones genera reputaci\u00f3n',
+    p4_syn3:'Estados favorables: FL, TX, MI, IL, WI',
+    restricted_badge:'RESTRINGIDO',
+    private_desc:'Esta secci\u00f3n contiene contactos reales de oficiales de county, el scraper de inteligencia de county y el portafolio de propiedades de Partners Deeds.',
+    access_title:'Contrase\u00f1a del Operador',
+    ps_total:'Total de Propiedades', ps_active:'Activas / En Cartera', ps_sold:'Vendidas', ps_states:'Estados',
+    portfolio_how:'C\u00f3mo actualizar el portafolio:',
+    dd_title:'Due Diligence Avanzado',
+    dd_sub:'Investigando pasivos fiscales y gravámenes',
+    dd_s1_title:'Impuestos Estatales y Municipales', dd_s2_title:'Gravámenes Federales \u2014 IRS',
+    dd_s3_title:'Gravámenes Mec\u00e1nicos y HOA', dd_s4_title:'Infracciones de C\u00f3digo y Demolici\u00f3n',
+    dd_s5_title:'Sentencias y Lis Pendens', dd_s6_title:'B\u00fasqueda de T\u00edtulo y Quiet Title',
+    surplus_section_title:'Proceso Detallado \u2014 Pilar 4',
+    surplus_section_sub:'Flujo operacional de recuperaci\u00f3n de excedentes',
+    surplus_step1_title:'Recopilar listas post-subasta',
+    surplus_step2_title:'Localizar al antiguo propietario',
+    surplus_step3_title:'Firmar contrato de representaci\u00f3n',
+    surplus_step4_title:'Presentar la reclamaci\u00f3n',
+    surplus_step5_title:'Recibir fondos y cobrar honorarios',
+    flywheel_title:'El Efecto Volante',
+    flywheel_sub:'C\u00f3mo los cuatro pilares se refuerzan mutuamente',
+    flywheel_desc:'Cada pilar genera datos, capital o reputaci\u00f3n que alimenta a los dem\u00e1s',
+    roadmap_label:'Hoja de Ruta de Escala',
+    roadmap_title:'Fases de construcci\u00f3n del ecosistema',
+    phase1_title:'Core Activo + Lanzamiento de Excedentes',
+    phase2_title:'Lanzar Fondo de Inversi\u00f3n + MVP SaaS',
+    phase3_title:'Escalar los Cuatro Pilares en Paralelo',
+    tools_title:'Infraestructura Operacional', tools_sub:'Stack de herramientas recomendado',
+    pub_available:'Propiedades Disponibles',
+    pub_portfolio_title:'Portafolio \u2014 Propiedades en Venta',
+    pub_title:'Inventario Actual de Propiedades',
+    pub_intro:'Explore nuestro inventario actual. Propiedades adquiridas en subastas de tax deed en FL, MI y MS. Cont\u00e1ctenos para hacer una oferta.',
+    offer_name_label:'Nombre Completo *', offer_phone_label:'Tel\u00e9fono *',
+    offer_email_label:'Correo electr\u00f3nico *', offer_value_label:'Valor Propuesto (USD)',
+    offer_submit_btn:'Enviar Mi Oferta \u2192', offer_cancel_btn:'Cancelar',
+    offer_success_title:'\u00a1Oferta Recibida!',
+    offer_success_msg:'Gracias. Revisaremos su oferta y nos pondremos en contacto en 1 d\u00eda h\u00e1bil.',
+    offer_close_btn:'Cerrar',
+    scraper_all_offices:'Todos los Tipos de Oficina',
+    scraper_clerk:'Secretar\u00eda del County', scraper_treasurer:'Tesorero del County',
+    scraper_tax_assessor:'Recaudador-Evaluador de Impuestos',
+    captcha_title:'Protecci\u00f3n contra Bots Detectada',
+    contacts_title:'Contactos del County',
+    col_state:'Estado', col_county:'County', col_office:'Oficina', col_officer:'Oficial',
+    col_phone:'Tel\u00e9fono', col_list:'Formato de Lista', col_auction:'Subasta', col_portal:'Portal',
+    pillars_title:'Los cuatro negocios de nuestro ecosistema',
+    tagline:'Cuatro pilares integrados. Un ecosistema autorreforzado.',
+    disclaimer_title:'\u26a0 Aviso de Riesgo de Inversi\u00f3n',
   }
 };
 
 function setLang(lang) {
   LANG = lang;
-  var t = I18N[lang];
+  var t = T[lang];
+  if (!t) return;
+
   /* flag buttons */
   document.querySelectorAll('.lang-btn').forEach(function(b, i) {
     b.classList.toggle('active', ['en','pt','es'][i] === lang);
   });
-  /* helper */
-  function tx(id, val) { var el = document.getElementById(id); if (el && val) el.innerHTML = val; }
-  function txText(id, val) { var el = document.getElementById(id); if (el && val) el.textContent = val; }
-  function txAttr(id, attr, val) { var el = document.getElementById(id); if (el && val) el.setAttribute(attr, val); }
 
-  /* header */
+  /* Apply all data-i18n attributes */
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  /* Also update the i18n-id elements (legacy) */
+  function tx(id, val) { var el=document.getElementById(id); if(el&&val!==undefined)el.innerHTML=val; }
   tx('i18n-tagline', t.tagline);
   tx('i18n-pillars-title', t.pillars_title);
-
-  /* stats bar */
-  tx('i18n-stat-pillars', t.stat_pillars);
-  tx('i18n-stat-states', t.stat_states);
-  tx('i18n-stat-props', t.stat_props);
-  tx('i18n-stat-value', t.stat_value);
-
-  /* pillar names, badges, descs */
-  tx('i18n-p1-name', t.p1_name); tx('i18n-p1-badge', t.p1_badge); tx('i18n-p1-desc', t.p1_desc);
-  tx('i18n-p2-name', t.p2_name); tx('i18n-p2-badge', t.p2_badge); tx('i18n-p2-desc', t.p2_desc);
-  tx('i18n-p3-name', t.p3_name); tx('i18n-p3-badge', t.p3_badge); tx('i18n-p3-desc', t.p3_desc);
-  tx('i18n-p4-name', t.p4_name); tx('i18n-p4-badge', t.p4_badge); tx('i18n-p4-desc', t.p4_desc);
-
-  /* roadmap */
+  tx('i18n-pub-title', t.pub_title);
+  tx('i18n-pub-intro', t.pub_intro);
+  tx('i18n-disclaimer-title', t.disclaimer_title);
   tx('i18n-roadmap-title', t.roadmap_title);
   tx('i18n-phase1-title', t.phase1_title);
   tx('i18n-phase2-title', t.phase2_title);
   tx('i18n-phase3-title', t.phase3_title);
 
-  /* public portfolio */
-  tx('i18n-pub-title', t.pub_title);
-  tx('i18n-pub-intro', t.pub_intro);
+  /* Access/unlock UI */
+  var ap = document.getElementById('accessPass');
+  if (ap) ap.placeholder = (lang==='pt'?'Digite a senha':(lang==='es'?'Ingrese la contrase\u00f1a':'Enter password'));
+  var ab = document.getElementById('accessBtn');
+  if (ab) ab.textContent = (lang==='pt'?'Desbloquear Se\u00e7\u00e3o \u2192':(lang==='es'?'Desbloquear Secci\u00f3n \u2192':'Unlock Section \u2192'));
 
-  /* private section */
-  tx('i18n-private-title', t.private_title);
-  tx('i18n-private-subtitle', t.private_subtitle);
-  tx('i18n-access-title', t.access_title);
-  txAttr('accessPass', 'placeholder', t.access_ph);
-  var ab = document.getElementById('accessBtn'); if (ab) ab.textContent = t.access_btn;
-  tx('i18n-unlocked-status', t.unlocked_status);
-  var la = document.querySelector('.lock-again'); if (la) la.textContent = t.lock_again;
-
-  /* tabs */
-  tx('i18n-tab-portfolio', t.tab_portfolio);
-  tx('i18n-tab-scraper', t.tab_scraper);
-  tx('i18n-tab-contacts', t.tab_contacts);
-  tx('i18n-tab-playbooks', t.tab_playbooks);
-
-  /* offer form */
-  tx('i18n-offer-name', t.offer_name);
-  tx('i18n-offer-phone', t.offer_phone);
-  tx('i18n-offer-email', t.offer_email);
-  tx('i18n-offer-value', t.offer_value);
-  var sb = document.getElementById('offerSubmitBtn'); if (sb && !sb.disabled) sb.textContent = t.offer_submit;
-  var cb = document.querySelector('.offer-cancel'); if (cb) cb.textContent = t.offer_cancel;
-  tx('i18n-offer-success-title', t.offer_success_title);
-  tx('i18n-offer-success-msg', t.offer_success_msg);
-  var ocb = document.querySelector('.offer-close-btn'); if (ocb) ocb.textContent = t.offer_close;
-
-  /* disclaimer */
-  tx('i18n-disclaimer-title', t.disclaimer_title);
-
-  /* tooltips — update data-tip attributes live */
-  var tipMap = {
-    'IRS': t.tip_IRS, 'HOA': t.tip_HOA, 'OTC': t.tip_OTC,
-    'SaaS': t.tip_SaaS, 'LLC': t.tip_LLC, 'LP': t.tip_LP,
-    'GP': t.tip_GP, 'API': t.tip_API, 'AI': t.tip_AI,
-    'SOP': t.tip_SOP, 'MVP': t.tip_MVP, 'MRR': t.tip_MRR,
-    'Reg D 506(c)': t.tip_RegD, 'Reg D': t.tip_RegD
+  /* Tooltips — update data-tip live */
+  var tips = {
+    'IRS':     lang==='pt'?'Internal Revenue Service \u2014 autoridade fiscal federal dos EUA. Penhoras IRS t\u00eam direito de resgate de 120 dias ap\u00f3s leil\u00f5es tax deed.':lang==='es'?'Internal Revenue Service \u2014 autoridad fiscal federal de EE.UU. Gravámenes IRS: 120 d\u00edas de rescate tras subastas tax deed.':'Internal Revenue Service \u2014 U.S. federal tax authority. IRS liens carry a 120-day redemption right after a tax deed sale.',
+    'HOA':     lang==='pt'?'Home Owner Association \u2014 condom\u00ednio com taxas obrigat\u00f3rias. Super-penhoras de HOA podem sobreviver ao tax deed em alguns estados.':lang==='es'?'Home Owner Association \u2014 comunidad de cuotas obligatorias. Super-gravámenes HOA pueden sobrevivir al tax deed en algunos estados.':'Home Owner Association \u2014 mandatory-fee community. HOA super-liens can survive the tax deed in some states.',
+    'OTC':     lang==='pt'?'Over-The-Counter \u2014 compra direta no cart\u00f3rio do county para propriedades n\u00e3o vendidas em leil\u00e3o.':lang==='es'?'Over-The-Counter \u2014 compra directa en la oficina del county para propiedades no vendidas en subasta.':'Over-The-Counter \u2014 direct purchase at the county clerk\'s office for unsold properties.',
+    'SaaS':    lang==='pt'?'Software as a Service \u2014 plataforma de assinatura na nuvem.':lang==='es'?'Software as a Service \u2014 plataforma de suscripci\u00f3n en la nube.':'Software as a Service \u2014 cloud subscription platform.',
+    'LLC':     lang==='pt'?'Limited Liability Company \u2014 entidade jur\u00eddica que protege o patrim\u00f4nio pessoal.':lang==='es'?'Limited Liability Company \u2014 entidad jur\u00eddica que protege el patrimonio personal.':'Limited Liability Company \u2014 legal entity protecting personal assets from business liabilities.',
+    'LP':      lang==='pt'?'Limited Partner \u2014 investidor passivo que fornece capital sem papel de gest\u00e3o.':lang==='es'?'Limited Partner \u2014 inversor pasivo que aporta capital sin rol de gesti\u00f3n.':'Limited Partner \u2014 passive investor who provides capital but has no management role.',
+    'GP':      lang==='pt'?'General Partner \u2014 gestor ativo do fundo, recebe taxa de administra\u00e7\u00e3o + participa\u00e7\u00e3o nos lucros.':lang==='es'?'General Partner \u2014 gestor activo del fondo, recibe comisi\u00f3n de gesti\u00f3n + participaci\u00f3n en beneficios.':'General Partner \u2014 active fund manager earning a management fee plus carried interest on profits.',
+    'API':     lang==='pt'?'Application Programming Interface \u2014 troca automatizada de dados entre sistemas.':lang==='es'?'Application Programming Interface \u2014 intercambio automatizado de datos entre sistemas.':'Application Programming Interface \u2014 automated data exchange between software systems.',
+    'AI':      lang==='pt'?'Intelig\u00eancia Artificial \u2014 modelos treinados com dados hist\u00f3ricos de leil\u00f5es.':lang==='es'?'Inteligencia Artificial \u2014 modelos entrenados con datos hist\u00f3ricos de subastas.':'Artificial Intelligence \u2014 machine learning models trained on historical auction data.',
+    'SOP':     lang==='pt'?'Procedimento Operacional Padr\u00e3o \u2014 processo documentado passo a passo.':lang==='es'?'Procedimiento Operativo Est\u00e1ndar \u2014 proceso documentado paso a paso.':'Standard Operating Procedure \u2014 documented step-by-step process ensuring consistent team execution.',
+    'MVP':     lang==='pt'?'Produto M\u00ednimo Vi\u00e1vel \u2014 vers\u00e3o mais simples que entrega valor essencial.':lang==='es'?'Producto M\u00ednimo Viable \u2014 versi\u00f3n m\u00e1s simple que entrega valor esencial.':'Minimum Viable Product \u2014 simplest product version that delivers core value.',
+    'MRR':     lang==='pt'?'Receita Recorrente Mensal \u2014 receita previs\u00edvel de assinaturas.':lang==='es'?'Ingresos Recurrentes Mensuales \u2014 ingresos predecibles de suscripciones.':'Monthly Recurring Revenue \u2014 predictable subscription revenue.',
+    'Reg D':   lang==='pt'?'Regulation D \u2014 isen\u00e7\u00e3o da SEC para ofertas privadas. 506(c) permite captar publicamente de investidores acreditados.':lang==='es'?'Regulation D \u2014 exenci\u00f3n de la SEC para ofertas privadas. 506(c) permite captar p\u00fablicamente de inversores acreditados.':'Regulation D \u2014 SEC exemption for private fund offerings. 506(c) allows open advertising to verified accredited investors.',
+    'Reg D 506(c)': lang==='pt'?'Regulation D Rule 506(c) \u2014 isen\u00e7\u00e3o da SEC que permite captar publicamente de investidores acreditados verificados.':lang==='es'?'Regulation D Rule 506(c) \u2014 exenci\u00f3n SEC para captar p\u00fablicamente de inversores acreditados.':'Regulation D Rule 506(c) \u2014 SEC exemption allowing public solicitation of verified accredited investors.',
+    'APN':     lang==='pt'?'Assessor\'s Parcel Number \u2014 ID \u00fanico do governo para cada propriedade.':lang==='es'?'Assessor\'s Parcel Number \u2014 ID \u00fanico asignado por el gobierno a cada propiedad.':'Assessor\'s Parcel Number \u2014 unique government ID assigned to each property.',
+    'Lis Pendens': lang==='pt'?'Lis Pendens \u2014 aviso jur\u00eddico registrado de litígio ativo que pode afetar a transfer\u00eancia da propriedade.':lang==='es'?'Lis Pendens \u2014 aviso legal registrado de litigio activo que puede afectar la transferencia de la propiedad.':'Lis Pendens \u2014 a recorded legal notice that active litigation could affect the property ownership or transfer.',
+    'Quiet Title': lang==='pt'?'Quiet Title \u2014 a\u00e7\u00e3o judicial que extingue legalmente todas as reivindica\u00e7\u00f5es concorrentes, tornando o t\u00edtulo limpável e segur\u00e1vel.':lang==='es'?'Quiet Title \u2014 acci\u00f3n judicial que extingue legalmente todas las reclamaciones concurrentes sobre el t\u00edtulo.':'Quiet Title \u2014 a court action that legally extinguishes all competing claims, making the title clean and insurable.',
   };
   document.querySelectorAll('.tip').forEach(function(el) {
     var abbr = el.textContent.trim();
-    if (tipMap[abbr]) el.setAttribute('data-tip', tipMap[abbr]);
+    if (tips[abbr]) el.setAttribute('data-tip', tips[abbr]);
   });
 
-  /* re-render public portfolio so card texts update */
+  /* Modals/PROCS — switch data set */
+  _currentPROCS = (lang==='pt' && typeof PROCS_PT!=='undefined') ? PROCS_PT
+    : (lang==='es' && typeof PROCS_ES!=='undefined') ? PROCS_ES : PROCS_EN;
+
+  /* Playbooks — switch data set */
+  _currentPLAYBOOKS = (lang==='pt' && typeof PLAYBOOKS_PT!=='undefined') ? PLAYBOOKS_PT
+    : (lang==='es' && typeof PLAYBOOKS_ES!=='undefined') ? PLAYBOOKS_ES : PLAYBOOKS_EN;
+  buildPlaybooks();
+
+  /* Re-render public portfolio cards (translated texts) */
   if (pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
 }
 
 
+/* ── PROCS translated to Portuguese ── */
+var PROCS_PT = {
+  titledd:{title:"Due Diligence de Título Antes de Licitar",steps:[
+    {n:"1",title:"Obter o ID da Parcela (APN)",desc:"Cada propriedade tem um número único de avaliação. Encontre-o na lista de leilão ou no cadastro fiscal do county.",tools:["Cadastro Fiscal do County","PropStream","DataTree"]},
+    {n:"2",title:"Realizar pesquisa preliminar de título",desc:"Use DataTree, PropStream ou uma empresa de título local para extrair a cadeia de título dos últimos 30–40 anos. Procure interrupções, escrituras ausentes ou serviões.",tools:["DataTree","PropStream","Cartório do County"]},
+    {n:"3",title:"Pesquisar todas as penhoras registradas",desc:"No Cartório do County, pesquise por APN: penhoras fiscais, penhoras federais do IRS, penhoras mecânicas, HOA, julgamentos e lis pendens.",tools:["Cartório do County","LienFocus","DataTree"]},
+    {n:"4",title:"Verificar violações de código e licenças abertas",desc:"Entre em contato com a fiscalização municipal e o Departamento de Obras. Violações não pagas se tornam penhoras municipais que sobrevivem ao tax deed.",tools:["Portal de Código Municipal","Dept. de Obras"]},
+    {n:"5",title:"Avaliar necessidade e custo do Quiet Title",desc:"Se houver problemas de título, obtenha um orçamento de advogado antes de licitar. FL: 6–12 meses | TX: 3–6 meses | MI: 3–6 meses | IL: até 2 anos | WI: ~6 meses.",tools:["Advogado imobiliário local","Stewart Title","Old Republic"]}
+  ],note:"<strong>Regra prática:</strong> Se a pesquisa de título custar mais de 1% do ARV esperado, precifique adequadamente."},
+  liencheck:{title:"Procedimento de Pesquisa de Penhoras",steps:[
+    {n:"1",title:"Pesquisar no Cartório do County",desc:"Pesquise por (a) APN e (b) nome completo do proprietário. Extraia todos os documentos dos últimos 10 anos no mínimo.",tools:["Cartório do County","DataTree"]},
+    {n:"2",title:"Realizar pesquisa de penhora do IRS",desc:"Pesquise a seção IRS do cartório pelo nome legal completo do proprietário. Penhoras IRS têm direito de resgate de 120 dias após tax deed.",tools:["IRS.gov / FOIA","LienFocus","Cartório do County"]},
+    {n:"3",title:"Verificar status do HOA",desc:"Ligue para a administradora do HOA. Solicite uma Carta de Estoppel mostrando o total devido. Super-penhoras de HOA na FL (Cap. 718) podem sobreviver ao tax deed.",tools:["Administradora do HOA","PropStream HOA layer"]},
+    {n:"4",title:"Verificar penhoras mecânicas",desc:"Penhoras mecânicas são registradas no Cartório. Verifique a data — muitas expiram em 1 ano se não forem executadas.",tools:["Cartório do County","LiensFinder.com"]},
+    {n:"5",title:"Construir planilha de resumo de penhoras",desc:"Compile todos os achados: tipo, valor, data, titular e se sobrevive ao tax deed no seu estado."}
+  ],note:"<strong>Distinção chave:</strong> Algumas penhoras são extintas pelo tax deed (ex: hipotecas). Outras sobrevivem. Sempre confirme com advogado imobiliário local."},
+  auctiontrack:{title:"Monitorar Leilões Online e OTC por County",steps:[
+    {n:"1",title:"Construir calendário mestre por county",desc:"Planilha com todos os counties-alvo: calendário de leilões, plataforma (RealTDA, Linebarger, GovEase, courthouse steps) e data de publicação da lista.",tools:["Airtable","Notion","Google Sheets"]},
+    {n:"2",title:"Configurar alertas automáticos",desc:"Ative notificações por e-mail nas plataformas digitais ou use Distill.io para alertar quando as páginas mudarem.",tools:["Distill.io","Alertas PropStream"]},
+    {n:"3",title:"Baixar e processar cada lista",desc:"Baixe CSV, PDF ou Excel. Importe para seu banco de dados. Marque cada propriedade: county, data do leilão, lance inicial, APN."},
+    {n:"4",title:"Identificar inventário OTC",desc:"Após cada leilão, contate o Cartório ou Tesoureiro para a lista de propriedades não vendidas (struck-off). Disponíveis OTC sem concorrência."},
+    {n:"5",title:"Priorizar e enfileirar para due diligence",desc:"Pontue cada propriedade: ARV estimado, lance inicial, custo de reparo, risco de penhora. Direcione as melhores para due diligence."}
+  ],note:"<strong>Dica pro:</strong> Em Michigan, o land bank estatal leiloa propriedades não vendidas em novembro. Contate o tesoureiro do county para disponibilidade OTC o ano todo."},
+  database:{title:"Construindo o Banco de Dados de Leilões",steps:[
+    {n:"1",title:"Escolher sua stack de dados",desc:"Comece com Airtable ou Notion. Conforme o volume crescer, migre para PostgreSQL.",tools:["Airtable (início)","PostgreSQL + Retool (escala)"]},
+    {n:"2",title:"Definir o schema de dados",desc:"Por propriedade: APN, endereço, county, estado, data do leilão, lance inicial, lance vencedor, ARV estimado, status de penhora, disposição e resultado."},
+    {n:"3",title:"Registrar cada leilão — lance ou não",desc:"Mesmo que não licite, registre o resultado. Com o tempo, isso revela padrões de preços e os melhores tipos de propriedade."},
+    {n:"4",title:"Conectar PropStream/ATTOM via API",desc:"Puxe automaticamente dados atualizados para cada APN. Elimina entrada manual de dados em escala.",tools:["PropStream API","ATTOM Data API"]},
+    {n:"5",title:"Usar dados para alimentar Pilares 2, 3 e 4",desc:"Este banco de dados se torna: motor de análise para o Fundo (P2), dados de treinamento para o SaaS (P3) e fonte de leads de excedentes (P4)."}
+  ],note:"<strong>Efeito moãt:</strong> Um banco de dados proprietário construído ao longo de 2+ anos de leilões reais é uma vantagem competitiva estrutural que nenhum novo entrante consegue replicar rapidamente."},
+  surplusleads:{title:"Transformando Listas Pós-Leilão em Leads de Excedentes",steps:[
+    {n:"1",title:"Baixar resultados imediatamente após o leilão",desc:"A maioria dos cartórios publica resultados em 24–72 horas. Configure lembretes de calendário para cada county."},
+    {n:"2",title:"Calcular o excedente",desc:"Excedente = Lance Vencedor − Dívida Total de Impostos (incluindo taxas e juros). Filtre por excedente ≥ $5.000."},
+    {n:"3",title:"Cruzar com seu banco de dados",desc:"Combine o APN para obter o nome do antigo proprietário e último endereço conhecido — economiza tempo de skip tracing."},
+    {n:"4",title:"Enfileirar para skip tracing",desc:"Envie para BatchSkipTracing ou TLO com nome e último endereço. Resultados em minutos.",tools:["BatchSkipTracing.com","TLO","CLEAR"]},
+    {n:"5",title:"Priorizar por valor e prazo",desc:"Ordene por: (a) maior excedente primeiro, (b) menor tempo restante antes do prazo."}
+  ],note:"<strong>Automação:</strong> Com a plataforma SaaS (Pilar 3), scraping de resultados, cálculo de excedentes e enfileiramento de skip trace podem ser automatizados."},
+  fundsetup:{title:"Configurando o Fundo de Investimento (Reg D 506c)",steps:[
+    {n:"1",title:"Contratar advogado especializado em valores mobiliários",desc:"Antes de captar qualquer dólar, contrate um advogado especializado em Reg D. Custo: $5.000–$15.000.",tools:["Advogado de valores mobiliários","FINRA BrokerCheck"]},
+    {n:"2",title:"Escolher a estrutura do fundo",desc:"Mais comum: LLC Delaware ou Wyoming como entidade do fundo, com você como Membro Gestor (equivalente a GP)."},
+    {n:"3",title:"Protocolar Formulário D na SEC",desc:"Sob 506(c), protocole o Formulário D em até 15 dias da primeira venda de títulos no sec.gov.",tools:["SEC EDGAR (sec.gov)","Portais estaduais de valores mobiliários"]},
+    {n:"4",title:"Redigir o Memorando de Colocação Privada (PPM)",desc:"Seu advogado redige o PPM: estratégia de investimento, riscos, taxas, cascata de liquidação e histórico.",tools:["Advogado de valores mobiliários","DealMaker (PPM digital)"]},
+    {n:"5",title:"Verificar acreditação dos investidores",desc:"Sob 506(c), você pode anunciar publicamente, MAS deve verificar que cada investidor é acreditado (renda >$200k/ano ou patrimônio líquido >$1M).",tools:["VerifyInvestor.com","EarlyIQ"]}
+  ],note:"<strong>Cronograma:</strong> Espere 60–90 dias desde o engajamento do advogado até o primeiro fechamento. Execute o Pilar 1 em paralelo para ter histórico real no lançamento."},
+  lpcapture:{title:"Atraindo e Qualificando Investidores LP",steps:[
+    {n:"1",title:"Definir o perfil ideal de LP",desc:"Alvo: investidores acreditados buscando retornos imobiliários passivos. Fontes: outros investidores imobiliários, empresários, profissionais, base de assinantes SaaS."},
+    {n:"2",title:"Construir credibilidade antes de pedir capital",desc:"Publique relatórios mensais de negócios e estudos de caso. Documente cada deal do Pilar 1: preço de compra, venda, prazo e retorno."},
+    {n:"3",title:"Realizar webinars para investidores",desc:"Sob 506(c), você pode anunciar publicamente. Realize webinars mensais explicando a estratégia e a estrutura do fundo.",tools:["Zoom","ConvertKit / Mailchimp","LinkedIn"]},
+    {n:"4",title:"Enviar sumário executivo + PPM",desc:"Envie primeiro um sumário de 1–2 páginas. Se houver interesse confirmado, envie o PPM completo e os documentos de subscrição.",tools:["DocuSign","DealMaker","Portal LP InvestNext"]},
+    {n:"5",title:"Integrar e manter relacionamento com LPs",desc:"Atualizações mensais do portfólio, distribuições trimestrais, relatório anual. LPs satisfeitos reinvestem e indicam.",tools:["InvestNext","Juniper Square","QuickBooks"]}
+  ],note:"<strong>Funil de conversão:</strong> Assinante SaaS → participante de webinar → solicita sumário → acreditação verificada → investidor LP."},
+  skiptrace:{title:"Skip Tracing de Antigos Proprietários",steps:[
+    {n:"1",title:"Reunir dados de entrada",desc:"Por lead de excedente: nome legal completo do antigo proprietário, último endereço postal e APN."},
+    {n:"2",title:"Realizar skip trace em lote",desc:"Envie para BatchSkipTracing ou TLO como CSV: nome, sobrenome, endereço, cidade, estado, CEP.",tools:["BatchSkipTracing.com (~$0,15–0,30/registro)","TLO (~$100/mês)","CLEAR — Thomson Reuters"]},
+    {n:"3",title:"Pontuar e priorizar resultados",desc:"Priorize: (a) número de celular retornado, (b) endereço atual no estado, (c) informações de parente disponíveis."},
+    {n:"4",title:"Tentar contato por telefone e correio",desc:"Ligue primeiro. Explique: há fundos não reclamados pertencentes a eles; você ajuda a recuperar sem custo antecipado.",tools:["Mojo Dialer","USPS Certified Mail"]},
+    {n:"5",title:"Lidar com herdeiros e proprietários falecidos",desc:"Se falecido, identifique herdeiros via skip trace e registros de inventário do county.",tools:["Registros de Inv. no Cartório","Ancestry.com / FindAGrave"]}
+  ],note:"<strong>Conformidade:</strong> Divulgue sua identidade e propósito imediatamente ao ligar. Confirme se seu estado exige licença para recuperação de excedentes antes de escalar."},
+  feeagreement:{title:"Estruturando o Contrato de Honorários Contingentes",steps:[
+    {n:"1",title:"Contratar advogado para redigir o modelo base",desc:"Um advogado imobiliário ou contratual redige o modelo uma vez. Custo: $500–$1.500.",tools:["Advogado imobiliário/contratual","DocuSign"]},
+    {n:"2",title:"Cláusulas essenciais a incluir",desc:"Percentual de honorários, valor exato do excedente, county e estado, prazo da reivindicação, responsabilidades de ambas as partes e procedimentos de negação."},
+    {n:"3",title:"Definir faixas de honorários por tamanho",desc:"Estrutura comum: 40% para excedentes <$10k, 33% para $10k–$50k, 25% para >$50k. Considere um piso mínimo (ex: $1.500)."},
+    {n:"4",title:"Enviar e assinar remotamente",desc:"Envie via DocuSign ou HelloSign. Inclua uma carta de explicação em linguagem simples.",tools:["DocuSign","HelloSign","Loom (vídeo explicativo)"]},
+    {n:"5",title:"Coletar documentos de suporte",desc:"Após assinar: documento de identidade com foto, comprovante de propriedade anterior (escritura) e, se aplicável: certidão de óbito e comprovante de herdar."}
+  ],note:"<strong>Conformidade estadual:</strong> Alguns estados regulam agentes de recuperação de excedentes. Verifique requisitos na FL e MI antes de enviar contratos."},
+  claimfiling:{title:"Protocolando a Reivindicação de Excedentes no County",steps:[
+    {n:"1",title:"Identificar o cartório correto",desc:"FL: Clerk of Court (Registry of the Court). TX: Tax Assessor-Collector. MI: Tesoureiro do County. IL: Tesoureiro do County ou Tribunal. WI: Tesoureiro do County."},
+    {n:"2",title:"Montar o pacote da reivindicação",desc:"Documentos padrão: contrato assinado, documento de identidade do cliente, comprovante de propriedade anterior (escritura), aviso de excedente do county (se emitido), carta de autorização notarizada."},
+    {n:"3",title:"Protocolar a reivindicação",desc:"Protocole por USPS Certified Mail com rastreamento, ou pessoalmente. Guarde cópias de tudo.",tools:["USPS Certified Mail","Pessoalmente no cartório"]},
+    {n:"4",title:"Acompanhar em intervalos regulares",desc:"Prazos de processamento: FL 30–90 dias · TX 60–120 dias · MI 60–120 dias · IL 90–180 dias · WI 30–90 dias. Entre em contato a cada 3–4 semanas."},
+    {n:"5",title:"Receber fundos e cobrar seus honorários",desc:"O county emite cheque ao antigo proprietário, que repassa sua comissão conforme o contrato.",tools:["Conta corrente empresarial","QuickBooks"]}
+  ],note:"<strong>Tratamento de negações:</strong> Reivindicações negadas por: prazo vencido, documentos ausentes ou reivindicantes concorrentes. Recorra por escrito e solicite o motivo específico."}
+};
+
+/* ── PROCS translated to Spanish ── */
+var PROCS_ES = {
+  titledd:{title:"Due Diligence de Título Antes de Pujar",steps:[
+    {n:"1",title:"Obtener el ID de Parcela (APN)",desc:"Cada propiedad tiene un número único de evaluación. Encuéntrelo en la lista de subasta o en el catastro fiscal del county.",tools:["Catastro Fiscal del County","PropStream","DataTree"]},
+    {n:"2",title:"Realizar búsqueda preliminar de título",desc:"Use DataTree, PropStream o una empresa de título local para extraer la cadena de título de los últimos 30–40 años.",tools:["DataTree","PropStream","Registro del County"]},
+    {n:"3",title:"Buscar todos los gravámenes registrados",desc:"En el Registro del County, busque por APN: gravámenes fiscales, gravámenes federales IRS, gravámenes mecánicos, HOA, sentencias y lis pendens.",tools:["Registro del County","LienFocus","DataTree"]},
+    {n:"4",title:"Verificar infracciones de código y permisos abiertos",desc:"Contacte la inspección municipal y el Departamento de Obras. Las infracciones impagas se convierten en gravámenes municipales que sobreviven al tax deed.",tools:["Portal de Código Municipal","Dept. de Obras"]},
+    {n:"5",title:"Evaluar necesidad y costo de Quiet Title",desc:"Si hay problemas de título, obtenga presupuesto de abogado antes de pujar. FL: 6–12 meses | TX: 3–6 meses | MI: 3–6 meses | IL: hasta 2 años | WI: ~6 meses.",tools:["Abogado inmobiliario local","Stewart Title","Old Republic"]}
+  ],note:"<strong>Regla práctica:</strong> Si la investigación de título cuesta más del 1% del ARV esperado, precícielo adecuadamente."},
+  liencheck:{title:"Procedimiento de Búsqueda de Gravámenes",steps:[
+    {n:"1",title:"Buscar en el Registro del County",desc:"Busque por (a) APN y (b) nombre legal completo del propietario. Extraiga todos los documentos de los últimos 10 años mínimo.",tools:["Registro del County","DataTree"]},
+    {n:"2",title:"Realizar búsqueda de gravamen IRS",desc:"Busque la sección IRS del registro por el nombre legal completo. Los gravámenes IRS tienen derecho de rescate de 120 días tras el tax deed.",tools:["IRS.gov / FOIA","LienFocus","Registro del County"]},
+    {n:"3",title:"Verificar estado del HOA",desc:"Llame a la administradora del HOA. Solicite una Carta Estoppel con el total adeudado. Los super-gravámenes HOA en FL (Cap. 718) pueden sobrevivir al tax deed.",tools:["Administradora del HOA","PropStream HOA layer"]},
+    {n:"4",title:"Verificar gravámenes mecánicos",desc:"Los gravámenes mecánicos se registran en el Registro del County. Verifique la fecha — muchos expiran en 1 año si no se ejecutan.",tools:["Registro del County","LiensFinder.com"]},
+    {n:"5",title:"Construir hoja resumen de gravámenes",desc:"Compile todos los hallazgos: tipo, monto, fecha, titular y si sobrevive al tax deed en su estado."}
+  ],note:"<strong>Distinción clave:</strong> Algunos gravámenes son extinguidos por el tax deed (ej: hipotecas). Otros sobreviven. Siempre confirme con abogado inmobiliario local."},
+  auctiontrack:{title:"Monitorear Subastas Online y OTC por County",steps:[
+    {n:"1",title:"Construir calendario maestro por county",desc:"Hoja de cálculo con todos los counties objetivo: calendario de subastas, plataforma (RealTDA, Linebarger, GovEase, courthouse steps) y fecha de publicación de lista.",tools:["Airtable","Notion","Google Sheets"]},
+    {n:"2",title:"Configurar alertas automáticas",desc:"Active notificaciones por correo en plataformas digitales o use Distill.io para alertar cuando cambien las páginas.",tools:["Distill.io","Alertas PropStream"]},
+    {n:"3",title:"Descargar y procesar cada lista",desc:"Descargue CSV, PDF o Excel. Importe a su base de datos. Etiquete cada propiedad: county, fecha de subasta, puja inicial, APN."},
+    {n:"4",title:"Identificar inventario OTC",desc:"Tras cada subasta, contacte al Secretario o Tesorero del County para la lista de propiedades no vendidas (struck-off). Disponibles OTC sin competencia."},
+    {n:"5",title:"Priorizar y enfilerar para due diligence",desc:"Puntuar cada propiedad: ARV estimado, puja inicial, costo de reparación, riesgo de gravámenes."}
+  ],note:"<strong>Consejo pro:</strong> En Michigan, el land bank estatal subasta propiedades no vendidas en noviembre. Contacte al tesorero del county para disponibilidad OTC todo el año."},
+  database:{title:"Construyendo la Base de Datos de Subastas",steps:[
+    {n:"1",title:"Elegir su stack de datos",desc:"Comience con Airtable o Notion. A medida que crezca el volumen, migre a PostgreSQL.",tools:["Airtable (inicio)","PostgreSQL + Retool (escala)"]},
+    {n:"2",title:"Definir el esquema de datos",desc:"Por propiedad: APN, dirección, county, estado, fecha de subasta, puja inicial, puja ganadora, ARV estimado, estado de gravámenes, disposición y resultado."},
+    {n:"3",title:"Registrar cada subasta — puje o no",desc:"Aunque no puje, registre el resultado. Con el tiempo revela patrones de precios y mejores tipos de propiedad."},
+    {n:"4",title:"Conectar PropStream/ATTOM vía API",desc:"Extraiga automáticamente datos actualizados para cada APN. Elimina entrada manual de datos a escala.",tools:["PropStream API","ATTOM Data API"]},
+    {n:"5",title:"Usar datos para alimentar Pilares 2, 3 y 4",desc:"Esta base de datos se convierte en: motor de análisis para el Fondo (P2), datos de entrenamiento para el SaaS (P3) y fuente de leads de excedentes (P4)."}
+  ],note:"<strong>Efecto moat:</strong> Una base de datos propia construida durante 2+ años de subastas reales es una ventaja competitiva estructural que ningún nuevo competidor puede replicar rápidamente."},
+  surplusleads:{title:"Convirtiendo Listas Post-Subasta en Leads de Excedentes",steps:[
+    {n:"1",title:"Descargar resultados inmediatamente",desc:"La mayoría de los secretarios publican resultados en 24–72 horas. Configure recordatorios de calendario para cada county."},
+    {n:"2",title:"Calcular el excedente",desc:"Excedente = Puja Ganadora − Deuda Total de Impuestos (incluyendo cargos e intereses). Filtre por excedente ≥ $5.000."},
+    {n:"3",title:"Cruzar con su base de datos",desc:"Combine el APN para obtener el nombre del antiguo propietario y última dirección conocida."},
+    {n:"4",title:"Enfilerar para skip tracing",desc:"Envíe a BatchSkipTracing o TLO como CSV. Resultados en minutos.",tools:["BatchSkipTracing.com","TLO","CLEAR"]},
+    {n:"5",title:"Priorizar por monto y plazo",desc:"Ordene por: (a) mayor excedente primero, (b) menor tiempo restante antes del plazo."}
+  ],note:"<strong>Automatización:</strong> Con la plataforma SaaS (Pilar 3), el scraping de resultados, cálculo de excedentes y skip trace pueden automatizarse."},
+  fundsetup:{title:"Configurando el Fondo de Inversión (Reg D 506c)",steps:[
+    {n:"1",title:"Contratar abogado especializado en valores",desc:"Antes de captar un solo dólar, contrate un abogado especialista en Reg D. Costo: $5.000–$15.000.",tools:["Abogado de valores (Reg D)","FINRA BrokerCheck"]},
+    {n:"2",title:"Elegir la estructura del fondo",desc:"Más común: LLC Delaware o Wyoming como entidad del fondo, con usted como Miembro Gestor (equivalente a GP)."},
+    {n:"3",title:"Presentar Formulario D ante la SEC",desc:"Bajo 506(c), presente el Formulario D dentro de los 15 días de la primera venta de valores en sec.gov.",tools:["SEC EDGAR (sec.gov)","Portales estatales de valores"]},
+    {n:"4",title:"Redactar el Memorando de Colocación Privada (PPM)",desc:"Su abogado redacta el PPM: estrategia, riesgos, comisiones, cascada de liquidación e historial.",tools:["Abogado de valores","DealMaker (PPM digital)"]},
+    {n:"5",title:"Verificar acreditación de inversores",desc:"Bajo 506(c), puede anunciar públicamente PERO debe verificar que cada inversor esté acreditado (ingresos >$200k/año o patrimonio neto >$1M).",tools:["VerifyInvestor.com","EarlyIQ"]}
+  ],note:"<strong>Cronograma:</strong> Espere 60–90 días desde el compromiso del abogado hasta el primer cierre. Ejecute el Pilar 1 en paralelo para tener historial real en el lanzamiento."},
+  lpcapture:{title:"Atrayendo y Calificando Inversores LP",steps:[
+    {n:"1",title:"Definir el perfil ideal de LP",desc:"Objetivo: inversores acreditados que buscan retornos inmobiliarios pasivos. Fuentes: otros inversores inmobiliarios, empresarios, profesionales, base de suscriptores SaaS."},
+    {n:"2",title:"Construir credibilidad antes de pedir capital",desc:"Publique informes mensuales de negocios y casos de estudio. Documente cada negocio del Pilar 1: precio de compra, venta, plazo y retorno."},
+    {n:"3",title:"Organizar webinars para inversores",desc:"Bajo 506(c), puede anunciar públicamente. Realice webinars mensuales explicando la estrategia y la estructura del fondo.",tools:["Zoom","ConvertKit / Mailchimp","LinkedIn"]},
+    {n:"4",title:"Enviar resumen ejecutivo + PPM",desc:"Envíe primero un resumen de 1–2 páginas. Si hay interés confirmado, envíe el PPM completo y los documentos de suscripción.",tools:["DocuSign","DealMaker","Portal LP InvestNext"]},
+    {n:"5",title:"Incorporar y mantener relaciones con LPs",desc:"Actualizaciones mensuales del portafolio, distribuciones trimestrales, informe anual. LPs satisfechos reinvierten y refieren.",tools:["InvestNext","Juniper Square","QuickBooks"]}
+  ],note:"<strong>Embudo de conversión:</strong> Suscriptor SaaS → asistente de webinar → solicita resumen → acreditación verificada → inversor LP."},
+  skiptrace:{title:"Skip Tracing de Antiguos Propietarios",steps:[
+    {n:"1",title:"Reunir datos de entrada",desc:"Por lead de excedente: nombre legal completo del antiguo propietario, última dirección postal y APN."},
+    {n:"2",title:"Realizar skip trace masivo",desc:"Envíe a BatchSkipTracing o TLO como CSV: nombre, apellido, dirección, ciudad, estado, ZIP.",tools:["BatchSkipTracing.com (~$0.15–0.30/registro)","TLO (~$100/mes)","CLEAR — Thomson Reuters"]},
+    {n:"3",title:"Puntuar y priorizar resultados",desc:"Priorice: (a) número de móvil devuelto, (b) dirección actual en el estado, (c) datos de contacto de familiares disponibles."},
+    {n:"4",title:"Intentar contacto por teléfono y correo",desc:"Llame primero. Explique: hay fondos no reclamados que les pertenecen; usted ayuda a recuperarlos sin costo anticipado.",tools:["Mojo Dialer","USPS Certified Mail"]},
+    {n:"5",title:"Manejar herederos y propietarios fallecidos",desc:"Si fallecido, identifique herederos vía skip trace y registros de sucesión del county.",tools:["Registros de Sucesión del County","Ancestry.com / FindAGrave"]}
+  ],note:"<strong>Cumplimiento:</strong> Divulgue su identidad y propósito inmediatamente al llamar. Confirme si su estado requiere licencia para recuperación de excedentes antes de escalar."},
+  feeagreement:{title:"Estructurando el Contrato de Honorarios Contingentes",steps:[
+    {n:"1",title:"Contratar abogado para redactar la plantilla",desc:"Un abogado inmobiliario redacta la plantilla una vez. Costo: $500–$1.500.",tools:["Abogado inmobiliario/contractual","DocuSign"]},
+    {n:"2",title:"Cláusulas esenciales a incluir",desc:"Porcentaje de honorarios, monto exacto del excedente, county y estado, plazo de reclamación, responsabilidades y procedimientos de negación."},
+    {n:"3",title:"Definir rangos de honorarios por tamaño",desc:"Estructura común: 40% para excedentes <$10k, 33% para $10k–$50k, 25% para >$50k. Considere un mínimo (ej: $1.500)."},
+    {n:"4",title:"Enviar y firmar remotamente",desc:"Envíe vía DocuSign o HelloSign. Incluya una carta de explicación en lenguaje simple.",tools:["DocuSign","HelloSign","Loom (video explicativo)"]},
+    {n:"5",title:"Recopilar documentos de soporte",desc:"Tras firmar: documento de identidad con foto, comprobante de propiedad anterior (escritura) y, si aplica: acta de defunción y prueba de herencia."}
+  ],note:"<strong>Cumplimiento estatal:</strong> Algunos estados regulan los agentes de recuperación de excedentes. Verifique requisitos en FL y MI antes de enviar contratos."},
+  claimfiling:{title:"Presentando la Reclamación de Excedentes al County",steps:[
+    {n:"1",title:"Identificar la oficina correcta",desc:"FL: Clerk of Court (Registry of the Court). TX: Tax Assessor-Collector. MI: Tesorero del County. IL: Tesorero del County o Tribunal. WI: Tesorero del County."},
+    {n:"2",title:"Ensamblar el paquete de reclamación",desc:"Documentos estándar: contrato firmado, ID del cliente, comprobante de propiedad anterior (escritura), aviso de excedente del county, carta de autorización notariada."},
+    {n:"3",title:"Presentar la reclamación",desc:"Presente por USPS Certified Mail con rastreo, o en persona. Guarde copias de todo.",tools:["USPS Certified Mail","En persona en la oficina del county"]},
+    {n:"4",title:"Dar seguimiento en intervalos regulares",desc:"Tiempos de procesamiento: FL 30–90 días · TX 60–120 días · MI 60–120 días · IL 90–180 días · WI 30–90 días. Contacte cada 3–4 semanas."},
+    {n:"5",title:"Recibir fondos y cobrar honorarios",desc:"El county emite cheque al antiguo propietario, quien pasa su comisión según el contrato.",tools:["Cuenta corriente empresarial","QuickBooks"]}
+  ],note:"<strong>Manejo de negaciones:</strong> Reclamaciones negadas por: plazo vencido, documentos faltantes o reclamantes concurrentes. Apele por escrito y solicite el motivo específico."}
+};
+
+var PLAYBOOKS_PT = [
+  {flag:'🌴',name:'Flórida',meta:'Estado Tax Deed · 67 counties · Online e presencial',digital:[
+    '<strong>RealTDA.com</strong> — portal oficial estadual para todos os leilões tax deed por county.',
+    '<strong>Realforeclose.com</strong> — Miami-Dade, Broward, Palm Beach e outros.',
+    '<strong>BidSpotter / Sivus.com</strong> — agregadores multi-county com feeds ao vivo.',
+    '<strong>Portais individuais do Clerk of Court</strong> — devem publicar 30+ dias antes (FL Statute 197.502).',
+  ],inperson:[
+    '<strong>Cartório do County (Clerk of Court)</strong> — solicite a "Lista de Venda Tax Deed" pessoalmente; geralmente grátis.',
+    '<strong>Compra OTC</strong> — propriedades não vendidas no balcão do cartório pelo valor da dívida fiscal.',
+    '<strong>Pedido pela Lei do Sol (Sunshine Law)</strong> — para counties sem publicação; solicite CSV ou PDF.',
+  ]},
+  {flag:'⭐',name:'Texas',meta:'Estado Tax Deed · 254 counties · 1ª terça-feira do mês',digital:[
+    '<strong>Linebarger Goggan Blair (lgbs.com)</strong> — maior firma de cobrança fiscal do TX; lista ~200 counties.',
+    '<strong>Perdue Brandon (pbfcm.com)</strong> — segunda maior firma; filtre por county e data.',
+    '<strong>TaxNetUSA.com</strong> — banco de dados especializado em TX com alertas por county.',
+    '<strong>Texas.gov / TexasFile.com</strong> — registros públicos; sites do County/District Clerk publicam listas.',
+  ],inperson:[
+    '<strong>Degraus do Tribunal</strong> — leilões toda 1ª terça do mês no tribunal do county.',
+    '<strong>Tax Assessor-Collector</strong> — solicite o "Rol de Impostos Inadimplentes" pessoalmente; gratuito na maioria.',
+    '<strong>Struck-Off / OTC</strong> — propriedades não vendidas negociadas com Tax Assessor-Collector.',
+    '<strong>Pedido TPIA</strong> — Texas Public Information Act; prazo de 10 dias úteis.',
+  ]},
+  {flag:'🌊',name:'Michigan',meta:'Estado Tax Deed · 83 counties · Leilão anual em outubro',digital:[
+    '<strong>Michigan Land Bank (landbank.org)</strong> — portal estadual para propriedades adquiridas por land banks.',
+    '<strong>Sites dos Tesoureiros dos Counties</strong> — cada county publica sua lista anual.',
+    '<strong>BS&A Software (bsaonline.com)</strong> — usado por muitos counties de MI para registros fiscais.',
+    '<strong>MERS</strong> — portal de pesquisa de título e penhoras do Michigan.',
+  ],inperson:[
+    '<strong>Tesoureiro do County</strong> — solicite a "Lista de Propriedades Confiscadas" e "Lista de Leilão"; gratuito na maioria.',
+    '<strong>OTC / Pós-Leilão</strong> — propriedades não vendidas integram o inventário do land bank; contate para negociar.',
+    '<strong>Pedido Michigan FOIA</strong> — prazo de 5 dias úteis para listas de impostos inadimplentes.',
+    '<strong>Nota:</strong> MI não tem direito de resgate pós-venda para o antigo proprietário — um dos estados mais limpos.',
+  ]},
+  {flag:'🌽',name:'Illinois',meta:'Tax Deed via Penhora Fiscal · 102 counties · Processo em 2 etapas',digital:[
+    '<strong>Sites dos Tesoureiros dos Counties</strong> — Lista de Venda Anual; Cook County: cookcountyil.gov/treasurer.',
+    '<strong>SRI Tax Sale Services (SRItaxsale.com)</strong> — gerencia leilões para múltiplos counties de IL.',
+    '<strong>GovEase / Sabre88</strong> — plataformas de leilão virtual para counties selecionados.',
+  ],inperson:[
+    '<strong>Tesoureiro do County</strong> — solicite a "Lista de Venda Anual de Impostos Inadimplentes". Taxa ~$25–$100.',
+    '<strong>Propriedades Confiscadas (OTC)</strong> — não vendidas por 2+ anos; compra via County Collector.',
+    '<strong>Illinois FOIA</strong> — prazo de 5 dias. Solicite CSV.',
+  ]},
+  {flag:'🧀',name:'Wisconsin',meta:'Tax Deed · 72 counties · In Rem · Menor concorrência',digital:[
+    '<strong>Sites dos Tesoureiros dos Counties</strong> — "Vendas de Terras do County" e listas inadimplentes.',
+    '<strong>GovEase / Bid4Assets</strong> — alguns counties usam para leilões de terras do county.',
+    '<strong>Wisconsin Open Records (wi.gov)</strong> — solicite sob Wis. Stat. 19.31.',
+  ],inperson:[
+    '<strong>Tesoureiro do County</strong> — In Rem: o county detém a escritura primeiro. Solicite "Propriedades do County à Venda".',
+    '<strong>Land Information Office</strong> — contato direto geralmente fornece listas digitais mais rápido.',
+    '<strong>Negociação OTC Direta</strong> — contate o Tesoureiro antes de o imóvel ir a leilão.',
+  ]},
+];
+
+var PLAYBOOKS_ES = [
+  {flag:'🌴',name:'Florida',meta:'Estado Tax Deed · 67 counties · Online y presencial',digital:[
+    '<strong>RealTDA.com</strong> — portal oficial estatal para todas las subastas tax deed por county.',
+    '<strong>Realforeclose.com</strong> — Miami-Dade, Broward, Palm Beach y otros.',
+    '<strong>BidSpotter / Sivus.com</strong> — agregadores multi-county con feeds en vivo.',
+    '<strong>Portales individuales del Clerk of Court</strong> — deben publicar 30+ días antes (FL Statute 197.502).',
+  ],inperson:[
+    '<strong>Secretaría del County (Clerk of Court)</strong> — solicite la "Lista de Venta Tax Deed" en persona; generalmente gratis.',
+    '<strong>Compra OTC</strong> — propiedades no vendidas en el mostrador de la secretaría al valor de la deuda fiscal.',
+    '<strong>Solicitud Sunshine Law</strong> — para counties sin publicación; solicite CSV o PDF.',
+  ]},
+  {flag:'⭐',name:'Texas',meta:'Estado Tax Deed · 254 counties · 1° martes del mes',digital:[
+    '<strong>Linebarger Goggan Blair (lgbs.com)</strong> — mayor firma de cobro fiscal en TX; lista ~200 counties.',
+    '<strong>Perdue Brandon (pbfcm.com)</strong> — segunda firma más grande; filtre por county y fecha.',
+    '<strong>TaxNetUSA.com</strong> — base de datos especializada en TX con alertas por county.',
+    '<strong>Texas.gov / TexasFile.com</strong> — registros públicos; sitios del County/District Clerk.',
+  ],inperson:[
+    '<strong>Escalones del Tribunal</strong> — subastas cada 1° martes del mes en el tribunal del county.',
+    '<strong>Tax Assessor-Collector</strong> — solicite el "Rol de Impuestos Morosos" en persona; gratuito en la mayoría.',
+    '<strong>Struck-Off / OTC</strong> — propiedades no vendidas negociadas con Tax Assessor-Collector.',
+    '<strong>Solicitud TPIA</strong> — Texas Public Information Act; plazo de 10 días hábiles.',
+  ]},
+  {flag:'🌊',name:'Michigan',meta:'Estado Tax Deed · 83 counties · Subasta anual en octubre',digital:[
+    '<strong>Michigan Land Bank (landbank.org)</strong> — portal estatal para propiedades adquiridas por land banks.',
+    '<strong>Sitios de Tesoreros de Counties</strong> — cada county publica su lista anual.',
+    '<strong>BS&A Software (bsaonline.com)</strong> — usado por muchos counties de MI para registros fiscales.',
+    '<strong>MERS</strong> — portal de búsqueda de título y gravámenes de Michigan.',
+  ],inperson:[
+    '<strong>Tesorero del County</strong> — solicite la "Lista de Propiedades Confiscadas" y "Lista de Subasta"; gratis en la mayoría.',
+    '<strong>OTC / Post-Subasta</strong> — propiedades no vendidas integran el inventario del land bank; contacte para negociar.',
+    '<strong>Solicitud Michigan FOIA</strong> — plazo de 5 días hábiles.',
+    '<strong>Nota:</strong> MI no tiene derecho de rescate post-venta para el antiguo propietario — uno de los estados más limpios.',
+  ]},
+  {flag:'🌽',name:'Illinois',meta:'Tax Deed vía Gravamen Fiscal · 102 counties · Proceso en 2 etapas',digital:[
+    '<strong>Sitios de Tesoreros de Counties</strong> — Lista de Venta Anual; Cook County: cookcountyil.gov/treasurer.',
+    '<strong>SRI Tax Sale Services (SRItaxsale.com)</strong> — gestiona subastas para múltiples counties de IL.',
+    '<strong>GovEase / Sabre88</strong> — plataformas de subasta virtual para counties seleccionados.',
+  ],inperson:[
+    '<strong>Tesorero del County</strong> — solicite la "Lista de Venta Anual de Impuestos Morosos". Tarifa ~$25–$100.',
+    '<strong>Propiedades Confiscadas (OTC)</strong> — no vendidas por 2+ años; compra vía County Collector.',
+    '<strong>Illinois FOIA</strong> — plazo de 5 días. Solicite CSV.',
+  ]},
+  {flag:'🧀',name:'Wisconsin',meta:'Tax Deed · 72 counties · In Rem · Menor competencia',digital:[
+    '<strong>Sitios de Tesoreros de Counties</strong> — "Ventas de Tierras del County" y listas morosas.',
+    '<strong>GovEase / Bid4Assets</strong> — algunos counties usan para subastas de tierras del county.',
+    '<strong>Wisconsin Open Records (wi.gov)</strong> — solicite bajo Wis. Stat. 19.31.',
+  ],inperson:[
+    '<strong>Tesorero del County</strong> — In Rem: el county tiene la escritura primero. Solicite "Propiedades del County en Venta".',
+    '<strong>Land Information Office</strong> — contacto directo suele dar listas digitales más rápido.',
+    '<strong>Negociación OTC Directa</strong> — contacte al Tesorero antes de que la propiedad vaya a subasta.',
+  ]},
+];
 
 /* -- Photo UI functions -- */
 var _feedbackTimer = null;
