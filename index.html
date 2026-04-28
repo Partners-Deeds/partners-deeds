@@ -469,7 +469,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
 .pub-card{
   background:var(--ink2);border:1px solid var(--border);
-  display:flex;flex-direction:row;
+  display:flex;flex-direction:row;align-items:stretch;
   position:relative;overflow:hidden;
   transition:border-color .3s,box-shadow .3s;
   min-height:180px;
@@ -477,7 +477,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 @media(min-width:700px){.pub-card:hover{border-color:var(--border-h);box-shadow:0 8px 32px rgba(0,0,0,.4);}}
 .pub-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--prop-color,var(--gold));z-index:1;}
 
-.pub-photo{width:140px;min-width:140px;flex-shrink:0;background:var(--ink3);border-right:1px solid var(--border);position:relative;overflow:hidden;}
+.pub-photo{width:140px;min-width:140px;min-height:180px;flex-shrink:0;background:var(--ink3);border-right:1px solid var(--border);position:relative;overflow:hidden;}
 @media(min-width:500px){.pub-photo{width:180px;min-width:180px;}}
 @media(min-width:800px){.pub-photo{width:220px;min-width:220px;}}
 .pub-photo img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -1276,6 +1276,9 @@ function togglePillar(el) {
 }
 /* iOS Safari: divs with onclick also need touchend to fire reliably */
 document.addEventListener('DOMContentLoaded', function() {
+  /* Render public portfolio on page load */
+  renderPubPortfolio(portfolioData);
+
   /* Pillars */
   document.querySelectorAll('.pillar').forEach(function(el) {
     el.addEventListener('touchend', function(e) {
@@ -1612,6 +1615,7 @@ function importCSV(event) {
       const vals = parseCSVLine(lines[i]);
       const obj = {};
       headers.forEach((h,idx) => { obj[h] = vals[idx] || ''; });
+      if(obj.photo_url) obj.photo_url = obj.photo_url.replace(/&amp;/g,'&').trim();
       if(obj.address) parsed.push(obj);
     }
     parsed=parsed.map(function(row){
@@ -1624,18 +1628,44 @@ function importCSV(event) {
       return row;
     });
     if(parsed.length){
-      portfolioData = parsed;
+      /* Fetch external photo URLs -> base64 -> photoStore */
+      var photoPromises = parsed.map(function(row) {
+        var url = (row.photo_url || '').replace(/&amp;/g,'&').trim();
+        if (!url) return Promise.resolve(row);
+        return fetch(url)
+          .then(function(resp) { return resp.blob(); })
+          .then(function(blob) {
+            return new Promise(function(resolve) {
+              var fr = new FileReader();
+              fr.onload = function() {
+                var key = pubKey(row);
+                photoStore[key] = [fr.result];
+                row.photo_url = '';
+                savePhotoStore();
+                resolve(row);
+              };
+              fr.onerror = function() { resolve(row); };
+              fr.readAsDataURL(blob);
+            });
+          })
+          .catch(function() { return row; });
+      });
+      Promise.all(photoPromises).then(function(resolved) {
+        portfolioData = resolved;
       currentFilter = 'all';
       document.querySelectorAll('.portfolio-actions .port-btn').forEach(b=>b.classList.remove('active-filter'));
       document.getElementById('filterAll').classList.add('active-filter');
       renderPortfolio(portfolioData);
       /* Also refresh public portfolio so photo_url from CSV shows immediately */
       var pubActive = document.querySelector('.pub-filter-btn.active');
-      renderPubPortfolio(portfolioData);
-      alert(`✓ ${parsed.length} properties imported successfully.`);
+        renderPubPortfolio(portfolioData);
+        renderPortfolio(portfolioData);
+        alert('✓ ' + resolved.length + ' properties imported. Photos loading...');
+      }); /* end Promise.all */
     } else {
       alert('No valid properties found. Check that your CSV has an "address" column.');
     }
+
   };
   reader.readAsText(file);
   event.target.value = '';
@@ -1644,8 +1674,8 @@ function importCSV(event) {
 /* ── CSV Template download ── */
 function downloadTemplate() {
   const headers = CSV_COLUMNS.join(',');
-  const ex1 = '"1423 NW 52nd St","Miami","Miami-Dade","FL","33142","House","1240","ft²","active","2024-03-15","28500","95000","22000","","","Title clear, permit pulled"';
-  const ex2 = '"214 W Superior St","Detroit","Wayne","MI","48202","House","1020","ft²","sold","2024-02-28","8500","52000","18000","58500","2024-09-12","First MI sale"';
+  const ex1 = '"1423 NW 52nd St","Miami","Miami-Dade","FL","33142","https://drive.google.com/uc?export=view&id=YOUR_ID_HERE","House","1240","ft\u00b2","active","2024-03-15","28500","95000","22000","","","Title clear, permit pulled"';
+  const ex2 = '"214 W Superior St","Detroit","Wayne","MI","48202","","House","1020","ft\u00b2","sold","2024-02-28","8500","52000","18000","58500","2024-09-12","First MI sale"';
   const csv = [headers, ex1, ex2].join('\n');
   const a = document.createElement('a');
   a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
