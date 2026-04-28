@@ -1629,6 +1629,9 @@ function importCSV(event) {
       document.querySelectorAll('.portfolio-actions .port-btn').forEach(b=>b.classList.remove('active-filter'));
       document.getElementById('filterAll').classList.add('active-filter');
       renderPortfolio(portfolioData);
+      /* Also refresh public portfolio so photo_url from CSV shows immediately */
+      var pubActive = document.querySelector('.pub-filter-btn.active');
+      renderPubPortfolio(portfolioData);
       alert(`✓ ${parsed.length} properties imported successfully.`);
     } else {
       alert('No valid properties found. Check that your CSV has an "address" column.');
