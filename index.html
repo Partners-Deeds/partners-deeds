@@ -877,7 +877,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         <div id="propTrackPrivate" class="pub-track" style="display:flex"></div>
 
         <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7;padding:12px;background:rgba(212,168,71,.04);border:1px solid var(--border);">
-          <strong style="color:var(--paper2);" data-i18n="portfolio_how">How to update the portfolio:</strong>
+          <strong style="color:var(--paper2);" data-i18n="portfolio_how">How to update the portfolio (including Google Photos links):</strong>
           Click <em>⬇ CSV Template</em> to get the column format → fill in Excel or Google Sheets → save as CSV → click <em>⬆ Import CSV</em>. To add a new property, add a row and re-import. To export the current list, click <em>⬇ Export Current</em>.
         </div>
       </div><!-- /tab-portfolio -->
@@ -1332,7 +1332,7 @@ function switchTab(name, btn) {
 /* ═══════════════════════════════════════
    PORTFOLIO
 ═══════════════════════════════════════ */
-const CSV_COLUMNS = ['address','city','county','state','zip','type','area','unit','status','acquisition_date','acquisition_price','arv','rehab_cost','sale_price','sale_date','notes'];
+const CSV_COLUMNS = ['address','city','county','state','zip','photo_url','type','area','unit','status','acquisition_date','acquisition_price','arv','rehab_cost','sale_price','sale_date','notes'];
 
 /* ══════════════════════════════════════════════════════
    PHOTO PERSISTENCE — localStorage
@@ -1364,26 +1364,26 @@ function deleteOnePhoto(key, idx) {
 }
 
 const SAMPLE_PROPS = [
-  {address:'3598 Allegra Circle (Lot 146)',city:'Saint Cloud',county:'Osceola',state:'FL',zip:'34772',type:'lot in condominium',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-10-07',acquisition_price:'3323.10',arv:'',rehab_cost:'',sale_price:'19590.00',sale_date:'',notes:'Title clear, permit pulled'},
-  {address:'3600 Davidson Rd.',city:'Flint',county:'Wayne',state:'MI',zip:'48506',type:'commercial building',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-11-19',acquisition_price:'5230.00',arv:'',rehab_cost:'',sale_price:'29970.00',sale_date:'',notes:'First MI sale'},
-  {address:'3073 W Dayton St.',city:'Flint',county:'Genesee',state:'MI',zip:'48504',type:'residential land',area:'10.23',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'11780.00',arv:'',rehab_cost:'',sale_price:'297900.00',sale_date:'',notes:''},
-  {address:'440 Michigan Ave. W',city:'Battle Creek',county:'Calhoun',state:'MI',zip:'49037',type:'commercial building',area:'0.80',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'14000.00',arv:'',rehab_cost:'5250.00',sale_price:'299970.00',sale_date:'',notes:''},
-  {address:'450 Michigan Ave. W',city:'Battle Creek',county:'Calhoun',state:'MI',zip:'49037',type:'commercial building',area:'0.90',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'14000.00',arv:'',rehab_cost:'5250.00',sale_price:'197940.00',sale_date:'',notes:''},
-  {address:'3102 & 3402 Martin Luther King Ave.',city:'Flint',county:'Genesee',state:'MI',zip:'48505',type:'commercial building',area:'1',unit:'ft²',status:'sold',acquisition_date:'2025-11-19',acquisition_price:'29298.02',arv:'',rehab_cost:'',sale_price:'54000.00',sale_date:'2025-12-07',notes:''},
-  {address:'2050 Irlo Bronson Memorial Hwy - Suite 108',city:'Kissimmee',county:'Osceola',state:'FL',zip:'34744',type:'hotel suite',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-12-09',acquisition_price:'3423.80',arv:'',rehab_cost:'11500.00',sale_price:'78970.00',sale_date:'',notes:''},
-  {address:'283 Rhapsody Ave.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3031.00',arv:'',rehab_cost:'',sale_price:'16570.00',sale_date:'',notes:''},
-  {address:'6110 County Rd. 17 S',city:'Sebring',county:'Highlands',state:'FL',zip:'33876',type:'residential lot',area:'7500',unit:'ft²',status:'active',acquisition_date:'2026-01-23',acquisition_price:'4038.00',arv:'',rehab_cost:'',sale_price:'21550.00',sale_date:'',notes:''},
-  {address:'240 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3635.20',arv:'',rehab_cost:'',sale_price:'19490.00',sale_date:'',notes:''},
-  {address:'229 Sunway Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3534.50',arv:'',rehab_cost:'',sale_price:'19290.00',sale_date:'',notes:''},
-  {address:'315 Summersweet Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-11',acquisition_price:'3653.70',arv:'',rehab_cost:'',sale_price:'19970.00',sale_date:'',notes:''},
-  {address:'504 N Florida Ave.',city:'Howey-in-The-Hills',county:'Lake',state:'FL',zip:'34737',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-03',acquisition_price:'6152.70',arv:'',rehab_cost:'',sale_price:'84770.00',sale_date:'',notes:''},
-  {address:'245 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3323.10',arv:'',rehab_cost:'',sale_price:'14490.00',sale_date:'',notes:''},
-  {address:'241 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3333.10',arv:'',rehab_cost:'',sale_price:'18290.00',sale_date:'',notes:''},
-  {address:'1105 Grapefruit Ave.',city:'Sebring',county:'Highlands',state:'FL',zip:'33870',type:'residential lot',area:'9263',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3121.70',arv:'',rehab_cost:'',sale_price:'17590.00',sale_date:'',notes:''},
-  {address:'2231 Marchfield Preserve Way',city:'Kissimmee',county:'Osceola',state:'FL',zip:'34746',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-17',acquisition_price:'42092.60',arv:'',rehab_cost:'900.00',sale_price:'99700.00',sale_date:'',notes:''},
-  {address:'1325 Reddix St.',city:'Jackson',county:'Hinds',state:'MS',zip:'39209',type:'house',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-19',acquisition_price:'2500.00',arv:'',rehab_cost:'',sale_price:'14590.00',sale_date:'',notes:''},
-  {address:'NA Number, Wiggins Dr.',city:'Jackson',county:'Hinds',state:'MS',zip:'39209',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-12-31',acquisition_price:'2500.00',arv:'',rehab_cost:'',sale_price:'14590.00',sale_date:'',notes:''},
-  {address:'309 Greenwood St.',city:'Ishpeming',county:'Marquette',state:'MI',zip:'49849',type:'Commercial building',area:'25696',unit:'ft²',status:'active',acquisition_date:'2026-01-01',acquisition_price:'1000.00',arv:'',rehab_cost:'',sale_price:'37970.00',sale_date:'',notes:''},
+  {address:'3598 Allegra Circle (Lot 146)',city:'Saint Cloud',county:'Osceola',state:'FL',zip:'34772',photo_url:'',type:'lot in condominium',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-10-07',acquisition_price:'3323.10',arv:'',rehab_cost:'',sale_price:'19590.00',sale_date:'',notes:'Title clear, permit pulled'},
+  {address:'3600 Davidson Rd.',city:'Flint',county:'Wayne',state:'MI',zip:'48506',photo_url:'',type:'commercial building',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-11-19',acquisition_price:'5230.00',arv:'',rehab_cost:'',sale_price:'29970.00',sale_date:'',notes:'First MI sale'},
+  {address:'3073 W Dayton St.',city:'Flint',county:'Genesee',state:'MI',zip:'48504',photo_url:'',type:'residential land',area:'10.23',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'11780.00',arv:'',rehab_cost:'',sale_price:'297900.00',sale_date:'',notes:''},
+  {address:'440 Michigan Ave. W',city:'Battle Creek',county:'Calhoun',state:'MI',zip:'49037',photo_url:'',type:'commercial building',area:'0.80',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'14000.00',arv:'',rehab_cost:'5250.00',sale_price:'299970.00',sale_date:'',notes:''},
+  {address:'450 Michigan Ave. W',city:'Battle Creek',county:'Calhoun',state:'MI',zip:'49037',photo_url:'',type:'commercial building',area:'0.90',unit:'ac',status:'active',acquisition_date:'2025-11-19',acquisition_price:'14000.00',arv:'',rehab_cost:'5250.00',sale_price:'197940.00',sale_date:'',notes:''},
+  {address:'3102 & 3402 Martin Luther King Ave.',city:'Flint',county:'Genesee',state:'MI',zip:'48505',photo_url:'',type:'commercial building',area:'1',unit:'ft²',status:'sold',acquisition_date:'2025-11-19',acquisition_price:'29298.02',arv:'',rehab_cost:'',sale_price:'54000.00',sale_date:'2025-12-07',notes:''},
+  {address:'2050 Irlo Bronson Memorial Hwy - Suite 108',city:'Kissimmee',county:'Osceola',state:'FL',zip:'34744',photo_url:'',type:'hotel suite',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-12-09',acquisition_price:'3423.80',arv:'',rehab_cost:'11500.00',sale_price:'78970.00',sale_date:'',notes:''},
+  {address:'283 Rhapsody Ave.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3031.00',arv:'',rehab_cost:'',sale_price:'16570.00',sale_date:'',notes:''},
+  {address:'6110 County Rd. 17 S',city:'Sebring',county:'Highlands',state:'FL',zip:'33876',photo_url:'',type:'residential lot',area:'7500',unit:'ft²',status:'active',acquisition_date:'2026-01-23',acquisition_price:'4038.00',arv:'',rehab_cost:'',sale_price:'21550.00',sale_date:'',notes:''},
+  {address:'240 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3635.20',arv:'',rehab_cost:'',sale_price:'19490.00',sale_date:'',notes:''},
+  {address:'229 Sunway Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3534.50',arv:'',rehab_cost:'',sale_price:'19290.00',sale_date:'',notes:''},
+  {address:'315 Summersweet Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-11',acquisition_price:'3653.70',arv:'',rehab_cost:'',sale_price:'19970.00',sale_date:'',notes:''},
+  {address:'504 N Florida Ave.',city:'Howey-in-The-Hills',county:'Lake',state:'FL',zip:'34737',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-03',acquisition_price:'6152.70',arv:'',rehab_cost:'',sale_price:'84770.00',sale_date:'',notes:''},
+  {address:'245 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3323.10',arv:'',rehab_cost:'',sale_price:'14490.00',sale_date:'',notes:''},
+  {address:'241 Rhythm Dr.',city:'Lake Placid',county:'Highlands',state:'FL',zip:'33852',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3333.10',arv:'',rehab_cost:'',sale_price:'18290.00',sale_date:'',notes:''},
+  {address:'1105 Grapefruit Ave.',city:'Sebring',county:'Highlands',state:'FL',zip:'33870',photo_url:'',type:'residential lot',area:'9263',unit:'ft²',status:'active',acquisition_date:'2026-01-21',acquisition_price:'3121.70',arv:'',rehab_cost:'',sale_price:'17590.00',sale_date:'',notes:''},
+  {address:'2231 Marchfield Preserve Way',city:'Kissimmee',county:'Osceola',state:'FL',zip:'34746',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-02-17',acquisition_price:'42092.60',arv:'',rehab_cost:'900.00',sale_price:'99700.00',sale_date:'',notes:''},
+  {address:'1325 Reddix St.',city:'Jackson',county:'Hinds',state:'MS',zip:'39209',photo_url:'',type:'house',area:'1',unit:'ft²',status:'active',acquisition_date:'2026-01-19',acquisition_price:'2500.00',arv:'',rehab_cost:'',sale_price:'14590.00',sale_date:'',notes:''},
+  {address:'NA Number, Wiggins Dr.',city:'Jackson',county:'Hinds',state:'MS',zip:'39209',photo_url:'',type:'residential lot',area:'1',unit:'ft²',status:'active',acquisition_date:'2025-12-31',acquisition_price:'2500.00',arv:'',rehab_cost:'',sale_price:'14590.00',sale_date:'',notes:''},
+  {address:'309 Greenwood St.',city:'Ishpeming',county:'Marquette',state:'MI',zip:'49849',photo_url:'',type:'Commercial building',area:'25696',unit:'ft²',status:'active',acquisition_date:'2026-01-01',acquisition_price:'1000.00',arv:'',rehab_cost:'',sale_price:'37970.00',sale_date:'',notes:''},
 ];
 
 let portfolioData = [...SAMPLE_PROPS];
@@ -1435,7 +1435,9 @@ function fmtArea(a,u){ return (a&&a!=='') ? a+(u?'\u00a0'+u:'') : '—'; }
 function buildCard(p, idx) {
   const col = STATUS_COLORS[p.status] || '#D4A847';
   const key = photoKey(p);
-  const photos = photoStore[key] || [];
+  const csvUrlP = (p.photo_url || '').trim();
+  const storedP = photoStore[key] || [];
+  const photos = csvUrlP ? [csvUrlP, ...storedP] : storedP;
   const firstPhoto = photos[0] || '';
   const photoCount = photos.length;
   const stateClass = 'sp sp-'+(p.state||'').toLowerCase();
@@ -1923,10 +1925,12 @@ function pubKey(p){ return (p.address||'').trim().toLowerCase(); }
 function buildPubCard(p, cardIndex, isPrivate){
   const col = STATUS_COLORS[p.status] || '#D4A847';
   const key = pubKey(p);
-  const photos = photoStore[key] || [];
+  const csvUrl = (p.photo_url || '').trim();
+  const storedPhotos = photoStore[key] || [];
+  const allPhotos = csvUrl ? [csvUrl, ...storedPhotos] : storedPhotos;
   const idx = pubPhotoIdx[key] || 0;
-  const src = photos[idx] || '';
-  const count = photos.length;
+  const src = allPhotos[idx] || '';
+  const count = allPhotos.length;
   const isSold = (p.status||'') === 'sold';
   const statusClass = 'psb-'+(p.status||'active');
 
@@ -2016,9 +2020,12 @@ function pubFilter(f, btn){
 
 function pubNavPhoto(key, dir, e){
   e.stopPropagation();
-  const photos = photoStore[key] || [];
-  if(photos.length < 2) return;
-  pubPhotoIdx[key] = ((pubPhotoIdx[key]||0) + dir + photos.length) % photos.length;
+  var p2 = pubFilteredData.find(function(x){ return pubKey(x)===key; });
+  var csvUrl2 = p2 ? (p2.photo_url||'').trim() : '';
+  var stored2 = photoStore[key] || [];
+  var allP = csvUrl2 ? [csvUrl2].concat(stored2) : stored2;
+  if(allP.length < 2) return;
+  pubPhotoIdx[key] = ((pubPhotoIdx[key]||0) + dir + allP.length) % allP.length;
   const activeBtn = document.querySelector('.pub-filter-btn.active');
   pubFilter(pubCurrentFilter, activeBtn || document.querySelector('.pub-filter-btn'));
 }
