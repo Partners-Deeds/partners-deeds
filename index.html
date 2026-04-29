@@ -1346,13 +1346,8 @@ function checkAccess() {
     buildVerifiedContacts();
     buildPlaybooks();
     renderPrivatePortfolio(portfolioData);
-    /* Show portfolio tab by default when unlocking */
-    var portfolioTab = document.querySelector('.op-tab[onclick*="portfolio"]');
-    if (portfolioTab) switchTab('portfolio', portfolioTab);
-    else {
-      var firstTab = document.querySelector('.op-tab');
-      if (firstTab) switchTab('portfolio', firstTab);
-    }
+    var si = document.getElementById('photoStorageInfo');
+    if (si) si.textContent = '\uD83D\uDCF7 ' + getPhotoStorageInfo();
   } else {
     err.classList.add('show');
     document.getElementById('accessPass').value = '';
@@ -1376,6 +1371,7 @@ function switchTab(name, btn) {
   });
   document.querySelectorAll('.op-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  if (name === 'portfolio') renderPrivatePortfolio(portfolioData);
 }
 
 /* ═══════════════════════════════════════
