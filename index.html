@@ -1345,9 +1345,14 @@ function checkAccess() {
     err.classList.remove('show');
     buildVerifiedContacts();
     buildPlaybooks();
-    /* Show scraper tab by default when unlocking */
-    var firstTab = document.querySelector('.op-tab');
-    if (firstTab) switchTab('scraper', firstTab);
+    renderPortfolio(portfolioData);
+    /* Show portfolio tab by default when unlocking */
+    var portfolioTab = document.querySelector('.op-tab[onclick*="portfolio"]');
+    if (portfolioTab) switchTab('portfolio', portfolioTab);
+    else {
+      var firstTab = document.querySelector('.op-tab');
+      if (firstTab) switchTab('scraper', firstTab);
+    }
   } else {
     err.classList.add('show');
     document.getElementById('accessPass').value = '';
