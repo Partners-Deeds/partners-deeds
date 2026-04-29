@@ -1498,7 +1498,18 @@ function buildCard(p, idx) {
 
 /* ── Photo upload ── */
 function triggerPhotoUpload(idx){
-  document.getElementById('photo-input-'+idx).click();
+  /* Create a fresh file input each time — avoids Chrome's innerHTML event block */
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.multiple = true;
+  input.style.display = 'none';
+  document.body.appendChild(input);
+  input.addEventListener('change', function() {
+    handlePhotoUpload(idx, input);
+    document.body.removeChild(input);
+  });
+  input.click();
 }
 
 function handlePhotoUpload(idx, input){
