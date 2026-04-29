@@ -1279,6 +1279,47 @@ document.addEventListener('DOMContentLoaded', function() {
   /* Render public portfolio on page load */
   renderPubPortfolio(portfolioData);
 
+  /* Event delegation for private portfolio photo clicks */
+  document.addEventListener('click', function(e) {
+    /* Click on photo placeholder — trigger upload */
+    var panel = e.target.closest('[data-upload-idx]');
+    if (panel) {
+      var idx = parseInt(panel.getAttribute('data-upload-idx'), 10);
+      triggerPhotoUpload(idx);
+      return;
+    }
+    /* Click on + Add Photo button */
+    var addBtn = e.target.closest('.prop-photo-add-btn');
+    if (addBtn) {
+      var onclick = addBtn.getAttribute('onclick');
+      if (onclick) {
+        var m = onclick.match(/triggerPhotoUpload\((\d+)\)/);
+        if (m) triggerPhotoUpload(parseInt(m[1], 10));
+      }
+      return;
+    }
+    /* Click on delete photo button */
+    var delBtn = e.target.closest('.photo-del-btn');
+    if (delBtn) {
+      var onclick2 = delBtn.getAttribute('onclick');
+      if (onclick2) {
+        var m2 = onclick2.match(/deletePhoto\((\d+),(\d+)/);
+        if (m2) deletePhoto(parseInt(m2[1],10), parseInt(m2[2],10), e);
+      }
+      return;
+    }
+    /* Click on photo nav prev/next */
+    var navBtn = e.target.closest('.photo-nav');
+    if (navBtn) {
+      var onclick3 = navBtn.getAttribute('onclick');
+      if (onclick3) {
+        var m3 = onclick3.match(/photoNav\((\d+),([-\d]+)\)/);
+        if (m3) photoNav(parseInt(m3[1],10), parseInt(m3[2],10));
+      }
+      return;
+    }
+  });
+
   /* Pillars */
   document.querySelectorAll('.pillar').forEach(function(el) {
     el.addEventListener('touchend', function(e) {
@@ -1453,7 +1494,7 @@ function buildCard(p, idx) {
          <button class="prop-photo-add-btn" onclick="triggerPhotoUpload(${idx})">+ Add Photo</button>
          <button class="photo-del-btn" onclick="deletePhoto(${idx},${photoIndexes[key]||0},event)" title="Remove this photo">×</button>
        </div>`
-    : `<div class="prop-photo" id="photo-panel-${idx}" onclick="triggerPhotoUpload(${idx})">
+    : `<div class="prop-photo" id="photo-panel-${idx}" data-upload-idx="${idx}">
          <div class="prop-photo-placeholder">
            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
            <span>Tap to add photo</span>
