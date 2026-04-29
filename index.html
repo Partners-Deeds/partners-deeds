@@ -1345,13 +1345,13 @@ function checkAccess() {
     err.classList.remove('show');
     buildVerifiedContacts();
     buildPlaybooks();
-    renderPortfolio(portfolioData);
+    renderPrivatePortfolio(portfolioData);
     /* Show portfolio tab by default when unlocking */
     var portfolioTab = document.querySelector('.op-tab[onclick*="portfolio"]');
     if (portfolioTab) switchTab('portfolio', portfolioTab);
     else {
       var firstTab = document.querySelector('.op-tab');
-      if (firstTab) switchTab('scraper', firstTab);
+      if (firstTab) switchTab('portfolio', firstTab);
     }
   } else {
     err.classList.add('show');
