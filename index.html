@@ -260,7 +260,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .prop-track{display:flex;gap:3px;min-width:min-content;}
 .prop-card{
   background:var(--ink3);border:1px solid var(--border);
-  display:flex;flex-direction:row;
+  display:flex;flex-direction:row;align-items:stretch;
   width:92vw;max-width:820px;min-width:320px;
   flex-shrink:0;position:relative;overflow:hidden;
   transition:border-color .2s;
@@ -272,11 +272,12 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 
 /* Photo panel */
 .prop-photo{
-  width:160px;min-width:160px;
+  width:160px;min-width:160px;min-height:180px;
   background:var(--ink2);
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   position:relative;overflow:hidden;flex-shrink:0;
+  cursor:pointer;
   border-right:1px solid var(--border);
 }
 @media(min-width:700px){.prop-photo{width:210px;min-width:210px;}}
@@ -286,6 +287,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
   gap:8px;width:100%;height:100%;min-height:160px;
   color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   cursor:pointer;transition:background .2s;padding:12px;text-align:center;
+  pointer-events:none;
 }
 .prop-photo-placeholder:active{background:rgba(212,168,71,.06);}
 .prop-photo-placeholder svg{opacity:.3;}
@@ -596,6 +598,8 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 .photo-del-btn{position:absolute;top:6px;right:6px;width:22px;height:22px;background:rgba(181,91,91,.85);border:none;color:#fff;font-size:13px;font-weight:700;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;z-index:5;opacity:0;transition:opacity .2s;}
 .prop-photo:hover .photo-del-btn{opacity:1;}
 .photo-storage-info{font-size:11px;color:var(--paper3);padding:6px 10px;background:rgba(212,168,71,.04);border:1px solid var(--border);border-radius:2px;display:inline-block;margin-left:8px;}
+
+.version-tag{position:fixed;bottom:8px;right:12px;font-size:9px;color:var(--paper3);opacity:.4;letter-spacing:.05em;z-index:1;pointer-events:none;}
 </style>
 </head>
 <body>
@@ -615,6 +619,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   </div>
 </div>
 
+<div class="version-tag">partners-deeds-v18e</div>
 <div class="wrap">
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">&#127482;&#127480; EN</button>
@@ -1280,45 +1285,39 @@ document.addEventListener('DOMContentLoaded', function() {
   renderPubPortfolio(portfolioData);
 
   /* Event delegation for private portfolio photo clicks */
-  document.addEventListener('click', function(e) {
-    /* Click on photo placeholder — trigger upload */
-    var panel = e.target.closest('[data-upload-idx]');
-    if (panel) {
-      var idx = parseInt(panel.getAttribute('data-upload-idx'), 10);
-      triggerPhotoUpload(idx);
-      return;
-    }
-    /* Click on + Add Photo button */
-    var addBtn = e.target.closest('.prop-photo-add-btn');
-    if (addBtn) {
-      var onclick = addBtn.getAttribute('onclick');
-      if (onclick) {
-        var m = onclick.match(/triggerPhotoUpload\((\d+)\)/);
-        if (m) triggerPhotoUpload(parseInt(m[1], 10));
-      }
-      return;
-    }
-    /* Click on delete photo button */
-    var delBtn = e.target.closest('.photo-del-btn');
-    if (delBtn) {
-      var onclick2 = delBtn.getAttribute('onclick');
-      if (onclick2) {
-        var m2 = onclick2.match(/deletePhoto\((\d+),(\d+)/);
-        if (m2) deletePhoto(parseInt(m2[1],10), parseInt(m2[2],10), e);
-      }
-      return;
-    }
-    /* Click on photo nav prev/next */
-    var navBtn = e.target.closest('.photo-nav');
-    if (navBtn) {
-      var onclick3 = navBtn.getAttribute('onclick');
-      if (onclick3) {
-        var m3 = onclick3.match(/photoNav\((\d+),([-\d]+)\)/);
-        if (m3) photoNav(parseInt(m3[1],10), parseInt(m3[2],10));
-      }
-      return;
-    }
-  });
+  /* Photo upload — exactly as in working card-click-test.html */
+document.addEventListener('click', function(e) {
+  var panel = e.target.closest('[data-upload-idx]');
+  if (panel) {
+    var propIdx = parseInt(panel.getAttribute('data-upload-idx'), 10);
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.style.display = 'none';
+    document.body.appendChild(input);
+    input.addEventListener('change', function() {
+      if (!input.files[0]) return;
+      handlePhotoUpload(propIdx, input);
+      if (input.parentNode) input.parentNode.removeChild(input);
+    });
+    input.click();
+    return;
+  }
+  /* Delete photo button */
+  var delBtn = e.target.closest('.photo-del-btn');
+  if (delBtn) {
+    var m = (delBtn.getAttribute('onclick')||'').match(/deletePhoto\((\d+),(\d+)/);
+    if (m) deletePhoto(parseInt(m[1],10), parseInt(m[2],10), e);
+    return;
+  }
+  /* Photo nav arrows */
+  var navBtn = e.target.closest('.photo-nav');
+  if (navBtn) {
+    var n = (navBtn.getAttribute('onclick')||'').match(/photoNav\((\d+),([-\d]+)\)/);
+    if (n) photoNav(parseInt(n[1],10), parseInt(n[2],10));
+    return;
+  }
+});
 
   /* Pillars */
   document.querySelectorAll('.pillar').forEach(function(el) {
@@ -3075,29 +3074,8 @@ function clearAllPhotos() {
   if (si) si.textContent = '📷 No photos stored';
 }
 
-/* ── Attach photo click handlers directly to DOM elements ── */
-function attachPhotoClicks() {
-  var track = document.getElementById('propTrackPrivate');
-  if (!track) return;
-  track.querySelectorAll('[data-upload-idx]').forEach(function(panel) {
-    panel.style.cursor = 'pointer';
-    panel.onclick = function(e) {
-      /* Must create AND click input synchronously inside user event handler */
-      var propIdx = parseInt(panel.getAttribute('data-upload-idx'), 10);
-      var input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.multiple = true;
-      input.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
-      document.body.appendChild(input);
-      input.onchange = function() {
-        handlePhotoUpload(propIdx, input);
-        if (input.parentNode) input.parentNode.removeChild(input);
-      };
-      input.click(); /* synchronous — same call stack as user click */
-    };
-  });
-}
+function attachPhotoClicks() { /* handled by document click delegation */ }
+
 /* -- Global exports -- */
 window.checkAccess        = checkAccess;
 window.lockSection        = lockSection;
@@ -3123,6 +3101,7 @@ window.exportCSV          = exportCSV;
 window.pvFilter           = pvFilter;
 window.setLang            = setLang;
 window.attachPhotoClicks  = attachPhotoClicks;
+
 window.deletePhoto        = deletePhoto;
 window.showPhotoFeedback  = showPhotoFeedback;
 window.clearAllPhotos     = clearAllPhotos;
