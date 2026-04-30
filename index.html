@@ -622,7 +622,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   </div>
 </div>
 
-<div class="version-tag">partners-deeds-v19</div>
+<div class="version-tag">partners-deeds-v19c</div>
 <div class="wrap">
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">&#127482;&#127480; EN</button>
@@ -815,14 +815,14 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 <!-- ══ PRIVATE SECTION ══ -->
 <div class="private-section aos">
   <span class="label">Operational Intelligence</span>
-  <h2 class="section-title">County Acquisition & Portfolio</h2>
+  <h2 class="section-title" data-i18n="county_acq_title">County Acquisition &amp; Portfolio</h2>
 
   <div class="private-card">
     <div class="private-header">
       <div class="private-header-left">
         <div class="private-lock-icon">🔒</div>
         <div>
-          <div class="private-title">Operator Access Only</div>
+          <div class="private-title" data-i18n="op_access_only">Operator Access Only</div>
           <div class="private-subtitle" id="i18n-private-subtitle">County playbooks, contacts, scraper &amp; property portfolio — not shown to investors</div>
         </div>
       </div>
@@ -834,7 +834,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
       <div>
         <p class="private-desc"><span data-i18n="private_desc">This section contains real county officer contacts, the live county intelligence scraper, and the Partners Deeds property portfolio with all active and sold acquisitions.</p>
         <ul class="private-topics">
-          <li>Real phone numbers and officer names for 80+ counties across FL, TX, MI, IL across FL, MI, IL &amp; WIamp; WI</li>
+          <li data-i18n="priv_feat1">Real phone numbers and officer names for 80+ counties across FL, MI, IL &amp; WI</li>
           <li>Live county intelligence scraper with anti-bot bypass support</li>
           <li>Property portfolio with import via CSV — easy to update</li>
           <li>In-person <span class="tip" data-tip="Over-The-Counter — direct purchase at the county clerk, bypassing the competitive auction.">OTC</span> and Clerk's Office procedures for all 5 states</li>
@@ -844,7 +844,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
         <div class="access-title" data-i18n="access_title">Operator Password</div>
         <input class="access-input" type="password" id="accessPass" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkAccess()" autocomplete="current-password">
         <div class="access-error" id="accessError">Incorrect password. Try again.</div>
-        <button class="access-btn" onclick="checkAccess()">Unlock Section →</button>
+        <button class="access-btn" id="accessBtn" onclick="checkAccess()" data-i18n="access_btn">Unlock Section →</button>
       </div>
     </div>
 
@@ -892,7 +892,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
       <!-- ══ TAB: SCRAPER ══ -->
       <div class="op-panel" id="tab-scraper" style="display:none">
-        <div class="scraper-intro">Fetch real officer names, phone numbers, list formats, and auction schedules from the built-in Partners Deeds county database for FL, TX, MI, IL &amp; WI. If a government site triggers a CAPTCHA challenge, a bypass window opens for manual completion — scraping then resumes automatically.</div>
+        <div class="scraper-intro" data-i18n="scraper_intro">Fetch real officer names, phone numbers, list formats, and auction schedules from the built-in Partners Deeds county database for FL, TX, MI, IL &amp; WI. If a government site triggers a CAPTCHA challenge, a bypass window opens for manual completion — scraping then resumes automatically.</div>
         <div class="scraper-controls">
           <div class="scraper-filters">
             <select class="scraper-select" id="scrState">
@@ -911,7 +911,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
             </select>
             <input class="scraper-input" id="scrCounty" type="text" placeholder="County name (optional)">
           </div>
-          <button class="scraper-btn" id="scrapeBtn" onclick="runScraper()">🔍 Fetch Contacts</button>
+          <button class="scraper-btn" id="scrapeBtn" onclick="runScraper()" data-i18n="scraper_btn">🔍 Fetch Contacts</button>
         </div>
         <div class="progress-wrap" id="progressWrap" style="display:none">
           <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
@@ -953,14 +953,14 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
 
       <!-- ══ TAB: CONTACTS ══ -->
       <div class="op-panel" id="tab-contacts" style="display:none">
-        <div class="scraper-intro">Key contacts manually verified. Always call ahead before visiting — officer names change with election cycles.</div>
+        <div class="scraper-intro" data-i18n="contacts_intro">Key contacts manually verified. Always call ahead before visiting — officer names change with election cycles.</div>
         <div class="tbl-wrap">
           <table class="contacts-tbl">
             <thead><tr><th>State</th><th>County</th><th>Office</th><th>Officer</th><th>Phone</th><th>List</th><th>Auction</th><th>Portal</th></tr></thead>
             <tbody id="verifiedContactsTbody"></tbody>
           </table>
         </div>
-        <p style="font-size:11px;color:var(--muted);padding-top:12px;">⚠ Verified 2024–2025. Confirm before visiting. Names subject to election cycles.</p>
+        <p data-i18n="contacts_warn" style="font-size:11px;color:var(--muted);padding-top:12px;">⚠ Verified 2024–2025. Confirm before visiting. Names subject to election cycles.</p>
       </div>
 
       <!-- ══ TAB: PLAYBOOKS ══ -->
@@ -998,7 +998,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
           <label class="offer-label" data-i18n="offer_value_label">Proposed Value (USD)</label>
           <input class="offer-input" id="of-value" type="text" placeholder="e.g. 85,000">
         </div>
-        <button class="offer-submit" id="offerSubmitBtn" onclick="submitOffer()">Make My Offer →</button>
+        <button class="offer-submit" id="offerSubmitBtn" onclick="submitOffer()" data-i18n="offer_submit_btn">Make My Offer →</button>
         <button class="offer-cancel" onclick="closeOffer()">Cancel</button>
       </div>
     </div>
@@ -1031,10 +1031,10 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   <h2 class="section-title" data-i18n="dd_sub">Researching fiscal &amp; encumbrance liabilities</h2>
   <p class="section-intro">Before bidding on any tax deed property, identify all liabilities that <strong>survive the auction</strong> — liens not extinguished by the sale that could exceed the property's value.</p>
   <div class="lien-grid">
-    <div class="lc" style="--lc:#D4A847"><div class="lc-icon">🏛️</div><div class="lc-name" data-i18n="dd_s1_title">State &amp; Municipal Taxes</div><div class="lc-desc">Verify unpaid debts from prior years plus municipal service charges: water, sewer, and solid waste.</div><div class="lc-tools"><div class="lc-tool"><strong>County Treasurer / Tax Assessor</strong> — search by <span class="tip" data-tip="Assessor's Parcel Number — unique government ID assigned to each property.">APN</span> (free)</div><div class="lc-tool"><strong>TaxNetUSA / ATTOM</strong> — full delinquency history across all 5 states</div><div class="lc-tool"><strong>City / Municipal Portal</strong> — water &amp; sewer liens, demolition liens</div></div></div>
+    <div class="lc" style="--lc:#D4A847"><div class="lc-icon">🏛️</div><div class="lc-name" data-i18n="dd_s1_title">State &amp; Municipal Taxes</div><div class="lc-desc" data-i18n="dd_lc1">Verify unpaid debts from prior years plus municipal service charges: water, sewer, and solid waste.</div><div class="lc-tools"><div class="lc-tool"><strong>County Treasurer / Tax Assessor</strong> — search by <span class="tip" data-tip="Assessor's Parcel Number — unique government ID assigned to each property.">APN</span> (free)</div><div class="lc-tool"><strong>TaxNetUSA / ATTOM</strong> — full delinquency history across all 5 states</div><div class="lc-tool"><strong>City / Municipal Portal</strong> — water &amp; sewer liens, demolition liens</div></div></div>
     <div class="lc" style="--lc:#B55B5B"><div class="lc-icon">🏛</div><div class="lc-name" data-i18n="dd_s2_title">Federal Liens — IRS</div><div class="lc-desc"><span class="tip" data-tip="Internal Revenue Service — U.S. federal tax authority. IRS liens have a 120-day post-sale redemption right in most states.">IRS</span> Federal Tax Liens carry a 120-day redemption right after auction. If not released, the IRS may reclaim the property at purchase price plus interest.</div><div class="lc-tools"><div class="lc-tool"><strong>County Recorder / Register of Deeds</strong> — search "Federal Tax Lien" by owner name</div><div class="lc-tool"><strong>IRS.gov</strong> — request Certificate of Release</div><div class="lc-tool"><strong>DataTree / LienFocus</strong> — automated nationwide lien search</div></div></div>
     <div class="lc" style="--lc:#5B9AB5"><div class="lc-icon">🔧</div><div class="lc-name" data-i18n="dd_s3_title">Mechanics Liens &amp; HOA</div><div class="lc-desc">Unpaid contractor liens and <span class="tip" data-tip="Home Owner Association — HOA super-liens can survive a tax deed in states like Florida (Chapter 718).">HOA</span> debt may survive the tax deed depending on state law and lien priority.</div><div class="lc-tools"><div class="lc-tool"><strong>County Recorder</strong> — search by APN</div><div class="lc-tool"><strong>PropStream / LiensFinder</strong> — HOA and mechanics lien sweep</div><div class="lc-tool"><strong>HOA Management Company</strong> — request an Estoppel Letter</div></div></div>
-    <div class="lc" style="--lc:#5B9E6A"><div class="lc-icon">🏗️</div><div class="lc-name" data-i18n="dd_s4_title">Code Violations &amp; Demolition</div><div class="lc-desc">Code enforcement fines and demolition orders are municipal liens that survive the tax deed in nearly every state.</div><div class="lc-tools"><div class="lc-tool"><strong>City Code Enforcement</strong> — search by address; usually free</div><div class="lc-tool"><strong>Building &amp; Permits Department</strong> — open permits, stop-work orders</div><div class="lc-tool"><strong>EPA / State DEP</strong> — environmental contamination (commercial properties)</div></div></div>
+    <div class="lc" style="--lc:#5B9E6A"><div class="lc-icon">🏗️</div><div class="lc-name" data-i18n="dd_s4_title">Code Violations &amp; Demolition</div><div class="lc-desc" data-i18n="dd_lc2">Code enforcement fines and demolition orders are municipal liens that survive the tax deed in nearly every state.</div><div class="lc-tools"><div class="lc-tool"><strong>City Code Enforcement</strong> — search by address; usually free</div><div class="lc-tool"><strong>Building &amp; Permits Department</strong> — open permits, stop-work orders</div><div class="lc-tool"><strong>EPA / State DEP</strong> — environmental contamination (commercial properties)</div></div></div>
     <div class="lc" style="--lc:#8B6CC4"><div class="lc-icon">⚖️</div><div class="lc-name" data-i18n="dd_s5_title">Judgments &amp; Lis Pendens</div><div class="lc-desc">Civil judgments and <span class="tip" data-tip="Lis Pendens — a recorded legal notice that active litigation could affect the property's ownership or transfer.">Lis Pendens</span> may cloud the title even after a tax deed is issued.</div><div class="lc-tools"><div class="lc-tool"><strong>County Clerk of Court</strong> — search Civil Judgments by owner name</div><div class="lc-tool"><strong>PACER (pacer.gov)</strong> — federal bankruptcy search</div><div class="lc-tool"><strong>DataTree / Title Search API</strong> — multi-county automated sweeps</div></div></div>
     <div class="lc" style="--lc:#C47A3A"><div class="lc-icon">🔑</div><div class="lc-name" data-i18n="dd_s6_title">Title Search &amp; Quiet Title</div><div class="lc-desc">After a tax deed, most states require a <span class="tip" data-tip="Quiet Title — a court action that legally extinguishes all competing claims, making the title clean and insurable.">Quiet Title</span> action before obtaining title insurance and reselling.</div><div class="lc-tools"><div class="lc-tool"><strong>Local Title Company</strong> — volume deal: $300–$800/property</div><div class="lc-tool"><strong>Timeline</strong> — FL: 6–12 mo · TX: 3–6 mo · MI: 3–6 mo · IL: up to 2 yrs · WI: ~6 mo</div><div class="lc-tool"><strong>Stewart / Old Republic / First American</strong></div></div></div>
   </div>
@@ -1046,15 +1046,15 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   <span class="label" data-i18n="surplus_section_title">Detailed Process — Pillar 4</span>
   <h2 class="section-title" data-i18n="surplus_section_sub">Surplus Funds operational flow</h2>
   <div class="surplus-flow">
-    <div class="ss"><div class="ss-n">01</div><div class="ss-title" data-i18n="surplus_step1_title">Collect post-auction lists</div><div class="ss-desc">Access public records from counties after each auction. Filter for properties where the winning bid exceeded the tax debt — that excess is the surplus.</div></div>
+    <div class="ss"><div class="ss-n">01</div><div class="ss-title" data-i18n="surplus_step1_title">Collect post-auction lists</div><div class="ss-desc" data-i18n="ss_desc1">Access public records from counties after each auction. Filter for properties where the winning bid exceeded the tax debt — that excess is the surplus.</div></div>
     <div class="surplus-arrow">→</div>
     <div class="ss"><div class="ss-n">02</div><div class="ss-title" data-i18n="surplus_step2_title">Skip trace the former owner</div><div class="ss-desc">Locate the previous owner (including heirs) using BatchSkipTracing, <span class="tip" data-tip="TLO — professional skip tracing platform.">TLO</span>, or <span class="tip" data-tip="CLEAR — Thomson Reuters' identity and location intelligence platform.">CLEAR</span>. Speed matters — deadlines start from auction day.</div></div>
     <div class="surplus-arrow">→</div>
-    <div class="ss"><div class="ss-n">03</div><div class="ss-title" data-i18n="surplus_step3_title">Sign representation contract</div><div class="ss-desc">Execute a contingency fee agreement (25–40%). No cost to the client. You earn only upon successful recovery.</div></div>
+    <div class="ss"><div class="ss-n">03</div><div class="ss-title" data-i18n="surplus_step3_title">Sign representation contract</div><div class="ss-desc" data-i18n="ss_desc2">Execute a contingency fee agreement (25–40%). No cost to the client. You earn only upon successful recovery.</div></div>
     <div class="surplus-arrow">→</div>
-    <div class="ss"><div class="ss-n">04</div><div class="ss-title" data-i18n="surplus_step4_title">File the claim</div><div class="ss-desc">Submit to the county or state. Deadlines: FL 2 yrs · TX 2 yrs · MI 1 yr · IL 2 yrs · WI 1 yr. Required: photo ID, prior deed, notarized contract.</div></div>
+    <div class="ss"><div class="ss-n">04</div><div class="ss-title" data-i18n="surplus_step4_title">File the claim</div><div class="ss-desc" data-i18n="ss_desc3">Submit to the county or state. Deadlines: FL 2 yrs · TX 2 yrs · MI 1 yr · IL 2 yrs · WI 1 yr. Required: photo ID, prior deed, notarized contract.</div></div>
     <div class="surplus-arrow">→</div>
-    <div class="ss"><div class="ss-n">05</div><div class="ss-title" data-i18n="surplus_step5_title">Receive funds &amp; collect fee</div><div class="ss-desc">County releases funds to the former owner, who passes your commission. 100% remote, fully repeatable, scalable across dozens of counties.</div></div>
+    <div class="ss"><div class="ss-n">05</div><div class="ss-title" data-i18n="surplus_step5_title">Receive funds &amp; collect fee</div><div class="ss-desc" data-i18n="ss_desc4">County releases funds to the former owner, who passes your commission. 100% remote, fully repeatable, scalable across dozens of counties.</div></div>
   </div>
 </div>
 
@@ -2599,6 +2599,26 @@ var T = {
     col_phone:'Telefone', col_list:'Formato da Lista', col_auction:'Leil\u00e3o', col_portal:'Portal',
     pillars_title:'Os quatro neg\u00f3cios do nosso ecossistema',
     tagline:'Quatro pilares integrados. Um ecossistema autossustent\u00e1vel.',
+    op_intel_label:'Inteligência Operacional',
+    county_acq_title:'Aquisição de County &amp; Portfólio',
+    op_access_only:'Apenas Acesso do Operador',
+    priv_feat1:'Números de telefone reais e nomes de oficiais para 80+ counties em FL, MI, IL &amp; WI',
+    priv_feat2:'Scraper de inteligência de county com suporte a bypass anti-bot',
+    priv_feat3:'Portfólio de propriedades com import via CSV — fácil de atualizar',
+    access_err:'Senha incorreta. Tente novamente.',
+    access_btn:'Desbloquear Seção →',
+    unlocked_status:'✓ Acesso de operador concedido',
+    scraper_intro:'Busque nomes reais de oficiais, telefones, formatos de lista e calendários nos sites dos counties.',
+    scraper_btn:'🔍 Buscar Contatos',
+    contacts_intro:'Contatos verificados manualmente. Sempre ligue antes de visitar — nomes mudam após eleições.',
+    contacts_warn:'⚠ Verificado 2024–2025. Confirme antes de visitar. Nomes sujeitos a ciclos eleitorais.',
+    offer_submit_btn:'Enviar Minha Oferta →',
+    dd_lc1:'Verifique dívidas não pagas de anos anteriores mais encargos municipais: água, esgoto, lixo e avaliações especiais. Sobrevivem ao tax deed na maioria dos estados.',
+    dd_lc2:'Multas de fiscalização de código e ordens de demolição são penhoras municipais que sobrevivem ao tax deed. Verifique com a fiscalização local antes de licitar.',
+    ss_desc1:'Acesse registros públicos dos counties após cada leilão. Filtre propriedades onde o lance vencedor superou a dívida fiscal.',
+    ss_desc2:'Execute um contrato de honorários contingentes (25–40%). Sem custo para o cliente. Você recebe apenas quando os fundos forem recuperados.',
+    ss_desc3:'Protocole no county ou estado. Prazos: FL 2 anos · TX 2 anos · MI 1 ano · IL 2 anos · WI 10 anos.',
+    ss_desc4:'O county libera os fundos ao antigo proprietário, que repassa sua comissão. 100% remoto, sem comparecer ao tribunal.',
     disclaimer_title:'\u26a0 Aviso de Risco de Investimento',
   },
 
@@ -2698,6 +2718,26 @@ var T = {
     col_phone:'Tel\u00e9fono', col_list:'Formato de Lista', col_auction:'Subasta', col_portal:'Portal',
     pillars_title:'Los cuatro negocios de nuestro ecosistema',
     tagline:'Cuatro pilares integrados. Un ecosistema autorreforzado.',
+    op_intel_label:'Inteligencia Operacional',
+    county_acq_title:'Adquisición de County &amp; Portafolio',
+    op_access_only:'Solo Acceso del Operador',
+    priv_feat1:'Números de teléfono reales y nombres de oficiales para 80+ counties en FL, MI, IL &amp; WI',
+    priv_feat2:'Scraper de inteligencia de county con soporte de bypass anti-bot',
+    priv_feat3:'Portafolio de propiedades con importación via CSV — fácil de actualizar',
+    access_err:'Contraseña incorrecta. Inténtelo de nuevo.',
+    access_btn:'Desbloquear Sección →',
+    unlocked_status:'✓ Acceso de operador concedido',
+    scraper_intro:'Obtenga nombres reales de oficiales, teléfonos y calendarios de subastas de los sitios de counties.',
+    scraper_btn:'🔍 Buscar Contactos',
+    contacts_intro:'Contactos verificados manualmente. Siempre llame antes de visitar — los nombres cambian tras las elecciones.',
+    contacts_warn:'⚠ Verificado 2024–2025. Confirme antes de visitar. Nombres sujetos a ciclos electorales.',
+    offer_submit_btn:'Enviar Mi Oferta →',
+    dd_lc1:'Verifique deudas impagas de años anteriores más cargos municipales: agua, alcantarillado, basura y evaluaciones especiales. Sobreviven al tax deed en la mayoría de los estados.',
+    dd_lc2:'Las multas de cumplimiento de códigos y órdenes de demolición son gravámenes municipales que sobreviven al tax deed. Verifique con la oficina local antes de pujar.',
+    ss_desc1:'Acceda a registros públicos de counties tras cada subasta. Filtre propiedades donde la puja ganadora superó la deuda fiscal.',
+    ss_desc2:'Ejecute un contrato de honorarios contingentes (25–40%). Sin costo para el cliente. Cobra solo cuando se recuperan los fondos.',
+    ss_desc3:'Presente al county o estado. Plazos: FL 2 años · TX 2 años · MI 1 año · IL 2 años · WI 10 años.',
+    ss_desc4:'El county libera los fondos al antiguo propietario, quien pasa su comisión. 100% remoto, sin comparecer ante el tribunal.',
     disclaimer_title:'\u26a0 Aviso de Riesgo de Inversi\u00f3n',
   }
 };
