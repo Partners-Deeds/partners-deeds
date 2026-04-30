@@ -278,7 +278,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
   align-items:center;justify-content:center;
   position:relative;overflow:hidden;flex-shrink:0;
   border-right:1px solid var(--border);
-cursor:pointer;}
+}
 @media(min-width:700px){.prop-photo{width:210px;min-width:210px;}}
 .prop-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .prop-photo-placeholder{
@@ -286,7 +286,7 @@ cursor:pointer;}
   gap:8px;width:100%;height:100%;min-height:160px;
   color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   cursor:pointer;transition:background .2s;padding:12px;text-align:center;
-pointer-events:none;pointer-events:none;}
+pointer-events:none;}
 .prop-photo-placeholder:active{background:rgba(212,168,71,.06);}
 .prop-photo-placeholder svg{opacity:.3;}
 .prop-photo-add-btn{
@@ -1279,46 +1279,7 @@ document.addEventListener('DOMContentLoaded', function() {
   /* Render public portfolio on page load */
   renderPubPortfolio(portfolioData);
 
-  /* Event delegation for private portfolio photo clicks */
-  document.addEventListener('click', function(e) {
-    /* Click on photo placeholder — trigger upload */
-    var panel = e.target.closest('[data-upload-idx]');
-    if (panel) {
-      var idx = parseInt(panel.getAttribute('data-upload-idx'), 10);
-      triggerPhotoUpload(idx);
-      return;
-    }
-    /* Click on + Add Photo button */
-    var addBtn = e.target.closest('.prop-photo-add-btn');
-    if (addBtn) {
-      var onclick = addBtn.getAttribute('onclick');
-      if (onclick) {
-        var m = onclick.match(/triggerPhotoUpload\((\d+)\)/);
-        if (m) triggerPhotoUpload(parseInt(m[1], 10));
-      }
-      return;
-    }
-    /* Click on delete photo button */
-    var delBtn = e.target.closest('.photo-del-btn');
-    if (delBtn) {
-      var onclick2 = delBtn.getAttribute('onclick');
-      if (onclick2) {
-        var m2 = onclick2.match(/deletePhoto\((\d+),(\d+)/);
-        if (m2) deletePhoto(parseInt(m2[1],10), parseInt(m2[2],10), e);
-      }
-      return;
-    }
-    /* Click on photo nav prev/next */
-    var navBtn = e.target.closest('.photo-nav');
-    if (navBtn) {
-      var onclick3 = navBtn.getAttribute('onclick');
-      if (onclick3) {
-        var m3 = onclick3.match(/photoNav\((\d+),([-\d]+)\)/);
-        if (m3) photoNav(parseInt(m3[1],10), parseInt(m3[2],10));
-      }
-      return;
-    }
-  });
+
 
   /* Pillars */
   document.querySelectorAll('.pillar').forEach(function(el) {
@@ -1345,6 +1306,14 @@ function checkAccess() {
     err.classList.remove('show');
     buildVerifiedContacts();
     buildPlaybooks();
+    renderPortfolio(portfolioData);
+    /* Show portfolio tab by default when unlocking */
+    var portfolioTab = document.querySelector('.op-tab[onclick*="portfolio"]');
+    if (portfolioTab) switchTab('portfolio', portfolioTab);
+    else {
+      var firstTab = document.querySelector('.op-tab');
+      if (firstTab) switchTab('scraper', firstTab);
+    }
   } else {
     err.classList.add('show');
     document.getElementById('accessPass').value = '';
@@ -1552,32 +1521,32 @@ function triggerPhotoUpload(idx){
 }
 
 function handlePhotoUpload(idx, input){
-  const data = portfolioData.filter(p => currentFilter==='all' || p.state===currentFilter);
-  const p = data[idx];
+  var track = document.getElementById('propTrackPrivate');
+  if(!track) return;
+  var p = portfolioData[idx];
   if(!p) return;
-  const key = photoKey(p);
+  var key = photoKey(p);
   if(!photoStore[key]) photoStore[key] = [];
-  const files = Array.from(input.files);
-  let loaded = 0;
-  files.forEach(file => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      photoStore[key].push(e.target.result);
+  var files = Array.from(input.files);
+  if(!files.length) return;
+  var loaded = 0;
+  files.forEach(function(file) {
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      photoStore[key].push(ev.target.result);
       loaded++;
       if(loaded === files.length) {
         savePhotoStore();
-        const track = document.getElementById('propTrack');
-        const cards = track.querySelectorAll('.prop-card');
+        var cards = track.querySelectorAll('.prop-card');
         if(cards[idx]) {
-          const tmp = document.createElement('div');
+          var tmp = document.createElement('div');
           tmp.innerHTML = buildCard(p, idx);
-          const newCard = tmp.firstElementChild;
-          track.replaceChild(newCard, cards[idx]);
+          track.replaceChild(tmp.firstElementChild, cards[idx]);
         }
-        if (pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
-        showPhotoFeedback('✓ ' + files.length + ' photo' + (files.length > 1 ? 's' : '') + ' saved permanently.');
+        if(pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
+        showPhotoFeedback(files.length + ' photo' + (files.length>1?'s':'') + ' saved.');
         var si = document.getElementById('photoStorageInfo');
-        if (si) si.textContent = '📷 ' + getPhotoStorageInfo();
+        if(si) si.textContent = getPhotoStorageInfo();
       }
     };
     reader.readAsDataURL(file);
@@ -3089,6 +3058,47 @@ function clearAllPhotos() {
   var si = document.getElementById('photoStorageInfo');
   if (si) si.textContent = '📷 No photos stored';
 }
+
+/* Event delegation for private portfolio photo clicks */
+document.addEventListener('click', function(e) {
+/* Click on photo placeholder — trigger upload */
+var panel = e.target.closest('[data-upload-idx]');
+if (panel) {
+var idx = parseInt(panel.getAttribute('data-upload-idx'), 10);
+triggerPhotoUpload(idx);
+return;
+}
+/* Click on + Add Photo button */
+var addBtn = e.target.closest('.prop-photo-add-btn');
+if (addBtn) {
+var onclick = addBtn.getAttribute('onclick');
+if (onclick) {
+var m = onclick.match(/triggerPhotoUpload\((\d+)\)/);
+if (m) triggerPhotoUpload(parseInt(m[1], 10));
+}
+return;
+}
+/* Click on delete photo button */
+var delBtn = e.target.closest('.photo-del-btn');
+if (delBtn) {
+var onclick2 = delBtn.getAttribute('onclick');
+if (onclick2) {
+var m2 = onclick2.match(/deletePhoto\((\d+),(\d+)/);
+if (m2) deletePhoto(parseInt(m2[1],10), parseInt(m2[2],10), e);
+}
+return;
+}
+/* Click on photo nav prev/next */
+var navBtn = e.target.closest('.photo-nav');
+if (navBtn) {
+var onclick3 = navBtn.getAttribute('onclick');
+if (onclick3) {
+var m3 = onclick3.match(/photoNav\((\d+),([-\d]+)\)/);
+if (m3) photoNav(parseInt(m3[1],10), parseInt(m3[2],10));
+}
+return;
+}
+});
 /* -- Global exports -- */
 window.checkAccess        = checkAccess;
 window.lockSection        = lockSection;
