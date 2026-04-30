@@ -3082,9 +3082,19 @@ function attachPhotoClicks() {
   track.querySelectorAll('[data-upload-idx]').forEach(function(panel) {
     panel.style.cursor = 'pointer';
     panel.onclick = function(e) {
-      e.stopPropagation();
-      var idx = parseInt(panel.getAttribute('data-upload-idx'), 10);
-      triggerPhotoUpload(idx);
+      /* Must create AND click input synchronously inside user event handler */
+      var propIdx = parseInt(panel.getAttribute('data-upload-idx'), 10);
+      var input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.multiple = true;
+      input.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+      document.body.appendChild(input);
+      input.onchange = function() {
+        handlePhotoUpload(propIdx, input);
+        if (input.parentNode) input.parentNode.removeChild(input);
+      };
+      input.click(); /* synchronous — same call stack as user click */
     };
   });
 }
