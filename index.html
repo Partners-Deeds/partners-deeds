@@ -619,7 +619,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   </div>
 </div>
 
-<div class="version-tag">partners-deeds-v18f</div>
+<div class="version-tag">partners-deeds-v18g</div>
 <div class="wrap">
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">&#127482;&#127480; EN</button>
@@ -2311,7 +2311,7 @@ function renderPrivatePortfolio(data) {
   if (!display.length) {
     track.innerHTML = '<div style="padding:32px;text-align:center;color:var(--muted);font-size:14px;">No properties. Import a CSV to get started.</div>';
   } else {
-    track.innerHTML = display.map(function(p, i) { return buildPubCard(p, i, true); }).join('');
+    track.innerHTML = display.map(function(p, i) { return buildCard(p, i); }).join('');
   }
 
   /* Rebuild dynamic state filter buttons */
@@ -2362,7 +2362,7 @@ function pvFilter(f, btn) {
   btn.classList.add('active-filter');
   var filtered = f === 'all' ? portfolioData : portfolioData.filter(function(p){ return p.state === f; });
   var track = document.getElementById('propTrackPrivate');
-  if (track) track.innerHTML = filtered.map(function(p, i){ return buildPubCard(p, i, true); }).join('');
+  if (track) track.innerHTML = filtered.map(function(p, i){ return buildCard(p, i); }).join('');
 }
 
 function exportPortfolioCSV() {
