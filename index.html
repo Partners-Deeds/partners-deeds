@@ -1406,15 +1406,23 @@ function photoKey(p){ return (p.address||'').trim().toLowerCase(); }
 
 /* ── Render all cards ── */
 function renderPortfolio(data) {
-  const track = document.getElementById('propTrack');
-  if(!data || !data.length) {
-    track.innerHTML='';
-    document.getElementById('portfolioEmpty').style.display='flex';
+  /* Route to correct function based on which track exists */
+  var track = document.getElementById('propTrack');
+  if (!track) {
+    /* propTrack doesn't exist — use private portfolio renderer */
+    renderPrivatePortfolio(data);
     return;
   }
-  document.getElementById('portfolioEmpty').style.display='none';
-  track.innerHTML = data.map((p,idx) => buildCard(p, idx)).join('');
-  updatePortfolioStats(data);
+  if(!data || !data.length) {
+    track.innerHTML='';
+    var empty = document.getElementById('portfolioEmpty');
+    if(empty) empty.style.display='flex';
+    return;
+  }
+  var empty2 = document.getElementById('portfolioEmpty');
+  if(empty2) empty2.style.display='none';
+  track.innerHTML = data.map(function(p,idx){ return buildCard(p, idx); }).join('');
+  if(typeof updatePortfolioStats === 'function') updatePortfolioStats(data);
 }
 
 function fmt$(n){ return n ? '$'+Number(String(n).replace(/[^0-9.]/g,'')).toLocaleString() : '—'; }
@@ -2361,18 +2369,6 @@ function exportPortfolioCSV() {
   a.click();
 }
 
-/* Re-render private portfolio + update photo info when unlocked */
-var _origCheckAccess2 = checkAccess;
-checkAccess = function() {
-  _origCheckAccess2();
-  setTimeout(function() {
-    if (document.getElementById('privateContent').classList.contains('unlocked')) {
-      renderPrivatePortfolio(portfolioData);
-      var si = document.getElementById('photoStorageInfo');
-      if (si) si.textContent = '\uD83D\uDCF7 ' + getPhotoStorageInfo();
-    }
-  }, 100);
-};
 
 
 /* ── i18n / Full Translation System ── */
