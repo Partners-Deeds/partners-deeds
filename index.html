@@ -619,7 +619,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   </div>
 </div>
 
-<div class="version-tag">partners-deeds-v18e</div>
+<div class="version-tag">partners-deeds-v18f</div>
 <div class="wrap">
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">&#127482;&#127480; EN</button>
@@ -1479,8 +1479,8 @@ function buildCard(p, idx) {
   const stateClass = 'sp sp-'+(p.state||'').toLowerCase();
 
   const photoPanel = firstPhoto
-    ? `<div class="prop-photo" id="photo-panel-${idx}">
-         <img src="${firstPhoto}" alt="Property photo" id="photo-img-${idx}">
+    ? `<div class="prop-photo" id="photo-panel-${idx}" data-upload-idx="${idx}">
+         <img src="${firstPhoto}" alt="Property photo" id="photo-img-${idx}" style="pointer-events:none">
          ${photoCount>1?`<button class="photo-nav prev" onclick="photoNav(${idx},-1)">‹</button><button class="photo-nav next" onclick="photoNav(${idx},1)">›</button>`:''}
          ${photoCount>0?`<span class="photo-count-badge">${photoCount} photo${photoCount>1?'s':''}</span>`:''}
          <button class="prop-photo-add-btn" onclick="triggerPhotoUpload(${idx})">+ Add Photo</button>
