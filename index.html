@@ -1337,22 +1337,14 @@ document.addEventListener('DOMContentLoaded', function() {
 ═══════════════════════════════════════ */
 const PASS = 'taxdeed2025';
 function checkAccess() {
-  const v = document.getElementById('accessPass').value;
-  const err = document.getElementById('accessError');
+  var v = document.getElementById('accessPass').value;
+  var err = document.getElementById('accessError');
   if(v === PASS) {
     document.getElementById('lockWall').classList.add('hidden');
     document.getElementById('privateContent').classList.add('unlocked');
     err.classList.remove('show');
     buildVerifiedContacts();
     buildPlaybooks();
-    renderPortfolio(portfolioData);
-    /* Show portfolio tab by default when unlocking */
-    var portfolioTab = document.querySelector('.op-tab[onclick*="portfolio"]');
-    if (portfolioTab) switchTab('portfolio', portfolioTab);
-    else {
-      var firstTab = document.querySelector('.op-tab');
-      if (firstTab) switchTab('scraper', firstTab);
-    }
   } else {
     err.classList.add('show');
     document.getElementById('accessPass').value = '';
@@ -1374,9 +1366,12 @@ function switchTab(name, btn) {
     var el = document.getElementById('tab-'+t);
     if (el) el.style.display = (t===name) ? 'block' : 'none';
   });
-  document.querySelectorAll('.op-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.op-tab').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
-  if (name === 'portfolio') renderPrivatePortfolio(portfolioData);
+  if (name === 'portfolio') {
+    renderPrivatePortfolio(portfolioData);
+    attachPhotoClicks();
+  }
 }
 
 /* ═══════════════════════════════════════
@@ -1445,17 +1440,7 @@ function photoKey(p){ return (p.address||'').trim().toLowerCase(); }
 
 /* ── Render all cards ── */
 function renderPortfolio(data) {
-  var track = document.getElementById('propTrack');
-  if (!track) { renderPrivatePortfolio(data); return; }
-  var empty = document.getElementById('portfolioEmpty');
-  if(!data || !data.length) {
-    track.innerHTML='';
-    if(empty) empty.style.display='flex';
-    return;
-  }
-  if(empty) empty.style.display='none';
-  track.innerHTML = data.map(function(p,i){ return buildCard(p,i); }).join('');
-  if(typeof updatePortfolioStats==='function') updatePortfolioStats(data);
+  renderPrivatePortfolio(data);
 }
 
 function fmt$(n){ return n ? '$'+Number(String(n).replace(/[^0-9.]/g,'')).toLocaleString() : '—'; }
@@ -1576,13 +1561,15 @@ function handlePhotoUpload(idx, input){
       loaded++;
       if(loaded === files.length) {
         savePhotoStore();
-        const track = document.getElementById('propTrack');
-        const cards = track.querySelectorAll('.prop-card');
-        if(cards[idx]) {
-          const tmp = document.createElement('div');
-          tmp.innerHTML = buildCard(p, idx);
-          const newCard = tmp.firstElementChild;
-          track.replaceChild(newCard, cards[idx]);
+        var privTrack = document.getElementById('propTrackPrivate');
+        if (privTrack) {
+          var allCards = privTrack.querySelectorAll('.prop-card');
+          if(allCards[idx]) {
+            var tmpDiv = document.createElement('div');
+            tmpDiv.innerHTML = buildCard(p, idx);
+            privTrack.replaceChild(tmpDiv.firstElementChild, allCards[idx]);
+          }
+          attachPhotoClicks();
         }
         if (pubFilteredData && pubFilteredData.length) renderPubPortfolio(pubFilteredData);
         showPhotoFeedback('✓ ' + files.length + ' photo' + (files.length > 1 ? 's' : '') + ' saved permanently.');
@@ -2363,17 +2350,6 @@ function renderPrivatePortfolio(data) {
   el = document.getElementById('ps-active'); if(el) el.textContent = total - sold;
   el = document.getElementById('ps-sold');   if(el) el.textContent = sold;
   el = document.getElementById('ps-states'); if(el) el.textContent = stateCount;
-  /* Attach onclick directly to photo panels after DOM is ready */
-  var _track = document.getElementById('propTrackPrivate');
-  if (_track) {
-    _track.querySelectorAll('[data-upload-idx]').forEach(function(panel) {
-      panel.onclick = function(e) {
-        e.stopPropagation();
-        var i = parseInt(panel.getAttribute('data-upload-idx'), 10);
-        triggerPhotoUpload(i);
-      };
-    });
-  }
 }
 
 function pvFilter(f, btn) {
@@ -2401,6 +2377,8 @@ function exportPortfolioCSV() {
   a.download = 'partners-deeds-portfolio-' + new Date().toISOString().slice(0,10) + '.csv';
   a.click();
 }
+
+
 
 /* ── i18n / Full Translation System ── */
 var LANG = 'en';
@@ -3096,6 +3074,20 @@ function clearAllPhotos() {
   var si = document.getElementById('photoStorageInfo');
   if (si) si.textContent = '📷 No photos stored';
 }
+
+/* ── Attach photo click handlers directly to DOM elements ── */
+function attachPhotoClicks() {
+  var track = document.getElementById('propTrackPrivate');
+  if (!track) return;
+  track.querySelectorAll('[data-upload-idx]').forEach(function(panel) {
+    panel.style.cursor = 'pointer';
+    panel.onclick = function(e) {
+      e.stopPropagation();
+      var idx = parseInt(panel.getAttribute('data-upload-idx'), 10);
+      triggerPhotoUpload(idx);
+    };
+  });
+}
 /* -- Global exports -- */
 window.checkAccess        = checkAccess;
 window.lockSection        = lockSection;
@@ -3120,6 +3112,7 @@ window.clearResults       = clearResults;
 window.exportCSV          = exportCSV;
 window.pvFilter           = pvFilter;
 window.setLang            = setLang;
+window.attachPhotoClicks  = attachPhotoClicks;
 window.deletePhoto        = deletePhoto;
 window.showPhotoFeedback  = showPhotoFeedback;
 window.clearAllPhotos     = clearAllPhotos;
