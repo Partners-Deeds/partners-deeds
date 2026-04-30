@@ -105,6 +105,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .pillars{display:grid;grid-template-columns:1fr;gap:3px;margin-bottom:80px;}
 @media(min-width:640px){.pillars{grid-template-columns:repeat(2,1fr);margin-bottom:96px;}}
 .pillar{background:var(--ink2);border:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .3s;touch-action:manipulation;}
+.pillar.open{overflow:visible;}
 @media(min-width:600px){.pillar{padding:44px 40px;}}
 .pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pillar-color,var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.4,0,.2,1);}
 .pillar:active::before,.pillar.open::before{transform:scaleX(1);}
@@ -125,7 +126,7 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .kpi-val{font-size:15px;color:var(--gold-light);font-weight:700;}
 .kpi-key{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--paper3);font-weight:500;}
 .pillar-detail{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
-.pillar.open .pillar-detail{max-height:700px;padding-top:22px;border-top:1px solid var(--border);margin-top:18px;}
+.pillar.open .pillar-detail{max-height:2000px;padding-top:22px;border-top:1px solid var(--border);margin-top:18px;}
 .detail-grid{display:grid;grid-template-columns:1fr;gap:20px;}
 @media(min-width:500px){.detail-grid{grid-template-columns:1fr 1fr;}}
 .detail-block-title{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600;}
@@ -622,7 +623,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   </div>
 </div>
 
-<div class="version-tag">partners-deeds-v19e</div>
+<div class="version-tag">partners-deeds-v19g</div>
 <div class="wrap">
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">&#127482;&#127480; EN</button>
@@ -2901,7 +2902,42 @@ var PROCS_PT = {
     {n:"3",title:"Protocolar a reivindicação",desc:"Protocole por USPS Certified Mail com rastreamento, ou pessoalmente. Guarde cópias de tudo.",tools:["USPS Certified Mail","Pessoalmente no cartório"]},
     {n:"4",title:"Acompanhar em intervalos regulares",desc:"Prazos de processamento: FL 30–90 dias · TX 60–120 dias · MI 60–120 dias · IL 90–180 dias · WI 30–90 dias. Entre em contato a cada 3–4 semanas."},
     {n:"5",title:"Receber fundos e cobrar seus honorários",desc:"O county emite cheque ao antigo proprietário, que repassa sua comissão conforme o contrato.",tools:["Conta corrente empresarial","QuickBooks"]}
-  ],note:"<strong>Tratamento de negações:</strong> Reivindicações negadas por: prazo vencido, documentos ausentes ou reivindicantes concorrentes. Recorra por escrito e solicite o motivo específico."}
+  ],note:"<strong>Tratamento de negações:</strong> Reivindicações negadas por: prazo vencido, documentos ausentes ou reivindicantes concorrentes. Recorra por escrito e solicite o motivo específico."},
+  dealflow:{title:"Gerando Fluxo de Negócios para o Fundo",steps:[
+    {n:"1",title:"Definir critérios de aquisição",desc:"Política escrita: estados-alvo, ARV mínimo, exposição máxima a penhoras, tipos excluídos.",tools:["Planilha Google","Notion"]},
+    {n:"2",title:"Usar histórico do Pilar 1 como credencial",desc:"Cada deal é um caso de estudo: preço de compra, ARV, resultado, prazo. Compile em deck de track record.",tools:["Google Slides","Canva"]},
+    {n:"3",title:"Identificar LPs no pipeline SaaS",desc:"Assinantes perguntando sobre estrutura de fundo são leads de LP. Transfira para pipeline dedicado.",tools:["ConvertKit","HubSpot"]},
+    {n:"4",title:"Realizar webinars mensais de deal review",desc:"Apresente cada deal fechado: tese, due diligence, resultado. Constrói confiança com potenciais LPs.",tools:["Zoom","Loom"]},
+    {n:"5",title:"Converter interesse em compromisso de capital",desc:"Envie sumário executivo e PPM. Use DocuSign para subscrição. Meta: primeiro fechamento com 3–5 LPs.",tools:["DocuSign","InvestNext"]}
+  ],note:"<strong>Funil:</strong> assinante → webinar → sumário → acreditação → LP comprometido."},
+  saastrain:{title:"Usando Dados de Leilão para Treinar o SaaS",steps:[
+    {n:"1",title:"Estruturar dados históricos",desc:"Por leilão: county, data, APN, lance inicial, lance vencedor, tipo, penhoras e resultado.",tools:["PostgreSQL","Airtable"]},
+    {n:"2",title:"Calcular métricas por county e tipo",desc:"Desconto médio, taxa de reversão, tempo de disposição. Alimenta o score de risco do SaaS.",tools:["Python/pandas","Metabase"]},
+    {n:"3",title:"Construir features preditivas",desc:"População, desemprego, tendência de preços, backlog, tipo de penhora predominante.",tools:["Python","ATTOM API","Census API"]},
+    {n:"4",title:"Validar modelo out-of-sample",desc:"Reserve 20% dos dados para validação. Meta: precisão >70% na previsão de resultado.",tools:["Python","Jupyter"]},
+    {n:"5",title:"Integrar score no dashboard",desc:"Score de risco (1–10) e desconto esperado por propriedade. Atualizar mensalmente com novos dados.",tools:["React","FastAPI","PostgreSQL"]}
+  ],note:"<strong>Vantagem:</strong> dados reais de leilões, não sintéticos. Cada deal do Pilar 1 melhora o modelo."},
+  saascalendar:{title:"Construindo o Calendário de Leilões no SaaS",steps:[
+    {n:"1",title:"Mapear fontes por estado e county",desc:"Para cada county: URL, formato (PDF/CSV/HTML), frequência e data típica de publicação.",tools:["Airtable","Google Sheets"]},
+    {n:"2",title:"Construir scrapers por fonte",desc:"Python para portais (GovEase, RealTDA). pdfplumber para PDFs. BeautifulSoup para HTML.",tools:["Python","pdfplumber","Playwright"]},
+    {n:"3",title:"Normalizar e armazenar",desc:"Schema: county, estado, data, plataforma, URL. PostgreSQL com atualizações diárias.",tools:["PostgreSQL","Airflow"]},
+    {n:"4",title:"Interface de calendário para assinantes",desc:"Filtrável por estado, county e datas. E-mails 7 dias antes de leilões nos counties favoritos.",tools:["React","FullCalendar.js","SendGrid"]},
+    {n:"5",title:"Monetizar por tier",desc:"Básico gratuito (1 estado), multi-estado no plano pago, alertas em tempo real no premium.",tools:["Stripe","Lemon Squeezy"]}
+  ],note:"<strong>Dica:</strong> parceria direta com counties para receber listas via API reduz custo de scraping."},
+  saasalerts:{title:"Alertas Automatizados de Excedentes via SaaS",steps:[
+    {n:"1",title:"Coletar resultados automaticamente",desc:"24h após cada leilão, baixar resultados e calcular excedente = lance vencedor - dívida total.",tools:["Python","Playwright"]},
+    {n:"2",title:"Filtrar leads de alto valor",desc:"Manter excedentes ≥ $5.000. Enriquecer com endereço, county e APN.",tools:["PostgreSQL","Pandas"]},
+    {n:"3",title:"Enviar alertas por e-mail ou SMS",desc:"Lista semanal de excedentes nos counties preferidos. Inclui: endereço, valor e prazo.",tools:["SendGrid","Twilio"]},
+    {n:"4",title:"Exportação de leads",desc:"Assinantes premium exportam CSV para BatchSkipTracing em lote.",tools:["CSV export"]},
+    {n:"5",title:"Monitorar prazo de reivindicação",desc:"Alertar quando prazo se aproxima: 30/15/7 dias.",tools:["Cron jobs","SendGrid"]}
+  ],note:"<strong>Modelo:</strong> alertas básicos gratuitos (1 county), multi-county no plano pago."},
+  surpluscollect:{title:"Coletando Listas Pós-Leilão por County",steps:[
+    {n:"1",title:"Identificar fonte de resultados",desc:"Cada county publica de forma diferente: site do cartório, tesoureiro, PDF ou portal dedicado.",tools:["Planilha Google","Airtable"]},
+    {n:"2",title:"Automatizar coleta",desc:"Scrapers Python 24h após cada leilão. Para PDFs, alerta por e-mail.",tools:["Python","Playwright","pdfplumber"]},
+    {n:"3",title:"Calcular excedente",desc:"Lance vencedor - (impostos + taxas + juros). Filtrar negativos. Priorizar ≥ $5.000.",tools:["Python/pandas"]},
+    {n:"4",title:"Banco de dados de leads",desc:"Por propriedade: APN, endereço, county, data, excedente, prazo, antigo proprietário.",tools:["PostgreSQL","Airtable"]},
+    {n:"5",title:"Priorizar e enfileirar",desc:"Maior excedente primeiro, depois menor prazo. Enviar para BatchSkipTracing em lote.",tools:["BatchSkipTracing.com","TLO"]}
+  ],note:"<strong>Volume:</strong> county médio gera 20–80 excedentes/leilão. Com 5 counties: 100–400 leads/mês."}
 };
 
 /* ── PROCS translated to Spanish ── */
@@ -2975,7 +3011,42 @@ var PROCS_ES = {
     {n:"3",title:"Presentar la reclamación",desc:"Presente por USPS Certified Mail con rastreo, o en persona. Guarde copias de todo.",tools:["USPS Certified Mail","En persona en la oficina del county"]},
     {n:"4",title:"Dar seguimiento en intervalos regulares",desc:"Tiempos de procesamiento: FL 30–90 días · TX 60–120 días · MI 60–120 días · IL 90–180 días · WI 30–90 días. Contacte cada 3–4 semanas."},
     {n:"5",title:"Recibir fondos y cobrar honorarios",desc:"El county emite cheque al antiguo propietario, quien pasa su comisión según el contrato.",tools:["Cuenta corriente empresarial","QuickBooks"]}
-  ],note:"<strong>Manejo de negaciones:</strong> Reclamaciones negadas por: plazo vencido, documentos faltantes o reclamantes concurrentes. Apele por escrito y solicite el motivo específico."}
+  ],note:"<strong>Manejo de negaciones:</strong> Reclamaciones negadas por: plazo vencido, documentos faltantes o reclamantes concurrentes. Apele por escrito y solicite el motivo específico."},
+  dealflow:{title:"Generando Flujo de Negocios para el Fondo",steps:[
+    {n:"1",title:"Definir criterios de adquisición",desc:"Política escrita: estados objetivo, ARV mínimo, exposición máxima a gravámenes, tipos excluidos.",tools:["Google Sheets","Notion"]},
+    {n:"2",title:"Usar historial del Pilar 1 como credencial",desc:"Cada negocio es un caso de estudio: precio de compra, ARV, resultado, plazo. Compílelo en deck de track record.",tools:["Google Slides","Canva"]},
+    {n:"3",title:"Identificar LPs en el pipeline SaaS",desc:"Suscriptores preguntando sobre estructura de fondo son leads de LP. Transfíralos a pipeline dedicado.",tools:["ConvertKit","HubSpot"]},
+    {n:"4",title:"Realizar webinars mensuales de revisión",desc:"Presente cada negocio cerrado: tesis, due diligence, resultado. Construye confianza con potenciales LPs.",tools:["Zoom","Loom"]},
+    {n:"5",title:"Convertir interés en compromiso de capital",desc:"Envíe resumen ejecutivo y PPM. Use DocuSign para suscripción. Meta: primer cierre con 3–5 LPs.",tools:["DocuSign","InvestNext"]}
+  ],note:"<strong>Embudo:</strong> suscriptor → webinar → resumen → acreditación → LP comprometido."},
+  saastrain:{title:"Usando Datos de Subasta para Entrenar el SaaS",steps:[
+    {n:"1",title:"Estructurar datos históricos",desc:"Por subasta: county, fecha, APN, puja inicial, puja ganadora, tipo, gravámenes y resultado.",tools:["PostgreSQL","Airtable"]},
+    {n:"2",title:"Calcular métricas por county y tipo",desc:"Descuento promedio, tasa de reversión, tiempo de disposición. Alimenta el score de riesgo.",tools:["Python/pandas","Metabase"]},
+    {n:"3",title:"Construir features predictivas",desc:"Población, desempleo, tendencia de precios, backlog, tipo de gravamen predominante.",tools:["Python","ATTOM API","Census API"]},
+    {n:"4",title:"Validar modelo out-of-sample",desc:"Reserve 20% de datos. Meta: precisión >70% en predicción de resultado.",tools:["Python","Jupyter"]},
+    {n:"5",title:"Integrar score en el dashboard",desc:"Score de riesgo (1–10) y descuento esperado por propiedad. Actualizar mensualmente.",tools:["React","FastAPI","PostgreSQL"]}
+  ],note:"<strong>Ventaja:</strong> datos reales de subastas, no sintéticos. Cada negocio del Pilar 1 mejora el modelo."},
+  saascalendar:{title:"Construyendo el Calendario de Subastas en el SaaS",steps:[
+    {n:"1",title:"Mapear fuentes por estado y county",desc:"Para cada county: URL, formato (PDF/CSV/HTML), frecuencia y fecha típica de publicación.",tools:["Airtable","Google Sheets"]},
+    {n:"2",title:"Construir scrapers por fuente",desc:"Python para portales (GovEase, RealTDA). pdfplumber para PDFs. BeautifulSoup para HTML.",tools:["Python","pdfplumber","Playwright"]},
+    {n:"3",title:"Normalizar y almacenar",desc:"Schema: county, estado, fecha, plataforma, URL. PostgreSQL con actualizaciones diarias.",tools:["PostgreSQL","Airflow"]},
+    {n:"4",title:"Interfaz de calendario para suscriptores",desc:"Filtrable por estado, county y fechas. Correos 7 días antes de subastas en counties favoritos.",tools:["React","FullCalendar.js","SendGrid"]},
+    {n:"5",title:"Monetizar por tier",desc:"Básico gratuito (1 estado), multi-estado en plan pago, alertas en tiempo real en premium.",tools:["Stripe","Lemon Squeezy"]}
+  ],note:"<strong>Consejo:</strong> asociarse con counties para recibir listas vía API reduce el costo de scraping."},
+  saasalerts:{title:"Alertas Automatizadas de Excedentes vía SaaS",steps:[
+    {n:"1",title:"Recopilar resultados automáticamente",desc:"24h tras cada subasta, descargar resultados y calcular excedente = puja ganadora - deuda total.",tools:["Python","Playwright"]},
+    {n:"2",title:"Filtrar leads de alto valor",desc:"Mantener excedentes ≥ $5.000. Enriquecer con dirección, county y APN.",tools:["PostgreSQL","Pandas"]},
+    {n:"3",title:"Enviar alertas por correo o SMS",desc:"Lista semanal de excedentes en counties preferidos. Incluye: dirección, monto y plazo.",tools:["SendGrid","Twilio"]},
+    {n:"4",title:"Exportación de leads",desc:"Suscriptores premium exportan CSV para BatchSkipTracing masivo.",tools:["CSV export"]},
+    {n:"5",title:"Monitorear plazo de reclamación",desc:"Alertar cuando el plazo se acerca: 30/15/7 días.",tools:["Cron jobs","SendGrid"]}
+  ],note:"<strong>Modelo:</strong> alertas básicas gratuitas (1 county), multi-county en plan pago."},
+  surpluscollect:{title:"Recopilando Listas Post-Subasta por County",steps:[
+    {n:"1",title:"Identificar fuente de resultados",desc:"Cada county publica diferente: secretaría, tesorero, PDF o portal dedicado.",tools:["Google Sheets","Airtable"]},
+    {n:"2",title:"Automatizar recopilación",desc:"Scrapers Python 24h tras cada subasta. Para PDFs, alerta por correo.",tools:["Python","Playwright","pdfplumber"]},
+    {n:"3",title:"Calcular excedente",desc:"Puja ganadora - (impuestos + cargos + intereses). Filtrar negativos. Priorizar ≥ $5.000.",tools:["Python/pandas"]},
+    {n:"4",title:"Base de datos de leads",desc:"Por propiedad: APN, dirección, county, fecha, excedente, plazo, antiguo propietario.",tools:["PostgreSQL","Airtable"]},
+    {n:"5",title:"Priorizar y enfilerar",desc:"Mayor excedente primero, luego menor plazo. Enviar a BatchSkipTracing masivo.",tools:["BatchSkipTracing.com","TLO"]}
+  ],note:"<strong>Volumen:</strong> county medio genera 20–80 excedentes/subasta. Con 5 counties: 100–400 leads/mes."}
 };
 
 var PLAYBOOKS_PT = [
