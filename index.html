@@ -2322,6 +2322,17 @@ function renderPrivatePortfolio(data) {
   el = document.getElementById('ps-active'); if(el) el.textContent = total - sold;
   el = document.getElementById('ps-sold');   if(el) el.textContent = sold;
   el = document.getElementById('ps-states'); if(el) el.textContent = stateCount;
+
+  /* Attach photo click handlers directly — bypasses innerHTML onclick restrictions */
+  var track2 = document.getElementById('propTrackPrivate');
+  if (track2) {
+    track2.querySelectorAll('[data-upload-idx]').forEach(function(panel) {
+      panel.onclick = function() {
+        var i = parseInt(panel.getAttribute('data-upload-idx'), 10);
+        triggerPhotoUpload(i);
+      };
+    });
+  }
 }
 
 function pvFilter(f, btn) {
