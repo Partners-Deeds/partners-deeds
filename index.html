@@ -230,10 +230,16 @@ h1 em{font-style:italic;color:var(--gold);text-shadow:0 0 80px rgba(212,168,71,.
 .tbl-link:active{color:var(--gold-light);}
 .sp{font-size:10px;font-weight:700;padding:2px 6px;letter-spacing:.06em;}
 .sp-fl{background:rgba(91,158,106,.15);color:#5B9E6A;border:1px solid rgba(91,158,106,.3);}
+.sp-ms{background:rgba(181,130,91,.15);color:#B5825B;border:1px solid rgba(181,130,91,.3);}
+.sp-tx{background:rgba(181,91,91,.15);color:#B55B5B;border:1px solid rgba(181,91,91,.3);}
+.sp-il{background:rgba(130,91,181,.15);color:#825BB5;border:1px solid rgba(130,91,181,.3);}
+.sp-wi{background:rgba(91,181,130,.15);color:#5BB582;border:1px solid rgba(91,181,130,.3);}
+.sp-mo{background:rgba(168,130,91,.15);color:#A8825B;border:1px solid rgba(168,130,91,.3);}
+.sp-pa{background:rgba(91,130,181,.15);color:#5B82B5;border:1px solid rgba(91,130,181,.3);}
 .sp-tx{background:rgba(181,91,91,.15);color:#C47070;border:1px solid rgba(181,91,91,.3);}
 .sp-il{background:rgba(91,154,181,.15);color:#5B9AB5;border:1px solid rgba(91,154,181,.3);}
 .sp-wi{background:rgba(139,108,196,.15);color:#8B6CC4;border:1px solid rgba(139,108,196,.3);}
-.sp-mi{background:rgba(212,168,71,.15);color:var(--gold);border:1px solid rgba(212,168,71,.3);}
+.sp-mi{background:rgba(91,154,181,.15);color:#5B9AB5;border:1px solid rgba(91,154,181,.3);}
 .scraper-empty{text-align:center;padding:48px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;}
 .empty-icon{font-size:36px;opacity:.3;}
 .empty-text{font-size:14px;color:var(--muted);max-width:380px;line-height:1.7;}
@@ -623,7 +629,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   </div>
 </div>
 
-<div class="version-tag">partners-deeds-v20c</div>
+<div class="version-tag">partners-deeds-v20d</div>
 <div class="wrap">
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">&#127482;&#127480; EN</button>
@@ -1706,6 +1712,7 @@ function importCSV(event) {
       renderPortfolio(portfolioData);
       /* Also refresh public portfolio so photo_url from CSV shows immediately */
       var pubActive = document.querySelector('.pub-filter-btn.active');
+        pubCurrentFilter = 'all';
         renderPubPortfolio(portfolioData);
         renderPortfolio(portfolioData);
         alert('✓ ' + resolved.length + ' properties imported. Photos loading...');
@@ -2374,7 +2381,7 @@ function renderPrivatePortfolio(data) {
 
   /* Rebuild dynamic state filter buttons */
   var states = [...new Set(portfolioData.map(function(p){ return p.state; }))].sort();
-  var stateEmoji = { FL:'🌴', TX:'⭐', MI:'🌊', IL:'🌽', WI:'🧀', MO:'🌿', PA:'🔔' };
+  var stateEmoji = { FL:'🌴', TX:'⭐', MI:'🌊', IL:'🌽', WI:'🧀', MO:'🌿', PA:'🔔', MS:'🌲' };
   var filtersEl = document.getElementById('pvStateFilters');
   if (filtersEl) {
     var html = '<button class="port-btn active-filter" id="pvFilterAll" onclick="pvFilter(\'all\',this)">All (' + portfolioData.length + ')</button>';
