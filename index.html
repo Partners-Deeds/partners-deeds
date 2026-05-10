@@ -629,7 +629,7 @@ footer{text-align:center;padding-top:56px;border-top:1px solid var(--border);}
   </div>
 </div>
 
-<div class="version-tag">partners-deeds-v20d</div>
+<div class="version-tag">partners-deeds-v20e</div>
 <div class="wrap">
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('en')">&#127482;&#127480; EN</button>
@@ -1792,19 +1792,33 @@ const COUNTIES = [
   {state:'WI',county:'Kenosha',office:'County Treasurer',officer:'Teri Jacobson',phone:'(262) 653-2542',list:'Bid4Assets',schedule:'Annual — September',url:'https://www.kenoshacounty.org/treasurer',notes:''},
   {state:'WI',county:'Racine',office:'County Treasurer',officer:'Jennifer Konkel',phone:'(262) 636-3208',list:'Bid4Assets',schedule:'Annual — September',url:'https://www.racinecounty.com/treasurer',notes:''},
   /* Missouri */
-  {state:'MO',county:'St. Louis',office:'County Collector',url:'https://stlco.us',schedule:'August annually',list:'Online PDF',notes:'Largest MO county'},
-  {state:'MO',county:'Jackson',office:'County Collector',url:'https://jacksongov.org',schedule:'August annually',list:'Online',notes:'Kansas City area'},
-  {state:'MO',county:'Greene',office:'County Collector',url:'https://greenecountymo.gov',schedule:'Annually',list:'Online',notes:'Springfield area'},
-  {state:'MO',county:'St. Charles',office:'County Collector',url:'https://sccmo.org',schedule:'Annually',list:'Online',notes:''},
-  {state:'MO',county:'Boone',office:'County Collector',url:'https://showmeboone.com',schedule:'Annually',list:'Online',notes:'Columbia area'},
+  {state:'MO',county:'St. Louis',office:'County Collector',officer:'Mark Devore',phone:'(314) 615-7865',list:'Online PDF',schedule:'August annually',url:'https://stlco.us',notes:'Largest MO county'},
+  {state:'MO',county:'Jackson',office:'County Collector',officer:'Gail McCann Beatty',phone:'(816) 881-3232',list:'Online',schedule:'August annually',url:'https://jacksongov.org',notes:'Kansas City area'},
+  {state:'MO',county:'Greene',office:'County Collector',officer:'Scott Payne',phone:'(417) 868-4036',list:'Online',schedule:'Annually',url:'https://greenecountymo.gov',notes:'Springfield area'},
+  {state:'MO',county:'St. Charles',office:'County Collector',officer:'Michelle McBride',phone:'(636) 949-7470',list:'Online',schedule:'Annually',url:'https://sccmo.org',notes:''},
+  {state:'MO',county:'Boone',office:'County Collector',officer:'Brian McCollum',phone:'(573) 886-4285',list:'Online',schedule:'Annually',url:'https://showmeboone.com',notes:'Columbia area'},
+  {state:'MO',county:'Clay',office:'County Collector',officer:'Lydia McEvoy',phone:'(816) 407-3500',list:'Online',schedule:'Annually',url:'https://claycountymo.gov',notes:'Kansas City suburbs'},
+  {state:'MO',county:'Jefferson',office:'County Collector',officer:'Jennifer Tull',phone:'(636) 797-5400',list:'Online PDF',schedule:'Annually',url:'https://jeffcomo.org',notes:''},
+  {state:'MO',county:'Franklin',office:'County Collector',officer:'Cathy Zacheis',phone:'(636) 583-6353',list:'County portal',schedule:'Annually',url:'https://www.franklincountymo.gov',notes:''},
+  {state:'MO',county:'Cass',office:'County Collector',officer:'Pam Taylor',phone:'(816) 380-8377',list:'County portal',schedule:'Annually',url:'https://www.casscounty.com',notes:''},
+  {state:'MO',county:'St. Louis City',office:'Collector of Revenue',officer:'Gregory FX Daly',phone:'(314) 622-4111',list:'Online',schedule:'Annual (August)',url:'https://www.stlouis-mo.gov/government/departments/collector',notes:'Independent city'},
   /* Pennsylvania */
-  {state:'PA',county:'Philadelphia',office:'Sheriff',url:'https://phillysheriff.com',schedule:'Monthly',list:'Online',notes:'Largest PA county'},
-  {state:'PA',county:'Allegheny',office:'Sheriff',url:'https://alleghenycounty.us',schedule:'Monthly',list:'Online',notes:'Pittsburgh area'},
-  {state:'PA',county:'Montgomery',office:'Sheriff',url:'https://montcopa.org',schedule:'Monthly',list:'Online',notes:''},
-  {state:'PA',county:'Bucks',office:'Sheriff',url:'https://buckscounty.gov',schedule:'Monthly',list:'Online',notes:''},
-  {state:'PA',county:'Lancaster',office:'Sheriff',url:'https://lancasterdeeds.com',schedule:'Monthly',list:'Online',notes:''},
-  {state:'PA',county:'Chester',office:'Sheriff',url:'https://chesco.org',schedule:'Monthly',list:'Online',notes:''},
-  {state:'PA',county:'York',office:'Sheriff',url:'https://yorkcountypa.gov',schedule:'Monthly',list:'Online',notes:''},
+  {state:'PA',county:'Philadelphia',office:'Sheriff',officer:'Rochelle Bilal',phone:'(215) 686-3572',list:'Online',schedule:'Monthly',url:'https://phillysheriff.com',notes:'Largest PA county'},
+  {state:'PA',county:'Allegheny',office:'Sheriff',officer:'Kevin Kraus',phone:'(412) 350-4700',list:'Online',schedule:'Monthly',url:'https://alleghenycounty.us',notes:'Pittsburgh area'},
+  {state:'PA',county:'Montgomery',office:'Sheriff',officer:'Sean Kilkenny',phone:'(610) 278-3331',list:'Online',schedule:'Monthly',url:'https://montcopa.org',notes:''},
+  {state:'PA',county:'Bucks',office:'Sheriff',officer:'Fred Harran',phone:'(215) 348-6170',list:'Online',schedule:'Monthly',url:'https://buckscounty.gov',notes:''},
+  {state:'PA',county:'Lancaster',office:'Sheriff',officer:'Christopher Leppler',phone:'(717) 299-8100',list:'Online',schedule:'Monthly',url:'https://lancasterdeeds.com',notes:''},
+  {state:'PA',county:'Chester',office:'Sheriff',officer:'Fredda Maddox',phone:'(610) 344-6850',list:'Online',schedule:'Monthly',url:'https://chesco.org',notes:''},
+  {state:'PA',county:'York',office:'Sheriff',officer:'Richard Keuerleber',phone:'(717) 771-9601',list:'Online',schedule:'Monthly',url:'https://yorkcountypa.gov',notes:''},
+  {state:'PA',county:'Monroe',office:'Sheriff',officer:'Todd Martin',phone:'(570) 517-3600',list:'County portal',schedule:'Monthly',url:'https://www.monroecountypa.gov/sheriff',notes:'Pocono Mountains area'},
+  {state:'PA',county:'Dauphin',office:'Sheriff',officer:'Michael Garber',phone:'(717) 780-6590',list:'County portal',schedule:'Monthly',url:'https://www.dauphincounty.gov/sheriff',notes:'Harrisburg area'},
+  {state:'PA',county:'Berks',office:'Sheriff',officer:'Eric Weaknecht',phone:'(610) 478-6220',list:'County portal',schedule:'Monthly',url:'https://www.co.berks.pa.us/sheriff',notes:'Reading area'},
+  {state:'PA',county:'Northampton',office:'Sheriff',officer:'Terry Houck',phone:'(610) 559-3000',list:'County portal',schedule:'Monthly',url:'https://www.northamptoncounty.org/sheriff',notes:'Easton area'},
+  {state:'PA',county:'Lehigh',office:'Sheriff',officer:'Edward Boscola',phone:'(610) 782-3110',list:'County portal',schedule:'Monthly',url:'https://www.lehighcounty.org/sheriff',notes:'Allentown area'},
+  {state:'PA',county:'Luzerne',office:'Sheriff',officer:'Brian Szumski',phone:'(570) 825-1641',list:'County portal',schedule:'Monthly',url:'https://www.luzernecounty.org/sheriff',notes:'Wilkes-Barre area'},
+  {state:'PA',county:'Lackawanna',office:'Sheriff',officer:'Mark McAndrew',phone:'(570) 963-6712',list:'County portal',schedule:'Monthly',url:'https://www.lackawannacounty.org/sheriff',notes:'Scranton area'},
+  {state:'PA',county:'Erie',office:'Sheriff',officer:'John Loomis',phone:'(814) 451-6000',list:'County portal',schedule:'Monthly',url:'https://www.eriecountypa.gov/sheriff',notes:''},
+  {state:'PA',county:'Westmoreland',office:'Sheriff',officer:'James Albert',phone:'(724) 830-3120',list:'Bid4Assets',schedule:'Monthly',url:'https://www.co.westmoreland.pa.us/sheriff',notes:''},
 
 ];
 
